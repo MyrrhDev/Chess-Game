@@ -1,11 +1,12 @@
 package Domini;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ctrl_dominio {
     static private ArrayList<Persona> jugadores;
     static private Persona personaLogueada;
-    static private ArrayList<Problema> problemasExistentes;
+    static private HashMap<String, Problema> problemasExistentes;
     static private Ranking ranking;
     static private boolean login;
 
@@ -14,7 +15,7 @@ public class ctrl_dominio {
      *     -1 Si el nombre no es valido
      *     -2 Si la contrasea no es valido
      */
-    private int verificarDatosUsuario(String nombre, String contrasena) {
+    /*private int verificarDatosUsuario(String nombre, String contrasena) {
         for(int i = 0; i < jugadores.size(); ++i) {
             if (jugadores.get(i).nombreIsEqual(nombre)) {
                 if (jugadores.get(i).contrasenaIsEqual(contrasena)) return 1;
@@ -22,14 +23,14 @@ public class ctrl_dominio {
             }
             else return -1;
         }
-    }
+    }*/
 
     /* Pre: Cierto
      * Post: Si la persona se encontraba registrada en el sistema y el usuario y contraseña coinciden
      * la funcion cambia el atributo login de la clase a cierto. En caso que introduzca incorrectamente
      * la contraseña o la persona no este registrada, la funcion le informara del problema
      */
-    public void loginPersona(String nombre, String contrasena) {
+    /*public void loginPersona(String nombre, String contrasena) {
         //ver si existe un usuario con el mismo nombre en la lista
         int c = verificarDatosUsuario(nombre, contrasena);
         switch(c) {
@@ -45,7 +46,7 @@ public class ctrl_dominio {
                 System.out.println("Contrasena no valida");
                 break;
         }
-    }
+    }*/
 
     /* Pre: Cierto
      * Post: El usuario es deslogueado del sistema
@@ -58,7 +59,7 @@ public class ctrl_dominio {
     /* Pre: Cierto
      * Post: Si no existe ningun otro usuario con el mismo nombre, el usuario se registra en el sistema
      */
-    public void nuevaPersona(String nombre, String contrasena) {
+    /*public void nuevaPersona(String nombre, String contrasena) {
         int c = verificarDatosUsuario(nombre, contrasena);
         switch(c) {
             case 1:
@@ -69,26 +70,28 @@ public class ctrl_dominio {
                 jugadores.add(p);
                 break;
         }
-    }
+    }*/
 
     /* Pre: La persona está logueada en el sistema
      * Post: Se da de baja la persona en el sistema. Se actualiza:
      *       1. El Ranking
      *       2. Todos los problemas ganados por la persona pasan a estar sin ganador
      */
-    public void bajaPersona() {
+    /*public void bajaPersona() {
         eliminarPersonaRanking(personaLogueada);
         //hacer relación problema y persona en uml para poder acceder al ganador de dicho problema y poder eliminarlo fácilmente
         for(int i = 0; i < problemasExistentes.size(); ++i) {
             problemasExistentes.get(i).eliminarPersonaGanadora(personaLogueada);
         }
         login = false;
-    }
+    }*/
 
     public static void main(String[] args) {
         login = false;
         jugadores = new ArrayList<>();
-        problemasExistentes = new ArrayList<>();
+        problemasExistentes = new HashMap<>();
         ranking = new Ranking();
+        DriverTorre dt = new DriverTorre();
+        dt.main(args);
     }
 }
