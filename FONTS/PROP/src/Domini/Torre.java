@@ -24,7 +24,7 @@ public class Torre extends Pieza {
      *       * True: Si el movimiento que se quiere realizar es correcto
      *       * False: Si no se puede realizar el movimiento
      */
-    boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    public boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
@@ -53,6 +53,7 @@ public class Torre extends Pieza {
                             return false;
                         else return true;
                     }
+                    else return true;
                 }
             }
             else if(movX != posX && movY == posY) { //vertical
@@ -67,6 +68,7 @@ public class Torre extends Pieza {
                             return false;
                         else return true;
                     }
+                    else return true;
                 }
                 //arriba
                 if(movX < posX) {
@@ -79,10 +81,44 @@ public class Torre extends Pieza {
                             return false;
                         else return true;
                     }
+                    else return true;
                 }
             }
             else return false;
         }
         return false;
     }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
+    public boolean isEsNegra() {
+        return esNegra;
+    }
+
+    public void setEsNegra(boolean esNegra) {
+        this.esNegra = esNegra;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }

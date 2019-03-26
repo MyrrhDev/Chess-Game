@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public abstract class Pieza {
 
-    boolean esNegra; //true si la pieza es de color negro. Sino false que representa el blanco
-    String id;
-    int posX;
-    int posY;
+    public boolean esNegra; //true si la pieza es de color negro. Sino false que representa el blanco
+    public String id; //@TODO: Cambiar a int en vez de string
+    public int posX;
+    public int posY;
 
     public int getPosX() {
         return posX;
