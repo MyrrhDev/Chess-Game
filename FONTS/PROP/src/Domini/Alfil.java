@@ -4,6 +4,10 @@ import java.util.HashMap;
 
 public class Alfil extends Pieza {
 
+    public Alfil() {
+
+    }
+
     /* Pre: Cierto
      * Post: Se crea un objeto alfil con los parámetros esNegra, id, posX, posY
      */
@@ -23,64 +27,76 @@ public class Alfil extends Pieza {
             //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
             if(movX != posX && movY != posY) { //el movimiento es en diagonal estrictamente
                 if(auxX > 0 && auxY < 0) { //movimiento hacia esquina inferior izquierda
-                    while(i < (movX-1) && j > (movY+1)) {
+                    ++i;
+                    --j;
+                    while(i < (movX) && j > (movY)) {
                         if (estadoTablero[i][j] != 0) //me encuentro una pieza en mi camino
                             return false;
                         ++i;
                         --j;
                     } //cuando salimos del bucle estamos en la posicion i-1, j+1 i queremos revisar hasta i, j
-                    if(estadoTablero[i][j] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
                         Pieza p = piezasTablero.get(estadoTablero[i][j]);
-                        if (p.isEsNegra() && esNegra) //tenemos el mismo color
+                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
                             return false;
                         else return true;
                     }
-                    else return true;
+                    else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
+                    else return false;
                 }
                 else if(auxX > 0 && auxY > 0) { //movimiento hacia esquina inferior derecha
-                   while(i < (movX-1) && j < (movY-1)) {
+                    ++i;
+                    ++j;
+                   while(i < (movX) && j < (movY)) {
                        if (estadoTablero[i][j] != 0) //me encuentro una pieza en mi camino
                            return false;
                        ++i;
                        ++j;
                    } //cuando salimos del bucle estamos en la posicion i-1, j-1 i queremos revisar hasta i, j
-                   if(estadoTablero[i][j] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
-                       Pieza p = piezasTablero.get(estadoTablero[i][j]);
-                       if (p.isEsNegra() && esNegra) //tenemos el mismo color
-                           return false;
-                       else return true;
-                   }
-                   else return true;
+                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
+                        Pieza p = piezasTablero.get(estadoTablero[i][j]);
+                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
+                            return false;
+                        else return true;
+                    }
+                    else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
+                    else return false;
                 }
                 else if(auxX < 0 && auxY < 0) { //movimiento hacia esquina superior izquierda
-                    while(i < (movX+1) && j < (movY+1)) {
+                    --i;
+                    --j;
+                    while(i > (movX) && j > (movY)) {
                         if (estadoTablero[i][j] != 0) //me encuentro una pieza en mi camino
                             return false;
                         --i;
                         --j;
                     } //cuando salimos del bucle estamos en la posicion i-1, j-1 i queremos revisar hasta i, j
-                    if(estadoTablero[i][j] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
                         Pieza p = piezasTablero.get(estadoTablero[i][j]);
-                        if (p.isEsNegra() && esNegra) //tenemos el mismo color
+                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
                             return false;
                         else return true;
                     }
-                    else return true;
+                    else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
+                    else return false;
                 }
                 else if(auxX < 0 && auxY > 0) { //movimiento hacia esquina superior derecha
-                    while(i < (movX+1) && j < (movY-1)) {
+                    --i;
+                    ++j;
+                    while(i > (movX) && j < (movY)) {
                         if (estadoTablero[i][j] != 0) //me encuentro una pieza en mi camino
                             return false;
                         --i;
                         ++j;
                     } //cuando salimos del bucle estamos en la posicion i-1, j-1 i queremos revisar hasta i, j
-                    if(estadoTablero[i][j] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
                         Pieza p = piezasTablero.get(estadoTablero[i][j]);
-                        if (p.isEsNegra() && esNegra) //tenemos el mismo color
+                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
                             return false;
                         else return true;
                     }
-                    else return true;
+                    else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
+                    else return false;
                 }
                 else return false;
             }

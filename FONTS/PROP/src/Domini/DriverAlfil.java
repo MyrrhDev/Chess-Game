@@ -3,12 +3,14 @@ package Domini;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class DriverTorre {
+public class DriverAlfil {
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
     static private int estadoTablero[][] = new int[8][8];
     static private int move[];
     static HashMap<Integer, Pieza> ph;
 
-    public DriverTorre() {
+    public DriverAlfil() {
 
     }
 
@@ -18,10 +20,8 @@ public class DriverTorre {
      */
     public static void readTableroFromTerminal(Scanner sc) throws Exception {
         int i = 0;
-        boolean cont = true;
-        String s = sc.nextLine();
-        while (cont) {
-            int test2 = s.length();
+        while (i < 8) {
+            String s = sc.nextLine();
             for(int j = 0; j < s.length(); j = j+2) {
                 char c = s.charAt(j);
                 int test = Character.getNumericValue(c);
@@ -30,19 +30,20 @@ public class DriverTorre {
                 }
             }
             ++i;
-            s = sc.nextLine();
-            if(s.equals("") || s.equals("\r") || s.equals("end tauler") || i == 7) cont = false; //en el editor de textos de ubuntu             //interpreta el enter como una linea vacia
         }
+        /*for(i = 0; i < 8; ++i)
+            for(int j = 0; j < 8; ++j)
+                System.out.println(estadoTablero[i][j]);*/
     }
 
     /*
      * Pre: Cierto
-     * Post: Devuelve un objeto Torre con atributos iguales a los parámetros de la funcion
+     * Post: Devuelve un objeto Alfil con atributos iguales a los parámetros de la funcion
      */
 
-    public static Torre iniPieza(boolean esNegra, Integer idPieza, int posX, int posY) {
-        Torre t = new Torre(esNegra, idPieza, posX, posY);
-        return t;
+    public static Alfil iniPieza(boolean esNegra, Integer idPieza, int posX, int posY) {
+        Alfil a = new Alfil(esNegra, idPieza, posX, posY);
+        return a;
     }
 
     /*
@@ -50,10 +51,10 @@ public class DriverTorre {
      * Post: Imprime por consola las posibles opciones a probar con el driver
      */
     private static void printMenuPrincipal() {
-        System.out.println("Bienvenido al Driver de Torre. Selecciona qué deseas testear:");
-        System.out.println("    1- Alta objeto Pieza Torre");
+        System.out.println("Bienvenido al Driver de Alfil. Selecciona qué deseas testear:");
+        System.out.println("    1- Alta objeto Pieza Alfil");
         System.out.println("    2- Introducir estado de tablero");
-        System.out.println("    3- Verificar función esMovimientoOK de la clase Torre");
+        System.out.println("    3- Verificar función esMovimientoOK de la clase Alfil");
         System.out.println("    4- Salir");
     }
 
@@ -68,7 +69,7 @@ public class DriverTorre {
             String input = sc.nextLine();
             int op;
             if(!input.equals("\r") && !input.equals("\n") && !input.equals("\t") && !input.equals("")
-                &&(input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4"))) {
+                    &&(input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4"))) {
                 op = Integer.parseInt(input);
             }
             else op = -1;
@@ -110,9 +111,9 @@ public class DriverTorre {
                             else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Torre t = iniPieza(esNegraInput, idPiezaInput, posXinput, posYinput);
-                    System.out.println("Objeto torre creado con exito. Valores:");
-                    ph.put(t.getId(), t);
+                    Alfil a = iniPieza(esNegraInput, idPiezaInput, posXinput, posYinput);
+                    System.out.println("Objeto alfil creado con exito. Valores:");
+                    ph.put(a.getId(), a);
                     break;
                 case 2:
                     System.out.println("Introduce el estado del tablero. Se espera:");
@@ -125,9 +126,9 @@ public class DriverTorre {
                 case 3:
                     System.out.println("Introduce la id de la pieza a probar su movimiento");
                     String idPieza = sc.nextLine();
-                    Pieza t2 = new Torre();
+                    Pieza a2 = new Alfil();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
-                        t2 = ph.get(Integer.parseInt(idPieza));
+                        a2 = ph.get(Integer.parseInt(idPieza));
                     }
                     else System.out.println("id incorrecta");
                     System.out.println("Introduce la posicion donde debe moverse [(0,0) .. (7,7)]");
@@ -137,8 +138,12 @@ public class DriverTorre {
                     move[1] = Integer.parseInt(aux[2]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println("Test completado con exito");
+                    //a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)
+                    if(resEsperado == a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
                     else System.out.println("Fallo en el test");
+                    /*boolean resMovimientoOk = a2.esMovimientoOk(move[0], move[1],estadoTablero,ph);
+                    boolean result = (resEsperado == resMovimientoOk);
+                    int iu = -1;*/
                     System.out.println();
                     break;
                 case 4:

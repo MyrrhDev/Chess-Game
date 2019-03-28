@@ -91,7 +91,7 @@ public class ctrl_dominio {
         jugadores = new ArrayList<>();
         problemasExistentes = new HashMap<>();
         ranking = new Ranking();
-        DriverTorre dt = new DriverTorre();
-        dt.main(args);
+        DriverAlfil da = new DriverAlfil();
+        da.main(args);
     }
 }

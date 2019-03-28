@@ -36,7 +36,7 @@ public class Torre extends Pieza {
                                 return false;
                     if(estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
                         Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() && esNegra) //tenemos el mismo color
+                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
                             return false;
                         else return true;
                     }
@@ -49,7 +49,7 @@ public class Torre extends Pieza {
                             return false;
                     if(estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
                         Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() && esNegra) //tenemos el mismo color
+                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
                             return false;
                         else return true;
                     }
@@ -64,7 +64,7 @@ public class Torre extends Pieza {
                             return false;
                     if(estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
                         Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() && esNegra) //tenemos el mismo color
+                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
                             return false;
                         else return true;
                     }
@@ -77,7 +77,7 @@ public class Torre extends Pieza {
                             return false;
                     if(estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
                         Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() && esNegra) //tenemos el mismo color
+                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
                             return false;
                         else return true;
                     }
