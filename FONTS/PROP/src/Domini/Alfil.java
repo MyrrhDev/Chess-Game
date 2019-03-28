@@ -7,7 +7,7 @@ public class Alfil extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto alfil con los parámetros esNegra, id, posX, posY
      */
-    public Alfil(boolean esNegra, String id, int posX, int posY) {
+    public Alfil(boolean esNegra, Integer id, int posX, int posY) {
         this.esNegra = esNegra;
         this.id = id;
         this.posX = posX;

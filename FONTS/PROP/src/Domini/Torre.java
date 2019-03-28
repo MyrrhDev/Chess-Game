@@ -11,7 +11,7 @@ public class Torre extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto torre con los parámetros esNegra, id, posX, posY
      */
-    public Torre(boolean esNegra, String id, int posX, int posY) {
+    public Torre(boolean esNegra, Integer id, int posX, int posY) {
         this.esNegra = esNegra;
         this.id = id;
         this.posX = posX;
@@ -113,11 +113,11 @@ public class Torre extends Pieza {
         this.esNegra = esNegra;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

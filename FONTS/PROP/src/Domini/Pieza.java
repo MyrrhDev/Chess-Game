@@ -5,7 +5,7 @@ import java.util.HashMap;
 public abstract class Pieza {
 
     public boolean esNegra; //true si la pieza es de color negro. Sino false que representa el blanco
-    public String id; //@TODO: Cambiar a int en vez de string
+    public int id;
     public int posX;
     public int posY;
 
@@ -33,11 +33,11 @@ public abstract class Pieza {
         this.esNegra = esNegra;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
