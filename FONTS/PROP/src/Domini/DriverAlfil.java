@@ -55,7 +55,8 @@ public class DriverAlfil {
         System.out.println("    1- Alta objeto Pieza Alfil");
         System.out.println("    2- Introducir estado de tablero");
         System.out.println("    3- Verificar función esMovimientoOK de la clase Alfil");
-        System.out.println("    4- Salir");
+        System.out.println("    4- Probar función actualizarPosPieza de la clase Alfil");
+        System.out.println("    5- Salir");
     }
 
     public static void main(String[] args) {
@@ -69,7 +70,7 @@ public class DriverAlfil {
             String input = sc.nextLine();
             int op;
             if(!input.equals("\r") && !input.equals("\n") && !input.equals("\t") && !input.equals("")
-                    &&(input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4"))) {
+                    &&(input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4") || input.equals("5"))) {
                 op = Integer.parseInt(input);
             }
             else op = -1;
@@ -133,9 +134,10 @@ public class DriverAlfil {
                     else System.out.println("id incorrecta");
                     System.out.println("Introduce la posicion donde debe moverse [(0,0) .. (7,7)]");
                     String m = sc.nextLine();
-                    String aux[] = m.split("");
+                    String aux[] = m.split(" ");
                     move[0] = Integer.parseInt(aux[0]);
-                    move[1] = Integer.parseInt(aux[2]);
+                    System.out.println(aux[0] + " " + aux[1]);
+                    move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
                     //a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)
@@ -147,6 +149,22 @@ public class DriverAlfil {
                     System.out.println();
                     break;
                 case 4:
+                    System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
+                    idPieza = sc.nextLine();
+                    a2 = new Alfil();
+                    if(ph.containsKey(Integer.parseInt(idPieza))) {
+                        a2 = ph.get(Integer.parseInt(idPieza));
+                    }
+                    else System.out.println("id incorrecta");
+                    System.out.println("Introduce la nueva posición de la pieza. El cambio no se verá reflejado en el tablero que hayas introducido.");
+                    m = sc.nextLine();
+                    String aux2[] = m.split(" ");
+                    move[0] = Integer.parseInt(aux2[0]);
+                    move[1] = Integer.parseInt(aux2[1]);
+                    a2.actualizarPosPieza(move[0], move[1]);
+                    System.out.println("Posicion actual: PosX: " + a2.getPosX() + " PosY: " + a2.getPosX());
+                    break;
+                case 5:
                     System.out.println("Ejecucion del driver terminada");
                     driverIsRunning = false;
                     break;

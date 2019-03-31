@@ -103,9 +103,9 @@ public class DriverTorre {
                         String s = sc.nextLine();
                         if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
                             String aux[] = new String[3];
-                            aux = s.split("");
+                            aux = s.split(" ");
                             posXinput = Integer.parseInt(aux[0]);
-                            posYinput = Integer.parseInt(aux[2]);
+                            posYinput = Integer.parseInt(aux[1]);
                             if(posXinput >= 0 && posYinput >= 0 && posXinput < 8 && posYinput < 8) inputOK = true;
                             else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
                         } else System.out.println("Valor incorrecto.");
@@ -132,9 +132,9 @@ public class DriverTorre {
                     else System.out.println("id incorrecta");
                     System.out.println("Introduce la posicion donde debe moverse [(0,0) .. (7,7)]");
                     String m = sc.nextLine();
-                    String aux[] = m.split("");
+                    String aux[] = m.split(" ");
                     move[0] = Integer.parseInt(aux[0]);
-                    move[1] = Integer.parseInt(aux[2]);
+                    move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
                     if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println("Test completado con exito");
@@ -142,6 +142,21 @@ public class DriverTorre {
                     System.out.println();
                     break;
                 case 4:
+                    System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
+                    idPieza = sc.nextLine();
+                    t2 = new Torre();
+                    if(ph.containsKey(Integer.parseInt(idPieza))) {
+                        t2 = ph.get(Integer.parseInt(idPieza));
+                    }
+                    else System.out.println("id incorrecta");
+                    System.out.println("Introduce la nueva posición de la pieza. El cambio no se verá reflejado en el tablero que hayas introducido.");
+                    m = sc.nextLine();
+                    String aux2[] = m.split(" ");
+                    move[0] = Integer.parseInt(aux2[0]);
+                    move[1] = Integer.parseInt(aux2[1]);
+                    System.out.println("Posicion actual: PosX: " + t2.getPosX() + " PosY: " + t2.getPosX());
+                    break;
+                case 5:
                     System.out.println("Ejecucion del driver terminada");
                     driverIsRunning = false;
                     break;

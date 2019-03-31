@@ -41,5 +41,7 @@ public abstract class Pieza {
         this.id = id;
     }
 
+    abstract void actualizarPosPieza(int x, int y);
+
     abstract boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero);
 }

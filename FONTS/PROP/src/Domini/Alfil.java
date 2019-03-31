@@ -18,6 +18,12 @@ public class Alfil extends Pieza {
         this.posY = posY;
     }
 
+    /*
+     * Pre: Los atributos de la clase Pieza posX y posY están actualizados para la la verificacion del movimiento
+     * Post: La funcion devuelve:
+     *       * True: Si el movimiento que se quiere realizar es correcto
+     *       * False: Si no se puede realizar el movimiento
+     */
     boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
@@ -103,5 +109,14 @@ public class Alfil extends Pieza {
             else return false;
         }
         return false;
+    }
+
+    /*
+     * Pre: La posicion, pasada por parametro, es correcta dentro del tablero
+     * Post: La posición del objeto alfil en el tablero ahora son los parametros de la funcion
+     */
+    void actualizarPosPieza(int x, int y) {
+        this.posX = x;
+        this.posY = y;
     }
 }
