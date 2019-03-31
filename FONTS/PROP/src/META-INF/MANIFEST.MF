@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: Domini.DriverAlfil
+Main-Class: Domini.DriverTorre
 

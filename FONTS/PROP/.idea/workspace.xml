@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="DriverAlfil" />
+      <artifact name="DriverTorre" />
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
@@ -28,56 +28,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Domini/Torre.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="126" column="7" selection-start-line="126" selection-start-column="7" selection-end-line="126" selection-end-column="7" />
+            <state relative-caret-position="-1755">
+              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domini/Caballo.java">
+        <entry file="file://$PROJECT_DIR$/src/Domini/DriverTorre.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domini/Peon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domini/Reina.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domini/Rey.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Domini/DriverAlfil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="72" column="122" selection-start-line="72" selection-start-column="122" selection-end-line="72" selection-end-column="122" />
+            <state relative-caret-position="235">
+              <caret line="156" selection-start-line="156" selection-end-line="156" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,28 +50,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domini/Alfil.java">
+        <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="829">
-              <caret line="113" selection-start-line="113" selection-end-line="116" selection-end-column="7" />
+            <state relative-caret-position="141">
+              <caret line="91" column="24" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domini/Pieza.java">
+        <entry file="file://$PROJECT_DIR$/src/Domini/DriverAlfil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="43" column="38" selection-start-line="43" selection-end-line="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domini/DriverTorre.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="155" column="56" selection-start-line="155" selection-start-column="56" selection-end-line="155" selection-end-column="56" />
+            <state relative-caret-position="207">
+              <caret line="163" column="60" selection-start-line="163" selection-start-column="20" selection-end-line="163" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,7 +125,6 @@
         <option value="$PROJECT_DIR$/src/Domini/Partida.java" />
         <option value="$PROJECT_DIR$/src/Domini/Persona.java" />
         <option value="$PROJECT_DIR$/src/Domini/Drivers/DriverTorre.java" />
-        <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
         <option value="$PROJECT_DIR$/src/Domini/Pieza.java" />
         <option value="$PROJECT_DIR$/src/Domini/Alfil.java" />
         <option value="$PROJECT_DIR$/src/Domini/Torre.java" />
@@ -175,16 +132,17 @@
         <option value="$PROJECT_DIR$/src/Domini/Peon.java" />
         <option value="$PROJECT_DIR$/src/Domini/Reina.java" />
         <option value="$PROJECT_DIR$/src/Domini/Rey.java" />
-        <option value="$PROJECT_DIR$/src/Domini/DriverTorre.java" />
         <option value="$PROJECT_DIR$/src/Domini/DriverAlfil.java" />
+        <option value="$PROJECT_DIR$/src/Domini/DriverTorre.java" />
+        <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="297" />
-    <option name="y" value="164" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="43" />
+    <option name="y" value="49" />
     <option name="width" value="1394" />
-    <option name="height" value="976" />
+    <option name="height" value="948" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -296,9 +254,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
+    <frame x="43" y="49" width="1394" height="948" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976672" weight="0.15314835" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976672" visible="true" weight="0.152819" />
       <window_info id="Structure" order="1" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -307,7 +265,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295099" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.33576643" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.3912515" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4991708" weight="0.459854" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -760,6 +718,42 @@
           <properties />
           <option name="timeStamp" value="180" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Domini/DriverTorre.java</url>
+          <line>156</line>
+          <properties />
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Domini/DriverTorre.java</url>
+          <line>157</line>
+          <properties />
+          <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Domini/DriverTorre.java</url>
+          <line>158</line>
+          <properties />
+          <option name="timeStamp" value="184" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Domini/DriverTorre.java</url>
+          <line>159</line>
+          <properties />
+          <option name="timeStamp" value="185" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Domini/Torre.java</url>
+          <line>128</line>
+          <properties />
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Domini/Torre.java</url>
+          <line>129</line>
+          <properties />
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -878,20 +872,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
+    <entry file="file://$PROJECT_DIR$/src/Domini/Reina.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="90" column="29" lean-forward="true" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Torre.java">
+    <entry file="file://$PROJECT_DIR$/src/Domini/Pieza.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="126" column="7" selection-start-line="126" selection-start-column="7" selection-end-line="126" selection-end-column="7" />
+        <state relative-caret-position="637">
+          <caret line="43" column="38" selection-start-line="43" selection-end-line="44" />
         </state>
       </provider>
     </entry>
@@ -909,34 +900,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Reina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/Rey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/DriverTorre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="155" column="56" selection-start-line="155" selection-start-column="56" selection-end-line="155" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Pieza.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="43" column="38" selection-start-line="43" selection-end-line="44" />
         </state>
       </provider>
     </entry>
@@ -949,11 +916,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/DriverAlfil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="72" column="122" selection-start-line="72" selection-start-column="122" selection-end-line="72" selection-end-column="122" />
+        <state relative-caret-position="207">
+          <caret line="163" column="60" selection-start-line="163" selection-start-column="20" selection-end-line="163" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="91" column="24" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/DriverTorre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Torre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1755">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -963,7 +957,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>DriverAlfil</last-edited>
+          <last-edited>DriverTorre</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

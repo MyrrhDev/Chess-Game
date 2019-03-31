@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class DriverTorre {
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
     static private int estadoTablero[][] = new int[8][8];
     static private int move[];
     static HashMap<Integer, Pieza> ph;
@@ -18,21 +20,20 @@ public class DriverTorre {
      */
     public static void readTableroFromTerminal(Scanner sc) throws Exception {
         int i = 0;
-        boolean cont = true;
-        String s = sc.nextLine();
-        while (cont) {
-            int test2 = s.length();
-            for(int j = 0; j < s.length(); j = j+2) {
+        while (i < 8) {
+            String s = sc.nextLine();
+            for (int j = 0; j < s.length(); j = j + 2) {
                 char c = s.charAt(j);
                 int test = Character.getNumericValue(c);
-                if(c != ' ' || c != '\n' && i < 8) {
-                    estadoTablero[i][j/2] = Character.getNumericValue(c);
+                if (c != ' ' || c != '\n' && i < 8) {
+                    estadoTablero[i][j / 2] = Character.getNumericValue(c);
                 }
             }
             ++i;
-            s = sc.nextLine();
-            if(s.equals("") || s.equals("\r") || s.equals("end tauler") || i == 7) cont = false; //en el editor de textos de ubuntu             //interpreta el enter como una linea vacia
         }
+        /*for(i = 0; i < 8; ++i)
+            for(int j = 0; j < 8; ++j)
+                System.out.println(estadoTablero[i][j]);*/
     }
 
     /*
@@ -54,7 +55,8 @@ public class DriverTorre {
         System.out.println("    1- Alta objeto Pieza Torre");
         System.out.println("    2- Introducir estado de tablero");
         System.out.println("    3- Verificar función esMovimientoOK de la clase Torre");
-        System.out.println("    4- Salir");
+        System.out.println("    4- Probar función actualizarPosPieza de la clase Alfil");
+        System.out.println("    5- Salir");
     }
 
     public static void main(String[] args) {
@@ -68,7 +70,7 @@ public class DriverTorre {
             String input = sc.nextLine();
             int op;
             if(!input.equals("\r") && !input.equals("\n") && !input.equals("\t") && !input.equals("")
-                &&(input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4"))) {
+                &&(input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4") || input.equals("5"))) {
                 op = Integer.parseInt(input);
             }
             else op = -1;
@@ -137,7 +139,7 @@ public class DriverTorre {
                     move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println("Test completado con exito");
+                    if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
                     else System.out.println("Fallo en el test");
                     System.out.println();
                     break;
@@ -154,7 +156,8 @@ public class DriverTorre {
                     String aux2[] = m.split(" ");
                     move[0] = Integer.parseInt(aux2[0]);
                     move[1] = Integer.parseInt(aux2[1]);
-                    System.out.println("Posicion actual: PosX: " + t2.getPosX() + " PosY: " + t2.getPosX());
+                    t2.actualizarPosPieza(move[0], move[1]);
+                    System.out.println("Posicion actual: PosX: " + t2.getPosX() + " PosY: " + t2.getPosY());
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");
