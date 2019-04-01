@@ -2,6 +2,9 @@
   <artifact type="jar" name="DriverTorre">
     <output-path>$PROJECT_DIR$/out/artifacts/DriverTorre</output-path>
     <root id="archive" name="DriverTorre.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/DriverManifests/Torre/META-INF/MANIFEST.MF" />
+      </element>
       <element id="module-output" name="PROP" />
     </root>
   </artifact>

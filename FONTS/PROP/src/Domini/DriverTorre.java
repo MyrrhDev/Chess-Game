@@ -15,19 +15,16 @@ public class DriverTorre {
     }
 
     /*
-     * Pre: El fichero chessTowerTest.txt está ubicado en la ruta especificada
-     * Post: Lee la entrada del fichero para parsearla a objetos utiles del driver
+     * Pre: Cierto
+     * Post: Lee el estado del tablero desde la terminal
      */
     public static void readTableroFromTerminal(Scanner sc) throws Exception {
         int i = 0;
         while (i < 8) {
             String s = sc.nextLine();
-            for (int j = 0; j < s.length(); j = j + 2) {
-                char c = s.charAt(j);
-                int test = Character.getNumericValue(c);
-                if (c != ' ' || c != '\n' && i < 8) {
-                    estadoTablero[i][j / 2] = Character.getNumericValue(c);
-                }
+            String aux[] = s.split(" ");
+            for(int j = 0; j < 8; ++j) {
+                estadoTablero[i][j] = Integer.parseInt(aux[j]);
             }
             ++i;
         }
@@ -55,7 +52,7 @@ public class DriverTorre {
         System.out.println("    1- Alta objeto Pieza Torre");
         System.out.println("    2- Introducir estado de tablero");
         System.out.println("    3- Verificar función esMovimientoOK de la clase Torre");
-        System.out.println("    4- Probar función actualizarPosPieza de la clase Alfil");
+        System.out.println("    4- Probar función actualizarPosPieza de la clase Torre");
         System.out.println("    5- Salir");
     }
 
