@@ -8,6 +8,7 @@ public class DriverTorre {
     public static final String ANSI_RESET = "\u001B[0m";
     static private int estadoTablero[][] = new int[8][8];
     static private int move[];
+    static private String posPieza[];
     static HashMap<Integer, Pieza> ph;
 
     public DriverTorre() {
@@ -136,7 +137,7 @@ public class DriverTorre {
                     move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
+                    if(resEsperado == t2.esMovimientoOk(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
                     else System.out.println("Fallo en el test");
                     System.out.println();
                     break;
@@ -153,8 +154,7 @@ public class DriverTorre {
                     String aux2[] = m.split(" ");
                     move[0] = Integer.parseInt(aux2[0]);
                     move[1] = Integer.parseInt(aux2[1]);
-                    t2.actualizarPosPieza(move[0], move[1]);
-                    System.out.println("Posicion actual: PosX: " + t2.getPosX() + " PosY: " + t2.getPosY());
+                    System.out.println("Posicion actual: PosX: " + move[0] + " PosY: " + move[1]);
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");

@@ -8,6 +8,7 @@ public class DriverAlfil {
     public static final String ANSI_RESET = "\u001B[0m";
     static private int estadoTablero[][] = new int[8][8];
     static private int move[];
+    static private String posPieza[];
     static HashMap<Integer, Pieza> ph;
 
     public DriverAlfil() {
@@ -102,10 +103,9 @@ public class DriverAlfil {
                         System.out.println("Posición de la pieza en el tablero. Valores posibles: [(0,0) ... (7,7)]");
                         String s = sc.nextLine();
                         if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            String aux[] = new String[3];
-                            aux = s.split("");
-                            posXinput = Integer.parseInt(aux[0]);
-                            posYinput = Integer.parseInt(aux[2]);
+                            posPieza = s.split(" ");
+                            posXinput = Integer.parseInt(posPieza[0]);
+                            posYinput = Integer.parseInt(posPieza[1]);
                             if(posXinput >= 0 && posYinput >= 0 && posXinput < 8 && posYinput < 8) inputOK = true;
                             else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
                         } else System.out.println("Valor incorrecto.");
@@ -139,7 +139,7 @@ public class DriverAlfil {
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
                     //a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)
-                    if(resEsperado == a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
+                    if(resEsperado == a2.esMovimientoOk(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
                     else System.out.println("Fallo en el test");
                     /*boolean resMovimientoOk = a2.esMovimientoOk(move[0], move[1],estadoTablero,ph);
                     boolean result = (resEsperado == resMovimientoOk);
@@ -159,8 +159,7 @@ public class DriverAlfil {
                     String aux2[] = m.split(" ");
                     move[0] = Integer.parseInt(aux2[0]);
                     move[1] = Integer.parseInt(aux2[1]);
-                    a2.actualizarPosPieza(move[0], move[1]);
-                    System.out.println("Posicion actual: PosX: " + a2.getPosX() + " PosY: " + a2.getPosX());
+                    System.out.println("Posicion actual: PosX: " + move[0] + " PosY: " + move[1]);
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");
