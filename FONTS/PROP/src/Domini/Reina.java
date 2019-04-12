@@ -3,7 +3,7 @@ package Domini;
 import java.util.HashMap;
 
 public class Reina extends Pieza {
-    int pts = 5;
+
     public Reina() {
 
     }
@@ -11,9 +11,10 @@ public class Reina extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto torre con los parámetros esNegra, id, posX, posY
      */
-    public Reina(boolean esNegra, Integer id, int posX, int posY) {
+    public Reina(boolean esNegra, Integer id) {
         this.esNegra = esNegra;
         this.id = id;
+        firstMove = false;
     }
 
     /*
@@ -173,7 +174,22 @@ public class Reina extends Pieza {
      *       * True: Si el movimiento que se quiere realizar es correcto
      *       * False: Si no se puede realizar el movimiento
      */
-    boolean esMovimientoOk(int posX, int posY, int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        int posX = -1, posY = -1;
+        int x = 0, y = 0;
+        boolean found = false;
+        while(x < 8 && !found) {
+            y = 0;
+            while (y < 8 && !found) {
+                if(estadoTablero[x][y] == this.id) {
+                    found = true;
+                    posX = x;
+                    posY = y;
+                }
+                ++y;
+            }
+            ++x;
+        }
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
@@ -203,12 +219,12 @@ public class Reina extends Pieza {
         this.id = id;
     }
 
-    void setPts(int pts) {
-        this.pts = pts;
+    public boolean isFirstMove() {
+        return firstMove;
     }
 
-    int getPts() {
-        return this.pts;
+    public void setFirstMove(boolean firstMove) {
+        this.firstMove = firstMove;
     }
 
 }

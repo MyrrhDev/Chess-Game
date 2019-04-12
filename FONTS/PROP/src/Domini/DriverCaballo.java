@@ -3,14 +3,15 @@ package Domini;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class DriverPeon {
+public class DriverCaballo {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
     static private int estadoTablero[][] = new int[8][8];
     static private int move[];
+    static private String posPieza[];
     static HashMap<Integer, Pieza> ph;
 
-    public DriverPeon() {
+    public DriverCaballo() {
 
     }
 
@@ -35,12 +36,11 @@ public class DriverPeon {
 
     /*
      * Pre: Cierto
-     * Post: Devuelve un objeto Peon con atributos iguales a los parámetros de la funcion
+     * Post: Devuelve un objeto Caballo con atributos iguales a los parámetros de la funcion
      */
 
-    public static Peon iniPieza(boolean esNegra, Integer idPieza, int posX, int posY) {
-        Peon t = new Peon(esNegra, idPieza, posX, posY);
-        t.firstMove = false;
+    public static Caballo iniPieza(boolean esNegra, Integer idPieza, int posX, int posY) {
+        Caballo t = new Caballo(esNegra, idPieza);
         return t;
     }
 
@@ -49,11 +49,11 @@ public class DriverPeon {
      * Post: Imprime por consola las posibles opciones a probar con el driver
      */
     private static void printMenuPrincipal() {
-        System.out.println("Bienvenido al Driver de Peon. Selecciona qué deseas testear:");
-        System.out.println("    1- Alta objeto Pieza Peon");
+        System.out.println("Bienvenido al Driver de Caballo. Selecciona qué deseas testear:");
+        System.out.println("    1- Alta objeto Pieza Caballo");
         System.out.println("    2- Introducir estado de tablero");
-        System.out.println("    3- Verificar función esMovimientoOK de la clase Peon");
-        System.out.println("    4- Probar función actualizarPosPieza de la clase Peon");
+        System.out.println("    3- Verificar función esMovimientoOK de la clase Caballo");
+        System.out.println("    4- Probar función actualizarPosPieza de la clase Caballo");
         System.out.println("    5- Salir");
     }
 
@@ -102,16 +102,15 @@ public class DriverPeon {
                         System.out.println("Posición de la pieza en el tablero. Valores posibles: [(0,0) ... (7,7)]");
                         String s = sc.nextLine();
                         if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            String aux[] = new String[3];
-                            aux = s.split(" ");
-                            posXinput = Integer.parseInt(aux[0]);
-                            posYinput = Integer.parseInt(aux[1]);
+                            posPieza = s.split(" ");
+                            posXinput = Integer.parseInt(posPieza[0]);
+                            posYinput = Integer.parseInt(posPieza[1]);
                             if(posXinput >= 0 && posYinput >= 0 && posXinput < 8 && posYinput < 8) inputOK = true;
                             else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Peon t = iniPieza(esNegraInput, idPiezaInput, posXinput, posYinput);
-                    System.out.println("Objeto peon creado con exito. Valores:");
+                    Caballo t = iniPieza(esNegraInput, idPiezaInput, posXinput, posYinput);
+                    System.out.println("Objeto Caballo creado con exito. Valores:");
                     ph.put(t.getId(), t);
                     break;
                 case 2:
@@ -120,12 +119,12 @@ public class DriverPeon {
                     System.out.println("id de la pieza si la casilla contiene la pieza");
                     try {
                         readTableroFromTerminal(sc);
-                    }catch(Exception e) { }
+                    } catch(Exception e) { }
                     break;
                 case 3:
                     System.out.println("Introduce la id de la pieza a probar su movimiento");
                     String idPieza = sc.nextLine();
-                    Pieza t2 = new Peon();
+                    Pieza t2 = new Caballo();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
                         t2 = ph.get(Integer.parseInt(idPieza));
                     }
@@ -135,12 +134,21 @@ public class DriverPeon {
                     String aux[] = m.split(" ");
                     move[0] = Integer.parseInt(aux[0]);
                     move[1] = Integer.parseInt(aux[1]);
-
-                    System.out.println("Introduce si es el primer movimiento de la pieza (si/no)");
-                    if(sc.nextLine() == "si") t2.firstMove = true; //default = false
-
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
+                    int i = 0, j = 0;
+                    boolean found = false;
+                    while(i < 8 && !found) {
+                        while (j < 8 && !found) {
+                            if(estadoTablero[i][j] == Integer.parseInt(idPieza)) {
+                                found = true;
+                                posPieza[0] = String.valueOf(i);
+                                posPieza[0] = String.valueOf(j);
+                            }
+                            ++j;
+                        }
+                        ++i;
+                    }
                     if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
                     else System.out.println("Fallo en el test");
                     System.out.println();
@@ -148,7 +156,7 @@ public class DriverPeon {
                 case 4:
                     System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
                     idPieza = sc.nextLine();
-                    t2 = new Peon();
+                    t2 = new Caballo();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
                         t2 = ph.get(Integer.parseInt(idPieza));
                     }
@@ -158,8 +166,7 @@ public class DriverPeon {
                     String aux2[] = m.split(" ");
                     move[0] = Integer.parseInt(aux2[0]);
                     move[1] = Integer.parseInt(aux2[1]);
-                    t2.actualizarPosPieza(move[0], move[1]);
-                    System.out.println("Posicion actual: PosX: " + t2.getPosX() + " PosY: " + t2.getPosY());
+                    System.out.println("Posicion actual: PosX: " + move[0] + " PosY: " + move[1]);
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");

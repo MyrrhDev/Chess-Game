@@ -37,8 +37,8 @@ public class DriverReina {
      * Pre: Cierto
      * Post: Devuelve un objeto Torre con atributos iguales a los parámetros de la funcion
      */
-    public static Reina iniPieza(boolean esNegra, Integer idPieza, int posX, int posY) {
-        Reina re = new Reina(esNegra, idPieza, posX, posY);
+    public static Reina iniPieza(boolean esNegra, Integer idPieza) {
+        Reina re = new Reina(esNegra, idPieza);
         return re;
     }
 
@@ -107,7 +107,7 @@ public class DriverReina {
                             else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Reina re = iniPieza(esNegraInput, idPiezaInput, posXinput, posYinput);
+                    Reina re = iniPieza(esNegraInput, idPiezaInput);
                     System.out.println("Objeto torre creado con exito. Valores:");
                     ph.put(re.getId(), re);
                     break;
@@ -134,7 +134,20 @@ public class DriverReina {
                     move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    if(resEsperado == re2.esMovimientoOk(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
+                    int i = 0, j = 0;
+                    boolean found = false;
+                    while(i < 8 && !found) {
+                        while (j < 8 && !found) {
+                            if(estadoTablero[i][j] == Integer.parseInt(idPieza)) {
+                                found = true;
+                                posPieza[0] = String.valueOf(i);
+                                posPieza[0] = String.valueOf(j);
+                            }
+                            ++j;
+                        }
+                        ++i;
+                    }
+                    if(resEsperado == re2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
                     else System.out.println("Fallo en el test");
                     System.out.println();
                     break;

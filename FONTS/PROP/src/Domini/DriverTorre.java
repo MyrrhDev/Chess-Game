@@ -39,8 +39,8 @@ public class DriverTorre {
      * Post: Devuelve un objeto Torre con atributos iguales a los parámetros de la funcion
      */
 
-    public static Torre iniPieza(boolean esNegra, Integer idPieza, int posX, int posY) {
-        Torre t = new Torre(esNegra, idPieza, posX, posY);
+    public static Torre iniPieza(boolean esNegra, Integer idPieza) {
+        Torre t = new Torre(esNegra, idPieza);
         return t;
     }
 
@@ -68,7 +68,7 @@ public class DriverTorre {
             String input = sc.nextLine();
             int op;
             if(!input.equals("\r") && !input.equals("\n") && !input.equals("\t") && !input.equals("")
-                &&(input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4") || input.equals("5"))) {
+                    &&(input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4") || input.equals("5"))) {
                 op = Integer.parseInt(input);
             }
             else op = -1;
@@ -102,15 +102,14 @@ public class DriverTorre {
                         System.out.println("Posición de la pieza en el tablero. Valores posibles: [(0,0) ... (7,7)]");
                         String s = sc.nextLine();
                         if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            String aux[] = new String[3];
-                            aux = s.split(" ");
-                            posXinput = Integer.parseInt(aux[0]);
-                            posYinput = Integer.parseInt(aux[1]);
+                            posPieza = s.split(" ");
+                            posXinput = Integer.parseInt(posPieza[0]);
+                            posYinput = Integer.parseInt(posPieza[1]);
                             if(posXinput >= 0 && posYinput >= 0 && posXinput < 8 && posYinput < 8) inputOK = true;
                             else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Torre t = iniPieza(esNegraInput, idPiezaInput, posXinput, posYinput);
+                    Torre t = iniPieza(esNegraInput, idPiezaInput);
                     System.out.println("Objeto torre creado con exito. Valores:");
                     ph.put(t.getId(), t);
                     break;
@@ -137,7 +136,20 @@ public class DriverTorre {
                     move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    if(resEsperado == t2.esMovimientoOk(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
+                    int i = 0, j = 0;
+                    boolean found = false;
+                    while(i < 8 && !found) {
+                        while (j < 8 && !found) {
+                            if(estadoTablero[i][j] == Integer.parseInt(idPieza)) {
+                                found = true;
+                                posPieza[0] = String.valueOf(i);
+                                posPieza[0] = String.valueOf(j);
+                            }
+                            ++j;
+                        }
+                        ++i;
+                    }
+                    if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
                     else System.out.println("Fallo en el test");
                     System.out.println();
                     break;

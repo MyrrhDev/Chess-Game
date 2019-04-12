@@ -24,7 +24,6 @@ public class DriverAlfil {
         while (i < 8) {
             String s = sc.nextLine();
             String aux[] = s.split(" ");
-            System.out.println(aux);
             for(int j = 0; j < 8; ++j) {
                 estadoTablero[i][j] = Integer.parseInt(aux[j]);
             }
@@ -40,8 +39,8 @@ public class DriverAlfil {
      * Post: Devuelve un objeto Alfil con atributos iguales a los parámetros de la funcion
      */
 
-    public static Alfil iniPieza(boolean esNegra, Integer idPieza, int posX, int posY) {
-        Alfil a = new Alfil(esNegra, idPieza, posX, posY);
+    public static Alfil iniPieza(boolean esNegra, Integer idPieza) {
+        Alfil a = new Alfil(esNegra, idPieza);
         return a;
     }
 
@@ -110,7 +109,7 @@ public class DriverAlfil {
                             else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Alfil a = iniPieza(esNegraInput, idPiezaInput, posXinput, posYinput);
+                    Alfil a = iniPieza(esNegraInput, idPiezaInput);
                     System.out.println("Objeto alfil creado con exito. Valores:");
                     ph.put(a.getId(), a);
                     break;
@@ -134,12 +133,12 @@ public class DriverAlfil {
                     String m = sc.nextLine();
                     String aux[] = m.split(" ");
                     move[0] = Integer.parseInt(aux[0]);
-                    System.out.println(aux[0] + " " + aux[1]);
                     move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
                     //a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)
-                    if(resEsperado == a2.esMovimientoOk(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
+                    //buscar pos pieza
+                    if(resEsperado == a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
                     else System.out.println("Fallo en el test");
                     /*boolean resMovimientoOk = a2.esMovimientoOk(move[0], move[1],estadoTablero,ph);
                     boolean result = (resEsperado == resMovimientoOk);

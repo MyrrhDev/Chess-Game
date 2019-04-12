@@ -3,7 +3,7 @@ package Domini;
 import java.util.HashMap;
 
 public class Torre extends Pieza {
-    int pts = 2;
+
     public Torre() {
 
     }
@@ -11,7 +11,7 @@ public class Torre extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto torre con los parámetros esNegra, id, posX, posY
      */
-    public Torre(boolean esNegra, Integer id, int posX, int posY) {
+    public Torre(boolean esNegra, Integer id) {
         this.esNegra = esNegra;
         this.id = id;
     }
@@ -22,7 +22,22 @@ public class Torre extends Pieza {
      *       * True: Si el movimiento que se quiere realizar es correcto
      *       * False: Si no se puede realizar el movimiento
      */
-    public boolean esMovimientoOk(int posX, int posY, int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    public boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        int posX = -1, posY = -1;
+        int x = 0, y = 0;
+        boolean found = false;
+        while(x < 8 && !found) {
+            y = 0;
+            while (y < 8 && !found) {
+                if(estadoTablero[x][y] == this.id) {
+                    found = true;
+                    posX = x;
+                    posY = y;
+                }
+                ++y;
+            }
+            ++x;
+        }
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
@@ -31,7 +46,7 @@ public class Torre extends Pieza {
                 if(movY > posY) {
                     for (int j = posY + 1; j < movY; ++j)
                         if (estadoTablero[movX][j] != 0) //me encuentro una pieza en mi camino
-                                return false;
+                            return false;
                     if(estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
                         Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
                         if (p.isEsNegra() == esNegra) //tenemos el mismo color
@@ -103,11 +118,12 @@ public class Torre extends Pieza {
         this.id = id;
     }
 
-    void setPts(int pts) {
-        this.pts = pts;
+    public boolean isFirstMove() {
+        return firstMove;
     }
 
-    int getPts() {
-        return this.pts;
+    public void setFirstMove(boolean firstMove) {
+        this.firstMove = firstMove;
     }
+
 }
