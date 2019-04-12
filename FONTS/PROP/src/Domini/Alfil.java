@@ -3,6 +3,7 @@ package Domini;
 import java.util.HashMap;
 
 public class Alfil extends Pieza {
+    int pts = 3;
 
     public Alfil() {
 
@@ -14,8 +15,6 @@ public class Alfil extends Pieza {
     public Alfil(boolean esNegra, Integer id, int posX, int posY) {
         this.esNegra = esNegra;
         this.id = id;
-        this.posX = posX;
-        this.posY = posY;
     }
 
     /*
@@ -24,7 +23,7 @@ public class Alfil extends Pieza {
      *       * True: Si el movimiento que se quiere realizar es correcto
      *       * False: Si no se puede realizar el movimiento
      */
-    boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    boolean esMovimientoOk(int posX, int posY, int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
@@ -111,12 +110,11 @@ public class Alfil extends Pieza {
         return false;
     }
 
-    /*
-     * Pre: La posicion, pasada por parametro, es correcta dentro del tablero
-     * Post: La posición del objeto alfil en el tablero ahora son los parametros de la funcion
-     */
-    void actualizarPosPieza(int x, int y) {
-        this.posX = x;
-        this.posY = y;
+    void setPts(int pts) {
+        this.pts = pts;
+    }
+
+    int getPts() {
+        return this.pts;
     }
 }

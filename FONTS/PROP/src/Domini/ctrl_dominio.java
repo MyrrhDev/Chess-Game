@@ -9,13 +9,32 @@ public class ctrl_dominio {
     static private HashMap<String, Problema> problemasExistentes;
     static private Ranking ranking;
     static private boolean login;
+    private static ctrl_dominio singleInstance = null;
 
-    /* Pre: La funcion retorna:
-     *      1 Si nombre usuario y contraseña OK
-     *     -1 Si el nombre no es valido
-     *     -2 Si la contrasea no es valido
+    private ctrl_dominio() {
+        login = false;
+        jugadores = new ArrayList<>();
+        problemasExistentes = new HashMap<>();
+        ranking = new Ranking();
+    }
+
+    public static ctrl_dominio getInstance() {
+        if(singleInstance == null) singleInstance = new ctrl_dominio();
+        return singleInstance;
+    }
+
+    public int jugadoresSize() {
+        return jugadores.size();
+    }
+
+    /*
+      Pre: Cierto
+      Post: La funcion retorna:
+          1 Si nombre usuario y contraseña OK
+         -1 Si el nombre no es valido
+         -2 Si la contrasea no es valido
      */
-    /*private int verificarDatosUsuario(String nombre, String contrasena) {
+    private int verificarDatosUsuario(String nombre, String contrasena) {
         for(int i = 0; i < jugadores.size(); ++i) {
             if (jugadores.get(i).nombreIsEqual(nombre)) {
                 if (jugadores.get(i).contrasenaIsEqual(contrasena)) return 1;
@@ -23,14 +42,16 @@ public class ctrl_dominio {
             }
             else return -1;
         }
-    }*/
+        return -1;
+    }
 
     /* Pre: Cierto
      * Post: Si la persona se encontraba registrada en el sistema y el usuario y contraseña coinciden
      * la funcion cambia el atributo login de la clase a cierto. En caso que introduzca incorrectamente
      * la contraseña o la persona no este registrada, la funcion le informara del problema
      */
-    /*public void loginPersona(String nombre, String contrasena) {
+    //@TODO Cambiar los system out. El controlador no puede hacerlos. Debe informar a la capa de presentación del error
+    public void loginPersona(String nombre, String contrasena) {
         //ver si existe un usuario con el mismo nombre en la lista
         int c = verificarDatosUsuario(nombre, contrasena);
         switch(c) {
@@ -42,35 +63,37 @@ public class ctrl_dominio {
             case -1:
                 System.out.println("Nombre no valido");
                 break;
-            default:
+            case -2:
                 System.out.println("Contrasena no valida");
                 break;
         }
-    }*/
+    }
 
     /* Pre: Cierto
      * Post: El usuario es deslogueado del sistema
      */
     public void logoutPersona() {
         login = false;
-        personaLogueada = new Persona();
+        personaLogueada = null;
     }
 
     /* Pre: Cierto
-     * Post: Si no existe ningun otro usuario con el mismo nombre, el usuario se registra en el sistema
+     * Post: Si no existe ningun otro usuario con el mismo nombre, el usuario se registra en el sistema y la funcion retorna 1
+     * En caso que no se pueda registrar, la funcion devuelve -1
      */
-    /*public void nuevaPersona(String nombre, String contrasena) {
+    public int nuevaPersona(String nombre, String contrasena) {
         int c = verificarDatosUsuario(nombre, contrasena);
         switch(c) {
             case 1:
-                System.out.println("Error! Nombre usuario ya en uso");
+                System.out.println("Error! Nombre de usuario ya en uso");
                 break;
             default:
                 Persona p = new Persona(nombre, contrasena);
                 jugadores.add(p);
-                break;
+                return 1;
         }
-    }*/
+        return -1;
+    }
 
     /* Pre: La persona está logueada en el sistema
      * Post: Se da de baja la persona en el sistema. Se actualiza:
@@ -87,11 +110,9 @@ public class ctrl_dominio {
     }*/
 
     public static void main(String[] args) {
-        login = false;
-        jugadores = new ArrayList<>();
-        problemasExistentes = new HashMap<>();
-        ranking = new Ranking();
-        DriverAlfil da = new DriverAlfil();
-        da.main(args);
     }
+
+    /*
+    =================================== FUNCIONES A IMPLEMENTAR PARA SEGUNDA ENTREGA ===================================
+     */
 }

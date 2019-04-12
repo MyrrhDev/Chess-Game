@@ -3,7 +3,7 @@ package Domini;
 import java.util.HashMap;
 
 public class Reina extends Pieza {
-
+    int pts = 5;
     public Reina() {
 
     }
@@ -14,15 +14,13 @@ public class Reina extends Pieza {
     public Reina(boolean esNegra, Integer id, int posX, int posY) {
         this.esNegra = esNegra;
         this.id = id;
-        this.posX = posX;
-        this.posY = posY;
     }
 
     /*
      * Pre: Cierto
      * Post: Verifica que el movimiento horizontal o vertical sea correcto
      */
-    boolean movimientoHorizontalVerticalOK(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    boolean movimientoHorizontalVerticalOK(int posX, int posY, int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
         if(movX == posX && movY != posY) { //horizontal
             //derecha
             if(movY > posY) {
@@ -86,7 +84,7 @@ public class Reina extends Pieza {
      * Pre: Cierto
      * Post: Verifica que el movimiento diagonal sea correcto
      */
-    boolean movimientoDiagonalOK(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    boolean movimientoDiagonalOK(int posX, int posY, int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
         int auxX = movX - posX;
         int auxY = movY - posY;
         int i = posX, j = posY;
@@ -175,34 +173,18 @@ public class Reina extends Pieza {
      *       * True: Si el movimiento que se quiere realizar es correcto
      *       * False: Si no se puede realizar el movimiento
      */
-    boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    boolean esMovimientoOk(int posX, int posY, int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
             if (movX == posX && movY != posY || movX != posX && movY == posY) { //horizontal o vertical
-                return movimientoHorizontalVerticalOK(movX, movY, estadoTablero, piezasTablero);
+                return movimientoHorizontalVerticalOK(posX, posY, movX, movY, estadoTablero, piezasTablero);
             }
             else {
-                return movimientoDiagonalOK(movX, movY, estadoTablero, piezasTablero);
+                return movimientoDiagonalOK(posX, posY, movX, movY, estadoTablero, piezasTablero);
             }
         }
         return false;
-    }
-
-    public int getPosX() {
-        return posX;
-    }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public int getPosY() {
-        return posY;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
     }
 
     public boolean isEsNegra() {
@@ -221,12 +203,12 @@ public class Reina extends Pieza {
         this.id = id;
     }
 
-    /*
-     * Pre: La posicion, pasada por parametro, es correcta dentro del tablero
-     * Post: La posición del objeto alfil en el tablero ahora son los parametros de la funcion
-     */
-    void actualizarPosPieza(int x, int y) {
-        this.posX = x;
-        this.posY = y;
+    void setPts(int pts) {
+        this.pts = pts;
     }
+
+    int getPts() {
+        return this.pts;
+    }
+
 }

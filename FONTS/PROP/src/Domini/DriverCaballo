@@ -3,14 +3,15 @@ package Domini;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class DriverReina {
+public class DriverCaballo {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
     static private int estadoTablero[][] = new int[8][8];
     static private int move[];
     static HashMap<Integer, Pieza> ph;
 
-    public DriverReina() {
+    public DriverCaballo() {
+
     }
 
     /*
@@ -34,11 +35,12 @@ public class DriverReina {
 
     /*
      * Pre: Cierto
-     * Post: Devuelve un objeto Torre con atributos iguales a los parámetros de la funcion
+     * Post: Devuelve un objeto Caballo con atributos iguales a los parámetros de la funcion
      */
-    public static Reina iniPieza(boolean esNegra, Integer idPieza, int posX, int posY) {
-        Reina re = new Reina(esNegra, idPieza, posX, posY);
-        return re;
+
+    public static Caballo iniPieza(boolean esNegra, Integer idPieza, int posX, int posY) {
+        Caballo t = new Caballo(esNegra, idPieza, posX, posY);
+        return t;
     }
 
     /*
@@ -46,11 +48,11 @@ public class DriverReina {
      * Post: Imprime por consola las posibles opciones a probar con el driver
      */
     private static void printMenuPrincipal() {
-        System.out.println("Bienvenido al Driver de Reina. Selecciona qué deseas testear:");
-        System.out.println("    1- Alta objeto Pieza Reina");
+        System.out.println("Bienvenido al Driver de Caballo. Selecciona qué deseas testear:");
+        System.out.println("    1- Alta objeto Pieza Caballo");
         System.out.println("    2- Introducir estado de tablero");
-        System.out.println("    3- Verificar función esMovimientoOK de la clase Reina");
-        System.out.println("    4- Probar función actualizarPosPieza de la clase Reina");
+        System.out.println("    3- Verificar función esMovimientoOK de la clase Caballo");
+        System.out.println("    4- Probar función actualizarPosPieza de la clase Caballo");
         System.out.println("    5- Salir");
     }
 
@@ -107,9 +109,9 @@ public class DriverReina {
                             else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Reina re = iniPieza(esNegraInput, idPiezaInput, posXinput, posYinput);
-                    System.out.println("Objeto torre creado con exito. Valores:");
-                    ph.put(re.getId(), re);
+                    Caballo t = iniPieza(esNegraInput, idPiezaInput, posXinput, posYinput);
+                    System.out.println("Objeto Caballo creado con exito. Valores:");
+                    ph.put(t.getId(), t);
                     break;
                 case 2:
                     System.out.println("Introduce el estado del tablero. Se espera:");
@@ -117,14 +119,14 @@ public class DriverReina {
                     System.out.println("id de la pieza si la casilla contiene la pieza");
                     try {
                         readTableroFromTerminal(sc);
-                    }catch(Exception e) { }
+                    } catch(Exception e) { }
                     break;
                 case 3:
                     System.out.println("Introduce la id de la pieza a probar su movimiento");
                     String idPieza = sc.nextLine();
-                    Pieza re2 = new Reina();
+                    Pieza t2 = new Caballo();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
-                        re2 = ph.get(Integer.parseInt(idPieza));
+                        t2 = ph.get(Integer.parseInt(idPieza));
                     }
                     else System.out.println("id incorrecta");
                     System.out.println("Introduce la posicion donde debe moverse [(0,0) .. (7,7)]");
@@ -134,16 +136,16 @@ public class DriverReina {
                     move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    if(resEsperado == re2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
+                    if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
                     else System.out.println("Fallo en el test");
                     System.out.println();
                     break;
                 case 4:
                     System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
                     idPieza = sc.nextLine();
-                    re2 = new Reina();
+                    t2 = new Caballo();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
-                        re2 = ph.get(Integer.parseInt(idPieza));
+                        t2 = ph.get(Integer.parseInt(idPieza));
                     }
                     else System.out.println("id incorrecta");
                     System.out.println("Introduce la nueva posición de la pieza. El cambio no se verá reflejado en el tablero que hayas introducido.");
@@ -151,8 +153,8 @@ public class DriverReina {
                     String aux2[] = m.split(" ");
                     move[0] = Integer.parseInt(aux2[0]);
                     move[1] = Integer.parseInt(aux2[1]);
-                    re2.actualizarPosPieza(move[0], move[1]);
-                    System.out.println("Posicion actual: PosX: " + re2.getPosX() + " PosY: " + re2.getPosY());
+                    t2.actualizarPosPieza(move[0], move[1]);
+                    System.out.println("Posicion actual: PosX: " + t2.getPosX() + " PosY: " + t2.getPosY());
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");
