@@ -1,6 +1,7 @@
 package Domini;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Caballo extends Pieza {
@@ -60,12 +61,25 @@ public class Caballo extends Pieza {
         return false;
     }
 
+    ArrayList<res> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        ArrayList<res> res = new ArrayList<>();
+        return res;
+    }
+
     public boolean isFirstMove() {
         return firstMove;
     }
 
     public void setFirstMove(boolean firstMove) {
         this.firstMove = firstMove;
+    }
+
+    public void setTipo(char t) {
+        this.tipo = t;
+    }
+
+    public char getTipo() {
+        return this.tipo;
     }
 
 }

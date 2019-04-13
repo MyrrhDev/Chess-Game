@@ -1,5 +1,6 @@
 package Domini;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Torre extends Pieza {
@@ -14,6 +15,8 @@ public class Torre extends Pieza {
     public Torre(boolean esNegra, Integer id) {
         this.esNegra = esNegra;
         this.id = id;
+        if(this.esNegra) this.tipo = 'r';
+        else this.tipo = 'R';
     }
 
     /*
@@ -100,6 +103,112 @@ public class Torre extends Pieza {
             else return false;
         }
         return false;
+    }
+
+    ArrayList<res> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        ArrayList<res> listResult = new ArrayList<>();
+        //debo mirar 4 posibles movimientos: arriba, abajo izquierda y derecha
+        int i = posX, j = posY;
+        boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
+        // amiga o enemiga (en el caso particular de la torre
+
+        //arriba
+        --i;
+        while(i >= 0 && !end) {
+            if(estadoTablero[i][posY] == 0) {
+                res r = new res(i, posY, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][posY] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][posY])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][posY]);
+                    if(this.esNegra != p2.esNegra) {
+                        res r = new res(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                }
+            }
+            --i;
+        }
+
+        end = false;
+        i = posX;
+        j = posY;
+        //derecha
+        ++j;
+        while(j < 8 && !end) {
+            if(estadoTablero[posX][j] == 0) {
+                res r = new res(posX, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[posX][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[posX][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[posX][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        res r = new res(posX, j, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                }
+            }
+            ++j;
+        }
+
+        end = false;
+        i = posX;
+        j = posY;
+        //abajo
+        ++i;
+        while(i < 8 && !end) {
+            if(estadoTablero[i][posY] == 0) {
+                res r = new res(i, posY, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][posY] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][posY])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][posY]);
+                    if(this.esNegra != p2.esNegra) {
+                        res r = new res(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                }
+            }
+            ++i;
+        }
+
+        end = false;
+        i = posX;
+        j = posY;
+        //izquierda
+        --j;
+        while(j >= 0 && !end) {
+            if(estadoTablero[posX][j] == 0) {
+                res r = new res(posX, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[posX][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[posX][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[posX][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        res r = new res(posX, j, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                }
+            }
+            --j;
+        }
+        return listResult;
+    }
+
+    public void setTipo(char t) {
+        this.tipo = t;
+    }
+
+    public char getTipo() {
+        return this.tipo;
     }
 
     public boolean isEsNegra() {

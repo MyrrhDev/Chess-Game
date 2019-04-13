@@ -1,5 +1,6 @@
 package Domini;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -53,7 +54,7 @@ public class DriverTorre {
         System.out.println("    1- Alta objeto Pieza Torre");
         System.out.println("    2- Introducir estado de tablero");
         System.out.println("    3- Verificar función esMovimientoOK de la clase Torre");
-        System.out.println("    4- Probar función actualizarPosPieza de la clase Torre");
+        System.out.println("    4- Probar función movimientosPosibles de la clase Torre");
         System.out.println("    5- Salir");
     }
 
@@ -136,37 +137,28 @@ public class DriverTorre {
                     move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    int i = 0, j = 0;
-                    boolean found = false;
-                    while(i < 8 && !found) {
-                        while (j < 8 && !found) {
-                            if(estadoTablero[i][j] == Integer.parseInt(idPieza)) {
-                                found = true;
-                                posPieza[0] = String.valueOf(i);
-                                posPieza[0] = String.valueOf(j);
-                            }
-                            ++j;
-                        }
-                        ++i;
-                    }
                     if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
                     else System.out.println("Fallo en el test");
                     System.out.println();
                     break;
                 case 4:
-                    System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
                     idPieza = sc.nextLine();
+                    for(int i = 0; i < 8; ++i) {
+                        for(int j = 0; j < 8; ++j) {
+                            if(Integer.parseInt(idPieza) == estadoTablero[i][j]) {
+                                posPieza[0] = String.valueOf(i);
+                                posPieza[1] = String.valueOf(j);
+                            }
+                        }
+                    }
                     t2 = new Torre();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
                         t2 = ph.get(Integer.parseInt(idPieza));
+                        ArrayList<res> result = t2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
+                        for(int k = 0; k < result.size(); ++k) {
+                            System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
+                        }
                     }
-                    else System.out.println("id incorrecta");
-                    System.out.println("Introduce la nueva posición de la pieza. El cambio no se verá reflejado en el tablero que hayas introducido.");
-                    m = sc.nextLine();
-                    String aux2[] = m.split(" ");
-                    move[0] = Integer.parseInt(aux2[0]);
-                    move[1] = Integer.parseInt(aux2[1]);
-                    System.out.println("Posicion actual: PosX: " + move[0] + " PosY: " + move[1]);
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");

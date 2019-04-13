@@ -1,5 +1,6 @@
 package Domini;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Alfil extends Pieza {
@@ -125,11 +126,24 @@ public class Alfil extends Pieza {
         return false;
     }
 
+    ArrayList<res> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        ArrayList<res> res = new ArrayList<>();
+        return res;
+    }
+
     void setPts(int pts) {
         this.pts = pts;
     }
 
     int getPts() {
         return this.pts;
+    }
+
+    public void setTipo(char t) {
+        this.tipo = t;
+    }
+
+    public char getTipo() {
+        return this.tipo;
     }
 }

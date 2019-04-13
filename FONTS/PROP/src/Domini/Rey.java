@@ -1,5 +1,6 @@
 package Domini;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Rey extends Pieza {
@@ -13,4 +14,16 @@ public class Rey extends Pieza {
         this.firstMove = firstMove;
     }
 
+    ArrayList<res> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        ArrayList<res> res = new ArrayList<>();
+        return res;
+    }
+
+    public void setTipo(char t) {
+        this.tipo = t;
+    }
+
+    public char getTipo() {
+        return this.tipo;
+    }
 }
