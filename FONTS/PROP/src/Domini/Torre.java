@@ -110,7 +110,7 @@ public class Torre extends Pieza {
         //debo mirar 4 posibles movimientos: arriba, abajo izquierda y derecha
         int i = posX, j = posY;
         boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
-        // amiga o enemiga (en el caso particular de la torre
+        // amiga o enemiga (en el caso particular de la torre)
 
         //arriba
         --i;
@@ -127,6 +127,7 @@ public class Torre extends Pieza {
                         listResult.add(r);
                         end = true;
                     }
+                    else end = true;
                 }
             }
             --i;
@@ -150,6 +151,7 @@ public class Torre extends Pieza {
                         listResult.add(r);
                         end = true;
                     }
+                    else end = true;
                 }
             }
             ++j;
@@ -173,6 +175,7 @@ public class Torre extends Pieza {
                         listResult.add(r);
                         end = true;
                     }
+                    else end = true;
                 }
             }
             ++i;
@@ -196,6 +199,7 @@ public class Torre extends Pieza {
                         listResult.add(r);
                         end = true;
                     }
+                    else end = true;
                 }
             }
             --j;

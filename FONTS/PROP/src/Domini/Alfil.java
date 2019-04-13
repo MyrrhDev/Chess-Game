@@ -16,6 +16,10 @@ public class Alfil extends Pieza {
     public Alfil(boolean esNegra, Integer id) {
         this.esNegra = esNegra;
         this.id = id;
+        if(this.esNegra) {
+            this.tipo = 'b';
+        }
+        else this.tipo = 'B';
     }
 
     /*
@@ -127,8 +131,40 @@ public class Alfil extends Pieza {
     }
 
     ArrayList<res> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
-        ArrayList<res> res = new ArrayList<>();
-        return res;
+        ArrayList<res> listResult = new ArrayList<>();
+        int i = posX, j = posY;
+        boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
+        // amiga o enemiga (en el caso particular de la torre)
+
+        //diagonal superior derecha --i ++j
+        --i;
+        ++j;
+        while(i >= 0 && j < 8 && !end) {
+            if(estadoTablero[i][j] == 0) {
+                res r = new res(i, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        res r = new res(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            --i;
+            ++j;
+        }
+        //diagonal inferior derecha
+
+        //diagonal inferior izquierda
+
+        //diagonal superior izquierda
+
+        return listResult;
     }
 
     void setPts(int pts) {
