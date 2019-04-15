@@ -204,9 +204,9 @@ public class Reina extends Pieza {
         return false;
     }
 
-    ArrayList<res> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
-        ArrayList<res> res = new ArrayList<>();
-        return res;
+    ArrayList<Movimiento> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        ArrayList<Movimiento> Movimiento = new ArrayList<>();
+        return Movimiento;
     }
 
     public boolean isEsNegra() {

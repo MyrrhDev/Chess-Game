@@ -130,8 +130,8 @@ public class Alfil extends Pieza {
         return false;
     }
 
-    ArrayList<res> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
-        ArrayList<res> listResult = new ArrayList<>();
+    ArrayList<Movimiento> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        ArrayList<Movimiento> listResult = new ArrayList<>();
         int i = posX, j = posY;
         boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
         // amiga o enemiga (en el caso particular de la torre)
@@ -141,14 +141,14 @@ public class Alfil extends Pieza {
         ++j;
         while(i >= 0 && j < 8 && !end) {
             if(estadoTablero[i][j] == 0) {
-                res r = new res(i, j, '-');
+                Movimiento r = new Movimiento(i, j, '-');
                 listResult.add(r);
             }
             if(estadoTablero[i][j] != 0) {
                 if(piezasTablero.containsKey(estadoTablero[i][j])) {
                     Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
                     if(this.esNegra != p2.esNegra) {
-                        res r = new res(i, posY, p2.getTipo());
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
                         listResult.add(r);
                         end = true;
                     }
@@ -158,11 +158,83 @@ public class Alfil extends Pieza {
             --i;
             ++j;
         }
-        //diagonal inferior derecha
 
+        end = false;
+        i = posX;
+        j = posY;
+        ++i;
+        ++j;
+        //diagonal inferior derecha
+        while(i < 8 && j < 8 && !end) {
+            if(estadoTablero[i][j] == 0) {
+                Movimiento r = new Movimiento(i, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            ++i;
+            ++j;
+        }
         //diagonal inferior izquierda
 
+        end = false;
+        i = posX;
+        j = posY;
+        ++i;
+        --j;
+        while(i < 8 && j < 8 && !end) {
+            if(estadoTablero[i][j] == 0) {
+                Movimiento r = new Movimiento(i, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            ++i;
+            --j;
+        }
         //diagonal superior izquierda
+        end = false;
+        i = posX;
+        j = posY;
+        --i;
+        --j;
+        while(i >= 0 && j >= 0 && !end) {
+            if(estadoTablero[i][j] == 0) {
+                Movimiento r = new Movimiento(i, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            --i;
+            --j;
+        }
 
         return listResult;
     }

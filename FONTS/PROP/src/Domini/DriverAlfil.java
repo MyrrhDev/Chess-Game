@@ -1,5 +1,6 @@
 package Domini;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -153,11 +154,18 @@ public class DriverAlfil {
                         a2 = ph.get(Integer.parseInt(idPieza));
                     }
                     else System.out.println("id incorrecta");
-                    System.out.println("Introduce la nueva posición de la pieza. El cambio no se verá reflejado en el tablero que hayas introducido.");
-                    m = sc.nextLine();
-                    String aux2[] = m.split(" ");
-                    move[0] = Integer.parseInt(aux2[0]);
-                    move[1] = Integer.parseInt(aux2[1]);
+                    for(int i = 0; i < 8; ++i) {
+                        for(int j = 0; j < 8; ++j) {
+                            if(Integer.parseInt(idPieza) == estadoTablero[i][j]) {
+                                posPieza[0] = String.valueOf(i);
+                                posPieza[1] = String.valueOf(j);
+                            }
+                        }
+                    }
+                    ArrayList<Movimiento> result = a2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
+                    for(int k = 0; k < result.size(); ++k) {
+                        System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
+                    }
                     System.out.println("Posicion actual: PosX: " + move[0] + " PosY: " + move[1]);
                     break;
                 case 5:

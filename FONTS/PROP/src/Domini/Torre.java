@@ -105,8 +105,8 @@ public class Torre extends Pieza {
         return false;
     }
 
-    ArrayList<res> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
-        ArrayList<res> listResult = new ArrayList<>();
+    ArrayList<Movimiento> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        ArrayList<Movimiento> listResult = new ArrayList<>();
         //debo mirar 4 posibles movimientos: arriba, abajo izquierda y derecha
         int i = posX, j = posY;
         boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
@@ -116,14 +116,14 @@ public class Torre extends Pieza {
         --i;
         while(i >= 0 && !end) {
             if(estadoTablero[i][posY] == 0) {
-                res r = new res(i, posY, '-');
+                Movimiento r = new Movimiento(i, posY, '-');
                 listResult.add(r);
             }
             if(estadoTablero[i][posY] != 0) {
                 if(piezasTablero.containsKey(estadoTablero[i][posY])) {
                     Pieza p2 = piezasTablero.get(estadoTablero[i][posY]);
                     if(this.esNegra != p2.esNegra) {
-                        res r = new res(i, posY, p2.getTipo());
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
                         listResult.add(r);
                         end = true;
                     }
@@ -140,14 +140,14 @@ public class Torre extends Pieza {
         ++j;
         while(j < 8 && !end) {
             if(estadoTablero[posX][j] == 0) {
-                res r = new res(posX, j, '-');
+                Movimiento r = new Movimiento(posX, j, '-');
                 listResult.add(r);
             }
             if(estadoTablero[posX][j] != 0) {
                 if(piezasTablero.containsKey(estadoTablero[posX][j])) {
                     Pieza p2 = piezasTablero.get(estadoTablero[posX][j]);
                     if(this.esNegra != p2.esNegra) {
-                        res r = new res(posX, j, p2.getTipo());
+                        Movimiento r = new Movimiento(posX, j, p2.getTipo());
                         listResult.add(r);
                         end = true;
                     }
@@ -164,14 +164,14 @@ public class Torre extends Pieza {
         ++i;
         while(i < 8 && !end) {
             if(estadoTablero[i][posY] == 0) {
-                res r = new res(i, posY, '-');
+                Movimiento r = new Movimiento(i, posY, '-');
                 listResult.add(r);
             }
             if(estadoTablero[i][posY] != 0) {
                 if(piezasTablero.containsKey(estadoTablero[i][posY])) {
                     Pieza p2 = piezasTablero.get(estadoTablero[i][posY]);
                     if(this.esNegra != p2.esNegra) {
-                        res r = new res(i, posY, p2.getTipo());
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
                         listResult.add(r);
                         end = true;
                     }
@@ -188,14 +188,14 @@ public class Torre extends Pieza {
         --j;
         while(j >= 0 && !end) {
             if(estadoTablero[posX][j] == 0) {
-                res r = new res(posX, j, '-');
+                Movimiento r = new Movimiento(posX, j, '-');
                 listResult.add(r);
             }
             if(estadoTablero[posX][j] != 0) {
                 if(piezasTablero.containsKey(estadoTablero[posX][j])) {
                     Pieza p2 = piezasTablero.get(estadoTablero[posX][j]);
                     if(this.esNegra != p2.esNegra) {
-                        res r = new res(posX, j, p2.getTipo());
+                        Movimiento r = new Movimiento(posX, j, p2.getTipo());
                         listResult.add(r);
                         end = true;
                     }

@@ -1,11 +1,11 @@
 package Domini;
 
-public class res {
+public class Movimiento {
     int x; //posicion x del tablero donde me puedo mover
     int y; //posicion y del tablero donde me puedo mover
     char p; //posible pieza p que puedo matar. si no hay ninguna pieza a matar valor de p = '-'
 
-    public res(int x, int y, char p) {
+    public Movimiento(int x, int y, char p) {
         this.x = x;
         this.y = y;
         this.p = p;

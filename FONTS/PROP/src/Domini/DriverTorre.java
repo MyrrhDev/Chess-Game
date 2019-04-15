@@ -154,7 +154,7 @@ public class DriverTorre {
                     t2 = new Torre();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
                         t2 = ph.get(Integer.parseInt(idPieza));
-                        ArrayList<res> result = t2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
+                        ArrayList<Movimiento> result = t2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
                         for(int k = 0; k < result.size(); ++k) {
                             System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
                         }
