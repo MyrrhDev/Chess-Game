@@ -204,9 +204,223 @@ public class Reina extends Pieza {
         return false;
     }
 
+    private ArrayList<Movimiento> movimientosPosiblesDiagonales(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        ArrayList<Movimiento> listResult = new ArrayList<>();
+        int i = posX, j = posY;
+        boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
+        // amiga o enemiga (en el caso particular de la torre)
+
+        //diagonal superior derecha --i ++j
+        --i;
+        ++j;
+        while(i >= 0 && j < 8 && !end) {
+            if(estadoTablero[i][j] == 0) {
+                Movimiento r = new Movimiento(i, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            --i;
+            ++j;
+        }
+
+        end = false;
+        i = posX;
+        j = posY;
+        ++i;
+        ++j;
+        //diagonal inferior derecha
+        while(i < 8 && j < 8 && !end) {
+            if(estadoTablero[i][j] == 0) {
+                Movimiento r = new Movimiento(i, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            ++i;
+            ++j;
+        }
+        //diagonal inferior izquierda
+
+        end = false;
+        i = posX;
+        j = posY;
+        ++i;
+        --j;
+        while(i < 8 && j < 8 && !end) {
+            if(estadoTablero[i][j] == 0) {
+                Movimiento r = new Movimiento(i, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            ++i;
+            --j;
+        }
+        //diagonal superior izquierda
+        end = false;
+        i = posX;
+        j = posY;
+        --i;
+        --j;
+        while(i >= 0 && j >= 0 && !end) {
+            if(estadoTablero[i][j] == 0) {
+                Movimiento r = new Movimiento(i, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            --i;
+            --j;
+        }
+        return listResult;
+    }
+
+    private ArrayList<Movimiento> movimientosPosiblesHorVert(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+        ArrayList<Movimiento> listResult = new ArrayList<>();
+        //debo mirar 4 posibles movimientos: arriba, abajo izquierda y derecha
+        int i = posX, j = posY;
+        boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
+        // amiga o enemiga (en el caso particular de la torre)
+
+        //arriba
+        --i;
+        while(i >= 0 && !end) {
+            if(estadoTablero[i][posY] == 0) {
+                Movimiento r = new Movimiento(i, posY, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][posY] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][posY])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][posY]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            --i;
+        }
+
+        end = false;
+        i = posX;
+        j = posY;
+        //derecha
+        ++j;
+        while(j < 8 && !end) {
+            if(estadoTablero[posX][j] == 0) {
+                Movimiento r = new Movimiento(posX, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[posX][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[posX][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[posX][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(posX, j, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            ++j;
+        }
+
+        end = false;
+        i = posX;
+        j = posY;
+        //abajo
+        ++i;
+        while(i < 8 && !end) {
+            if(estadoTablero[i][posY] == 0) {
+                Movimiento r = new Movimiento(i, posY, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[i][posY] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[i][posY])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[i][posY]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            ++i;
+        }
+
+        end = false;
+        i = posX;
+        j = posY;
+        //izquierda
+        --j;
+        while(j >= 0 && !end) {
+            if(estadoTablero[posX][j] == 0) {
+                Movimiento r = new Movimiento(posX, j, '-');
+                listResult.add(r);
+            }
+            if(estadoTablero[posX][j] != 0) {
+                if(piezasTablero.containsKey(estadoTablero[posX][j])) {
+                    Pieza p2 = piezasTablero.get(estadoTablero[posX][j]);
+                    if(this.esNegra != p2.esNegra) {
+                        Movimiento r = new Movimiento(posX, j, p2.getTipo());
+                        listResult.add(r);
+                        end = true;
+                    }
+                    else end = true;
+                }
+            }
+            --j;
+        }
+        return listResult;
+    }
+
     ArrayList<Movimiento> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
-        ArrayList<Movimiento> Movimiento = new ArrayList<>();
-        return Movimiento;
+        ArrayList<Movimiento> listResult = new ArrayList<>();
+        ArrayList<Movimiento> ltemp1 = movimientosPosiblesDiagonales(posX, posY, estadoTablero, piezasTablero);
+        ArrayList<Movimiento> ltemp2 = movimientosPosiblesHorVert(posX, posY, estadoTablero, piezasTablero);
+        listResult.addAll(ltemp1);
+        listResult.addAll(ltemp2);
+        return listResult;
     }
 
     public boolean isEsNegra() {
