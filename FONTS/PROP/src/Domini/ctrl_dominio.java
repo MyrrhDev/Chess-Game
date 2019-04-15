@@ -110,8 +110,8 @@ public class ctrl_dominio {
     }*/
 
     public static void main(String[] args) {
-        DriverAlfil da = new DriverAlfil();
-        da.main(args);
+        DriverCaballo dc = new DriverCaballo();
+        dc.main(args);
     }
 
     /*
