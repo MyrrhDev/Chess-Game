@@ -1,5 +1,6 @@
 package Domini;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -161,17 +162,24 @@ public class DriverPeon {
                 case 4:
                     System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
                     idPieza = sc.nextLine();
-                    t2 = new Peon();
+                    Pieza c = new Peon();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
-                        t2 = ph.get(Integer.parseInt(idPieza));
+                        c = ph.get(Integer.parseInt(idPieza));
                     }
                     else System.out.println("id incorrecta");
-                    System.out.println("Introduce la nueva posición de la pieza. El cambio no se verá reflejado en el tablero que hayas introducido.");
-                    m = sc.nextLine();
-                    String aux2[] = m.split(" ");
-                    move[0] = Integer.parseInt(aux2[0]);
-                    move[1] = Integer.parseInt(aux2[1]);
-                    System.out.println("Posicion actual: PosX: " + move[0] + " PosY: " + move[1]);
+                    for(int ii = 0; ii < 8; ++ii) {
+                        for(int jj = 0; jj < 8; ++jj) {
+                            if(Integer.parseInt(idPieza) == estadoTablero[ii][jj]) {
+                                posPieza[0] = String.valueOf(ii);
+                                posPieza[1] = String.valueOf(jj);
+                            }
+                        }
+                    }
+                    c.setFirstMove(true);
+                    ArrayList<Movimiento> result = c.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
+                    for(int k = 0; k < result.size(); ++k) {
+                        System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
+                    }
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");
