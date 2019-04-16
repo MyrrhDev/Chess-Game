@@ -146,7 +146,7 @@ public class DriverCaballo {
                         System.out.println("No existe ninguna pieza en la posición indicada");
                     }
                     else {
-                        System.out.println("Estos son todos los posibles movimientos de la pieza Alfil:");
+                        System.out.println("Estos son todos los posibles movimientos de la pieza Caballo:");
                         ArrayList<Movimiento> res = test2.movimientosPosibles(m2, estadoTablero);
                         for(int i = 0; i < res.size(); ++i) {
                             System.out.println("("+ "FromX: " + res.get(i).getFromX() + " FromY: " + res.get(i).getFromY() + " ToX: " + res.get(i).getToX() + " ToY: " + res.get(i).getToY() + " Pieza: " + res.get(i).getP() +")");

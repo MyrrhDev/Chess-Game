@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Caballo extends Pieza {
 
     public Caballo() {
-
+        this.firstMove = false;
     }
 
     /* Pre: Cierto

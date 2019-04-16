@@ -6,7 +6,7 @@ public class Alfil extends Pieza {
     int pts = 3;
 
     public Alfil() {
-
+        this.firstMove = false;
     }
 
     /* Pre: Cierto
@@ -18,6 +18,7 @@ public class Alfil extends Pieza {
             this.tipo = 'b';
         }
         else this.tipo = 'B';
+        this.firstMove = false;
     }
 
     /*

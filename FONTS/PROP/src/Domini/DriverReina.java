@@ -1,15 +1,14 @@
 package Domini;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverReina {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-    static private int estadoTablero[][] = new int[8][8];
-    static private int move[];
-    static private String posPieza[];
-    static HashMap<Integer, Pieza> ph;
+    static private char estadoTablero[][] = new char[8][8];
+    private static ArrayList<Pieza> PiezasBlancas;
+    private static ArrayList <Pieza> PiezasNegras;
 
     public DriverReina() {
     }
@@ -22,9 +21,9 @@ public class DriverReina {
         int i = 0;
         while (i < 8) {
             String s = sc.nextLine();
-            String aux[] = s.split(" ");
+            char[] chr = s.toCharArray();
             for(int j = 0; j < 8; ++j) {
-                estadoTablero[i][j] = Integer.parseInt(aux[j]);
+                estadoTablero[i][j] = chr[j*2];
             }
             ++i;
         }
@@ -37,8 +36,10 @@ public class DriverReina {
      * Pre: Cierto
      * Post: Devuelve un objeto Torre con atributos iguales a los parámetros de la funcion
      */
-    public static Reina iniPieza(boolean esNegra, Integer idPieza) {
-        Reina re = new Reina(esNegra, idPieza);
+    public static Reina iniPieza(boolean esNegra) {
+        Reina re = new Reina(esNegra);
+        if(esNegra) PiezasNegras.add(re);
+        else PiezasBlancas.add(re);
         return re;
     }
 
@@ -51,14 +52,14 @@ public class DriverReina {
         System.out.println("    1- Alta objeto Pieza Reina");
         System.out.println("    2- Introducir estado de tablero");
         System.out.println("    3- Verificar función esMovimientoOK de la clase Reina");
-        System.out.println("    4- Probar función actualizarPosPieza de la clase Reina");
+        System.out.println("    4- Verificar función movimientosPosibles de la clase Reina");
         System.out.println("    5- Salir");
     }
 
     public static void main(String[] args) {
-        ph = new HashMap<>();
-        estadoTablero = new int[8][8];
-        move = new int[2];
+        estadoTablero = new char[8][8];
+        PiezasBlancas = new ArrayList<Pieza>();
+        PiezasNegras = new ArrayList<Pieza>();
         Scanner sc = new Scanner(System.in);
         boolean driverIsRunning = true;
         while(driverIsRunning) {
@@ -75,18 +76,8 @@ public class DriverReina {
                     boolean esNegraInput = false;
                     System.out.println("Introduce, en orden y por terminal, los siguientes valores:");
                     boolean inputOK = false;
-                    Integer idPiezaInput = -1;
                     while(!inputOK) {
-                        System.out.println("Identificacion de la pieza (int)");
-                        String s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            idPiezaInput = Integer.parseInt(s);
-                            inputOK = true;
-                        } else System.out.println("Valor incorrecto.");
-                    }
-                    inputOK = false;
-                    while(!inputOK) {
-                        System.out.println("Indica si el color de la pieza es negro (true) o es blanco (false)");
+                        System.out.println("Indica si el color de la pieza es negra (true) o es blanca (false)");
                         String s = sc.nextLine();
                         if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
                             if (s.equals("true")) { esNegraInput = true; inputOK = true; }
@@ -94,77 +85,70 @@ public class DriverReina {
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    inputOK = false;
-                    int posXinput = -1, posYinput = -1;
-                    while(!inputOK) {
-                        System.out.println("Posición de la pieza en el tablero. Valores posibles: [(0,0) ... (7,7)]");
-                        String s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            posPieza = s.split(" ");
-                            posXinput = Integer.parseInt(posPieza[0]);
-                            posYinput = Integer.parseInt(posPieza[1]);
-                            if(posXinput >= 0 && posYinput >= 0 && posXinput < 8 && posYinput < 8) inputOK = true;
-                            else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
-                        } else System.out.println("Valor incorrecto.");
-                    }
-                    Reina re = iniPieza(esNegraInput, idPiezaInput);
-                    System.out.println("Objeto torre creado con exito. Valores:");
-                    ph.put(re.getId(), re);
+                    Reina r = iniPieza(esNegraInput);
+                    System.out.println("Objeto reina creado con exito.");
                     break;
                 case 2:
                     System.out.println("Introduce el estado del tablero. Se espera:");
                     System.out.println("0 si la casilla no contiene ninguna pieza");
-                    System.out.println("id de la pieza si la casilla contiene la pieza");
+                    System.out.println("tipo de pieza, en formato FEN, que contiene la casilla");
                     try {
                         readTableroFromTerminal(sc);
                     }catch(Exception e) { }
                     break;
                 case 3:
-                    System.out.println("Introduce la id de la pieza a probar su movimiento");
-                    String idPieza = sc.nextLine();
-                    Pieza re2 = new Reina();
-                    if(ph.containsKey(Integer.parseInt(idPieza))) {
-                        re2 = ph.get(Integer.parseInt(idPieza));
-                    }
-                    else System.out.println("id incorrecta");
-                    System.out.println("Introduce la posicion donde debe moverse [(0,0) .. (7,7)]");
-                    String m = sc.nextLine();
-                    String aux[] = m.split(" ");
-                    move[0] = Integer.parseInt(aux[0]);
-                    move[1] = Integer.parseInt(aux[1]);
-                    System.out.println("Que resultado esperas (true/false)?");
-                    boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    int i = 0, j = 0;
-                    boolean found = false;
-                    while(i < 8 && !found) {
-                        while (j < 8 && !found) {
-                            if(estadoTablero[i][j] == Integer.parseInt(idPieza)) {
-                                found = true;
-                                posPieza[0] = String.valueOf(i);
-                                posPieza[0] = String.valueOf(j);
-                            }
-                            ++j;
+                    System.out.println("Introduce el movimiento a realizar (posicion inicial de la pieza y posicion final, separado por un espacio)");
+                    String tmp = sc.nextLine();
+                    String aux[] = tmp.split(" ");
+                    Movimiento m = new Movimiento(Integer.parseInt(aux[0]), Integer.parseInt(aux[1]), Integer.parseInt(aux[2]), Integer.parseInt(aux[3]));
+                    Pieza test = null;
+                    if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux[0])][Integer.parseInt(aux[1])])) { //pieza blanca
+                        for(int i = 0; i < PiezasBlancas.size(); ++i) {
+                            if(PiezasBlancas.get(i).getTipo() == 'Q') test = PiezasBlancas.get(i);
                         }
-                        ++i;
                     }
-                    //if(resEsperado == re2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
-                    //else System.out.println("Fallo en el test");
+                    else { //Pieza negra
+                        for(int i = 0; i < PiezasNegras.size(); ++i) {
+                            if(PiezasNegras.get(i).getTipo() == 'q') test = PiezasNegras.get(i);
+                        }
+                    }
+                    if(test == null) { //no existe la pieza a probar
+                        System.out.println("No existe ninguna pieza en la posición indicada");
+                    }
+                    else {
+                        System.out.println("Que resultado esperas (true/false)?");
+                        boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
+                        if(resEsperado == test.esMovimientoOk(m, estadoTablero)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
+                        else System.out.println("Fallo en el test");
+                    }
                     System.out.println();
                     break;
                 case 4:
-                    System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
-                    idPieza = sc.nextLine();
-                    re2 = new Reina();
-                    if(ph.containsKey(Integer.parseInt(idPieza))) {
-                        re2 = ph.get(Integer.parseInt(idPieza));
+                    System.out.println("Introduce, por terminal, la posicion de la pieza la cual quieres todos sus posibles movimientos");
+                    String tmp2 = sc.nextLine();
+                    String aux2[] = tmp2.split(" ");
+                    Movimiento m2 = new Movimiento(Integer.parseInt(aux2[0]), Integer.parseInt(aux2[1]));
+                    Pieza test2 = null;
+                    if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux2[0])][Integer.parseInt(aux2[1])])) { //pieza blanca
+                        for(int i = 0; i < PiezasBlancas.size(); ++i) {
+                            if(PiezasBlancas.get(i).getTipo() == 'Q') test2 = PiezasBlancas.get(i);
+                        }
                     }
-                    else System.out.println("id incorrecta");
-                    System.out.println("Introduce la nueva posición de la pieza. El cambio no se verá reflejado en el tablero que hayas introducido.");
-                    m = sc.nextLine();
-                    String aux2[] = m.split(" ");
-                    move[0] = Integer.parseInt(aux2[0]);
-                    move[1] = Integer.parseInt(aux2[1]);
-                    System.out.println("Posicion actual: PosX: " + move[0] + " PosY: " + move[1]);
+                    else { //Pieza negra
+                        for(int i = 0; i < PiezasNegras.size(); ++i) {
+                            if(PiezasNegras.get(i).getTipo() == 'q') test2 = PiezasNegras.get(i);
+                        }
+                    }
+                    if(test2 == null) { //no existe la pieza a probar
+                        System.out.println("No existe ninguna pieza en la posición indicada");
+                    }
+                    else {
+                        System.out.println("Estos son todos los posibles movimientos de la pieza Reina:");
+                        ArrayList<Movimiento> res = test2.movimientosPosibles(m2, estadoTablero);
+                        for(int i = 0; i < res.size(); ++i) {
+                            System.out.println("("+ "FromX: " + res.get(i).getFromX() + " FromY: " + res.get(i).getFromY() + " ToX: " + res.get(i).getToX() + " ToY: " + res.get(i).getToY() + " Pieza: " + res.get(i).getP() +")");
+                        }
+                    }
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");
