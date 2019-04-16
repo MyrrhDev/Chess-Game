@@ -18,13 +18,13 @@ public class Peon extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto peon con los parámetros esNegra, id, posX, posY
      */
-    public Peon(boolean esNegra, Integer id) {
+    public Peon(boolean esNegra, boolean firstMove) {
         this.esNegra = esNegra;
-        this.id = id;
         if(this.esNegra) {
             tipo = 'p';
         }
         else tipo = 'P';
+        this.firstMove = firstMove;
     }
 
 
@@ -44,7 +44,7 @@ public class Peon extends Pieza {
             int auxX = movX - posX;
             int auxY = movY - posY;
 
-            if (movX < posX && movY != posY) { //movimiento alguno valido
+            //if (movX < posX && movY != posY) { //movimiento alguno valido
                 //Anyone to kill?  //Diagonal solo si se puede matar
                 if (auxX == -1 && auxY == -1) { //movimiento hacia esquina superior izquierda
                     if (estadoTablero[movX][movY] != '0') {
@@ -70,7 +70,7 @@ public class Peon extends Pieza {
                         }
                     } else return false;
                 } else return false; //la pieza no se ha movido realmente
-            } else return false;
+            //} else return false;
         }
         return false;
     }

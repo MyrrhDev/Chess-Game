@@ -8,7 +8,6 @@ public class DriverCaballo {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
     static private char estadoTablero[][] = new char[8][8];
-    static private String posPieza[];
     private static ArrayList <Pieza> PiezasBlancas;
     private static ArrayList <Pieza> PiezasNegras;
 
