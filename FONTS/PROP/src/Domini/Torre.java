@@ -25,22 +25,10 @@ public class Torre extends Pieza {
      *       * True: Si el movimiento que se quiere realizar es correcto
      *       * False: Si no se puede realizar el movimiento
      */
-    public boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
-        int posX = -1, posY = -1;
-        int x = 0, y = 0;
-        boolean found = false;
-        while(x < 8 && !found) {
-            y = 0;
-            while (y < 8 && !found) {
-                if(estadoTablero[x][y] == this.id) {
-                    found = true;
-                    posX = x;
-                    posY = y;
-                }
-                ++y;
-            }
-            ++x;
-        }
+    @Override
+    public boolean esMovimientoOk(final Movimiento m, char estadoTablero[][]) {
+        int posX = m.getFromX(), posY = m.getFromY();
+        int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
@@ -48,12 +36,10 @@ public class Torre extends Pieza {
                 //derecha
                 if(movY > posY) {
                     for (int j = posY + 1; j < movY; ++j)
-                        if (estadoTablero[movX][j] != 0) //me encuentro una pieza en mi camino
+                        if (estadoTablero[movX][j] != '0') //me encuentro una pieza en mi camino
                             return false;
-                    if(estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
-                        Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
-                            return false;
+                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;
@@ -61,12 +47,10 @@ public class Torre extends Pieza {
                 else if(movY < posY) {
                     //izquierda
                     for (int j = posY - 1; j > movY; --j)
-                        if (estadoTablero[movX][j] != 0) //me encuentro una pieza en mi camino
+                        if (estadoTablero[movX][j] != '0') //me encuentro una pieza en mi camino
                             return false;
-                    if(estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
-                        Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
-                            return false;
+                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;
@@ -76,12 +60,10 @@ public class Torre extends Pieza {
                 //abajo
                 if(movX > posX) {
                     for (int i = posX + 1; i < movX; ++i)
-                        if (estadoTablero[i][movY] != 0) //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][movY] != '0') //me encuentro una pieza en mi camino
                             return false;
-                    if(estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
-                        Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
-                            return false;
+                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;
@@ -89,12 +71,10 @@ public class Torre extends Pieza {
                 //arriba
                 if(movX < posX) {
                     for (int i = posX - 1; i > movX; --i)
-                        if (estadoTablero[i][movY] != 0) //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][movY] != '0') //me encuentro una pieza en mi camino
                             return false;
-                    if(estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
-                        Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
-                            return false;
+                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;

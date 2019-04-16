@@ -42,7 +42,7 @@ public abstract class Pieza {
         return this.tipo;
     }
 
-    abstract boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero);
+    abstract boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]);
 
-    abstract ArrayList<Movimiento> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero);
+    abstract ArrayList<Movimiento> movimientosPosibles(int posX, int posY, char estadoTablero[][]);
 }

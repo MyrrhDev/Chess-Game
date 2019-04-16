@@ -6,10 +6,12 @@ public class Persona extends Jugador {
     String nombre;
     String contrasena;
     int pts;
+    public boolean esNegra;
 
     static private ArrayList<Persona> jugadores;
 
-    public Persona() {
+    public Persona(boolean color) {
+        esNegra = color;
 
     }
 

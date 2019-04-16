@@ -27,22 +27,10 @@ public class Caballo extends Pieza {
      *       * True: Si el movimiento que se quiere realizar es correcto
      *       * False: Si no se puede realizar el movimiento
      */
-    boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
-        int posX = -1, posY = -1;
-        int x = 0, y = 0;
-        boolean found = false;
-        while(x < 8 && !found) {
-            y = 0;
-            while (y < 8 && !found) {
-                if(estadoTablero[x][y] == this.id) {
-                    found = true;
-                    posX = x;
-                    posY = y;
-                }
-                ++y;
-            }
-            ++x;
-        }
+    @Override
+    boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
+        int posX = m.getFromX(), posY = m.getFromY();
+        int movX = m.getToX(), movY = m.getToY();
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
             int auxY = movY - posY;
@@ -51,9 +39,8 @@ public class Caballo extends Pieza {
 
                 if ((auxX == -2 && auxY == -1) || (auxX == -1 && auxY == -2) || (auxX == 2 && auxY == -1) ||
                         (auxX == 1 && auxY == -2) || (auxX == -2 && auxY == 1) || (auxX == -1 && auxY == 2) || (auxX == 2 && auxY == 1) || (auxX == 1 && auxY == 2)) {
-                    if (estadoTablero[movX][movY] != 0) { //me encuentro una pieza en mi camino
-                        Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() == esNegra) return false; //no lo puedo matar porque es de mi equipo
+                    if (estadoTablero[movX][movY] != '0') { //me encuentro una pieza en mi camino
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     } else return true;
                 }

@@ -3,11 +3,15 @@ package Domini;
 import java.util.Date;
 
 public class Problema {
-    public String nombre;
-    public Persona creador;
-    boolean esVerificado;
-    boolean esJugado;
+    public String problema;
     int N;
-    Date fechaUltMod; //fecha ultima modificacion
-    String prob; //problema
+    public boolean abreJuego; // true -> empiezan blancas, false -> empiezan negras
+
+    public int getN() {
+        return N;
+    }
+
+    public String getFEN() {
+        return problema;
+    }
 }

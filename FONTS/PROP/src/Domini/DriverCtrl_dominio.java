@@ -32,30 +32,23 @@ public class DriverCtrl_dominio {
             else op = -1;
             switch(op) {
                 case 1:
-                    c = ctrl_dominio.getInstance();
-                    if(c != null) System.out.println("Alta controlador de dominio correcta");
-                    else System.out.println("Error! Ya existe una instancia de controlador creada");
+                    //creo un problema
                     break;
                 case 2:
-                    System.out.println("Introduce el nombre de usuario y la contraseña del nuevo jugador");
-                    String datos = sc.nextLine();
-                    String tmp[] = datos.split(" ");
-                    int personasSize = c.jugadoresSize();
-                    int res = c.nuevaPersona(tmp[0], tmp[1]);
-                    if(personasSize+1 == c.jugadoresSize() && res == 1) System.out.println("Nueva persona creada con éxito");
-                    else System.out.println("Error al crear una nueva persona");
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    System.out.println("Introduce el nombre de usuario y la contraseña, separados por un espacio");
-                    datos = sc.nextLine();
-                    String tmp2[] = datos.split(" ");
-                    c.loginPersona(tmp2[0], tmp2[1]);
-                    break;
-                case 5:
-                    c.logoutPersona();
-                    System.out.println("Persona deslogueada con exito");
+                    //jugar
+                    //Scann jug1 y jug2
+                    /*c.crearPartida(p, 0, 1);
+                    while(N > 0 & !j1.esEnJaqueMate & !j1.estaEstancado & !j2.esEnJaqueMate & !j2.estaEstancado) {
+                        if (j1.esSuTurno & j1.esMaquina) c.jugar();
+                        if (j1.esSuTurno & !j1.esMaquina) {
+                            //leer input
+                            c.jugar(posX...)
+                        }
+                        --N;
+                    }
+                    si j1 esta en jaque mate pues ha perdido jajaj salu2
+                    si j2 esta en ja.... ha perdido*/
+                }
                     break;
                 default:
                     System.out.println("La opción introducida no es correcta. Por favor, seleccione una de las siguiente del menu");

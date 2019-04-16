@@ -4,18 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ctrl_dominio {
-    static private ArrayList<Persona> jugadores;
-    static private Persona personaLogueada;
-    static private HashMap<String, Problema> problemasExistentes;
-    static private Ranking ranking;
-    static private boolean login;
+    private static Jugador j1, j2;
+    private static Tablero t;
+    private static int turnosBlancas, turnosNegras;
     private static ctrl_dominio singleInstance = null;
 
     private ctrl_dominio() {
-        login = false;
-        jugadores = new ArrayList<>();
-        problemasExistentes = new HashMap<>();
-        ranking = new Ranking();
+        j1 = j2 = null;
     }
 
     public static ctrl_dominio getInstance() {
@@ -23,91 +18,89 @@ public class ctrl_dominio {
         return singleInstance;
     }
 
-    public int jugadoresSize() {
-        return jugadores.size();
+    /*
+     Pre: j1 abre el juego
+     Post: Tanto para j1 como para j2:
+     Si jug1 == 1 -> j1 Persona
+     Si jug1 == 2 -> j1 M1
+     Si jug1 == 3 -> j1 M2
+     */
+    public static void seleccionarJugadores(int jug1, int jug2, char colorJug1) {
+        switch(jug1) {
+            case 1:
+                if(colorJug1 == 'w') j1 = new Persona(false); //blanca
+                else j1 = new Persona(true); //negra
+                break;
+            case 2:
+                //j1 = new M1();
+                break;
+            case 3:
+                //j1 = new M2();
+                break;
+        }
+        switch(jug2) {
+            case 1:
+                if(colorJug1 == 'w') j1 = new Persona(true); //negra
+                else j1 = new Persona(false); //blanca
+                break;
+            case 2:
+                //j2 = new M1();
+                break;
+            case 3:
+                //j2 = new M2();
+                break;
+        }
     }
+
+    /*public static void Jugar() throws Exception {
+        if(j1.esMaquina & j1.esSuTurno) {
+            try {
+                t = j1.M1Juega();
+            }
+            catch(Exception e) {
+                //hay jaque mate o has perdido
+            }
+            !j1.esSuTurno;
+            !j2.esSuTurno;
+        }
+        else if(!j1.esMaquina & j1.esSuTurno) {
+        }
+    }*/
 
     /*
-      Pre: Cierto
-      Post: La funcion retorna:
-          1 Si nombre usuario y contraseña OK
-         -1 Si el nombre no es valido
-         -2 Si la contrasea no es valido
+    Tu entiendes que j1 o j2 hace un movimiento
+    Yo entiendo que yo hago el movimiento
      */
-    private int verificarDatosUsuario(String nombre, String contrasena) {
-        for(int i = 0; i < jugadores.size(); ++i) {
-            if (jugadores.get(i).nombreIsEqual(nombre)) {
-                if (jugadores.get(i).contrasenaIsEqual(contrasena)) return 1;
-                else return -2;
+    /*public static void Jugar(int posX, int posY, int movX, int movY) throws Exception {
+        if(!j1.esMaquina & j1.esSuTurno) {
+            try {
+                Movimiento m(posx, posy, movx, movy);
+                t = j1.M1Juega(t,m);
             }
-            else return -1;
+            catch(Exception e) {
+                //hay jaque mate o has perdido
+            }
+            !j1.esSuTurno;
+            !j2.esSuTurno;
         }
-        return -1;
-    }
-
-    /* Pre: Cierto
-     * Post: Si la persona se encontraba registrada en el sistema y el usuario y contraseña coinciden
-     * la funcion cambia el atributo login de la clase a cierto. En caso que introduzca incorrectamente
-     * la contraseña o la persona no este registrada, la funcion le informara del problema
-     */
-    //@TODO Cambiar los system out. El controlador no puede hacerlos. Debe informar a la capa de presentación del error
-    public void loginPersona(String nombre, String contrasena) {
-        //ver si existe un usuario con el mismo nombre en la lista
-        int c = verificarDatosUsuario(nombre, contrasena);
-        switch(c) {
-            case 1:
-                login = true;
-                for(int i = 0; i < jugadores.size(); ++i)
-                    if(jugadores.get(i).nombreIsEqual(nombre)) personaLogueada = jugadores.get(i);
-                break;
-            case -1:
-                System.out.println("Nombre no valido");
-                break;
-            case -2:
-                System.out.println("Contrasena no valida");
-                break;
+        else if(!j2.esMaquina & j2.esSuTurno) {
+            try {
+                Movimiento m(posx, posy, movx, movy);
+                t = j1.M1Juega(t,m);
+            }
+            catch(Exception e) {
+                //hay jaque mate o has perdido
+            }
+            !j1.esSuTurno;
+            !j2.esSuTurno;
         }
-    }
-
-    /* Pre: Cierto
-     * Post: El usuario es deslogueado del sistema
-     */
-    public void logoutPersona() {
-        login = false;
-        personaLogueada = null;
-    }
-
-    /* Pre: Cierto
-     * Post: Si no existe ningun otro usuario con el mismo nombre, el usuario se registra en el sistema y la funcion retorna 1
-     * En caso que no se pueda registrar, la funcion devuelve -1
-     */
-    public int nuevaPersona(String nombre, String contrasena) {
-        int c = verificarDatosUsuario(nombre, contrasena);
-        switch(c) {
-            case 1:
-                System.out.println("Error! Nombre de usuario ya en uso");
-                break;
-            default:
-                Persona p = new Persona(nombre, contrasena);
-                jugadores.add(p);
-                return 1;
-        }
-        return -1;
-    }
-
-    /* Pre: La persona está logueada en el sistema
-     * Post: Se da de baja la persona en el sistema. Se actualiza:
-     *       1. El Ranking
-     *       2. Todos los problemas ganados por la persona pasan a estar sin ganador
-     */
-    /*public void bajaPersona() {
-        eliminarPersonaRanking(personaLogueada);
-        //hacer relación problema y persona en uml para poder acceder al ganador de dicho problema y poder eliminarlo fácilmente
-        for(int i = 0; i < problemasExistentes.size(); ++i) {
-            problemasExistentes.get(i).eliminarPersonaGanadora(personaLogueada);
-        }
-        login = false;
     }*/
+
+    public static void crearPartida(Problema p, int jug1, int jug2) {
+        seleccionarJugadores(jug1, jug2, p.abreJuego);
+        t = new Tablero(p.getFEN(), p.abreJuego); //antigua FENToTablero
+        turnosBlancas = turnosNegras = p.getN();
+    }
 
     public static void main(String[] args) {
         DriverPeon dp = new DriverPeon();

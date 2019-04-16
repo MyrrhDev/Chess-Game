@@ -28,22 +28,10 @@ public class Alfil extends Pieza {
      *       * True: Si el movimiento que se quiere realizar es correcto
      *       * False: Si no se puede realizar el movimiento
      */
-    boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
-        int posX = -1, posY = -1;
-        int x = 0, y = 0;
-        boolean found = false;
-        while(x < 8 && !found) {
-            y = 0;
-            while (y < 8 && !found) {
-                if(estadoTablero[x][y] == this.id) {
-                    found = true;
-                    posX = x;
-                    posY = y;
-                }
-                ++y;
-            }
-            ++x;
-        }
+    @Override
+    boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
+        int posX = m.getFromX(), posY = m.getFromY();
+        int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
@@ -55,15 +43,13 @@ public class Alfil extends Pieza {
                     ++i;
                     --j;
                     while(i < (movX) && j > (movY)) {
-                        if (estadoTablero[i][j] != 0) //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][j] != '0') //me encuentro una pieza en mi camino
                             return false;
                         ++i;
                         --j;
                     } //cuando salimos del bucle estamos en la posicion i-1, j+1 i queremos revisar hasta i, j
-                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
-                        Pieza p = piezasTablero.get(estadoTablero[i][j]);
-                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
-                            return false;
+                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[i][j])) return false;
                         else return true;
                     }
                     else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
@@ -73,15 +59,13 @@ public class Alfil extends Pieza {
                     ++i;
                     ++j;
                     while(i < (movX) && j < (movY)) {
-                        if (estadoTablero[i][j] != 0) //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][j] != '0') //me encuentro una pieza en mi camino
                             return false;
                         ++i;
                         ++j;
                     } //cuando salimos del bucle estamos en la posicion i-1, j-1 i queremos revisar hasta i, j
-                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
-                        Pieza p = piezasTablero.get(estadoTablero[i][j]);
-                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
-                            return false;
+                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
@@ -91,15 +75,13 @@ public class Alfil extends Pieza {
                     --i;
                     --j;
                     while(i > (movX) && j > (movY)) {
-                        if (estadoTablero[i][j] != 0) //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][j] != '0') //me encuentro una pieza en mi camino
                             return false;
                         --i;
                         --j;
                     } //cuando salimos del bucle estamos en la posicion i-1, j-1 i queremos revisar hasta i, j
-                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
-                        Pieza p = piezasTablero.get(estadoTablero[i][j]);
-                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
-                            return false;
+                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[i][j])) return false;
                         else return true;
                     }
                     else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
@@ -109,15 +91,13 @@ public class Alfil extends Pieza {
                     --i;
                     ++j;
                     while(i > (movX) && j < (movY)) {
-                        if (estadoTablero[i][j] != 0) //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][j] != '0') //me encuentro una pieza en mi camino
                             return false;
                         --i;
                         ++j;
                     } //cuando salimos del bucle estamos en la posicion i-1, j-1 i queremos revisar hasta i, j
-                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != 0) { //si hay una pieza en mi destino, ver si puedo matarla
-                        Pieza p = piezasTablero.get(estadoTablero[i][j]);
-                        if (p.isEsNegra() == esNegra) //tenemos el mismo color
-                            return false;
+                    if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
@@ -225,7 +205,7 @@ public class Alfil extends Pieza {
                 if(piezasTablero.containsKey(estadoTablero[i][j])) {
                     Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
                     if(this.esNegra != p2.esNegra) {
-                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
+                        Movimiento r = new Movimiento(posX, posY, i, posY, p2.getTipo());
                         listResult.add(r);
                         end = true;
                     }

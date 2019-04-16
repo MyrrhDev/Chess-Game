@@ -35,23 +35,10 @@ public class Peon extends Pieza {
      *       * True: Si el movimiento que se quiere realizar es correcto
      *       * False: Si no se puede realizar el movimiento
      */
-
-    boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
-        int posX = -1, posY = -1;
-        int x = 0, y = 0;
-        boolean found = false;
-        while(x < 8 && !found) {
-            y = 0;
-            while (y < 8 && !found) {
-                if(estadoTablero[x][y] == this.id) {
-                    found = true;
-                    posX = x;
-                    posY = y;
-                }
-                ++y;
-            }
-            ++x;
-        }
+    @Override
+    boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
+        int posX = m.getFromX(), posY = m.getFromY();
+        int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
@@ -60,28 +47,25 @@ public class Peon extends Pieza {
             if (movX < posX && movY != posY) { //movimiento alguno valido
                 //Anyone to kill?  //Diagonal solo si se puede matar
                 if (auxX == -1 && auxY == -1) { //movimiento hacia esquina superior izquierda
-                    if (estadoTablero[movX][movY] != 0) {
+                    if (estadoTablero[movX][movY] != '0') {
                         //me encuentro una pieza en mi camino
-                        Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() == esNegra) return false;
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     } else return false;
                 } else if (auxX == -1 && auxY == 1) { //movimiento hacia esquina superior derecha
-                    if (estadoTablero[movX][movY] != 0) {
-                        //me encuentro una pieza en mi camino
-                        Pieza p = piezasTablero.get(estadoTablero[movX][movY]);
-                        if (p.isEsNegra() == esNegra) return false;
+                    if (estadoTablero[movX][movY] != '0') {
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     } else return false;
                 } else if (movY == posY && movX < posX) { //mov hacia adelante
                     if (firstMove && auxY == -2) {
-                        if (estadoTablero[movX][movY] == 0) { //no hay pieza alguna
+                        if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
                             return true;
                         }
                     } else if (auxY == -2 && !firstMove) return false;
 
                     else if (auxX == -1) {
-                        if (estadoTablero[movX][movY] == 0) { //no hay pieza alguna
+                        if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
                             return true;
                         }
                     } else return false;

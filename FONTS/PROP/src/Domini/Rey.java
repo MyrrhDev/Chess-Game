@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Rey extends Pieza {
-    boolean esMovimientoOk(int movX, int movY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) { return false; }
+    @Override
+    boolean esMovimientoOk(final Movimiento m, char estadoTablero[][]) { return false; }
 
     public boolean isFirstMove() {
         return firstMove;
