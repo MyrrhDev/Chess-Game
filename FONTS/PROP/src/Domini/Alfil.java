@@ -12,9 +12,8 @@ public class Alfil extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto alfil con los parámetros esNegra, id, posX, posY
      */
-    public Alfil(boolean esNegra, Integer id) {
+    public Alfil(boolean esNegra) {
         this.esNegra = esNegra;
-        this.id = id;
         if(this.esNegra) {
             this.tipo = 'b';
         }

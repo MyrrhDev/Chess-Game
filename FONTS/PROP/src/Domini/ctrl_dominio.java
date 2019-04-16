@@ -103,8 +103,8 @@ public class ctrl_dominio {
     }
 
     public static void main(String[] args) {
-        DriverPeon dp = new DriverPeon();
-        dp.main(args);
+        DriverAlfil da = new DriverAlfil();
+        da.main(args);
     }
 
     /*

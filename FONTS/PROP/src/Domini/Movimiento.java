@@ -24,6 +24,12 @@ public class Movimiento {
         this.p = p;
     }
 
+    Movimiento(int fromX, int fromY) {
+        this.fromX = fromX;
+        this.fromY = fromY;
+        this.p = '-';
+    }
+
     public int getFromY() {
         return fromY;
     }
@@ -63,4 +69,5 @@ public class Movimiento {
     public void setToY(int toY) {
         this.toY = toY;
     }
+
 }

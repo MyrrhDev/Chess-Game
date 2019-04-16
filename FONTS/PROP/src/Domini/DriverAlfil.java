@@ -7,10 +7,11 @@ import java.util.Scanner;
 public class DriverAlfil {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-    static private int estadoTablero[][] = new int[8][8];
+    static private char estadoTablero[][] = new char[8][8];
     static private int move[];
     static private String posPieza[];
-    static HashMap<Integer, Pieza> ph;
+    private static ArrayList <Pieza> PiezasBlancas;
+    private static ArrayList <Pieza> PiezasNegras;
 
     public DriverAlfil() {
 
@@ -24,9 +25,9 @@ public class DriverAlfil {
         int i = 0;
         while (i < 8) {
             String s = sc.nextLine();
-            String aux[] = s.split(" ");
+            char[] chr = s.toCharArray();
             for(int j = 0; j < 8; ++j) {
-                estadoTablero[i][j] = Integer.parseInt(aux[j]);
+                estadoTablero[i][j] = chr[j*2];
             }
             ++i;
         }
@@ -40,8 +41,10 @@ public class DriverAlfil {
      * Post: Devuelve un objeto Alfil con atributos iguales a los parámetros de la funcion
      */
 
-    public static Alfil iniPieza(boolean esNegra, Integer idPieza) {
-        Alfil a = new Alfil(esNegra, idPieza);
+    public static Alfil iniPieza(boolean esNegra) {
+        Alfil a = new Alfil(esNegra);
+        if(esNegra) PiezasNegras.add(a);
+        else PiezasBlancas.add(a);
         return a;
     }
 
@@ -54,13 +57,14 @@ public class DriverAlfil {
         System.out.println("    1- Alta objeto Pieza Alfil");
         System.out.println("    2- Introducir estado de tablero");
         System.out.println("    3- Verificar función esMovimientoOK de la clase Alfil");
-        System.out.println("    4- Probar función actualizarPosPieza de la clase Alfil");
+        System.out.println("    4- Verificar función movimientosPosibles de la clase Alfil");
         System.out.println("    5- Salir");
     }
 
     public static void main(String[] args) {
-        ph = new HashMap<>();
-        estadoTablero = new int[8][8];
+        estadoTablero = new char[8][8];
+        PiezasBlancas = new ArrayList<Pieza>();
+        PiezasNegras = new ArrayList<Pieza>();
         move = new int[2];
         Scanner sc = new Scanner(System.in);
         boolean driverIsRunning = true;
@@ -78,18 +82,8 @@ public class DriverAlfil {
                     boolean esNegraInput = false;
                     System.out.println("Introduce, en orden y por terminal, los siguientes valores:");
                     boolean inputOK = false;
-                    Integer idPiezaInput = -1;
                     while(!inputOK) {
-                        System.out.println("Identificacion de la pieza (int)");
-                        String s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            idPiezaInput = Integer.parseInt(s);
-                            inputOK = true;
-                        } else System.out.println("Valor incorrecto.");
-                    }
-                    inputOK = false;
-                    while(!inputOK) {
-                        System.out.println("Indica si el color de la pieza es negro (true) o es blanco (false)");
+                        System.out.println("Indica si el color de la pieza es negra (true) o es blanca (false)");
                         String s = sc.nextLine();
                         if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
                             if (s.equals("true")) { esNegraInput = true; inputOK = true; }
@@ -97,22 +91,8 @@ public class DriverAlfil {
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    inputOK = false;
-                    int posXinput = -1, posYinput = -1;
-                    while(!inputOK) {
-                        System.out.println("Posición de la pieza en el tablero. Valores posibles: [(0,0) ... (7,7)]");
-                        String s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            posPieza = s.split(" ");
-                            posXinput = Integer.parseInt(posPieza[0]);
-                            posYinput = Integer.parseInt(posPieza[1]);
-                            if(posXinput >= 0 && posYinput >= 0 && posXinput < 8 && posYinput < 8) inputOK = true;
-                            else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
-                        } else System.out.println("Valor incorrecto.");
-                    }
-                    Alfil a = iniPieza(esNegraInput, idPiezaInput);
+                    Alfil a = iniPieza(esNegraInput);
                     System.out.println("Objeto alfil creado con exito. Valores:");
-                    ph.put(a.getId(), a);
                     break;
                 case 2:
                     System.out.println("Introduce el estado del tablero. Se espera:");
@@ -123,31 +103,59 @@ public class DriverAlfil {
                     }catch(Exception e) { }
                     break;
                 case 3:
-                    System.out.println("Introduce la id de la pieza a probar su movimiento");
-                    String idPieza = sc.nextLine();
-                    Pieza a2 = new Alfil();
-                    if(ph.containsKey(Integer.parseInt(idPieza))) {
-                        a2 = ph.get(Integer.parseInt(idPieza));
+                    System.out.println("Introduce el movimiento a realizar (posicion inicial de la pieza y posicion final, separado por un espacio)");
+                    String tmp = sc.nextLine();
+                    String aux[] = tmp.split(" ");
+                    Movimiento m = new Movimiento(Integer.parseInt(aux[0]), Integer.parseInt(aux[1]), Integer.parseInt(aux[2]), Integer.parseInt(aux[3]));
+                    Pieza test = null;
+                    if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux[0])][Integer.parseInt(aux[1])])) { //pieza blanca
+                        for(int i = 0; i < PiezasBlancas.size(); ++i) {
+                            if(PiezasBlancas.get(i).getTipo() == 'B') test = PiezasBlancas.get(i);
+                        }
                     }
-                    else System.out.println("id incorrecta");
-                    System.out.println("Introduce la posicion donde debe moverse [(0,0) .. (7,7)]");
-                    String m = sc.nextLine();
-                    String aux[] = m.split(" ");
-                    move[0] = Integer.parseInt(aux[0]);
-                    move[1] = Integer.parseInt(aux[1]);
-                    System.out.println("Que resultado esperas (true/false)?");
-                    boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    //a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)
-                    //buscar pos pieza
-                    //if(resEsperado == a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
-                    //else System.out.println("Fallo en el test");
-                    /*boolean resMovimientoOk = a2.esMovimientoOk(move[0], move[1],estadoTablero,ph);
-                    boolean result = (resEsperado == resMovimientoOk);
-                    int iu = -1;*/
+                    else { //Pieza negra
+                        for(int i = 0; i < PiezasNegras.size(); ++i) {
+                            if(PiezasNegras.get(i).getTipo() == 'b') test = PiezasNegras.get(i);
+                        }
+                    }
+                    if(test == null) { //no existe la pieza a probar
+                        System.out.println("No existe ninguna pieza en la posición indicada");
+                    }
+                    else {
+                        System.out.println("Que resultado esperas (true/false)?");
+                        boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
+                        if(resEsperado == test.esMovimientoOk(m, estadoTablero)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
+                        else System.out.println("Fallo en el test");
+                    }
                     System.out.println();
                     break;
                 case 4:
-                    System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
+                    System.out.println("Introduce, por terminal, la posicion de la pieza la cual quieres todos sus posibles movimientos");
+                    String tmp2 = sc.nextLine();
+                    String aux2[] = tmp2.split(" ");
+                    Movimiento m2 = new Movimiento(Integer.parseInt(aux2[0]), Integer.parseInt(aux2[1]));
+                    Pieza test2 = null;
+                    if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux2[0])][Integer.parseInt(aux2[1])])) { //pieza blanca
+                        for(int i = 0; i < PiezasBlancas.size(); ++i) {
+                            if(PiezasBlancas.get(i).getTipo() == 'B') test2 = PiezasBlancas.get(i);
+                        }
+                    }
+                    else { //Pieza negra
+                        for(int i = 0; i < PiezasNegras.size(); ++i) {
+                            if(PiezasNegras.get(i).getTipo() == 'b') test2 = PiezasNegras.get(i);
+                        }
+                    }
+                    if(test2 == null) { //no existe la pieza a probar
+                        System.out.println("No existe ninguna pieza en la posición indicada");
+                    }
+                    else {
+                        System.out.println("Estos son todos los posibles movimientos de la pieza Alfil:");
+                        ArrayList<Movimiento> res = test2.movimientosPosibles(m2, estadoTablero);
+                        for(int i = 0; i < res.size(); ++i) {
+                            System.out.println("("+ "FromX: " + res.get(i).getFromX() + " FromY: " + res.get(i).getFromY() + " ToX: " + res.get(i).getToX() + " ToY: " + res.get(i).getToY() + " Pieza: " + res.get(i).getP() +")");
+                        }
+                    }
+                    /*System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
                     idPieza = sc.nextLine();
                     a2 = new Alfil();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
@@ -161,7 +169,7 @@ public class DriverAlfil {
                                 posPieza[1] = String.valueOf(j);
                             }
                         }
-                    }
+                    }*/
                     //ArrayList<Movimiento> result = a2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
                     //for(int k = 0; k < result.size(); ++k) {
                         //System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
