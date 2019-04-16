@@ -48,7 +48,6 @@ public class DriverCtrl_dominio {
                     }
                     si j1 esta en jaque mate pues ha perdido jajaj salu2
                     si j2 esta en ja.... ha perdido*/
-                }
                     break;
                 default:
                     System.out.println("La opción introducida no es correcta. Por favor, seleccione una de las siguiente del menu");

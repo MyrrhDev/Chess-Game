@@ -137,8 +137,8 @@ public class DriverTorre {
                     move[1] = Integer.parseInt(aux[1]);
                     System.out.println("Que resultado esperas (true/false)?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
-                    else System.out.println("Fallo en el test");
+                    //if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
+                    //else System.out.println("Fallo en el test");
                     System.out.println();
                     break;
                 case 4:
@@ -154,10 +154,10 @@ public class DriverTorre {
                     t2 = new Torre();
                     if(ph.containsKey(Integer.parseInt(idPieza))) {
                         t2 = ph.get(Integer.parseInt(idPieza));
-                        ArrayList<Movimiento> result = t2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
-                        for(int k = 0; k < result.size(); ++k) {
-                            System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
-                        }
+                        //ArrayList<Movimiento> result = t2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
+                        //for(int k = 0; k < result.size(); ++k) {
+                            //System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
+                       // }
                     }
                     break;
                 case 5:

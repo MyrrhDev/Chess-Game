@@ -44,5 +44,5 @@ public abstract class Pieza {
 
     abstract boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]);
 
-    abstract ArrayList<Movimiento> movimientosPosibles(int posX, int posY, char estadoTablero[][]);
+    abstract ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]);
 }

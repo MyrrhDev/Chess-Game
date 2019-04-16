@@ -139,8 +139,8 @@ public class DriverAlfil {
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
                     //a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)
                     //buscar pos pieza
-                    if(resEsperado == a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
-                    else System.out.println("Fallo en el test");
+                    //if(resEsperado == a2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
+                    //else System.out.println("Fallo en el test");
                     /*boolean resMovimientoOk = a2.esMovimientoOk(move[0], move[1],estadoTablero,ph);
                     boolean result = (resEsperado == resMovimientoOk);
                     int iu = -1;*/
@@ -162,10 +162,10 @@ public class DriverAlfil {
                             }
                         }
                     }
-                    ArrayList<Movimiento> result = a2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
-                    for(int k = 0; k < result.size(); ++k) {
-                        System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
-                    }
+                    //ArrayList<Movimiento> result = a2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
+                    //for(int k = 0; k < result.size(); ++k) {
+                        //System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
+                    //}
                     System.out.println("Posicion actual: PosX: " + move[0] + " PosY: " + move[1]);
                     break;
                 case 5:

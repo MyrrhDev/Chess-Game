@@ -189,9 +189,10 @@ public class Reina extends Pieza {
         return false;
     }
 
-    private ArrayList<Movimiento> movimientosPosiblesDiagonales(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+
+    private ArrayList<Movimiento> movimientosPosiblesDiagonales(final Movimiento m, char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
-        int i = posX, j = posY;
+        int i = m.getFromX(), j = m.getFromY();
         boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
         // amiga o enemiga (en el caso particular de la torre)
 
@@ -199,46 +200,40 @@ public class Reina extends Pieza {
         --i;
         ++j;
         while(i >= 0 && j < 8 && !end) {
-            if(estadoTablero[i][j] == 0) {
-                Movimiento r = new Movimiento(i, j, '-');
+            if(estadoTablero[i][j] == '0') {
+                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j);
                 listResult.add(r);
             }
-            if(estadoTablero[i][j] != 0) {
-                if(piezasTablero.containsKey(estadoTablero[i][j])) {
-                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
-                    if(this.esNegra != p2.esNegra) {
-                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
-                        listResult.add(r);
-                        end = true;
-                    }
-                    else end = true;
+            else if(estadoTablero[i][j] != '0') {
+                if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
+                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j, estadoTablero[i][j]);
+                    listResult.add(r);
+                    end = true;
                 }
+                else end = true;
             }
             --i;
             ++j;
         }
 
         end = false;
-        i = posX;
-        j = posY;
+        i = m.getFromX();
+        j = m.getFromY();
         ++i;
         ++j;
         //diagonal inferior derecha
         while(i < 8 && j < 8 && !end) {
-            if(estadoTablero[i][j] == 0) {
-                Movimiento r = new Movimiento(i, j, '-');
+            if(estadoTablero[i][j] == '0') {
+                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j);
                 listResult.add(r);
             }
-            if(estadoTablero[i][j] != 0) {
-                if(piezasTablero.containsKey(estadoTablero[i][j])) {
-                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
-                    if(this.esNegra != p2.esNegra) {
-                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
-                        listResult.add(r);
-                        end = true;
-                    }
-                    else end = true;
+            else if(estadoTablero[i][j] != '0') {
+                if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
+                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j, estadoTablero[i][j]);
+                    listResult.add(r);
+                    end = true;
                 }
+                else end = true;
             }
             ++i;
             ++j;
@@ -246,163 +241,147 @@ public class Reina extends Pieza {
         //diagonal inferior izquierda
 
         end = false;
-        i = posX;
-        j = posY;
+        i = m.getFromX();
+        j = m.getFromY();
         ++i;
         --j;
         while(i < 8 && j < 8 && !end) {
-            if(estadoTablero[i][j] == 0) {
-                Movimiento r = new Movimiento(i, j, '-');
+            if(estadoTablero[i][j] == '0') {
+                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j);
                 listResult.add(r);
             }
-            if(estadoTablero[i][j] != 0) {
-                if(piezasTablero.containsKey(estadoTablero[i][j])) {
-                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
-                    if(this.esNegra != p2.esNegra) {
-                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
-                        listResult.add(r);
-                        end = true;
-                    }
-                    else end = true;
+            else if(estadoTablero[i][j] != '0') {
+                if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
+                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j, estadoTablero[i][j]);
+                    listResult.add(r);
+                    end = true;
                 }
+                else end = true;
             }
             ++i;
             --j;
         }
         //diagonal superior izquierda
         end = false;
-        i = posX;
-        j = posY;
+        i = m.getFromX();
+        j = m.getFromY();
         --i;
         --j;
         while(i >= 0 && j >= 0 && !end) {
-            if(estadoTablero[i][j] == 0) {
-                Movimiento r = new Movimiento(i, j, '-');
+            if(estadoTablero[i][j] == '0') {
+                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j);
                 listResult.add(r);
             }
-            if(estadoTablero[i][j] != 0) {
-                if(piezasTablero.containsKey(estadoTablero[i][j])) {
-                    Pieza p2 = piezasTablero.get(estadoTablero[i][j]);
-                    if(this.esNegra != p2.esNegra) {
-                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
-                        listResult.add(r);
-                        end = true;
-                    }
-                    else end = true;
+            else if(estadoTablero[i][j] != '0') {
+                if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
+                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j, estadoTablero[i][j]);
+                    listResult.add(r);
+                    end = true;
                 }
+                else end = true;
             }
             --i;
             --j;
         }
+
         return listResult;
     }
 
-    private ArrayList<Movimiento> movimientosPosiblesHorVert(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    private ArrayList<Movimiento> movimientosPosiblesHorVert(final Movimiento m, char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
         //debo mirar 4 posibles movimientos: arriba, abajo izquierda y derecha
-        int i = posX, j = posY;
+        int i = m.getFromX(), j = m.getFromY();
         boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
         // amiga o enemiga (en el caso particular de la torre)
 
         //arriba
         --i;
         while(i >= 0 && !end) {
-            if(estadoTablero[i][posY] == 0) {
-                Movimiento r = new Movimiento(i, posY, '-');
+            if(estadoTablero[i][m.getFromY()] == '0') {
+                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, m.getFromY());
                 listResult.add(r);
             }
-            if(estadoTablero[i][posY] != 0) {
-                if(piezasTablero.containsKey(estadoTablero[i][posY])) {
-                    Pieza p2 = piezasTablero.get(estadoTablero[i][posY]);
-                    if(this.esNegra != p2.esNegra) {
-                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
-                        listResult.add(r);
-                        end = true;
-                    }
-                    else end = true;
+            if(estadoTablero[i][m.getFromY()] != '0') {
+                if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][m.getFromY()])) {
+                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j, estadoTablero[i][m.getFromY()]);
+                    listResult.add(r);
+                    end = true;
                 }
+                else end = true;
             }
             --i;
         }
 
         end = false;
-        i = posX;
-        j = posY;
+        i = m.getFromX();
+        j = m.getFromY();
         //derecha
         ++j;
         while(j < 8 && !end) {
-            if(estadoTablero[posX][j] == 0) {
-                Movimiento r = new Movimiento(posX, j, '-');
+            if(estadoTablero[m.getFromX()][j] == '0') {
+                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), m.getFromX(), j);
                 listResult.add(r);
             }
-            if(estadoTablero[posX][j] != 0) {
-                if(piezasTablero.containsKey(estadoTablero[posX][j])) {
-                    Pieza p2 = piezasTablero.get(estadoTablero[posX][j]);
-                    if(this.esNegra != p2.esNegra) {
-                        Movimiento r = new Movimiento(posX, j, p2.getTipo());
-                        listResult.add(r);
-                        end = true;
-                    }
-                    else end = true;
+            if(estadoTablero[m.getFromX()][j] != '0') {
+                if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[m.getFromX()][j])) {
+                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), m.getFromX(), j, estadoTablero[m.getFromX()][j]);
+                    listResult.add(r);
+                    end = true;
                 }
+                else end = true;
             }
             ++j;
         }
 
         end = false;
-        i = posX;
-        j = posY;
+        i = m.getFromX();
+        j = m.getFromY();
         //abajo
         ++i;
         while(i < 8 && !end) {
-            if(estadoTablero[i][posY] == 0) {
-                Movimiento r = new Movimiento(i, posY, '-');
+            if(estadoTablero[i][m.getFromY()] == '0') {
+                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, m.getFromY());
                 listResult.add(r);
             }
-            if(estadoTablero[i][posY] != 0) {
-                if(piezasTablero.containsKey(estadoTablero[i][posY])) {
-                    Pieza p2 = piezasTablero.get(estadoTablero[i][posY]);
-                    if(this.esNegra != p2.esNegra) {
-                        Movimiento r = new Movimiento(i, posY, p2.getTipo());
-                        listResult.add(r);
-                        end = true;
-                    }
-                    else end = true;
+            if(estadoTablero[i][m.getFromY()] != '0') {
+                if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][m.getFromY()])) {
+                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, m.getFromY(), estadoTablero[i][m.getFromY()]);
+                    listResult.add(r);
+                    end = true;
                 }
+                else end = true;
             }
             ++i;
         }
 
         end = false;
-        i = posX;
-        j = posY;
+        i = m.getFromX();
+        j = m.getFromY();
         //izquierda
         --j;
         while(j >= 0 && !end) {
-            if(estadoTablero[posX][j] == 0) {
-                Movimiento r = new Movimiento(posX, j, '-');
+            if(estadoTablero[m.getFromX()][j] == '0') {
+                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), m.getFromX(), j);
                 listResult.add(r);
             }
-            if(estadoTablero[posX][j] != 0) {
-                if(piezasTablero.containsKey(estadoTablero[posX][j])) {
-                    Pieza p2 = piezasTablero.get(estadoTablero[posX][j]);
-                    if(this.esNegra != p2.esNegra) {
-                        Movimiento r = new Movimiento(posX, j, p2.getTipo());
-                        listResult.add(r);
-                        end = true;
-                    }
-                    else end = true;
+            if(estadoTablero[m.getFromX()][j] != '0') {
+                if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[m.getFromX()][j])) {
+                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), m.getFromX(), j, estadoTablero[m.getFromX()][j]);
+                    listResult.add(r);
+                    end = true;
                 }
+                else end = true;
             }
             --j;
         }
         return listResult;
     }
 
-    ArrayList<Movimiento> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    @Override
+    ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
-        ArrayList<Movimiento> ltemp1 = movimientosPosiblesDiagonales(posX, posY, estadoTablero, piezasTablero);
-        ArrayList<Movimiento> ltemp2 = movimientosPosiblesHorVert(posX, posY, estadoTablero, piezasTablero);
+        ArrayList<Movimiento> ltemp1 = movimientosPosiblesDiagonales(m, estadoTablero);
+        ArrayList<Movimiento> ltemp2 = movimientosPosiblesHorVert(m, estadoTablero);
         listResult.addAll(ltemp1);
         listResult.addAll(ltemp2);
         return listResult;

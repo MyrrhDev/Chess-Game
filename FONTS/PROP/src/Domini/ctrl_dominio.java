@@ -97,7 +97,7 @@ public class ctrl_dominio {
     }*/
 
     public static void crearPartida(Problema p, int jug1, int jug2) {
-        seleccionarJugadores(jug1, jug2, p.abreJuego);
+        //seleccionarJugadores(jug1, jug2, p.abreJuego); @TODO Arreglar el 3 atributo de la función
         t = new Tablero(p.getFEN(), p.abreJuego); //antigua FENToTablero
         turnosBlancas = turnosNegras = p.getN();
     }

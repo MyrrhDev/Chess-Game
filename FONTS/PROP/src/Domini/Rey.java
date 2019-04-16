@@ -15,7 +15,8 @@ public class Rey extends Pieza {
         this.firstMove = firstMove;
     }
 
-    ArrayList<Movimiento> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    @Override
+    ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]) {
         ArrayList<Movimiento> Movimiento = new ArrayList<>();
         return Movimiento;
     }

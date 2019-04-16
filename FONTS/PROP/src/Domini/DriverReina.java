@@ -147,8 +147,8 @@ public class DriverReina {
                         }
                         ++i;
                     }
-                    if(resEsperado == re2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
-                    else System.out.println("Fallo en el test");
+                    //if(resEsperado == re2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
+                    //else System.out.println("Fallo en el test");
                     System.out.println();
                     break;
                 case 4:

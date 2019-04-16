@@ -2,7 +2,6 @@ package Domini;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Caballo extends Pieza {
 
@@ -50,27 +49,25 @@ public class Caballo extends Pieza {
         return false;
     }
 
-    ArrayList<Movimiento> movimientosPosibles(int posX, int posY, int estadoTablero[][], HashMap<Integer, Pieza> piezasTablero) {
+    @Override
+    ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]) {
+        int posX = m.getFromX(), posY = m.getFromY();
         ArrayList<Movimiento> listResult = new ArrayList<>();
         final int movPos[][] = {{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
         final int sizei = 8, sizej = 2;
         for(int i = 0; i < sizei; ++i) {
             int moveX = posX + movPos[i][0], moveY = posY + movPos[i][1];
                 if(moveX >= 0 & moveX < 8 & moveY >= 0 & moveY < 8) {
-                    if(estadoTablero[moveX][moveY] == 0) {
-                        Movimiento r = new Movimiento(moveX, moveY, '-');
+                    if(estadoTablero[moveX][moveY] == '0') {
+                        Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), moveX, moveY);
                         listResult.add(r);
                     }
-                    if(estadoTablero[moveX][moveY] != 0) {
-                        if(piezasTablero.containsKey(estadoTablero[moveX][moveY])) {
-                            Pieza p2 = piezasTablero.get(estadoTablero[moveX][moveY]);
-                            if(this.esNegra != p2.esNegra) {
-                                Movimiento r = new Movimiento(moveX, moveY, p2.getTipo());
-                                listResult.add(r);
-                            }
+                    else if(estadoTablero[moveX][moveY] != '0') {
+                        if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[moveX][moveY])) {
+                            Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), moveX, moveY, estadoTablero[moveX][moveY]);
+                            listResult.add(r);
                         }
                     }
-
                 }
         }
         return listResult;

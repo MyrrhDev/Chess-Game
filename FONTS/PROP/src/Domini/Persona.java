@@ -31,8 +31,6 @@ public class Persona extends Jugador {
      */
     public Persona(int id, boolean esMaquina, String nombre, String contrasena, int pts) {
         setId(id);
-        setEsMaquina(esMaquina);
-
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.pts = pts;
