@@ -12,9 +12,8 @@ public class Caballo extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto torre con los parámetros esNegra, id, posX, posY
      */
-    public Caballo(boolean esNegra, Integer id) {
+    public Caballo(boolean esNegra) {
         this.esNegra = esNegra;
-        this.id = id;
         firstMove = false;
         if(this.esNegra) this.tipo = 'n';
         else this.tipo = 'N';

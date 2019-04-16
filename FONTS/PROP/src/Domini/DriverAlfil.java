@@ -92,12 +92,12 @@ public class DriverAlfil {
                         } else System.out.println("Valor incorrecto.");
                     }
                     Alfil a = iniPieza(esNegraInput);
-                    System.out.println("Objeto alfil creado con exito. Valores:");
+                    System.out.println("Objeto alfil creado con exito.");
                     break;
                 case 2:
                     System.out.println("Introduce el estado del tablero. Se espera:");
                     System.out.println("0 si la casilla no contiene ninguna pieza");
-                    System.out.println("id de la pieza si la casilla contiene la pieza");
+                    System.out.println("tipo de pieza, en formato FEN, que contiene la casilla");
                     try {
                         readTableroFromTerminal(sc);
                     }catch(Exception e) { }
