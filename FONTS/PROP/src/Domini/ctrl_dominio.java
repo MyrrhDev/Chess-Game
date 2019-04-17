@@ -103,8 +103,8 @@ public class ctrl_dominio {
     }
 
     public static void main(String[] args) {
-        DriverReina dr = new DriverReina();
-        dr.main(args);
+        DriverTorre dt = new DriverTorre();
+        dt.main(args);
     }
 
     /*

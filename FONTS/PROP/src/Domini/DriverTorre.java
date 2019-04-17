@@ -7,10 +7,9 @@ import java.util.Scanner;
 public class DriverTorre {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-    static private int estadoTablero[][] = new int[8][8];
-    static private int move[];
-    static private String posPieza[];
-    static HashMap<Integer, Pieza> ph;
+    static private char estadoTablero[][] = new char[8][8];
+    private static ArrayList<Pieza> PiezasBlancas;
+    private static ArrayList <Pieza> PiezasNegras;
 
     public DriverTorre() {
 
@@ -24,9 +23,9 @@ public class DriverTorre {
         int i = 0;
         while (i < 8) {
             String s = sc.nextLine();
-            String aux[] = s.split(" ");
+            char[] chr = s.toCharArray();
             for(int j = 0; j < 8; ++j) {
-                estadoTablero[i][j] = Integer.parseInt(aux[j]);
+                estadoTablero[i][j] = chr[j*2];
             }
             ++i;
         }
@@ -39,9 +38,10 @@ public class DriverTorre {
      * Pre: Cierto
      * Post: Devuelve un objeto Torre con atributos iguales a los parámetros de la funcion
      */
-
-    public static Torre iniPieza(boolean esNegra, Integer idPieza) {
-        Torre t = new Torre(esNegra, idPieza);
+    public static Torre iniPieza(boolean esNegra) {
+        Torre t = new Torre(esNegra);
+        if(esNegra) PiezasNegras.add(t);
+        else PiezasBlancas.add(t);
         return t;
     }
 
@@ -54,14 +54,14 @@ public class DriverTorre {
         System.out.println("    1- Alta objeto Pieza Torre");
         System.out.println("    2- Introducir estado de tablero");
         System.out.println("    3- Verificar función esMovimientoOK de la clase Torre");
-        System.out.println("    4- Probar función movimientosPosibles de la clase Torre");
+        System.out.println("    4- Verificar función movimientosPosibles de la clase Torre");
         System.out.println("    5- Salir");
     }
 
     public static void main(String[] args) {
-        ph = new HashMap<>();
-        estadoTablero = new int[8][8];
-        move = new int[2];
+        estadoTablero = new char[8][8];
+        PiezasBlancas = new ArrayList<Pieza>();
+        PiezasNegras = new ArrayList<Pieza>();
         Scanner sc = new Scanner(System.in);
         boolean driverIsRunning = true;
         while(driverIsRunning) {
@@ -78,18 +78,8 @@ public class DriverTorre {
                     boolean esNegraInput = false;
                     System.out.println("Introduce, en orden y por terminal, los siguientes valores:");
                     boolean inputOK = false;
-                    Integer idPiezaInput = -1;
                     while(!inputOK) {
-                        System.out.println("Identificacion de la pieza (int)");
-                        String s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            idPiezaInput = Integer.parseInt(s);
-                            inputOK = true;
-                        } else System.out.println("Valor incorrecto.");
-                    }
-                    inputOK = false;
-                    while(!inputOK) {
-                        System.out.println("Indica si el color de la pieza es negro (true) o es blanco (false)");
+                        System.out.println("Indica si el color de la pieza es negra (true) o es blanca (false)");
                         String s = sc.nextLine();
                         if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
                             if (s.equals("true")) { esNegraInput = true; inputOK = true; }
@@ -97,67 +87,69 @@ public class DriverTorre {
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    inputOK = false;
-                    int posXinput = -1, posYinput = -1;
-                    while(!inputOK) {
-                        System.out.println("Posición de la pieza en el tablero. Valores posibles: [(0,0) ... (7,7)]");
-                        String s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            posPieza = s.split(" ");
-                            posXinput = Integer.parseInt(posPieza[0]);
-                            posYinput = Integer.parseInt(posPieza[1]);
-                            if(posXinput >= 0 && posYinput >= 0 && posXinput < 8 && posYinput < 8) inputOK = true;
-                            else System.out.println("La posicion de la pieza en el tablero debe estar entre (0,0) y (7,7)");
-                        } else System.out.println("Valor incorrecto.");
-                    }
-                    Torre t = iniPieza(esNegraInput, idPiezaInput);
-                    System.out.println("Objeto torre creado con exito. Valores:");
-                    ph.put(t.getId(), t);
+                    Torre t = iniPieza(esNegraInput);
+                    System.out.println("Objeto reina creado con exito.");
                     break;
                 case 2:
                     System.out.println("Introduce el estado del tablero. Se espera:");
                     System.out.println("0 si la casilla no contiene ninguna pieza");
-                    System.out.println("id de la pieza si la casilla contiene la pieza");
+                    System.out.println("tipo de pieza, en formato FEN, que contiene la casilla");
                     try {
                         readTableroFromTerminal(sc);
                     }catch(Exception e) { }
                     break;
                 case 3:
-                    System.out.println("Introduce la id de la pieza a probar su movimiento");
-                    String idPieza = sc.nextLine();
-                    Pieza t2 = new Torre();
-                    if(ph.containsKey(Integer.parseInt(idPieza))) {
-                        t2 = ph.get(Integer.parseInt(idPieza));
+                    System.out.println("Introduce el movimiento a realizar (posicion inicial de la pieza y posicion final, separado por un espacio)");
+                    String tmp = sc.nextLine();
+                    String aux[] = tmp.split(" ");
+                    Movimiento m = new Movimiento(Integer.parseInt(aux[0]), Integer.parseInt(aux[1]), Integer.parseInt(aux[2]), Integer.parseInt(aux[3]));
+                    Pieza test = null;
+                    if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux[0])][Integer.parseInt(aux[1])])) { //pieza blanca
+                        for(int i = 0; i < PiezasBlancas.size(); ++i) {
+                            if(PiezasBlancas.get(i).getTipo() == 'R') test = PiezasBlancas.get(i);
+                        }
                     }
-                    else System.out.println("id incorrecta");
-                    System.out.println("Introduce la posicion donde debe moverse [(0,0) .. (7,7)]");
-                    String m = sc.nextLine();
-                    String aux[] = m.split(" ");
-                    move[0] = Integer.parseInt(aux[0]);
-                    move[1] = Integer.parseInt(aux[1]);
-                    System.out.println("Que resultado esperas (true/false)?");
-                    boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    //if(resEsperado == t2.esMovimientoOk(move[0], move[1],estadoTablero,ph)) System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
-                    //else System.out.println("Fallo en el test");
+                    else { //Pieza negra
+                        for(int i = 0; i < PiezasNegras.size(); ++i) {
+                            if(PiezasNegras.get(i).getTipo() == 'r') test = PiezasNegras.get(i);
+                        }
+                    }
+                    if(test == null) { //no existe la pieza a probar
+                        System.out.println("No existe ninguna pieza en la posición indicada");
+                    }
+                    else {
+                        System.out.println("Que resultado esperas (true/false)?");
+                        boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
+                        if(resEsperado == test.esMovimientoOk(m, estadoTablero)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
+                        else System.out.println("Fallo en el test");
+                    }
                     System.out.println();
                     break;
                 case 4:
-                    idPieza = sc.nextLine();
-                    for(int i = 0; i < 8; ++i) {
-                        for(int j = 0; j < 8; ++j) {
-                            if(Integer.parseInt(idPieza) == estadoTablero[i][j]) {
-                                posPieza[0] = String.valueOf(i);
-                                posPieza[1] = String.valueOf(j);
-                            }
+                    System.out.println("Introduce, por terminal, la posicion de la pieza la cual quieres todos sus posibles movimientos");
+                    String tmp2 = sc.nextLine();
+                    String aux2[] = tmp2.split(" ");
+                    Movimiento m2 = new Movimiento(Integer.parseInt(aux2[0]), Integer.parseInt(aux2[1]));
+                    Pieza test2 = null;
+                    if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux2[0])][Integer.parseInt(aux2[1])])) { //pieza blanca
+                        for(int i = 0; i < PiezasBlancas.size(); ++i) {
+                            if(PiezasBlancas.get(i).getTipo() == 'R') test2 = PiezasBlancas.get(i);
                         }
                     }
-                    t2 = new Torre();
-                    if(ph.containsKey(Integer.parseInt(idPieza))) {
-                        t2 = ph.get(Integer.parseInt(idPieza));
-                        //ArrayList<Movimiento> result = t2.movimientosPosibles(Integer.parseInt(posPieza[0]), Integer.parseInt(posPieza[1]), estadoTablero, ph);
-                        //for(int k = 0; k < result.size(); ++k) {
-                            //System.out.println(result.get(k).getX() + " " + result.get(k).getY() + " " + result.get(k).getP());
-                       // }
+                    else { //Pieza negra
+                        for(int i = 0; i < PiezasNegras.size(); ++i) {
+                            if(PiezasNegras.get(i).getTipo() == 'r') test2 = PiezasNegras.get(i);
+                        }
+                    }
+                    if(test2 == null) { //no existe la pieza a probar
+                        System.out.println("No existe ninguna pieza en la posición indicada");
+                    }
+                    else {
+                        System.out.println("Estos son todos los posibles movimientos de la pieza Reina:");
+                        ArrayList<Movimiento> res = test2.movimientosPosibles(m2, estadoTablero);
+                        for(int i = 0; i < res.size(); ++i) {
+                            System.out.println("("+ "FromX: " + res.get(i).getFromX() + " FromY: " + res.get(i).getFromY() + " ToX: " + res.get(i).getToX() + " ToY: " + res.get(i).getToY() + " Pieza: " + res.get(i).getP() +")");
+                        }
                     }
                     break;
                 case 5:

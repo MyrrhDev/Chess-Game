@@ -12,9 +12,8 @@ public class Torre extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto torre con los parámetros esNegra, id, posX, posY
      */
-    public Torre(boolean esNegra, Integer id) {
+    public Torre(boolean esNegra) {
         this.esNegra = esNegra;
-        this.id = id;
         if(this.esNegra) this.tipo = 'r';
         else this.tipo = 'R';
     }
