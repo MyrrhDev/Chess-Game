@@ -30,7 +30,6 @@ public class Persona extends Jugador {
      * Post: Se crea un objeto Persona con los parámetros
      */
     public Persona(int id, boolean esMaquina, String nombre, String contrasena, int pts) {
-        setId(id);
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.pts = pts;
@@ -56,7 +55,6 @@ public class Persona extends Jugador {
 
 /*
     boolean verificarLoginPersona() {
-
         return false;
     }*/
 
@@ -94,6 +92,14 @@ public class Persona extends Jugador {
     }
 */
 
+    /*
+    Devuelve el nuevo tablero después de que la persona haya hecho el movimiento
+     */
+    public Tablero HJuega(Tablero t, final Movimiento m) {
+        Tablero tab = new Tablero();
+        return tab;
+    }
+
 
     public void actualizarPuntuacionPersona(int newPoints) {
         this.pts += newPoints;
@@ -101,21 +107,13 @@ public class Persona extends Jugador {
 
     /*
     void nuevoProblema() {
-
     }
-
     void listarProblemas() {
-
     }
-
     void abandonarPartida() {}
-
     void editarProblema() {
-
     }
-
     void borrarProblema() {
-
     }*/
 
 }
