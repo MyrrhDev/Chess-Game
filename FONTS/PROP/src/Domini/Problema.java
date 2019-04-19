@@ -1,15 +1,12 @@
 package Domini;
 
-import java.util.Date;
-
 public class Problema {
     public String problema;
     int N;
-    public boolean abreJuego; // true -> empiezan blancas, false -> empiezan negras
+    public boolean iniJuegoBlancas; // true -> empiezan blancas, false -> empiezan negras
 
     //constructoras
     public Problema() {
-
     }
 
     /*
@@ -23,13 +20,13 @@ public class Problema {
         this.problema = FEN.substring(0, newLength);
     }
 
-    public void setAbreJuego(String FEN) {
+    public void setIniJuegoBlancas(String FEN) {
         int i = FEN.indexOf('w');
         if(i == -1) { //no existe el carácter w, verificamos que efectivamente empiezan las negras atacando
             i = FEN.indexOf('b');
         }
-        if(FEN.charAt(i) == 'w') abreJuego = true;
-        else abreJuego = false;
+        if(FEN.charAt(i) == 'w') iniJuegoBlancas = true;
+        else iniJuegoBlancas = false;
     }
 
     public String getFEN() {
@@ -44,7 +41,7 @@ public class Problema {
         this.N = N;
     }
 
-    public boolean getAbreJuego() {
-        return this.abreJuego;
+    public boolean getIniJuegoBlancas() {
+        return this.iniJuegoBlancas;
     }
 }

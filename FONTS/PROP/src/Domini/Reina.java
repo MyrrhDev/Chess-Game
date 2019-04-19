@@ -12,11 +12,13 @@ public class Reina extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto torre con los parámetros esNegra, id, posX, posY
      */
-    public Reina(boolean esNegra) {
+    public Reina(boolean esNegra, int posX, int posY) {
         this.esNegra = esNegra;
         firstMove = false;
         if(this.esNegra) this.tipo = 'q';
         else this.tipo = 'Q';
+        this.posX = posX;
+        this.posY = posY;
     }
 
     /*
@@ -24,7 +26,7 @@ public class Reina extends Pieza {
      * Post: Verifica que el movimiento horizontal o vertical sea correcto
      */
     boolean movimientoHorizontalVerticalOK(final Movimiento m, char estadoTablero[][]) {
-        int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = m.getFromX(), posY = m.getFromY();
         int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
@@ -87,7 +89,7 @@ public class Reina extends Pieza {
      * Post: Verifica que el movimiento diagonal sea correcto
      */
     boolean movimientoDiagonalOK(final Movimiento m, final char estadoTablero[][]) {
-        int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = m.getFromX(), posY = m.getFromY();
         int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
@@ -175,7 +177,7 @@ public class Reina extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, char estadoTablero[][]) {
-        int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = m.getFromX(), posY = m.getFromY();
         int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {

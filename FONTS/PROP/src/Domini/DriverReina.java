@@ -36,12 +36,12 @@ public class DriverReina {
      * Pre: Cierto
      * Post: Devuelve un objeto Torre con atributos iguales a los parámetros de la funcion
      */
-    public static Reina iniPieza(boolean esNegra) {
+    /*public static Reina iniPieza(boolean esNegra) {
         Reina re = new Reina(esNegra);
         if(esNegra) PiezasNegras.add(re);
         else PiezasBlancas.add(re);
         return re;
-    }
+    }*/
 
     /*
      * Pre: Cierto
@@ -85,7 +85,7 @@ public class DriverReina {
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Reina r = iniPieza(esNegraInput);
+                    //Reina r = iniPieza(esNegraInput);
                     System.out.println("Objeto reina creado con exito.");
                     break;
                 case 2:

@@ -38,12 +38,12 @@ public class DriverPeon {
      * Pre: Cierto
      * Post: Devuelve un objeto Peon con atributos iguales a los parámetros de la funcion
      */
-    public static Peon iniPieza(boolean esNegra, boolean firstMove) {
+    /*public static Peon iniPieza(boolean esNegra, boolean firstMove) {
         Peon t = new Peon(esNegra, firstMove);
         if(esNegra) PiezasNegras.add(t);
         else PiezasBlancas.add(t);
         return t;
-    }
+    }*/
 
     /*
      * Pre: Cierto
@@ -89,7 +89,7 @@ public class DriverPeon {
                     }
                     System.out.println("Es el primer movimiento del peon (true/false)?");
                     boolean firstMove = Boolean.parseBoolean(sc.nextLine());
-                    Peon p = iniPieza(esNegraInput, firstMove);
+                    //Peon p = iniPieza(esNegraInput, firstMove);
                     System.out.println("Objeto peón creado con exito.");
                     break;
                 case 2:

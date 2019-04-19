@@ -33,9 +33,9 @@ public class DriverProblema {
                     //creo un problema
                     String tmp = sc.nextLine();
                     Problema p = new Problema();
-                    p.setAbreJuego(tmp);
+                    p.setIniJuegoBlancas(tmp);
                     p.setFEN(tmp);
-                    System.out.println("Problema creado con éxito, valores: " + p.getFEN() + ' ' + p.getAbreJuego());
+                    System.out.println("Problema creado con éxito, valores: " + p.getFEN() + ' ' + p.getIniJuegoBlancas());
                     break;
                 case 2:
                     break;

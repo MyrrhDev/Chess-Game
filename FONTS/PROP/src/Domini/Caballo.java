@@ -12,11 +12,13 @@ public class Caballo extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto torre con los parámetros esNegra, id, posX, posY
      */
-    public Caballo(boolean esNegra) {
+    public Caballo(boolean esNegra, int posX, int posY) {
         this.esNegra = esNegra;
         firstMove = false;
         if(this.esNegra) this.tipo = 'n';
         else this.tipo = 'N';
+        this.posX = posX;
+        this.posY = posY;
     }
 
     /*
@@ -27,7 +29,7 @@ public class Caballo extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
-        int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = m.getFromX(), posY = m.getFromY();
         int movX = m.getToX(), movY = m.getToY();
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
@@ -50,7 +52,7 @@ public class Caballo extends Pieza {
 
     @Override
     ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]) {
-        int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = m.getFromX(), posY = m.getFromY();
         ArrayList<Movimiento> listResult = new ArrayList<>();
         final int movPos[][] = {{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
         final int sizei = 8, sizej = 2;

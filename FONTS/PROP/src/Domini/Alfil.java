@@ -12,13 +12,15 @@ public class Alfil extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto alfil con los parámetros esNegra, id, posX, posY
      */
-    public Alfil(boolean esNegra) {
+    public Alfil(boolean esNegra, int posX, int posY) {
         this.esNegra = esNegra;
         if(this.esNegra) {
             this.tipo = 'b';
         }
         else this.tipo = 'B';
         this.firstMove = false;
+        this.posX = posX;
+        this.posY = posY;
     }
 
     /*
@@ -29,7 +31,7 @@ public class Alfil extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
-        int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = m.getFromX(), posY = m.getFromY();
         int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
@@ -112,7 +114,7 @@ public class Alfil extends Pieza {
     @Override
     ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
-        int i = m.getFromX(), j = m.getFromY();
+        int i = this.posX, j = this.posY;
         boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
         // amiga o enemiga (en el caso particular de la torre)
 

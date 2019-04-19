@@ -18,13 +18,15 @@ public class Peon extends Pieza {
     /* Pre: Cierto
      * Post: Se crea un objeto peon con los parámetros esNegra, id, posX, posY
      */
-    public Peon(boolean esNegra, boolean firstMove) {
+    public Peon(boolean esNegra, boolean firstMove, int posX, int posY) {
         this.esNegra = esNegra;
         if(this.esNegra) {
             tipo = 'p';
         }
         else tipo = 'P';
         this.firstMove = firstMove;
+        this.posX = posX;
+        this.posY = posY;
     }
 
 
@@ -37,14 +39,14 @@ public class Peon extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
-        int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = m.getFromX(), posY = m.getFromY();
         int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
             int auxY = movY - posY;
 
-            //if (movX < posX && movY != posY) { //movimiento alguno valido
+            if (!this.esNegra && movX < posX && movY != posY) { //movimiento alguno valido (soy negra)
                 //Anyone to kill?  //Diagonal solo si se puede matar
                 if (auxX == -1 && auxY == -1) { //movimiento hacia esquina superior izquierda
                     if (estadoTablero[movX][movY] != '0') {
@@ -70,7 +72,33 @@ public class Peon extends Pieza {
                         }
                     } else return false;
                 } else return false; //la pieza no se ha movido realmente
-            //} else return false;
+            }
+            else {
+                if (auxX == 1 && auxY == 1) { //movimiento hacia esquina inferior izquierda
+                    if (estadoTablero[movX][movY] != '0') {
+                        //me encuentro una pieza en mi camino
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
+                        else return true;
+                    } else return false;
+                } else if (auxX == 1 && auxY == 1) { //movimiento hacia esquina inferior derecha
+                    if (estadoTablero[movX][movY] != '0') {
+                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
+                        else return true;
+                    } else return false;
+                } else if (movY == posY && movX > posX) { //mov hacia adelante
+                    if (firstMove && auxY == 2) {
+                        if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
+                            return true;
+                        }
+                    } else if (auxY == 2 && !firstMove) return false;
+
+                    else if (auxX == 1) {
+                        if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
+                            return true;
+                        }
+                    } else return false;
+                } else return false; //la pieza no se ha movido realmente
+            }
         }
         return false;
     }
@@ -78,7 +106,7 @@ public class Peon extends Pieza {
     @Override
     ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
-        int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = m.getFromX(), posY = m.getFromY();
         if(this.esNegra) {
             if(posX+1 < 8 & estadoTablero[posX+1][posY] == '0') { //si no hay nada
                 Movimiento r = new Movimiento(m.getFromX(), m.getFromY(),posX+1, posY);

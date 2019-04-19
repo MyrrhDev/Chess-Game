@@ -38,12 +38,12 @@ public class DriverTorre {
      * Pre: Cierto
      * Post: Devuelve un objeto Torre con atributos iguales a los parámetros de la funcion
      */
-    public static Torre iniPieza(boolean esNegra) {
+    /*public static Torre iniPieza(boolean esNegra) {
         Torre t = new Torre(esNegra);
         if(esNegra) PiezasNegras.add(t);
         else PiezasBlancas.add(t);
         return t;
-    }
+    }*/
 
     /*
      * Pre: Cierto
@@ -87,7 +87,7 @@ public class DriverTorre {
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Torre t = iniPieza(esNegraInput);
+                    //Torre t = iniPieza(esNegraInput);
                     System.out.println("Objeto reina creado con exito.");
                     break;
                 case 2:

@@ -1,8 +1,5 @@
 package Domini;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class ctrl_dominio {
     private static Jugador j1, j2;
     private static Tablero t;
@@ -27,11 +24,12 @@ public class ctrl_dominio {
      Si colorJug1 true entonces blancas abren juego y Jug1 es blanco
      Si colorJug1 false entonces
      */
+
     public static void seleccionarJugadores(int jug1, int jug2, boolean colorJug1) {
         switch(jug1) {
             case 1:
-                if(colorJug1) j1 = new Persona(false); //blanca
-                else j1 = new Persona(true); //negra
+                //if(colorJug1) j1 = new Persona(); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
+                //else j1 = new Persona(true); //negra
                 break;
             case 2:
                 //j1 = new M1();
@@ -42,8 +40,8 @@ public class ctrl_dominio {
         }
         switch(jug2) {
             case 1:
-                if(colorJug1) j1 = new Persona(true); //negra porque jug1 blanca
-                else j1 = new Persona(false); //blanca porque jug1 negra
+                //if(colorJug1) j1 = new Persona(true); //negra porque jug1 blanca
+                //else j1 = new Persona(false); //blanca porque jug1 negra
                 break;
             case 2:
                 //j2 = new M1();
@@ -79,7 +77,11 @@ public class ctrl_dominio {
 
     public static void jugar() throws Exception {
         if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
-            if (j1.isEsMaquina() && j1.isEsNegro() && !t.isSiguienteMovimiento()); //@TODO: Aquí iría j1 haz tu movimiento (MINIMAX)
+            if (j1.isEsMaquina() && j1.isEsNegro() && !t.isSiguienteMovimiento()) {
+                /*try {
+                    j1.jugar(); // paso tablero y N
+                } catch (e) {}*/
+            }
             else if (j1.isEsMaquina() && !j1.isEsNegro() && t.isSiguienteMovimiento());
             else if (true); //@TODO: Aqí iría j2 haz tu movimiento (MINIMAX)
         }
@@ -147,8 +149,8 @@ public class ctrl_dominio {
             try {
                 Movimiento m = new Movimiento(posX, posY, movX, movY);
                 //t = j2.HJuega(t, m); //no lo detecta
-                Persona p = new Persona(false);
-                t = p.HJuega(t, m); //si que lo detecta
+                //Persona p = new Persona(false);
+                //t = p.HJuega(t, m); //si que lo detecta
                 //Si implementamos una función en jugador que sea HJuega si que lo detectaria desde jugador
                 //si implementamos una función abstracta en jugador que sea M1Juega y otra HJuega desde jugador
                 //y hacemos override en las clases abstractas entonces si que detectaria HJuega desde jugador
@@ -160,8 +162,8 @@ public class ctrl_dominio {
     }
 
     public static void crearPartida(Problema p, int jug1, int jug2) {
-        seleccionarJugadores(jug1, jug2, p.getAbreJuego());
-        t = new Tablero(p.getFEN(), p.abreJuego); //antigua FENToTablero
+        seleccionarJugadores(jug1, jug2, p.getIniJuegoBlancas());
+        //t = new Tablero(p.getFEN(), p.iniJuegoBlancas, j1, j2); //antigua FENToTablero
         turnosBlancas = turnosNegras = p.getN();
     }
 

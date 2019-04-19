@@ -75,12 +75,12 @@ public class DriverCtrl_dominio {
                     //creo un problema
                     tmp = sc.nextLine();
                     p = new Problema();
-                    p.setAbreJuego(tmp);
+                    p.setIniJuegoBlancas(tmp);
                     p.setFEN(tmp);
                     System.out.println("Introduce el valor de N:");
                     p.setN(Integer.parseInt(sc.nextLine()));
                     if (p != null)
-                        System.out.println("Problema creado con éxito, valores: " + p.getFEN() + ' ' + p.getAbreJuego() + ' ' + p.getN());
+                        System.out.println("Problema creado con éxito, valores: " + p.getFEN() + ' ' + p.getIniJuegoBlancas() + ' ' + p.getN());
                     else System.out.println("Error");
                     break;
                 case 2:
@@ -100,7 +100,7 @@ public class DriverCtrl_dominio {
                         int turnosBancas = p.getN(), turnosNegras = p.getN();
                         Exception ex1 = new Exception("J1 ha perdido");
                         pintaTablero();
-                        while (turnosBancas >= 0) {
+                        while (turnosBancas >= 0 ) {
                             //quien juega
                             //Si false: Negras
                             //Si true: Blancas

@@ -39,12 +39,12 @@ public class DriverCaballo {
      * Post: Devuelve un objeto Caballo con atributos iguales a los parámetros de la funcion
      */
 
-    public static Caballo iniPieza(boolean esNegra) {
+    /*public static Caballo iniPieza(boolean esNegra) {
         Caballo t = new Caballo(esNegra);
         if(esNegra) PiezasNegras.add(t);
         else PiezasNegras.add(t);
         return t;
-    }
+    }*/
 
     /*
      * Pre: Cierto
@@ -88,7 +88,7 @@ public class DriverCaballo {
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Caballo c = iniPieza(esNegraInput);
+                    //Caballo c = iniPieza(esNegraInput);
                     System.out.println("Objeto caballo creado con exito.");
                     break;
                 case 2:

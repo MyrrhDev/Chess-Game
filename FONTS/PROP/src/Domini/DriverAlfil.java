@@ -41,12 +41,12 @@ public class DriverAlfil {
      * Post: Devuelve un objeto Alfil con atributos iguales a los parámetros de la funcion
      */
 
-    public static Alfil iniPieza(boolean esNegra) {
+    /*public static Alfil iniPieza(boolean esNegra) {
         Alfil a = new Alfil(esNegra);
         if(esNegra) PiezasNegras.add(a);
         else PiezasBlancas.add(a);
         return a;
-    }
+    }*/
 
     /*
      * Pre: Cierto
@@ -91,7 +91,7 @@ public class DriverAlfil {
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
                     }
-                    Alfil a = iniPieza(esNegraInput);
+                    //Alfil a = iniPieza(esNegraInput);
                     System.out.println("Objeto alfil creado con exito.");
                     break;
                 case 2:
