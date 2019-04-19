@@ -3,7 +3,7 @@ package Domini;
 public class Evaluacion {
     //Done for now
 
-    private Evaluacion() {
+    public Evaluacion() {
     }
 
     public int evaluar(Tablero tablero, int depth) {

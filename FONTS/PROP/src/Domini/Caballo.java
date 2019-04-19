@@ -19,6 +19,7 @@ public class Caballo extends Pieza {
         else this.tipo = 'N';
         this.posX = posX;
         this.posY = posY;
+        pts = 3;
     }
 
     /*

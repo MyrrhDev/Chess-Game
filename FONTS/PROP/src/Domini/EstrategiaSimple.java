@@ -5,7 +5,7 @@ public final class EstrategiaSimple {
     //Estrategia Simple NO extiende Maquina...
     //Done for now...
 
-    private Evaluacion evaluacion;
+    private Evaluacion evaluacion = new Evaluacion();
     private final int profundidadDada;
 
     public EstrategiaSimple (final int profundidad) {

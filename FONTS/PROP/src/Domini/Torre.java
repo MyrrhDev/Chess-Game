@@ -18,6 +18,7 @@ public class Torre extends Pieza {
         else this.tipo = 'R';
         this.posX = posX;
         this.posY = posY;
+        pts = 5;
     }
 
     /*
@@ -61,8 +62,9 @@ public class Torre extends Pieza {
                 //abajo
                 if(movX > posX) {
                     for (int i = posX + 1; i < movX; ++i)
-                        if (estadoTablero[i][movY] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][movY] != '0') {//me encuentro una pieza en mi camino
                             return false;
+                        }
                     if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;

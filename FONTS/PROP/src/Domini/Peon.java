@@ -28,6 +28,7 @@ public class Peon extends Pieza {
         this.firstMove = firstMove;
         this.posX = posX;
         this.posY = posY;
+        pts = 1;
     }
 
 

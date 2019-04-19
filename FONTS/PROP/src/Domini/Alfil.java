@@ -3,7 +3,6 @@ package Domini;
 import java.util.ArrayList;
 
 public class Alfil extends Pieza {
-    int pts = 3;
 
     public Alfil() {
         this.firstMove = false;
@@ -21,6 +20,7 @@ public class Alfil extends Pieza {
         this.firstMove = false;
         this.posX = posX;
         this.posY = posY;
+        pts = 3;
     }
 
     /*

@@ -85,6 +85,7 @@ public class ctrl_dominio {
                     t = j1.jugar(t,n); // paso tablero y N
                 } catch(Exception e) {
                     //hay jaque mate o has perdido
+                    System.out.println(e);
                 }
 
             }
@@ -93,6 +94,7 @@ public class ctrl_dominio {
                     t = j2.jugar(t,n); // paso tablero y N
                 } catch(Exception e) {
                     //hay jaque mate o has perdido
+                    System.out.println(e);
                 }
 
             }
@@ -136,6 +138,7 @@ public class ctrl_dominio {
             }
             catch(Exception e) {
                 //hay jaque mate o has perdido
+                System.out.println(e);
             }
             //tablero debe actualizar el turno
         }
@@ -146,6 +149,7 @@ public class ctrl_dominio {
             }
             catch(Exception e) {
                 //hay jaque mate o has perdido
+                System.out.println(e);
             }
         }
         if(!j2.isEsMaquina() & t.getTurnoBlancas() & !j2.isEsNegro()) { //tira jugador 1
@@ -155,6 +159,7 @@ public class ctrl_dominio {
             }
             catch(Exception e) {
                 //hay jaque mate o has perdido
+                System.out.println(e);
             }
         }
         if(!j2.isEsMaquina() & t.getTurnoBlancas() & !j2.isEsNegro()) { //tira jugador 1
@@ -169,6 +174,7 @@ public class ctrl_dominio {
             }
             catch(Exception e) {
                 //hay jaque mate o has perdido
+                System.out.println(e);
             }
         }
     }

@@ -19,6 +19,7 @@ public class Reina extends Pieza {
         else this.tipo = 'Q';
         this.posX = posX;
         this.posY = posY;
+        pts = 9;
     }
 
     /*

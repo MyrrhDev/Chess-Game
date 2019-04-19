@@ -16,6 +16,7 @@ public class Persona extends Jugador {
         boolean sePuede = tablero.movimientoHumano(movimiento);
 
         if(!sePuede) throw new Exception("No se puede ejecutar el movimiento");
+        tablero.setTurnoBlancas(false);
         return tablero;
     }
 

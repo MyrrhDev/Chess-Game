@@ -4,6 +4,7 @@ public class Problema {
     public String problema;
     int N;
     public boolean iniJuegoBlancas; // true -> empiezan blancas, false -> empiezan negras
+    Evaluacion evaluacion = new Evaluacion();
 
     //constructoras
     public Problema() {
@@ -44,5 +45,81 @@ public class Problema {
 
     public boolean getIniJuegoBlancas() {
         return this.iniJuegoBlancas;
+    }
+
+    public boolean verificarProblema() {
+        //1. Nos va a entrar un FEN, queremos el tablero. Llamamos al tablero construido por el FEN
+        //2. Verificar problema significa que haya mate en n o menos movimientos del jugador que ataca
+        //3. estrategiaSimple(nuevo tablero creado, true);
+    }
+
+    public Movimiento estrategiaSimple(Tablero tablero, boolean maxAttackingPlayer) {
+        Movimiento mejorMov = new Movimiento(-1,-1, -1, -1);
+        int puntosAhora;
+
+        //Para todos las piezas+movimientos posibles
+        for (final Movimiento movimiento : tablero.getAttackPlayer(maxAttackingPlayer).getPosiblesMovimientos()) {
+
+            //Probamos de hacer el movimiento en un tablero nuevo creado en la clase de Movimiento Prueba
+            MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+
+            if (pruebaMovimiento.isSePuede()) {
+                puntosAhora = min(pruebaMovimiento.getaTablero(), (this.N*2) - 1);
+            }
+        }
+        return mejorMov;
+    }
+
+
+    private int min(Tablero tablero, int depth) {
+        if (depth == 0) {
+            return this.evaluacion.evaluar(tablero, depth);
+        }
+        if(gameOver(tablero)) {
+            return this.evaluacion.evaluar(tablero, depth);
+            //aqui en una var booleana de la classe canviar-la a true
+        }
+        int menorPuntos = Integer.MAX_VALUE;
+
+        for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
+
+            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+
+            if (pruebaMovimiento.isSePuede()) {
+                final int puntosAhora = max(pruebaMovimiento.getaTablero(), depth - 1);
+                if (puntosAhora <= menorPuntos) {
+                    menorPuntos = puntosAhora;
+                }
+            }
+        }
+        return menorPuntos;
+    }
+
+
+    private int max(Tablero tablero, int depth) {
+        if (depth == 0) {
+            return this.evaluacion.evaluar(tablero, depth);
+        }
+        if (gameOver(tablero)) {
+            return this.evaluacion.evaluar(tablero, depth);
+        }
+        int mayorPuntos = Integer.MIN_VALUE;
+
+        for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
+
+            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            if (pruebaMovimiento.isSePuede()) {
+                final int puntosAhora = min(pruebaMovimiento.getaTablero(), depth - 1);
+                if (puntosAhora >= mayorPuntos) {
+                    mayorPuntos = puntosAhora;
+                }
+            }
+        }
+        return mayorPuntos;
+    }
+
+
+    private static boolean gameOver(final Tablero tablero) {
+        return tablero.esSuTurno().isEnJaqueMate() || tablero.esSuTurno().estaEstancado();
     }
 }

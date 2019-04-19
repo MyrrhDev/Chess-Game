@@ -111,8 +111,8 @@ public class DriverCtrl_dominio {
                         System.out.println("Partida creada con éxito");
                         pintaTablero();
                         int n = p.getN();
-                        while(n >= 0) {
-                            try {
+                        while(n > 0) {
+                            try { //TODO: Si introduce un movimiento ilegal propagar la excepcion y pedirle otra vez un movimiento
                                 //juega humano
                                 System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
                                 String tmp [] = sc.nextLine().split(" ");
@@ -123,8 +123,13 @@ public class DriverCtrl_dominio {
                             }
                             try {
                                 //juega maquina
+                                System.out.println("Juega maquina");
+                                c.jugar(n);
+                                System.out.println("Movimiento:");
+                                pintaTablero();
                             } catch (Exception e) {
                             }
+                            --n;
                         }
                     }
                     else if((aux[0].equals("2") && aux[1].equals("1"))) {

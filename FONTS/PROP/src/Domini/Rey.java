@@ -17,6 +17,7 @@ public class Rey extends Pieza {
         }
         else this.tipo = 'K';
         this.firstMove = false;
+        pts = 1000;
     }
 
     @Override
