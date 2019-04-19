@@ -25,14 +25,15 @@ public class ctrl_dominio {
      Si colorJug1 false entonces
      */
 
-    public static void seleccionarJugadores(int jug1, int jug2, boolean colorJug1) {
+    public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
         switch(jug1) {
             case 1:
-                //if(colorJug1) j1 = new Persona(); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
-                //else j1 = new Persona(true); //negra
+                if(j1EsBlanco) j1 = new Persona(false, false, true); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
+                else j1 = new Persona(false, true, true); //negra
                 break;
             case 2:
-                //j1 = new M1();
+                if(j1EsBlanco) j1 = new Maquina(true, false, true);
+                else j1 = new Maquina(true, true, true);
                 break;
             case 3:
                 //j1 = new M2();
@@ -40,10 +41,12 @@ public class ctrl_dominio {
         }
         switch(jug2) {
             case 1:
-                //if(colorJug1) j1 = new Persona(true); //negra porque jug1 blanca
-                //else j1 = new Persona(false); //blanca porque jug1 negra
+                if(j1EsBlanco) j1 = new Persona(false, false, false); //negra porque jug1 blanca
+                else j1 = new Persona(false, true, false); //blanca porque jug1 negra
                 break;
             case 2:
+                if(j1EsBlanco) j1 = new Maquina(true, false, false);
+                else j1 = new Maquina(true, true, false);
                 //j2 = new M1();
                 break;
             case 3:
@@ -55,7 +58,7 @@ public class ctrl_dominio {
     //Si false: Negras
     //Si true: Blancas
     public boolean getTurno() {
-        return this.t.isSiguienteMovimiento();
+        return this.t.getTurnoBlancas();
     }
 
     public boolean isJ1Blancas() {
@@ -163,8 +166,8 @@ public class ctrl_dominio {
 
     public static void crearPartida(Problema p, int jug1, int jug2) {
         seleccionarJugadores(jug1, jug2, p.getIniJuegoBlancas());
-        //t = new Tablero(p.getFEN(), p.iniJuegoBlancas, j1, j2); //antigua FENToTablero
-        turnosBlancas = turnosNegras = p.getN();
+        t = new Tablero(j1, j2); //antigua FENToTablero
+        t.FENToTablero(p.getFEN(), p.getIniJuegoBlancas());
     }
 
     public static void main(String[] args) {

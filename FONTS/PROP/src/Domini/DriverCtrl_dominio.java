@@ -100,7 +100,8 @@ public class DriverCtrl_dominio {
                         int turnosBancas = p.getN(), turnosNegras = p.getN();
                         Exception ex1 = new Exception("J1 ha perdido");
                         pintaTablero();
-                        while (turnosBancas >= 0 ) {
+                        int n = p.getN();
+                        while (n >= 0) {
                             //quien juega
                             //Si false: Negras
                             //Si true: Blancas
@@ -156,6 +157,7 @@ public class DriverCtrl_dominio {
                                     }
                                 }
                             }
+                            --n;
                         }
                     }
                     //Scann jug1 y jug2
