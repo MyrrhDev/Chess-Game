@@ -31,7 +31,7 @@ public class Alfil extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
-        //int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = posX, posY = posY;
         int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
@@ -112,7 +112,7 @@ public class Alfil extends Pieza {
     }
 
     @Override
-    ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]) {
+    ArrayList<Movimiento> movimientosPosibles(final char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
         int i = this.posX, j = this.posY;
         boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
@@ -123,12 +123,12 @@ public class Alfil extends Pieza {
         ++j;
         while(i >= 0 && j < 8 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j);
+                Movimiento r = new Movimiento(posX, posY, i, j);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
                     listResult.add(r);
                     end = true;
                 }
@@ -139,19 +139,19 @@ public class Alfil extends Pieza {
         }
 
         end = false;
-        i = m.getFromX();
-        j = m.getFromY();
+        i = posX;
+        j = posY;
         ++i;
         ++j;
         //diagonal inferior derecha
         while(i < 8 && j < 8 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j);
+                Movimiento r = new Movimiento(posX, posY, i, j);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
                     listResult.add(r);
                     end = true;
                 }
@@ -163,18 +163,18 @@ public class Alfil extends Pieza {
         //diagonal inferior izquierda
 
         end = false;
-        i = m.getFromX();
-        j = m.getFromY();
+        i = posX;
+        j = posY;
         ++i;
         --j;
-        while(i < 8 && j < 8 && !end) {
+        while(i < 8 && j >= 0 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j);
+                Movimiento r = new Movimiento(posX, posY, i, j);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
                     listResult.add(r);
                     end = true;
                 }
@@ -185,18 +185,18 @@ public class Alfil extends Pieza {
         }
         //diagonal superior izquierda
         end = false;
-        i = m.getFromX();
-        j = m.getFromY();
+        i = posX;
+        j = posY;
         --i;
         --j;
         while(i >= 0 && j >= 0 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j);
+                Movimiento r = new Movimiento(posX, posY, i, j);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
                     listResult.add(r);
                     end = true;
                 }
@@ -209,13 +209,6 @@ public class Alfil extends Pieza {
         return listResult;
     }
 
-    void setPts(int pts) {
-        this.pts = pts;
-    }
-
-    int getPts() {
-        return this.pts;
-    }
 
     public void setTipo(char t) {
         this.tipo = t;

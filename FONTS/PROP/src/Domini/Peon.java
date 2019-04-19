@@ -1,3 +1,4 @@
+
 package Domini;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class Peon extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
-        //int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = this.posX, posY = this.posY;
         int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
@@ -104,53 +105,53 @@ public class Peon extends Pieza {
     }
 
     @Override
-    ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]) {
+    ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
-        //int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = this.posX, posY = this.posY;
         if(this.esNegra) {
             if(posX+1 < 8 & estadoTablero[posX+1][posY] == '0') { //si no hay nada
-                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(),posX+1, posY);
+                Movimiento r = new Movimiento(this.posX, this.posY,posX+1, posY);
                 listResult.add(r);
             }
             if(this.firstMove) { //una pos más
                 if(posX+2 < 8 & estadoTablero[posX+2][posY] == '0') { //si no hay nada
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), posX+2, posY);
+                    Movimiento r = new Movimiento(this.posX, this.posY, posX+2, posY);
                     listResult.add(r);
                 }
             }
             if(posX+1 < 8 & posY-1 > 0 & estadoTablero[posX+1][posY-1] != '0') { //miramos si podemos matar a otra pieza
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX+1][posY-1])) {
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), posX+1, posY-1, estadoTablero[posX+1][posY-1]);
+                    Movimiento r = new Movimiento(this.posX, this.posY, posX+1, posY-1, estadoTablero[posX+1][posY-1]);
                     listResult.add(r);
                 }
             }
             if(posX+1 < 8 & posY+1 < 8 & estadoTablero[posX+1][posY+1] != '0') { //miramos si podemos matar a otra pieza
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX+1][posY+1])) {
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), posX+1, posY+1, estadoTablero[posX+1][posY+1]);
+                    Movimiento r = new Movimiento(this.posX, this.posY, posX+1, posY+1, estadoTablero[posX+1][posY+1]);
                     listResult.add(r);
                 }
             }
         }
         if(!this.esNegra) {
             if(posX-1 >= 0 & estadoTablero[posX-1][posY] == '0') { //si no hay nada
-                Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), posX-1, posY);
+                Movimiento r = new Movimiento(this.posX, this.posY, posX-1, posY);
                 listResult.add(r);
             }
             if(this.firstMove) { //una pos más
                 if(posX-2 >= 0 & estadoTablero[posX-2][posY] == '0') { //si no hay nada
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), posX-2, posY);
+                    Movimiento r = new Movimiento(this.posX, this.posY, posX-2, posY);
                     listResult.add(r);
                 }
             }
             if(posX-1 >= 0 & posY-1 >= 0 & estadoTablero[posX-1][posY-1] != '0') { //miramos si podemos matar a otra pieza
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX-1][posY-1])) {
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), posX-1, posY-1, estadoTablero[posX-1][posY-1]);
+                    Movimiento r = new Movimiento(this.posX, this.posY, posX-1, posY-1, estadoTablero[posX-1][posY-1]);
                     listResult.add(r);
                 }
             }
             if(posX-1 >= 0 & posY+1 < 8 & estadoTablero[posX-1][posY+1] != '0') { //miramos si podemos matar a otra pieza
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX-1][posY+1])) {
-                    Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), posX-1, posY+1, estadoTablero[posX-1][posY+1]);
+                    Movimiento r = new Movimiento(this.posX, this.posY, posX-1, posY+1, estadoTablero[posX-1][posY+1]);
                     listResult.add(r);
                 }
             }

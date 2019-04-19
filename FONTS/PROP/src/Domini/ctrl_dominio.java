@@ -33,7 +33,7 @@ public class ctrl_dominio {
                 break;
             case 2:
                 if(j1EsBlanco) j1 = new Maquina(true, false, true);
-                else j1 = new Maquina(true, true, true);
+                else j1 = new Maquina(true, false, true);
                 break;
             case 3:
                 //j1 = new M2();
@@ -41,12 +41,12 @@ public class ctrl_dominio {
         }
         switch(jug2) {
             case 1:
-                if(j1EsBlanco) j1 = new Persona(false, false, false); //negra porque jug1 blanca
-                else j1 = new Persona(false, true, false); //blanca porque jug1 negra
+                if(j1EsBlanco) j2 = new Persona(false, false, false); //negra porque jug1 blanca
+                else j2 = new Persona(false, true, false); //blanca porque jug1 negra
                 break;
             case 2:
-                if(j1EsBlanco) j1 = new Maquina(true, false, false);
-                else j1 = new Maquina(true, true, false);
+                if(j1EsBlanco) j2 = new Maquina(true, true, false);
+                else j2 = new Maquina(true, true, false);
                 //j2 = new M1();
                 break;
             case 3:
@@ -78,15 +78,24 @@ public class ctrl_dominio {
     }
 
 
-    public static void jugar() throws Exception {
+    public static void jugar(int n) throws Exception {
         if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
-            if (j1.isEsMaquina() && j1.isEsNegro() && !t.isSiguienteMovimiento()) {
-                /*try {
-                    j1.jugar(); // paso tablero y N
-                } catch (e) {}*/
+            if ((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) {
+                try {
+                    t = j1.jugar(t,n); // paso tablero y N
+                } catch(Exception e) {
+                    //hay jaque mate o has perdido
+                }
+
             }
-            else if (j1.isEsMaquina() && !j1.isEsNegro() && t.isSiguienteMovimiento());
-            else if (true); //@TODO: Aqí iría j2 haz tu movimiento (MINIMAX)
+            else if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
+                try {
+                    t = j2.jugar(t,n); // paso tablero y N
+                } catch(Exception e) {
+                    //hay jaque mate o has perdido
+                }
+
+            }
         }
         else {
             //tirar excepción que no se puede jugar más
@@ -106,21 +115,21 @@ public class ctrl_dominio {
     }
 
     public char[][] getTablero() {
-        //return t.getTablero(); @TODO
-        char[][] a = {{'0', '0', '0', '0', 'B', '0', '0', '0'},
-            {'0', '0', '0', '0', '0', '0', '0', '0'},
-            {'0', '0', '0', '0', '0', '0', '0', '0'},
-            {'0', '0', '0', '0', '0', '0', '0', '0'},
-            {'b', '0', '0', '0', 'P', '0', '0', 'P'},
-            {'0', '0', '0', '0', '0', '0', '0', '0'},
-            {'0', '0', 'Q', '0', '0', '0', '0', '0'},
-            {'0', '0', '0', '0', '0', 'q', '0', '0'}};
-        return a;
+        return t.getTablero();
+        /*char[][] a = {{'0', '0', '0', '0', 'B', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'b', '0', '0', '0', 'P', '0', '0', 'P'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', 'Q', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', 'q', '0', '0'}};
+        */
     }
 
 
     public static void jugar(int posX, int posY, int movX, int movY) throws Exception {
-        if(!j1.isEsMaquina() & t.isSiguienteMovimiento() & !j1.isEsNegro()) { //tira jugador 1
+        if(!j1.isEsMaquina() & t.getTurnoBlancas() & !j1.isEsNegro()) { //tira jugador 1
             try {
                 Movimiento m = new Movimiento(posX, posY, movX, movY);
                 //t = j1.HJuega(t, m);
@@ -130,7 +139,7 @@ public class ctrl_dominio {
             }
             //tablero debe actualizar el turno
         }
-        if(!j1.isEsMaquina() & !t.isSiguienteMovimiento() & j1.isEsNegro()) { //tira jugador 1
+        if(!j1.isEsMaquina() & !t.getTurnoBlancas() & j1.isEsNegro()) { //tira jugador 1
             try {
                 Movimiento m = new Movimiento(posX, posY, movX, movY);
                 //t = j1.HJuega(t, m);
@@ -139,7 +148,7 @@ public class ctrl_dominio {
                 //hay jaque mate o has perdido
             }
         }
-        if(!j2.isEsMaquina() & t.isSiguienteMovimiento() & !j2.isEsNegro()) { //tira jugador 1
+        if(!j2.isEsMaquina() & t.getTurnoBlancas() & !j2.isEsNegro()) { //tira jugador 1
             try {
                 Movimiento m = new Movimiento(posX, posY, movX, movY);
                 //t = j2.HJuega(t, m);
@@ -148,7 +157,7 @@ public class ctrl_dominio {
                 //hay jaque mate o has perdido
             }
         }
-        if(!j2.isEsMaquina() & t.isSiguienteMovimiento() & !j2.isEsNegro()) { //tira jugador 1
+        if(!j2.isEsMaquina() & t.getTurnoBlancas() & !j2.isEsNegro()) { //tira jugador 1
             try {
                 Movimiento m = new Movimiento(posX, posY, movX, movY);
                 //t = j2.HJuega(t, m); //no lo detecta
@@ -173,8 +182,8 @@ public class ctrl_dominio {
     public static void main(String[] args) {
         /*DriverCtrl_dominio cd = new DriverCtrl_dominio();
         cd.main(args);*/
-        DriverCaballo dc = new DriverCaballo();
-        dc.main(args);
+        //DriverCaballo dc = new DriverCaballo();
+        //dc.main(args);
 
     }
 

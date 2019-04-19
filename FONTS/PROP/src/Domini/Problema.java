@@ -18,6 +18,7 @@ public class Problema {
         //ejemplo: 1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B w - - 0 1
         int newLength = FEN.indexOf(' ');
         this.problema = FEN.substring(0, newLength);
+        System.out.println(problema.length() + " " + problema);
     }
 
     public void setIniJuegoBlancas(String FEN) {

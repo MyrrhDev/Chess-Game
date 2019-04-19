@@ -29,7 +29,7 @@ public class Caballo extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
-        //int posX = m.getFromX(), posY = m.getFromY();
+        //int posX = this.posX, posY = this.posY;
         int movX = m.getToX(), movY = m.getToY();
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
@@ -51,25 +51,25 @@ public class Caballo extends Pieza {
     }
 
     @Override
-    ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]) {
-        //int posX = m.getFromX(), posY = m.getFromY();
+    ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]) {
+        //int posX = this.posX, posY = this.posY;
         ArrayList<Movimiento> listResult = new ArrayList<>();
         final int movPos[][] = {{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
         final int sizei = 8, sizej = 2;
         for(int i = 0; i < sizei; ++i) {
             int moveX = posX + movPos[i][0], moveY = posY + movPos[i][1];
-                if(moveX >= 0 & moveX < 8 & moveY >= 0 & moveY < 8) {
-                    if(estadoTablero[moveX][moveY] == '0') {
-                        Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), moveX, moveY);
+            if(moveX >= 0 & moveX < 8 & moveY >= 0 & moveY < 8) {
+                if(estadoTablero[moveX][moveY] == '0') {
+                    Movimiento r = new Movimiento(this.posX, this.posY, moveX, moveY);
+                    listResult.add(r);
+                }
+                else if(estadoTablero[moveX][moveY] != '0') {
+                    if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[moveX][moveY])) {
+                        Movimiento r = new Movimiento(this.posX, this.posY, moveX, moveY, estadoTablero[moveX][moveY]);
                         listResult.add(r);
                     }
-                    else if(estadoTablero[moveX][moveY] != '0') {
-                        if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[moveX][moveY])) {
-                            Movimiento r = new Movimiento(m.getFromX(), m.getFromY(), moveX, moveY, estadoTablero[moveX][moveY]);
-                            listResult.add(r);
-                        }
-                    }
                 }
+            }
         }
         return listResult;
     }

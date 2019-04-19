@@ -8,7 +8,13 @@ public abstract class Pieza {
     public int id;
     public boolean firstMove;
     public char tipo;
-    int posX, posY;
+    public int posX;
+    public int posY;
+    public int pts;
+
+    public int getPts() {
+        return pts;
+    }
 
     public int getPosX() {
         return posX;
@@ -25,6 +31,7 @@ public abstract class Pieza {
     public void setPosY(int posY) {
         this.posY = posY;
     }
+//TODO: Puntos tiene que ser un atributo de Pieza y actualizado en cada tipo de Pieza ?
 
     public boolean isEsNegra() {
         return esNegra;
@@ -60,5 +67,7 @@ public abstract class Pieza {
 
     abstract boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]);
 
-    abstract ArrayList<Movimiento> movimientosPosibles(final Movimiento m, char estadoTablero[][]);
+
+    //Ahora uso el movimiento para saber donde estoy...
+    abstract ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]);
 }

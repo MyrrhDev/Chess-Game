@@ -7,8 +7,8 @@ public class DriverCtrl_dominio {
     private static Problema p;
     private static String tmp;
     static private String f[][] = {{"b", "♝"}, {"B", "♗"}, {"n", "♘"}, {"N", "♞"},
-                                   {"p", "♟"}, {"P", "♙"}, {"q", "♛"}, {"Q", "♕"},
-                                   {"k", "♚"}, {"K", "♔"}, {"r", "♖"}, {"R", "♜"}};
+            {"p", "♟"}, {"P", "♙"}, {"q", "♛"}, {"Q", "♕"},
+            {"k", "♚"}, {"K", "♔"}, {"r", "♖"}, {"R", "♜"}};
 
 
     private static void pintaTablero() {
@@ -51,10 +51,8 @@ public class DriverCtrl_dominio {
      */
     private static void printMenuPrincipal() {
         System.out.println("Bienvenido al Driver de Controlador de Dominio. Selecciona qué deseas testear:");
-        System.out.println("    1- Alta objeto Controlador de Dominio");
-        System.out.println("    2- Alta objeto Persona");
-        System.out.println("    3- Baja objeto Persona");
-        System.out.println("    4- Login Persona");
+        System.out.println("    1- Alta objeto Problema");
+        System.out.println("    2- Empezar una partida");
         System.out.println("    5- Salir");
     }
 
@@ -90,74 +88,21 @@ public class DriverCtrl_dominio {
                     System.out.println("1 -> H1, 2 -> M1, 3 -> M2");
                     tmp = sc.nextLine();
                     String aux[] = tmp.split(" ");
-                    if (aux[0] != "2" && aux[1] != "2") System.out.println("La partida debe ser jugada por M1");
-                    else if (aux[0] != "2" && aux[1] != "2") System.out.println("M2 no forma parte de esta entrega");
-                    else if ((aux[0] == "1" && aux[0] == "2") || (aux[0] == "2" && aux[1] == "1") && p != null) {
+                    //if (!aux[0].equals("2") && !aux[1].equals("2")) System.out.println("La partida debe ser jugada por M1");
+                    //else if (aux[0] != "2" && aux[1] != "2") System.out.println("M2 no forma parte de esta entrega");
+                    if ((aux[0].equals("1") && aux[0].equals("2")) || (aux[0].equals("2") && aux[1].equals("1") || (aux[0].equals("2") && aux[1].equals("2")) && p != null)) {
                         //jugamos, input OK
                         c = ctrl_dominio.getInstance();
                         c.crearPartida(p, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
                         System.out.println("Partida creada con éxito");
-                        int turnosBancas = p.getN(), turnosNegras = p.getN();
-                        Exception ex1 = new Exception("J1 ha perdido");
                         pintaTablero();
                         int n = p.getN();
                         while (n >= 0) {
-                            //quien juega
-                            //Si false: Negras
-                            //Si true: Blancas
-                            if (c.getTurno() && c.isJ1Blancas() && c.isJ1M()) { //si es turno de las blancas, j1 es blancas i le toca jugar se llama a jugar
-                                try {
-                                    c.jugar();
-                                    --turnosBancas;
-                                    pintaTablero();
-                                } catch (Exception e) {
-                                    if (e.equals(ex1)) {
-                                        System.out.println("J1 ha perdido");
-                                        break;
-                                    }
-                                }
-                            }
-                            if (c.getTurno() && c.isJ1Blancas() && !c.isJ1M()) {
-                                System.out.println("Introduce por terminal la pieza que quieres mover");
-                                String aux2[] = sc.nextLine().split(" ");
-                                try {
-                                    c.jugar(Integer.parseInt(aux[0]), Integer.parseInt(aux[0]), Integer.parseInt(aux[0]), Integer.parseInt(aux[0]));
-                                    --turnosBancas;
-                                    pintaTablero();
-                                } catch (Exception e) {
-                                    if (e.equals(ex1)) {
-                                        System.out.println("J1 ha perdido");
-                                        break;
-                                    }
-                                }
-                            }
-                            if (!c.getTurno() && !c.isJ2Blancas() && c.isJ2M()) { //si es turno de las negras, j1 es blancas i le toca jugar se llama a jugar
-                                try {
-                                    c.jugar();
-                                    --turnosNegras;
-                                    pintaTablero();
-                                } catch (Exception e) {
-                                    if (e.equals(ex1)) {
-                                        System.out.println("J2 ha perdido");
-                                        break;
-                                    }
-                                }
-                            }
-                            if (!c.getTurno() && !c.isJ2Blancas() && !c.isJ2M()) {
-                                System.out.println("Introduce por terminal la pieza que quieres mover");
-                                String aux2[] = sc.nextLine().split(" ");
-                                try {
-                                    c.jugar(Integer.parseInt(aux[0]), Integer.parseInt(aux[0]), Integer.parseInt(aux[0]), Integer.parseInt(aux[0]));
-                                    --turnosNegras;
-                                    pintaTablero();
-                                } catch (Exception e) {
-                                    if (e.equals(ex1)) {
-                                        System.out.println("J2 ha perdido");
-                                        break;
-                                    }
-                                }
-                            }
+                            try {
+                                c.jugar(n);
+                            }catch (Exception e) {}
                             --n;
+                            pintaTablero();
                         }
                     }
                     //Scann jug1 y jug2

@@ -24,12 +24,6 @@ public class Movimiento {
         this.p = p;
     }
 
-    Movimiento(int fromX, int fromY) {
-        this.fromX = fromX;
-        this.fromY = fromY;
-        this.p = '-';
-    }
-
     public int getFromY() {
         return fromY;
     }
@@ -70,4 +64,28 @@ public class Movimiento {
         this.toY = toY;
     }
 
+    //intenta construir un nuevo tablero con el nuevo movimiento
+    public Tablero intentar(Tablero iniTablero) {
+        //Tablero temp = new Tablero(iniTablero.getJugador1(), iniTablero.getJugador2(), iniTablero.getPiezasBlancas(), iniTablero.getPiezasNegras());
+
+        Tablero temp = new Tablero(iniTablero);
+
+        temp.ejecutarMovimiento(this);
+
+        //iniTablero.esSuTurno().getMisPiezas().; //ponerlas todas menos la a mover
+        //poner las de mi oponente
+        //poner "la piezas movida"
+
+        //cambiar de turno en el tablero nuevo
+        temp.setTurnoBlancas(!iniTablero.getTurnoBlancas());
+        //
+        //Guardamos el movimiento que se ha hecho en este nuevo tablero(????)
+        return temp;
+    }
+
+    //Me dice si es -1-1-1-1
+    public boolean esNada() {
+        if(this.toY == -1 && this.toX == -1 && this.fromY == -1 && this.fromX == -1) return true;
+        else return false;
+    }
 }

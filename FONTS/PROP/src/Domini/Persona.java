@@ -1,15 +1,26 @@
 package Domini;
 
+
 import java.util.ArrayList;
 
 public class Persona extends Jugador {
 
-    /*
-    Devuelve el nuevo tablero después de que la persona haya hecho el movimiento
-     */
-    public Tablero HJuega(Tablero t, final Movimiento m) {
-        Tablero tab = new Tablero();
-        return tab;
+
+    public Persona(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
+        super(esMaquina, esNegro, estaAtacando);
     }
 
+    @Override
+    public Tablero jugar(Tablero tablero, Movimiento movimiento) throws Exception {
+
+        boolean sePuede = tablero.movimientoHumano(movimiento);
+
+        if(!sePuede) throw new Exception("No se puede ejecutar el movimiento");
+        return tablero;
+    }
+
+    @Override
+    public Tablero jugar(Tablero tablero, int N) throws Exception {
+        return tablero;
+    }
 }

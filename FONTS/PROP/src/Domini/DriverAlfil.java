@@ -150,10 +150,10 @@ public class DriverAlfil {
                     }
                     else {
                         System.out.println("Estos son todos los posibles movimientos de la pieza Alfil:");
-                        ArrayList<Movimiento> res = test2.movimientosPosibles(m2, estadoTablero);
+                        /*ArrayList<Movimiento> res = test2.movimientosPosibles(m2, estadoTablero);
                         for(int i = 0; i < res.size(); ++i) {
                             System.out.println("("+ "FromX: " + res.get(i).getFromX() + " FromY: " + res.get(i).getFromY() + " ToX: " + res.get(i).getToX() + " ToY: " + res.get(i).getToY() + " Pieza: " + res.get(i).getP() +")");
-                        }
+                        }*/
                     }
                     /*System.out.println("Introduce la id de la pieza con la que probar la funcion actualizarPosPieza");
                     idPieza = sc.nextLine();
