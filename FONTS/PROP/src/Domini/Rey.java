@@ -8,9 +8,12 @@ public class Rey extends Pieza {
         int movX = m.getToX(), movY = m.getToY();
         //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
-            if(estadoTablero[movX][movY] == '0') return true;
-            else return false;
-        }
+            if (Math.abs(posX - movX) <= 1 && Math.abs(posY - movY) <= 1) {
+                if(estadoTablero[movX][movY] == '0') return true;
+                else if(Character.isLowerCase(estadoTablero[movX][movY]) !=
+                        Character.isLowerCase(estadoTablero[movX][movY])) return true;
+            } else return false;
+        }else return false;
         return false;
     }
 
