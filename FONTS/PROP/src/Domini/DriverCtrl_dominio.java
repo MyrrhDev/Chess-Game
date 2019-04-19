@@ -6,9 +6,9 @@ public class DriverCtrl_dominio {
     static ctrl_dominio c = null;
     private static Problema p;
     private static String tmp;
-    static private String f[][] = {{"b", "♝"}, {"B", "♗"}, {"n", "♘"}, {"N", "♞"},
+    static private String f[][] = {{"b", "♝"}, {"B", "♗"}, {"n", "♞"}, {"N", "♘"},
             {"p", "♟"}, {"P", "♙"}, {"q", "♛"}, {"Q", "♕"},
-            {"k", "♚"}, {"K", "♔"}, {"r", "♖"}, {"R", "♜"}};
+            {"k", "♚"}, {"K", "♔"}, {"r", "♜"}, {"R", "♖"}};
 
 
     private static void pintaTablero() {
@@ -90,20 +90,45 @@ public class DriverCtrl_dominio {
                     String aux[] = tmp.split(" ");
                     //if (!aux[0].equals("2") && !aux[1].equals("2")) System.out.println("La partida debe ser jugada por M1");
                     //else if (aux[0] != "2" && aux[1] != "2") System.out.println("M2 no forma parte de esta entrega");
-                    if ((aux[0].equals("1") && aux[0].equals("2")) || (aux[0].equals("2") && aux[1].equals("1") || (aux[0].equals("2") && aux[1].equals("2")) && p != null)) {
+                    if ((aux[0].equals("2") && aux[1].equals("2")) && p != null) {
                         //jugamos, input OK
                         c = ctrl_dominio.getInstance();
                         c.crearPartida(p, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
                         System.out.println("Partida creada con éxito");
                         pintaTablero();
                         int n = p.getN();
-                        while (n >= 0) {
+                        //@TODO: Dejar de iterar si uno de los dos jugadores está en jaque mate
+                        while (n > 0) {
                             try {
                                 c.jugar(n);
                             }catch (Exception e) {}
                             --n;
                             pintaTablero();
                         }
+                    }
+                    else if(aux[0].equals("1") && aux[1].equals("2")) {
+                        c.crearPartida(p, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
+                        System.out.println("Partida creada con éxito");
+                        pintaTablero();
+                        int n = p.getN();
+                        while(n >= 0) {
+                            try {
+                                //juega humano
+                                System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
+                                String tmp [] = sc.nextLine().split(" ");
+                                c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
+                                System.out.println("Estado del tablero después del movimiento:");
+                                pintaTablero();
+                            } catch (Exception e) {
+                            }
+                            try {
+                                //juega maquina
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
+                    else if((aux[0].equals("2") && aux[1].equals("1"))) {
+                        System.out.println("Not yet");
                     }
                     //Scann jug1 y jug2
                     /*c.crearPartida(p, 0, 1);

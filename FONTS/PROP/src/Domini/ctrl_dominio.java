@@ -132,7 +132,7 @@ public class ctrl_dominio {
         if(!j1.isEsMaquina() & t.getTurnoBlancas() & !j1.isEsNegro()) { //tira jugador 1
             try {
                 Movimiento m = new Movimiento(posX, posY, movX, movY);
-                //t = j1.HJuega(t, m);
+                t = j1.jugar(t, m);
             }
             catch(Exception e) {
                 //hay jaque mate o has perdido
@@ -142,7 +142,7 @@ public class ctrl_dominio {
         if(!j1.isEsMaquina() & !t.getTurnoBlancas() & j1.isEsNegro()) { //tira jugador 1
             try {
                 Movimiento m = new Movimiento(posX, posY, movX, movY);
-                //t = j1.HJuega(t, m);
+                t = j1.jugar(t, m);
             }
             catch(Exception e) {
                 //hay jaque mate o has perdido
