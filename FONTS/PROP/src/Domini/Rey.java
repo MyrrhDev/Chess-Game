@@ -1,11 +1,18 @@
 package Domini;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Rey extends Pieza {
     @Override
-    boolean esMovimientoOk(final Movimiento m, char estadoTablero[][]) { return false; }
+    boolean esMovimientoOk(final Movimiento m, char estadoTablero[][]) {
+        int movX = m.getToX(), movY = m.getToY();
+        //primero verificamos que el movimiento deseado no salga del tablero
+        if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
+            if(estadoTablero[movX][movY] == '0') return true;
+            else return false;
+        }
+        return false;
+    }
 
     public boolean isFirstMove() {
         return firstMove;
