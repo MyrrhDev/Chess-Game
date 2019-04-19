@@ -248,7 +248,7 @@ public class Reina extends Pieza {
         j = posY;
         ++i;
         --j;
-        while(i < 8 && j < 8 && !end) {
+        while(i < 8 && j >= 0 && !end) {
             if(estadoTablero[i][j] == '0') {
                 Movimiento r = new Movimiento(posX, posY, i, j);
                 listResult.add(r);

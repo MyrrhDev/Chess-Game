@@ -133,7 +133,7 @@ public class DriverAlfil {
                     System.out.println("Introduce, por terminal, la posicion de la pieza la cual quieres todos sus posibles movimientos");
                     String tmp2 = sc.nextLine();
                     String aux2[] = tmp2.split(" ");
-                    Movimiento m2 = new Movimiento(Integer.parseInt(aux2[0]), Integer.parseInt(aux2[1]));
+                    //Movimiento m2 = new Movimiento(Integer.parseInt(aux2[0]), Integer.parseInt(aux2[1]));
                     Pieza test2 = null;
                     if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux2[0])][Integer.parseInt(aux2[1])])) { //pieza blanca
                         for(int i = 0; i < PiezasBlancas.size(); ++i) {
