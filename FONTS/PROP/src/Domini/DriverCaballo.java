@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class DriverCaballo {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-    static private char estadoTablero[][] = new char[8][8];
+    static private char estadoTablero[][];
     private static ArrayList <Pieza> PiezasBlancas;
     private static ArrayList <Pieza> PiezasNegras;
 
@@ -39,12 +39,12 @@ public class DriverCaballo {
      * Post: Devuelve un objeto Caballo con atributos iguales a los parámetros de la funcion
      */
 
-    /*public static Caballo iniPieza(boolean esNegra) {
-        Caballo t = new Caballo(esNegra);
+    public static Caballo iniPieza(boolean esNegra, int posX, int posY) {
+        Caballo t = new Caballo(esNegra, posX, posY);
         if(esNegra) PiezasNegras.add(t);
         else PiezasNegras.add(t);
         return t;
-    }*/
+    }
 
     /*
      * Pre: Cierto
@@ -60,7 +60,14 @@ public class DriverCaballo {
     }
 
     public static void main(String[] args) {
-        estadoTablero = new char[8][8];
+        estadoTablero = new char[][] {{'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'}};
         PiezasBlancas = new ArrayList<Pieza>();
         PiezasNegras = new ArrayList<Pieza>();
         Scanner sc = new Scanner(System.in);
@@ -79,16 +86,40 @@ public class DriverCaballo {
                     boolean esNegraInput = false;
                     System.out.println("Introduce, en orden y por terminal, los siguientes valores:");
                     boolean inputOK = false;
+                    int posX = -1, posY = -1;
                     while(!inputOK) {
                         System.out.println("Indica si el color de la pieza es negra (true) o es blanca (false)");
-                        String s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            if (s.equals("true")) { esNegraInput = true; inputOK = true; }
-                            else if (s.equals("false")) { esNegraInput = false; inputOK = true; }
-                            else System.out.println("Valor incorrecto.");
-                        } else System.out.println("Valor incorrecto.");
+                        String s = "";
+                        while(!inputOK) {
+                            s = sc.nextLine();
+                            if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
+                                if (s.equals("true")) inputOK = true;
+                                else if (s.equals("false")) inputOK = true;
+                                else System.out.println("Valor incorrecto.");
+                            } else System.out.println("Valor incorrecto.");
+                        }
+                        inputOK = false;
+                        while(!inputOK) {
+                            System.out.println("Introduce la posición de la pieza en el tablero");
+                            if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
+                                String tmp[] = sc.nextLine().split(" ");
+                                if((tmp[0].equals("0") || tmp[0].equals("1") || tmp[0].equals("2") || tmp[0].equals("3")
+                                        || tmp[0].equals("4") || tmp[0].equals("5") || tmp[0].equals("6") || tmp[0].equals("7"))
+                                        && (tmp[1].equals("0") || tmp[1].equals("1") || tmp[1].equals("2") || tmp[1].equals("3")
+                                        || tmp[1].equals("4") || tmp[1].equals("5") || tmp[1].equals("6") || tmp[1].equals("7"))) {
+                                    posX = Integer.parseInt(tmp[0]);
+                                    posY = Integer.parseInt(tmp[0]);
+                                    inputOK = true;
+                                } else System.out.println("Valor incorrecto.");
+                            } else System.out.println("Valor incorrecto.");
+                        }
                     }
-                    //Caballo c = iniPieza(esNegraInput);
+                    Caballo c = iniPieza(esNegraInput, posX, posY);
+                    if(esNegraInput) {
+                        PiezasNegras.add(c);
+                    }
+                    else PiezasBlancas.add(c);
+                    estadoTablero[posX][posY] = c.getTipo();
                     System.out.println("Objeto caballo creado con exito.");
                     break;
                 case 2:

@@ -170,6 +170,9 @@ public class ctrl_dominio {
     public static void main(String[] args) {
         /*DriverCtrl_dominio cd = new DriverCtrl_dominio();
         cd.main(args);*/
+        DriverCaballo dc = new DriverCaballo();
+        dc.main(args);
+
     }
 
     /*
