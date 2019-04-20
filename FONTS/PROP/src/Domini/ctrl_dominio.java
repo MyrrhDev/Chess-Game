@@ -25,7 +25,7 @@ public class ctrl_dominio {
      Si colorJug1 false entonces
      */
 
-    public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
+    /*public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
         switch(jug1) {
             case 1:
                 if(j1EsBlanco) j1 = new Persona(false, false, true); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
@@ -47,6 +47,36 @@ public class ctrl_dominio {
             case 2:
                 if(j1EsBlanco) j2 = new Maquina(true, true, false);
                 else j2 = new Maquina(true, true, false);
+                //j2 = new M1();
+                break;
+            case 3:
+                //j2 = new M2();
+                break;
+        }
+    }*/
+
+    public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
+        switch(jug1) {
+            case 1:
+                if(j1EsBlanco) j1 = new Persona(false, false, true); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
+                else j1 = new Persona(false, true, true); //negra
+                break;
+            case 2:
+                if(j1EsBlanco) j1 = new Maquina(true, false, true);
+                else j1 = new Maquina(true, true, true);
+                break;
+            case 3:
+                //j1 = new M2();
+                break;
+        }
+        switch(jug2) {
+            case 1:
+                if(j1EsBlanco) j2 = new Persona(false, true, false); //negra porque jug1 blanca
+                else j2 = new Persona(false, false, false); //blanca porque jug1 negra
+                break;
+            case 2:
+                if(j1EsBlanco) j2 = new Maquina(true, true, false);
+                else j2 = new Maquina(true, false, false);
                 //j2 = new M1();
                 break;
             case 3:
@@ -190,6 +220,10 @@ public class ctrl_dominio {
         cd.main(args);*/
         //DriverCaballo dc = new DriverCaballo();
         //dc.main(args);
+        /*DriverAlfil da = new DriverAlfil();
+        da.main(args);*/
+        DriverProblema dp = new DriverProblema();
+        dp.main(args);
 
     }
 

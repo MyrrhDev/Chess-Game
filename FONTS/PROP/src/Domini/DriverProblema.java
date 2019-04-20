@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class DriverProblema {
     private static Scanner sc;
+    private static Problema p;
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
     public DriverProblema() {
 
@@ -12,6 +15,7 @@ public class DriverProblema {
     private static void printMenuPrincipal() {
         System.out.println("Bienvenido al Driver de Torre. Selecciona qué deseas testear:");
         System.out.println("    1- Alta objeto Problema");
+        System.out.println("    2- Verificar problema");
         System.out.println("    5- Salir");
     }
 
@@ -31,13 +35,25 @@ public class DriverProblema {
             switch(op) {
                 case 1:
                     //creo un problema
+                    System.out.println("Introduce el FEN:");
                     String tmp = sc.nextLine();
-                    Problema p = new Problema();
+                    p = new Problema();
                     p.setIniJuegoBlancas(tmp);
                     p.setFEN(tmp);
+                    System.out.println("Introduce el valor de N:");
+                    tmp = sc.nextLine();
+                    p.setN(Integer.parseInt(tmp));
                     System.out.println("Problema creado con éxito, valores: " + p.getFEN() + ' ' + p.getIniJuegoBlancas());
                     break;
                 case 2:
+                    System.out.println("Qué resultado esperas? true/false");
+                    boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
+                    if(resEsperado == p.verificarProblema()) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
+                    else System.out.println("Fallo en el test");
+                    p.verificarProblema();
+                    break;
+                case 5:
+                    driverIsRunning = false;
                     break;
                 default:
                     System.out.println("La opción introducida no es correcta. Por favor, seleccione una de las siguiente del menu");

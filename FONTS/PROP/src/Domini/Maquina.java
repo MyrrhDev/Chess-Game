@@ -9,6 +9,7 @@ public class Maquina extends Jugador {
 
     public Maquina(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
         super(esMaquina, esNegro, estaAtacando);
+        //this.estaAtacando = estaAtacando;
     }
     //EstrategiaCompleja estrategiaCompl;
 

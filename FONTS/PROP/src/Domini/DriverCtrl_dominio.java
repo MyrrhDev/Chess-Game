@@ -153,7 +153,40 @@ public class DriverCtrl_dominio {
                         }
                     }
                     else if((aux[0].equals("2") && aux[1].equals("1"))) {
-                        System.out.println("Not yet");
+                        c.crearPartida(p, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
+                        System.out.println("Partida creada con éxito");
+                        pintaTablero();
+                        int n = p.getN();
+                        while(n > 0) {
+                            try {
+                                //juega maquina
+                                System.out.println("Juega maquina");
+                                c.jugar(n);
+                                System.out.println("Movimiento:");
+                                pintaTablero();
+                            } catch (Exception e) {
+                                n = 0;
+                                break;
+                            }
+                            boolean inputOk = false;
+                            while(!inputOk) {
+                                try { //TODO: Si introduce un movimiento ilegal propagar la excepcion y pedirle otra vez un movimiento
+                                    //juega humano
+                                    System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
+                                    String tmp[] = sc.nextLine().split(" ");
+                                    if(verificarEntrada(tmp)) {
+                                        c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
+                                        System.out.println("Estado del tablero después del movimiento:");
+                                        pintaTablero();
+                                        inputOk = true;
+                                    } else System.out.println("Error en la entrada");
+                                } catch (Exception e) {
+                                    n = 0;
+                                    break;
+                                }
+                            }
+                            --n;
+                        }
                     }
                     //Scann jug1 y jug2
                     /*c.crearPartida(p, 0, 1);
