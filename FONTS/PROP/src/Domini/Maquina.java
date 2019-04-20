@@ -2,27 +2,28 @@ package Domini;
 
 
 public class Maquina extends Jugador {
-    boolean esSimple;
-    boolean estaAtacando;
+    //boolean esSimple;
+    //boolean estaAtacando;
     //boolean esNegro;
     EstrategiaSimple estrategia;
 
     public Maquina(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
         super(esMaquina, esNegro, estaAtacando);
-        //this.estaAtacando = estaAtacando;
     }
+
+
     //EstrategiaCompleja estrategiaCompl;
 
 
     //int N es el numero de movimientos dados en el que se "resuelve" el problema para uno de los Jugadores
     //TODO: N se tiene que reducir en el controlador dominio
     @Override
-    public Tablero jugar(Tablero tablero, int N) throws Exception {
+    public Tablero jugar(final Tablero tablero, final int N) throws Exception {
         Tablero t = new Tablero(tablero);
 
         this.estrategia = new EstrategiaSimple(N*2);
         //if(esSimple) { //Considera N*2 xq con cada min/max se reduce uno y N es por jugador
-        Movimiento m = estrategia.estrategiaSimple(tablero,this.isEstaAtacando()); //No se si le pasa esto Jugador -> Maquina -> aqui
+        Movimiento m = this.estrategia.estrategiaSimple(tablero,this.isEstaAtacando()); //No se si le pasa esto Jugador -> Maquina -> aqui
         //} else Movimiento m = estrategiaCompl.estrategiaCompleja();
 
         if(m.esNada()) {
@@ -31,6 +32,8 @@ public class Maquina extends Jugador {
         } else {
             t.ejecutarMovimiento(m);
         }
+
+
         return t;
     }
 

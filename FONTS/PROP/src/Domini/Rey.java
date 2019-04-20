@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Rey extends Pieza {
-    //TODO: Necesitamos ver la posicion del Rey de alguna manera...
+
     int posX;
     int posY;
 
@@ -17,7 +17,7 @@ public class Rey extends Pieza {
         }
         else this.tipo = 'K';
         this.firstMove = false;
-        pts = 1000;
+        this.pts = 1000;
     }
 
     @Override

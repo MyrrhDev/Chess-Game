@@ -86,34 +86,12 @@ public class ctrl_dominio {
         }
     }
 
-    //Si false: Negras
-    //Si true: Blancas
-    public boolean getTurno() {
-        return this.t.getTurnoBlancas();
-    }
-
-    public boolean isJ1Blancas() {
-        return !j1.isEsNegro();
-    }
-
-    public boolean isJ1M() {
-        return j1.isEsMaquina();
-    }
-
-    public boolean isJ2Blancas() {
-        return !j2.isEsNegro();
-    }
-
-    public boolean isJ2M() {
-        return j2.isEsMaquina();
-    }
-
-
     public static void jugar(int n) throws Exception {
         if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
             if ((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) {
                 try {
                     t = j1.jugar(t,n); // paso tablero y N
+                    t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch(Exception e) {
                     //hay jaque mate o has perdido
                     System.out.println(e);
@@ -123,6 +101,7 @@ public class ctrl_dominio {
             else if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
                 try {
                     t = j2.jugar(t,n); // paso tablero y N
+                    t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch(Exception e) {
                     //hay jaque mate o has perdido
                     System.out.println(e);
@@ -130,21 +109,6 @@ public class ctrl_dominio {
 
             }
         }
-        else {
-            //tirar excepción que no se puede jugar más
-        }
-        /*if(j1.getEsMaquina() & j1.esSuTurno) {
-            try {
-                t = j1.M1Juega();
-            }
-            catch(Exception e) {
-                //hay jaque mate o has perdido
-            }
-            !j1.esSuTurno;
-            !j2.esSuTurno;
-        }
-        else if(!j1.esMaquina & j1.esSuTurno) {
-        }*/
     }
 
     public char[][] getTablero() {
@@ -162,50 +126,27 @@ public class ctrl_dominio {
 
 
     public static void jugar(int posX, int posY, int movX, int movY) throws Exception {
-        if(!j1.isEsMaquina() & t.getTurnoBlancas() & !j1.isEsNegro()) { //tira jugador 1
-            try {
-                Movimiento m = new Movimiento(posX, posY, movX, movY);
-                t = j1.jugar(t, m);
+        if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
+            Movimiento m = new Movimiento(posX, posY, movX, movY);
+            if ((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) {
+                try {
+                    t = j1.jugar(t, m); // paso tablero y N
+                    t.setTurnoBlancas(!t.getTurnoBlancas());
+                } catch(Exception e) {
+                    //hay jaque mate o has perdido
+                    System.out.println(e);
+                }
+
             }
-            catch(Exception e) {
-                //hay jaque mate o has perdido
-                System.out.println(e);
-            }
-            //tablero debe actualizar el turno
-        }
-        if(!j1.isEsMaquina() & !t.getTurnoBlancas() & j1.isEsNegro()) { //tira jugador 1
-            try {
-                Movimiento m = new Movimiento(posX, posY, movX, movY);
-                t = j1.jugar(t, m);
-            }
-            catch(Exception e) {
-                //hay jaque mate o has perdido
-                System.out.println(e);
-            }
-        }
-        if(!j2.isEsMaquina() & t.getTurnoBlancas() & !j2.isEsNegro()) { //tira jugador 1
-            try {
-                Movimiento m = new Movimiento(posX, posY, movX, movY);
-                //t = j2.HJuega(t, m);
-            }
-            catch(Exception e) {
-                //hay jaque mate o has perdido
-                System.out.println(e);
-            }
-        }
-        if(!j2.isEsMaquina() & t.getTurnoBlancas() & !j2.isEsNegro()) { //tira jugador 1
-            try {
-                Movimiento m = new Movimiento(posX, posY, movX, movY);
-                //t = j2.HJuega(t, m); //no lo detecta
-                //Persona p = new Persona(false);
-                //t = p.HJuega(t, m); //si que lo detecta
-                //Si implementamos una función en jugador que sea HJuega si que lo detectaria desde jugador
-                //si implementamos una función abstracta en jugador que sea M1Juega y otra HJuega desde jugador
-                //y hacemos override en las clases abstractas entonces si que detectaria HJuega desde jugador
-            }
-            catch(Exception e) {
-                //hay jaque mate o has perdido
-                System.out.println(e);
+            else if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
+                try {
+                    t = j2.jugar(t,m); // paso tablero y N
+                    t.setTurnoBlancas(!t.getTurnoBlancas());
+                } catch(Exception e) {
+                    //hay jaque mate o has perdido
+                    System.out.println(e);
+                }
+
             }
         }
     }

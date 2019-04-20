@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class Reina extends Pieza {
 
+
     public Reina() {
         this.firstMove = false;
     }
@@ -19,7 +20,7 @@ public class Reina extends Pieza {
         else this.tipo = 'Q';
         this.posX = posX;
         this.posY = posY;
-        pts = 9;
+        this.pts = 9;
     }
 
     /*

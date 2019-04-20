@@ -2,10 +2,10 @@ package Domini;
 
 public final class MovimientoPrueba {
 
-    Tablero desdeTablero;
-    Tablero aTablero;
-    Movimiento movimientoPrueba;
-    boolean sePuede;
+    private final Tablero desdeTablero;
+    private final Tablero aTablero;
+    private final Movimiento movimientoPrueba;
+    private final boolean sePuede;
 
 
     public MovimientoPrueba(Tablero desdeTablero,Tablero aTablero, Movimiento movimientoPrueba, boolean sePuede) {

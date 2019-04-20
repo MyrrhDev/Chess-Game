@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Caballo extends Pieza {
 
+
     public Caballo() {
         this.firstMove = false;
     }
@@ -19,7 +20,7 @@ public class Caballo extends Pieza {
         else this.tipo = 'N';
         this.posX = posX;
         this.posY = posY;
-        pts = 3;
+        this.pts = 3;
     }
 
     /*

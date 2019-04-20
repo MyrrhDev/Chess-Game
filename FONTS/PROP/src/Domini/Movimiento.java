@@ -1,3 +1,4 @@
+
 package Domini;
 
 public class Movimiento {
@@ -65,7 +66,7 @@ public class Movimiento {
     }
 
     //intenta construir un nuevo tablero con el nuevo movimiento
-    public Tablero intentar(Tablero iniTablero) {
+    public Tablero intentar(final Tablero iniTablero) {
         //Tablero temp = new Tablero(iniTablero.getJugador1(), iniTablero.getJugador2(), iniTablero.getPiezasBlancas(), iniTablero.getPiezasNegras());
 
         Tablero temp = new Tablero(iniTablero);

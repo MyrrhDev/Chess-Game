@@ -12,18 +12,65 @@ public class Tablero {
     private final Jugador jugador1;
     private final Jugador jugador2;
 
-    public Tablero(Tablero iniTablero) {
-        this.tablero = iniTablero.tablero;
-        this.PiezasNegras = iniTablero.PiezasNegras;
-        this.PiezasBlancas = iniTablero.PiezasBlancas;
+    public Tablero(final Tablero iniTablero) {
+        if(iniTablero.jugador1.isEsMaquina()) {
+            this.jugador1 = new Maquina(iniTablero.jugador1.esMaquina, iniTablero.jugador1.esNegro, iniTablero.jugador1.estaAtacando);
+        } else {
+            this.jugador1 = new Persona(iniTablero.jugador1.esMaquina, iniTablero.jugador1.esNegro, iniTablero.jugador1.estaAtacando);
+        }
+        if(iniTablero.jugador2.isEsMaquina()) {
+            this.jugador2 = new Maquina(iniTablero.jugador2.esMaquina,iniTablero.jugador2.esNegro, iniTablero.jugador2.estaAtacando);
+        } else {
+            this.jugador2 = new Persona(iniTablero.jugador2.esMaquina,iniTablero.jugador2.esNegro, iniTablero.jugador2.estaAtacando);
+        }
+
+        this.PiezasBlancas = new ArrayList<>();
+        this.PiezasNegras = new ArrayList<>();
+
+        char newtablero[][] = new char[8][8];
+        for(int i=0;i<8;i++) {
+            for (int j = 0; j < 8; j++) {
+                newtablero[i][j] = iniTablero.tablero[i][j];
+                if(iniTablero.tablero[i][j] != '0') {
+                    if (Character.isLowerCase(iniTablero.tablero[i][j])) {
+                        Pieza p;
+                        p = getPiezadeChar(iniTablero.tablero[i][j], true, i, j);
+                        this.PiezasNegras.add(p);
+                    } else {
+                        Pieza o;
+                        o = getPiezadeChar(iniTablero.tablero[i][j], false, i, j);
+                        this.PiezasBlancas.add(o);
+                    }
+                }
+            }
+        }
+
+        this.tablero = newtablero;
         this.turnoBlancas = iniTablero.turnoBlancas;
-        this.jugador1 = iniTablero.jugador1;
-        this.jugador2 = iniTablero.jugador2;
+
+
+
+
+        //this.PiezasNegras = iniTablero.PiezasNegras;
+        //this.PiezasBlancas = iniTablero.PiezasBlancas;
+
+        //this.jugador1 = iniTablero.jugador1;
+        //this.jugador2 = iniTablero.jugador2;
     }
 
-    public Tablero(Jugador jugador1, Jugador jugador2) {
-        this.jugador1 = jugador1;
-        this.jugador2 = jugador2;
+    public Tablero(final Jugador jugador1, final Jugador jugador2) {
+        if(jugador1.isEsMaquina()) {
+            this.jugador1 = new Maquina(jugador1.esMaquina,jugador1.esNegro, jugador1.estaAtacando);
+        } else {
+            this.jugador1 = new Persona(jugador1.esMaquina, jugador1.esNegro, jugador1.estaAtacando);
+        }
+        if(jugador2.isEsMaquina()) {
+            this.jugador2 = new Maquina(jugador2.esMaquina,jugador2.esNegro, jugador2.estaAtacando);
+        } else {
+            this.jugador2 = new Persona(jugador2.esMaquina,jugador2.esNegro, jugador2.estaAtacando);
+        }
+        //this.jugador1 = jugador1;
+        //this.jugador2 = jugador2;
     }
 
     public void setTurnoBlancas(boolean turnoBlancas) {
@@ -152,22 +199,6 @@ public class Tablero {
     }
 
 
-/*
-    //Post: Devuelve todas las piezas que existen en el Tablero para las piezas negras o blancas:
-    private ArrayList<Pieza> piezasTodas(boolean esNegro) {
-        final ArrayList<Pieza> piezas = new ArrayList();
-        for (int i = 0; i <; i++) {
-            for (int j = 0; j <; j++) {
-                if (Character.isUpperCase(tablero[i][j]) && !esNegro) {
-                    piezas.add(...);
-                } else if (Character.isLowerCase(tablero[i][j]) && esNegro) {
-                    piezas.add(...);
-                }
-            }
-        }
-        return piezas;
-    }*/
-
 
     //Post: Devuelve todos los mov posibles de una collection de piezas
     ArrayList<Movimiento> todosLosMovimientosPosibles(final ArrayList<Pieza> piezasJugador) {
@@ -209,7 +240,7 @@ public class Tablero {
         }
     }
 
-    public Jugador miOponenteEs(Jugador jugador) {
+    public Jugador miOponenteEs(final Jugador jugador) {
         //returns un jugador
         if(jugador.esNegro) {
             if(this.jugador2.isEsNegro()) return this.jugador1;
@@ -259,76 +290,114 @@ public class Tablero {
         PiezasBlancas = piezasBlancas;
     }
 
+    //Pre: De este nuevo Tablero creado, cogo las Piezas Blancas y al mismo array
     //Post: Ejecuta el movimiento, actualiza las arraylists de piezas blancas o negras que sea necesaria
     public void ejecutarMovimiento(final Movimiento movimiento) {
+
         //Si no hay una pieza en esa posicion
         if(this.tablero[movimiento.getToX()][movimiento.getToY()] == '0') {
             this.tablero[movimiento.getToX()][movimiento.getToY()] = this.tablero[movimiento.getFromX()][movimiento.getFromY()];
             this.tablero[movimiento.getFromX()][movimiento.getFromY()] = '0';
 
             if(this.turnoBlancas) {
-                Pieza p = this.getPiezasBlancas().stream().filter(pieza -> pieza.posX == movimiento.getFromX() && pieza.posY == movimiento.getFromY()).findAny().get();
+                Pieza p = this.getPiezasBlancas().stream().filter(pieza -> pieza.getPosX() == movimiento.getFromX() && pieza.getPosY() == movimiento.getFromY()).findAny().get();
                 this.getPiezasBlancas().remove(p);
                 p.setPosX(movimiento.getToX());
                 p.setPosY(movimiento.getToY());
                 //actualizamos array del tablero
                 this.getPiezasBlancas().add(p);
                 //actualizamos array del jugador blanco
-                if(!this.jugador2.isEsNegro()) this.jugador2.setMisPiezas(this.getPiezasBlancas());
-                else this.jugador1.setMisPiezas(this.getPiezasBlancas());
+                /*if(!this.jugador2.isEsNegro()) {
+                    this.jugador2.setMisPiezas(this.getPiezasBlancas());
+                    this.jugador1.setMisPiezas(this.getPiezasNegras());
+                }
+                else {
+                    this.jugador1.setMisPiezas(this.getPiezasBlancas());
+                    this.jugador2.setMisPiezas(this.getPiezasNegras());
+                }*/
             } else {
-                Pieza p = this.getPiezasNegras().stream().filter(pieza -> pieza.posX == movimiento.getFromX() && pieza.posY == movimiento.getFromY()).findAny().get();
+                Pieza p = this.getPiezasNegras().stream().filter(pieza -> pieza.getPosX() == movimiento.getFromX() && pieza.getPosY() == movimiento.getFromY()).findAny().get();
                 this.getPiezasNegras().remove(p);
                 p.setPosX(movimiento.getToX());
                 p.setPosY(movimiento.getToY());
                 //actualizamos array del tablero
                 this.getPiezasNegras().add(p);
                 //actualizamos array del jugador blanco
-                if(this.jugador2.isEsNegro()) this.jugador2.setMisPiezas(this.getPiezasNegras());
-                else this.jugador1.setMisPiezas(this.getPiezasNegras());
+                /*if(this.jugador2.isEsNegro()) {
+                    this.jugador2.setMisPiezas(this.getPiezasNegras());
+                    this.jugador1.setMisPiezas(this.getPiezasBlancas());
+                }
+                else {
+                    this.jugador1.setMisPiezas(this.getPiezasNegras());
+                    this.jugador2.setMisPiezas(this.getPiezasBlancas());
+                }*/
             }
         }
         else { //Si hay una pieza por matar
             if(this.turnoBlancas) {
-                Pieza em = this.getPiezasNegras().stream().filter(pieza -> pieza.posX == movimiento.getToX() && pieza.posY == movimiento.getToY()).findAny().get();
+                Pieza em = this.getPiezasNegras().stream().filter(pieza -> pieza.getPosX() == movimiento.getToX() && pieza.getPosY() == movimiento.getToY()).findAny().get();
                 this.getPiezasNegras().remove(em);
                 //
                 this.tablero[movimiento.getToX()][movimiento.getToY()] = this.tablero[movimiento.getFromX()][movimiento.getFromY()];
                 this.tablero[movimiento.getFromX()][movimiento.getFromY()] = '0';
 
                 //Actulizo en piezas blancas
-                Pieza p = this.getPiezasBlancas().stream().filter(pieza -> pieza.posX == movimiento.getFromX() && pieza.posY == movimiento.getFromY()).findAny().get();
+                Pieza p = this.getPiezasBlancas().stream().filter(pieza -> pieza.getPosX() == movimiento.getFromX() && pieza.getPosY() == movimiento.getFromY()).findAny().get();
                 this.getPiezasBlancas().remove(p);
                 p.setPosX(movimiento.getToX());
                 p.setPosY(movimiento.getToY());
                 //actualizamos array del tablero
                 this.getPiezasBlancas().add(p);
                 //actualizamos array del jugador blanco
-                if (!this.jugador2.isEsNegro()) this.jugador2.setMisPiezas(this.getPiezasBlancas());
-                else this.jugador1.setMisPiezas(this.getPiezasBlancas());
+                /*if (!this.jugador2.isEsNegro()) {
+                    this.jugador2.setMisPiezas(this.getPiezasBlancas());
+                }
+                else this.jugador1.setMisPiezas(this.getPiezasBlancas());*/
             } else {
-                Pieza em = this.getPiezasBlancas().stream().filter(pieza -> pieza.posX == movimiento.getToX() && pieza.posY == movimiento.getToY()).findAny().get();
+                Pieza em = this.getPiezasBlancas().stream().filter(pieza -> pieza.getPosX() == movimiento.getToX() && pieza.getPosY() == movimiento.getToY()).findAny().get();
                 this.getPiezasBlancas().remove(em);
                 //
                 this.tablero[movimiento.getToX()][movimiento.getToY()] = this.tablero[movimiento.getFromX()][movimiento.getFromY()];
                 this.tablero[movimiento.getFromX()][movimiento.getFromY()] = '0';
 
-                Pieza p = this.getPiezasNegras().stream().filter(pieza -> pieza.posX == movimiento.getFromX() && pieza.posY == movimiento.getFromY()).findAny().get();
+                Pieza p = this.getPiezasNegras().stream().filter(pieza -> pieza.getPosX() == movimiento.getFromX() && pieza.getPosY() == movimiento.getFromY()).findAny().get();
                 this.getPiezasNegras().remove(p);
                 p.setPosX(movimiento.getToX());
                 p.setPosY(movimiento.getToY());
                 //actualizamos array del tablero
                 this.getPiezasNegras().add(p);
                 //actualizamos array del jugador blanco
-                if(this.jugador2.isEsNegro()) this.jugador2.setMisPiezas(this.getPiezasNegras());
-                else this.jugador1.setMisPiezas(this.getPiezasNegras());
+                /*if(this.jugador2.isEsNegro()) this.jugador2.setMisPiezas(this.getPiezasNegras());
+                else this.jugador1.setMisPiezas(this.getPiezasNegras());*/
             }
         }
+
+        if(!this.jugador2.isEsNegro()) {
+            this.jugador2.setMisPiezas(this.getPiezasBlancas());
+            this.jugador1.setMisPiezas(this.getPiezasNegras());
+        }
+        else {
+            this.jugador1.setMisPiezas(this.getPiezasBlancas());
+            this.jugador2.setMisPiezas(this.getPiezasNegras());
+        }
+
+        Rey r1 = (Rey) this.jugador1.getMisPiezas().stream().filter(pieza -> pieza.getTipo() == 'k' || pieza.getTipo() == 'K').findAny().get();
+        this.jugador1.setEsteRey(r1);
+        Rey r2 = (Rey) this.jugador2.getMisPiezas().stream().filter(pieza -> pieza.getTipo() == 'k' || pieza.getTipo() == 'K').findAny().get();
+        this.jugador2.setEsteRey(r2);
+
+
         //Actualizar posibles movimientos de los jugadores
         this.jugador1.setPosiblesMovimientos(this.todosLosMovimientosPosibles(jugador1.misPiezas));
         this.jugador2.setPosiblesMovimientos(this.todosLosMovimientosPosibles(jugador2.misPiezas));
         this.jugador2.setTablero(this);
         this.jugador1.setTablero(this);
+
+        //Mate stuff:
+        this.jugador2.enMate = this.jugador1.getPosiblesMovimientos().stream().anyMatch(movi -> this.jugador2.getReydelJugador()
+                .getPosX() == movi.getToX() && this.jugador2.getReydelJugador().getPosX() == movi.getToY());
+        this.jugador1.enMate = this.jugador2.getPosiblesMovimientos().stream().anyMatch(movi -> this.jugador1.getReydelJugador()
+                .getPosX() == movi.getToX() && this.jugador1.getReydelJugador().getPosX() == movi.getToY());
     }
 
 

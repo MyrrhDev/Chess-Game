@@ -20,29 +20,31 @@ public final class EstrategiaSimple {
 
     //Esta version de minimax me devuelve dependiendo de quien la llame el mejor movimiento a hacer si ataca o defiende
     //He borrado int depth porque ahora es parte de la clase misma en profundidadDada
-    public Movimiento estrategiaSimple(Tablero tablero, boolean maxAttackingPlayer) {
+    public Movimiento estrategiaSimple(final Tablero tablero, final boolean maxAttackingPlayer) {
         Movimiento mejorMov = new Movimiento(-1,-1, -1, -1);
         int mayorPuntos = Integer.MIN_VALUE;
         int menorPuntos = Integer.MAX_VALUE;
         int puntosAhora;
 
+
         //Para todos las piezas+movimientos posibles
-        for (final Movimiento movimiento : tablero.getAttackPlayer(maxAttackingPlayer).getPosiblesMovimientos()) {
-
+        //for (final Movimiento movimiento : tablero.getAttackPlayer(maxAttackingPlayer).getPosiblesMovimientos()) {
+        for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
             //Probamos de hacer el movimiento en un tablero nuevo creado en la clase de Movimiento Prueba
-            MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
 
-            if (pruebaMovimiento.isSePuede()) {
-                if(!tablero.esSuTurno().isEsNegro()) { //this porque estamos dentro de Maquina (?)
+            if (pruebaMovimiento.isSePuede()) { //Este poss mov no me pone en jaque
+                if(tablero.esSuTurno().isEstaAtacando()) { //this porque estamos dentro de Maquina (?)
+                    //if(!tablero.esSuTurno().isEsNegro()) { //this porque estamos dentro de Maquina (?)
                     puntosAhora = min(pruebaMovimiento.getaTablero(), this.profundidadDada - 1);
                 } else {
                     puntosAhora = max(pruebaMovimiento.getaTablero(), this.profundidadDada - 1);
                 }
 
-                if (!tablero.esSuTurno().isEsNegro() && puntosAhora >= mayorPuntos) {
+                if (tablero.esSuTurno().isEstaAtacando() && puntosAhora >= mayorPuntos) {
                     mayorPuntos = puntosAhora;
                     mejorMov = movimiento;
-                } else if (tablero.esSuTurno().isEsNegro() && puntosAhora <= menorPuntos) {
+                } else if (!tablero.esSuTurno().isEstaAtacando() && puntosAhora <= menorPuntos) {
                     menorPuntos = puntosAhora;
                     mejorMov = movimiento;
                 }
@@ -55,7 +57,7 @@ public final class EstrategiaSimple {
     }
 
 
-    private int min(Tablero tablero, int depth) {
+    private int min(final Tablero tablero, final int depth) {
         if (depth == 0) {
             return this.evaluacion.evaluar(tablero, depth);
         }
@@ -67,7 +69,7 @@ public final class EstrategiaSimple {
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
 
             final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
-
+            //Aqui se pira en  6 0, 4 0
             if (pruebaMovimiento.isSePuede()) {
                 final int puntosAhora = max(pruebaMovimiento.getaTablero(), depth - 1);
                 if (puntosAhora <= menorPuntos) {
@@ -79,7 +81,7 @@ public final class EstrategiaSimple {
     }
 
 
-    private int max(Tablero tablero, int depth) {
+    private int max(final Tablero tablero, final int depth) {
         if (depth == 0) {
             return this.evaluacion.evaluar(tablero, depth);
         }
