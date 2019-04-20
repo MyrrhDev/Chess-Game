@@ -57,6 +57,7 @@ public class DriverAlfil {
 
     public static Alfil iniPieza(boolean esNegra, String[] tmp) {
         Alfil a = new Alfil(esNegra, Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]));
+        eliminarDuplicados(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]));
         if(esNegra) {
             PiezasNegras.add(a);
             estadoTablero[Integer.parseInt(tmp[0])][Integer.parseInt(tmp[1])] = 'b';
@@ -66,6 +67,21 @@ public class DriverAlfil {
             estadoTablero[Integer.parseInt(tmp[0])][Integer.parseInt(tmp[1])] = 'B';
         }
         return a;
+    }
+
+    private static void eliminarDuplicados(int posX, int posY) {
+        for(int i = 0; i < PiezasBlancas.size(); ++i) {
+            if(PiezasBlancas.get(i).getPosX() == posX && PiezasBlancas.get(i).getPosY() == posY) {
+                PiezasBlancas.remove(i);
+                break;
+            }
+        }
+        for(int i = 0; i < PiezasNegras.size(); ++i) {
+            if(PiezasNegras.get(i).getPosX() == posX && PiezasNegras.get(i).getPosY() == posY) {
+                PiezasNegras.remove(i);
+                break;
+            }
+        }
     }
 
     /*

@@ -40,6 +40,21 @@ public class DriverCaballo {
 
     }
 
+    private static void eliminarDuplicados(int posX, int posY) {
+        for(int i = 0; i < PiezasBlancas.size(); ++i) {
+            if(PiezasBlancas.get(i).getPosX() == posX && PiezasBlancas.get(i).getPosY() == posY) {
+                PiezasBlancas.remove(i);
+                break;
+            }
+        }
+        for(int i = 0; i < PiezasNegras.size(); ++i) {
+            if(PiezasNegras.get(i).getPosX() == posX && PiezasNegras.get(i).getPosY() == posY) {
+                PiezasNegras.remove(i);
+                break;
+            }
+        }
+    }
+
     /*
      * Pre: Cierto
      * Post: Lee el estado del tablero desde la terminal
@@ -57,6 +72,7 @@ public class DriverCaballo {
 
     public static Caballo iniPieza(boolean esNegra, String[] tmp) {
         Caballo c = new Caballo(esNegra, Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]));
+        eliminarDuplicados(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]));
         if(esNegra) {
             PiezasNegras.add(c);
             estadoTablero[Integer.parseInt(tmp[0])][Integer.parseInt(tmp[1])] = 'n';
