@@ -47,60 +47,58 @@ public class Peon extends Pieza {
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
             int auxY = movY - posY;
-
-            //if (!this.esNegra && movX < posX && movY != posY) { //movimiento alguno valido (soy negra)
-                //Anyone to kill?  //Diagonal solo si se puede matar
+            if (!this.esNegra) { //soy una pieza blanca, solo me podré mover hacia arriba (auxX, auxY negativos)
                 if (auxX == -1 && auxY == -1) { //movimiento hacia esquina superior izquierda
                     if (estadoTablero[movX][movY] != '0') {
                         //me encuentro una pieza en mi camino
-                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
+                        if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
+                            return false;
                         else return true;
                     } else return false;
                 } else if (auxX == -1 && auxY == 1) { //movimiento hacia esquina superior derecha
                     if (estadoTablero[movX][movY] != '0') {
-                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
+                        if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
+                            return false;
                         else return true;
                     } else return false;
-                } else if (movY == posY && movX < posX) { //mov hacia adelante
-                    if (firstMove && auxY == -2) {
+                } else if (movY == posY && posX > movX) { //movimiento hacia adelante
+                    if (firstMove && auxX == -2) {
                         if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
                             return true;
-                        }
-                    } else if (auxY == -2 && !firstMove) return false;
-
-                    else if (auxX == -1) {
+                        } else return false;
+                    } else if (auxX == -1) {
                         if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
                             return true;
-                        }
+                        } else return false;
                     } else return false;
-                } else return false; //la pieza no se ha movido realmente
-            //}
-            //else {
-                if (auxX == 1 && auxY == 1) { //movimiento hacia esquina inferior izquierda
+                }
+            }
+            if (this.esNegra) { //soy una pieza negra, solo me podré mover hacia abajo (auxX, auxY positivos)
+                if (auxX == 1 && auxY == -1) { //movimiento hacia esquina inferior izquierda
                     if (estadoTablero[movX][movY] != '0') {
                         //me encuentro una pieza en mi camino
-                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
+                        if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
+                            return false;
                         else return true;
                     } else return false;
                 } else if (auxX == 1 && auxY == 1) { //movimiento hacia esquina inferior derecha
                     if (estadoTablero[movX][movY] != '0') {
-                        if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
+                        if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
+                            return false;
                         else return true;
                     } else return false;
-                } else if (movY == posY && movX > posX) { //mov hacia adelante
-                    if (firstMove && auxY == 2) {
+                } else if (movY == posY && posX < movX) { //movimiento hacia adelante
+                    if (firstMove && auxX == 2) {
                         if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
                             return true;
-                        }
-                    } else if (auxY == 2 && !firstMove) return false;
-
-                    else if (auxX == 1) {
+                        } else return false;
+                    } else if (auxX == 1) {
                         if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
                             return true;
-                        }
+                        } else return false;
                     } else return false;
-                } else return false; //la pieza no se ha movido realmente
-            //}
+                }
+            }
         }
         return false;
     }

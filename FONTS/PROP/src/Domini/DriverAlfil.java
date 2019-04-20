@@ -1,7 +1,6 @@
 package Domini;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class DriverAlfil {
@@ -9,7 +8,6 @@ public class DriverAlfil {
     public static final String ANSI_RESET = "\u001B[0m";
     static private char estadoTablero[][] = new char[8][8];
     static private int move[];
-    static private String posPieza[];
     private static ArrayList <Pieza> PiezasBlancas;
     private static ArrayList <Pieza> PiezasNegras;
     static private String f[][] = {{"b", "♝"}, {"B", "♗"}, {"n", "♞"}, {"N", "♘"},
@@ -92,8 +90,8 @@ public class DriverAlfil {
 
     public static void main(String[] args) {
         estadoTablero = new char[8][8];
-        PiezasBlancas = new ArrayList<Pieza>();
-        PiezasNegras = new ArrayList<Pieza>();
+        PiezasBlancas = new ArrayList<>();
+        PiezasNegras = new ArrayList<>();
         move = new int[2];
         iniTablero();
         Scanner sc = new Scanner(System.in);
@@ -128,7 +126,7 @@ public class DriverAlfil {
                             else if (s.equals("false")) { esNegraInput = false;}
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
-                        System.out.println("Indica la posicion de la pieza en el tablero:");
+                        System.out.println("Indica la posicion de la pieza en el tablero. Representamos el tablero como una matriz. El extremo superior de la matriz sera la posicion 0 0 mentras que, la esquina inferior derecha, será la posicion 7 7:");
                         String tmp[] = sc.nextLine().split(" ");
                         if(verificarEntrada(tmp)) {
                             inputOK = true;

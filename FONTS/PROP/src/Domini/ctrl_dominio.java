@@ -55,6 +55,7 @@ public class ctrl_dominio {
         }
     }*/
 
+    //@TODO Revisar
     public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
         switch(jug1) {
             case 1:
@@ -218,11 +219,13 @@ public class ctrl_dominio {
     public static void main(String[] args) {
         /*DriverCtrl_dominio cd = new DriverCtrl_dominio();
         cd.main(args);*/
-        //DriverCaballo dc = new DriverCaballo();
-        //dc.main(args);
+        /*DriverCaballo dc = new DriverCaballo();
+        dc.main(args);*/
         /*DriverAlfil da = new DriverAlfil();
         da.main(args);*/
-        DriverProblema dp = new DriverProblema();
+        /*DriverProblema dp = new DriverProblema();
+        dp.main(args);*/
+        DriverPeon dp = new DriverPeon();
         dp.main(args);
 
     }

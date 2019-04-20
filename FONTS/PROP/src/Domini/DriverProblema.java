@@ -13,7 +13,7 @@ public class DriverProblema {
     }
 
     private static void printMenuPrincipal() {
-        System.out.println("Bienvenido al Driver de Torre. Selecciona qué deseas testear:");
+        System.out.println("Bienvenido al Driver de Problema. Selecciona qué deseas testear:");
         System.out.println("    1- Alta objeto Problema");
         System.out.println("    2- Verificar problema");
         System.out.println("    5- Salir");

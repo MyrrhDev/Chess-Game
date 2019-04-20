@@ -1,15 +1,40 @@
 package Domini;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class DriverCaballo {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-    static private char estadoTablero[][];
+    static private char estadoTablero[][] = new char[8][8];
+    static private int move[];
     private static ArrayList <Pieza> PiezasBlancas;
     private static ArrayList <Pieza> PiezasNegras;
+    static private String f[][] = {{"b", "♝"}, {"B", "♗"}, {"n", "♞"}, {"N", "♘"},
+            {"p", "♟"}, {"P", "♙"}, {"q", "♛"}, {"Q", "♕"},
+            {"k", "♚"}, {"K", "♔"}, {"r", "♜"}, {"R", "♖"}};
+
+
+    private static void pintaTablero() {
+        System.out.println();
+        System.out.println("   (a) (b) (c) (d) (e) (f) (g) (h)");
+        for (int i = 0; i < 8; ++i) {
+            System.out.print("(" + i + ")");
+            for (int j = 0; j < 8; ++j) {
+                if (estadoTablero[i][j] == '0') System.out.print("[ ] ");
+                else if (estadoTablero[i][j] != '0') {
+                    for (int k = 0; k < 12; ++k) {
+                        if (String.valueOf(estadoTablero[i][j]).equals(f[k][0])) {
+                            System.out.print("[" + f[k][1] + "] ");
+                            break;
+                        }
+
+                    }
+                }
+            }
+            System.out.println();
+        }
+    }
 
     public DriverCaballo() {
 
@@ -19,19 +44,10 @@ public class DriverCaballo {
      * Pre: Cierto
      * Post: Lee el estado del tablero desde la terminal
      */
-    public static void readTableroFromTerminal(Scanner sc) throws Exception {
-        int i = 0;
-        while (i < 8) {
-            String s = sc.nextLine();
-            char[] chr = s.toCharArray();
-            for(int j = 0; j < 8; ++j) {
-                estadoTablero[i][j] = chr[j*2];
-            }
-            ++i;
-        }
-        /*for(i = 0; i < 8; ++i)
+    public static void iniTablero() {
+        for(int i = 0; i < 8; ++i)
             for(int j = 0; j < 8; ++j)
-                System.out.println(estadoTablero[i][j]);*/
+                estadoTablero[i][j] = '0';
     }
 
     /*
@@ -39,11 +55,17 @@ public class DriverCaballo {
      * Post: Devuelve un objeto Caballo con atributos iguales a los parámetros de la funcion
      */
 
-    public static Caballo iniPieza(boolean esNegra, int posX, int posY) {
-        Caballo t = new Caballo(esNegra, posX, posY);
-        if(esNegra) PiezasNegras.add(t);
-        else PiezasNegras.add(t);
-        return t;
+    public static Caballo iniPieza(boolean esNegra, String[] tmp) {
+        Caballo c = new Caballo(esNegra, Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]));
+        if(esNegra) {
+            PiezasNegras.add(c);
+            estadoTablero[Integer.parseInt(tmp[0])][Integer.parseInt(tmp[1])] = 'n';
+        }
+        else  {
+            PiezasBlancas.add(c);
+            estadoTablero[Integer.parseInt(tmp[0])][Integer.parseInt(tmp[1])] = 'N';
+        }
+        return c;
     }
 
     /*
@@ -53,23 +75,25 @@ public class DriverCaballo {
     private static void printMenuPrincipal() {
         System.out.println("Bienvenido al Driver de Caballo. Selecciona qué deseas testear:");
         System.out.println("    1- Alta objeto Pieza Caballo");
-        System.out.println("    2- Introducir estado de tablero");
+        System.out.println("    2- Estado del tablero (para verificar que las piezas estén correctamente colocadas en el)");
         System.out.println("    3- Verificar función esMovimientoOK de la clase Caballo");
         System.out.println("    4- Verificar función movimientosPosibles de la clase Caballo");
         System.out.println("    5- Salir");
     }
 
+    private static boolean verificarEntrada(String tmp[]) {
+        int posX = Integer.parseInt(tmp[0]);
+        int posY = Integer.parseInt(tmp[1]);
+        if(posX >= 0 && posY >= 0 && posX < 8 && posY < 8) return true;
+        return false;
+    }
+
     public static void main(String[] args) {
-        estadoTablero = new char[][] {{'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'}};
-        PiezasBlancas = new ArrayList<Pieza>();
-        PiezasNegras = new ArrayList<Pieza>();
+        estadoTablero = new char[8][8];
+        PiezasBlancas = new ArrayList<>();
+        PiezasNegras = new ArrayList<>();
+        move = new int[2];
+        iniTablero();
         Scanner sc = new Scanner(System.in);
         boolean driverIsRunning = true;
         while(driverIsRunning) {
@@ -82,53 +106,38 @@ public class DriverCaballo {
             }
             else op = -1;
             switch(op) {
+                /*
+                    Opciones:
+                    1. Alta objeto Caballo, situado en el tablero
+                    2. Ver como están situadas las piezas en el tablero
+                    3. esMovimientoOk de una pieza, dada su posición
+                    4. movimientosPosibles de esa pieza en concreto
+                    5. Salir
+                 */
                 case 1:
                     boolean esNegraInput = false;
                     System.out.println("Introduce, en orden y por terminal, los siguientes valores:");
                     boolean inputOK = false;
-                    int posX = -1, posY = -1;
                     while(!inputOK) {
                         System.out.println("Indica si el color de la pieza es negra (true) o es blanca (false)");
-                        String s = "";
-                        while(!inputOK) {
-                            s = sc.nextLine();
-                            if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                                if (s.equals("true")) inputOK = true;
-                                else if (s.equals("false")) inputOK = true;
-                                else System.out.println("Valor incorrecto.");
-                            } else System.out.println("Valor incorrecto.");
-                        }
-                        inputOK = false;
-                        while(!inputOK) {
-                            System.out.println("Introduce la posición de la pieza en el tablero");
-                            if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                                String tmp[] = sc.nextLine().split(" ");
-                                if((tmp[0].equals("0") || tmp[0].equals("1") || tmp[0].equals("2") || tmp[0].equals("3")
-                                        || tmp[0].equals("4") || tmp[0].equals("5") || tmp[0].equals("6") || tmp[0].equals("7"))
-                                        && (tmp[1].equals("0") || tmp[1].equals("1") || tmp[1].equals("2") || tmp[1].equals("3")
-                                        || tmp[1].equals("4") || tmp[1].equals("5") || tmp[1].equals("6") || tmp[1].equals("7"))) {
-                                    posX = Integer.parseInt(tmp[0]);
-                                    posY = Integer.parseInt(tmp[0]);
-                                    inputOK = true;
-                                } else System.out.println("Valor incorrecto.");
-                            } else System.out.println("Valor incorrecto.");
+                        String s = sc.nextLine();
+                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
+                            if (s.equals("true")) { esNegraInput = true; }
+                            else if (s.equals("false")) { esNegraInput = false;}
+                            else System.out.println("Valor incorrecto.");
+                        } else System.out.println("Valor incorrecto.");
+                        System.out.println("Indica la posicion de la pieza en el tablero. Representamos el tablero como una matriz. El extremo superior de la matriz sera la posicion 0 0 mentras que, la esquina inferior derecha, será la posicion 7 7:");
+                        String tmp[] = sc.nextLine().split(" ");
+                        if(verificarEntrada(tmp)) {
+                            inputOK = true;
+                            Caballo c = iniPieza(esNegraInput, tmp);
+                            System.out.println("Objeto Caballo creado con exito.");
                         }
                     }
-                    Caballo c = iniPieza(esNegraInput, posX, posY);
-                    if(esNegraInput) {
-                        PiezasNegras.add(c);
-                    }
-                    else PiezasBlancas.add(c);
-                    estadoTablero[posX][posY] = c.getTipo();
-                    System.out.println("Objeto caballo creado con exito.");
                     break;
                 case 2:
-                    System.out.println("Introduce el estado del tablero. Se espera:");
-                    System.out.println("0 si la casilla no contiene ninguna pieza");
-                    System.out.println("tipo de pieza, en formato FEN, que contiene la casilla");
-                    try {
-                        readTableroFromTerminal(sc);
-                    }catch(Exception e) { }
+                    System.out.println("Este es el estado del tablero actual:");
+                    pintaTablero();
                     break;
                 case 3:
                     System.out.println("Introduce el movimiento a realizar (posicion inicial de la pieza y posicion final, separado por un espacio)");
@@ -161,16 +170,17 @@ public class DriverCaballo {
                     System.out.println("Introduce, por terminal, la posicion de la pieza la cual quieres todos sus posibles movimientos");
                     String tmp2 = sc.nextLine();
                     String aux2[] = tmp2.split(" ");
-                    //Movimiento m2 = new Movimiento(Integer.parseInt(aux2[0]), Integer.parseInt(aux2[1]));
+                    int posX = Integer.parseInt(aux2[0]);
+                    int posY = Integer.parseInt(aux2[1]);
                     Pieza test2 = null;
-                    if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux2[0])][Integer.parseInt(aux2[1])])) { //pieza blanca
+                    if(Character.isUpperCase(estadoTablero[posX][posY])) { //pieza blanca
                         for(int i = 0; i < PiezasBlancas.size(); ++i) {
-                            if(PiezasBlancas.get(i).getTipo() == 'N') test2 = PiezasBlancas.get(i);
+                            if(PiezasBlancas.get(i).getTipo() == 'N' && PiezasBlancas.get(i).getPosX() == posX && PiezasBlancas.get(i).getPosY() == posY) test2 = PiezasBlancas.get(i);
                         }
                     }
                     else { //Pieza negra
                         for(int i = 0; i < PiezasNegras.size(); ++i) {
-                            if(PiezasNegras.get(i).getTipo() == 'n') test2 = PiezasNegras.get(i);
+                            if(PiezasNegras.get(i).getTipo() == 'n' && PiezasNegras.get(i).getPosX() == posX && PiezasNegras.get(i).getPosY() == posY) test2 = PiezasNegras.get(i);
                         }
                     }
                     if(test2 == null) { //no existe la pieza a probar
@@ -178,10 +188,10 @@ public class DriverCaballo {
                     }
                     else {
                         System.out.println("Estos son todos los posibles movimientos de la pieza Caballo:");
-                        /*ArrayList<Movimiento> res = test2.movimientosPosibles(m2, estadoTablero);
+                        ArrayList<Movimiento> res = test2.movimientosPosibles(estadoTablero);
                         for(int i = 0; i < res.size(); ++i) {
                             System.out.println("("+ "FromX: " + res.get(i).getFromX() + " FromY: " + res.get(i).getFromY() + " ToX: " + res.get(i).getToX() + " ToY: " + res.get(i).getToY() + " Pieza: " + res.get(i).getP() +")");
-                        }*/
+                        }
                     }
                     break;
                 case 5:
