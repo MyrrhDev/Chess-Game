@@ -51,9 +51,10 @@ public class Problema {
         //1. Nos va a entrar un FEN, queremos el tablero. Llamamos al tablero construido por el FEN
         //2. Verificar problema significa que haya mate en n o menos movimientos del jugador que ataca
         //3. estrategiaSimple(nuevo tablero creado, true);
+        return false;
     }
 
-    public Movimiento estrategiaSimple(Tablero tablero, boolean maxAttackingPlayer) {
+    private Movimiento verificarProblema(Tablero tablero, boolean maxAttackingPlayer) {
         Movimiento mejorMov = new Movimiento(-1,-1, -1, -1);
         int puntosAhora;
 

@@ -48,7 +48,7 @@ public class Peon extends Pieza {
             int auxX = movX - posX;
             int auxY = movY - posY;
 
-            if (!this.esNegra && movX < posX && movY != posY) { //movimiento alguno valido (soy negra)
+            //if (!this.esNegra && movX < posX && movY != posY) { //movimiento alguno valido (soy negra)
                 //Anyone to kill?  //Diagonal solo si se puede matar
                 if (auxX == -1 && auxY == -1) { //movimiento hacia esquina superior izquierda
                     if (estadoTablero[movX][movY] != '0') {
@@ -74,8 +74,8 @@ public class Peon extends Pieza {
                         }
                     } else return false;
                 } else return false; //la pieza no se ha movido realmente
-            }
-            else {
+            //}
+            //else {
                 if (auxX == 1 && auxY == 1) { //movimiento hacia esquina inferior izquierda
                     if (estadoTablero[movX][movY] != '0') {
                         //me encuentro una pieza en mi camino
@@ -100,7 +100,7 @@ public class Peon extends Pieza {
                         }
                     } else return false;
                 } else return false; //la pieza no se ha movido realmente
-            }
+            //}
         }
         return false;
     }
