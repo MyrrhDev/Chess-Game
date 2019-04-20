@@ -5,6 +5,7 @@ public class Problema {
     int N;
     public boolean iniJuegoBlancas; // true -> empiezan blancas, false -> empiezan negras
     Evaluacion evaluacion = new Evaluacion();
+    private boolean verificado;
 
     //constructoras
     public Problema() {
@@ -47,15 +48,26 @@ public class Problema {
         return this.iniJuegoBlancas;
     }
 
+    //FEN ya debe estar tratado
     public boolean verificarProblema() {
+        String verificar = "";
+        if(problema != null)  {
+            verificar = this.problema;
+            verificado = false;
+            Maquina atacante = new Maquina(true, iniJuegoBlancas, true);
+            Maquina defensora = new Maquina(true, !iniJuegoBlancas, false);
+            Tablero t = new Tablero(atacante, defensora);
+            t.FENToTablero(verificar, iniJuegoBlancas);
+            verificar(t, true);
+            return verificado;
+        }
         //1. Nos va a entrar un FEN, queremos el tablero. Llamamos al tablero construido por el FEN
         //2. Verificar problema significa que haya mate en n o menos movimientos del jugador que ataca
         //3. estrategiaSimple(nuevo tablero creado, true);
         return false;
     }
 
-    private Movimiento verificarProblema(Tablero tablero, boolean maxAttackingPlayer) {
-        Movimiento mejorMov = new Movimiento(-1,-1, -1, -1);
+    private void verificar(Tablero tablero, boolean maxAttackingPlayer) {
         int puntosAhora;
 
         //Para todos las piezas+movimientos posibles
@@ -68,15 +80,15 @@ public class Problema {
                 puntosAhora = min(pruebaMovimiento.getaTablero(), (this.N*2) - 1);
             }
         }
-        return mejorMov;
     }
 
 
     private int min(Tablero tablero, int depth) {
         if (depth == 0) {
-            return this.evaluacion.evaluar(tablero, depth);
+            //return this.evaluacion.evaluar(tablero, depth);
         }
         if(gameOver(tablero)) {
+            verificado = true;
             return this.evaluacion.evaluar(tablero, depth);
             //aqui en una var booleana de la classe canviar-la a true
         }

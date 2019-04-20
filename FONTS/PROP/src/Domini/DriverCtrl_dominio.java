@@ -56,6 +56,16 @@ public class DriverCtrl_dominio {
         System.out.println("    5- Salir");
     }
 
+    private static boolean verificarEntrada(String tmp[]) {
+        int posX = Integer.parseInt(tmp[0]);
+        int posY = Integer.parseInt(tmp[1]);
+        int movX = Integer.parseInt(tmp[2]);
+        int movY = Integer.parseInt(tmp[3]);
+        if(posX >= 0 && posY >= 0 && posX < 8 && posY < 8 &&
+            movX >= 0 && movY >= 0 && movX < 8 && movY <8) return true;
+        return false;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean driverIsRunning = true;
@@ -112,14 +122,22 @@ public class DriverCtrl_dominio {
                         pintaTablero();
                         int n = p.getN();
                         while(n > 0) {
-                            try { //TODO: Si introduce un movimiento ilegal propagar la excepcion y pedirle otra vez un movimiento
-                                //juega humano
-                                System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
-                                String tmp [] = sc.nextLine().split(" ");
-                                c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
-                                System.out.println("Estado del tablero después del movimiento:");
-                                pintaTablero();
-                            } catch (Exception e) {
+                            boolean inputOk = false;
+                            while(!inputOk) {
+                                try { //TODO: Si introduce un movimiento ilegal propagar la excepcion y pedirle otra vez un movimiento
+                                    //juega humano
+                                    System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
+                                    String tmp[] = sc.nextLine().split(" ");
+                                    if(verificarEntrada(tmp)) {
+                                        c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
+                                        System.out.println("Estado del tablero después del movimiento:");
+                                        pintaTablero();
+                                        inputOk = true;
+                                    } else System.out.println("Error en la entrada");
+                                } catch (Exception e) {
+                                    n = 0;
+                                    break;
+                                }
                             }
                             try {
                                 //juega maquina
@@ -128,6 +146,8 @@ public class DriverCtrl_dominio {
                                 System.out.println("Movimiento:");
                                 pintaTablero();
                             } catch (Exception e) {
+                                n = 0;
+                                break;
                             }
                             --n;
                         }
