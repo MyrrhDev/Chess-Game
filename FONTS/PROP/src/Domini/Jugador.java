@@ -15,11 +15,11 @@ public abstract class Jugador {
     public Tablero tablero;
 
 
-    public Jugador(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
+    /*public Jugador(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
         this.esMaquina = esMaquina;
         this.esNegro = esNegro;
         this.estaAtacando = estaAtacando;
-    }
+    }*/
 
 
     public ArrayList<Movimiento> getPosiblesMovimientos() {

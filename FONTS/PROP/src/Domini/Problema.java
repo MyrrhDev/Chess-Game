@@ -17,18 +17,15 @@ public class Problema {
            que se eliminan los elementos inútiles de la codificacion
      */
     public void setFEN(String FEN) {
-        //ejemplo: 1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B w - - 0 1
-        int newLength = FEN.indexOf(' ');
-        this.problema = FEN.substring(0, newLength);
-    }
-
-    public void setIniJuegoBlancas(String FEN) {
         int i = FEN.indexOf('w');
         if(i == -1) { //no existe el carácter w, verificamos que efectivamente empiezan las negras atacando
             i = FEN.indexOf('b');
         }
         if(FEN.charAt(i) == 'w') iniJuegoBlancas = true;
         else iniJuegoBlancas = false;
+        //ejemplo: 1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B w - - 0 1
+        int newLength = FEN.indexOf(' ');
+        this.problema = FEN.substring(0, newLength);
     }
 
     public String getFEN() {
@@ -53,9 +50,24 @@ public class Problema {
         if(problema != null)  {
             verificar = this.problema;
             verificado = false;
-            Maquina atacante = new Maquina(true, iniJuegoBlancas, true);
-            Maquina defensora = new Maquina(true, !iniJuegoBlancas, false);
-            Tablero t = new Tablero(atacante, defensora);
+            /*
+            Si w:
+            Atacante: blancas, defensor: Negras
+            Si b:
+            Atacante: negras, defensor: Blancas
+             */
+            Maquina atacante = null, defensor = null;
+            if(this.iniJuegoBlancas) {
+                atacante = new Maquina(true, false, true);
+                defensor = new Maquina(true, true, false);
+
+            }
+            else if(!this.iniJuegoBlancas) {
+                atacante = new Maquina(true, true, true);
+                defensor = new Maquina(true, false, false);
+
+            }
+            Tablero t = new Tablero(atacante, defensor);
             t.FENToTablero(verificar, iniJuegoBlancas);
             verificar(t, true);
             return verificado;
@@ -77,6 +89,9 @@ public class Problema {
 
             if (pruebaMovimiento.isSePuede()) {
                 puntosAhora = min(pruebaMovimiento.getaTablero(), (this.N*2) - 1);
+            }
+            else {
+            puntosAhora = max(pruebaMovimiento.getaTablero(), (this.N*2) - 1);
             }
         }
     }
@@ -133,5 +148,9 @@ public class Problema {
 
     private static boolean gameOver(final Tablero tablero) {
         return tablero.esSuTurno().isEnJaqueMate() || tablero.esSuTurno().estaEstancado();
+    }
+
+    boolean getVerificado() {
+        return this.verificado;
     }
 }

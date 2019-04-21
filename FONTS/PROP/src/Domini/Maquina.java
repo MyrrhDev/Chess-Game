@@ -7,8 +7,12 @@ public class Maquina extends Jugador {
     //boolean esNegro;
     EstrategiaSimple estrategia;
 
+    //Cambiado por Roger 21-04-2019 para solucionar problemas en verificarProblema()
     public Maquina(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
-        super(esMaquina, esNegro, estaAtacando);
+        //super(esMaquina, esNegro, estaAtacando);
+        this.esMaquina = esMaquina;
+        this.estaAtacando = estaAtacando;
+        this.esNegro = esNegro;
     }
 
 

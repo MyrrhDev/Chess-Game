@@ -4,7 +4,10 @@ public class Persona extends Jugador {
 
 
     public Persona(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
-        super(esMaquina, esNegro, estaAtacando);
+        //super(esMaquina, esNegro, estaAtacando);
+        this.esMaquina = esMaquina;
+        this.estaAtacando = estaAtacando;
+        this.esNegro = esNegro;
     }
 
     @Override

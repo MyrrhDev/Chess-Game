@@ -38,7 +38,7 @@ public class DriverProblema {
                     System.out.println("Introduce el FEN:");
                     String tmp = sc.nextLine();
                     p = new Problema();
-                    p.setIniJuegoBlancas(tmp);
+                    //p.setIniJuegoBlancas(tmp);
                     p.setFEN(tmp);
                     System.out.println("Introduce el valor de N:");
                     tmp = sc.nextLine();

@@ -98,7 +98,7 @@ public class ctrl_dominio {
                 }
 
             }
-            else if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
+            if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
                 try {
                     t = j2.jugar(t,n); // paso tablero y N
                     t.setTurnoBlancas(!t.getTurnoBlancas());
@@ -113,15 +113,6 @@ public class ctrl_dominio {
 
     public char[][] getTablero() {
         return t.getTablero();
-        /*char[][] a = {{'0', '0', '0', '0', 'B', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'b', '0', '0', '0', 'P', '0', '0', 'P'},
-                {'0', '0', '0', '0', '0', '0', '0', '0'},
-                {'0', '0', 'Q', '0', '0', '0', '0', '0'},
-                {'0', '0', '0', '0', '0', 'q', '0', '0'}};
-        */
     }
 
 

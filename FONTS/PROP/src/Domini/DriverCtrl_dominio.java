@@ -53,6 +53,7 @@ public class DriverCtrl_dominio {
         System.out.println("Bienvenido al Driver de Controlador de Dominio. Selecciona qué deseas testear:");
         System.out.println("    1- Alta objeto Problema");
         System.out.println("    2- Empezar una partida");
+        System.out.println("    3- Verificar el problema creado");
         System.out.println("    5- Salir");
     }
 
@@ -83,7 +84,7 @@ public class DriverCtrl_dominio {
                     //creo un problema
                     tmp = sc.nextLine();
                     p = new Problema();
-                    p.setIniJuegoBlancas(tmp);
+                    //p.setIniJuegoBlancas(tmp);
                     p.setFEN(tmp);
                     System.out.println("Introduce el valor de N:");
                     p.setN(Integer.parseInt(sc.nextLine()));
@@ -111,9 +112,12 @@ public class DriverCtrl_dominio {
                         while (n > 0) {
                             try {
                                 c.jugar(n);
-                            }catch (Exception e) {}
+                                pintaTablero();
+                            }catch (Exception e) {
+                                n = 0;
+                                break;
+                            }
                             --n;
-                            pintaTablero();
                         }
                     }
                     else if(aux[0].equals("1") && aux[1].equals("2")) {
@@ -188,22 +192,12 @@ public class DriverCtrl_dominio {
                             --n;
                         }
                     }
-                    //Scann jug1 y jug2
-                    /*c.crearPartida(p, 0, 1);
-                    while(N > 0 & !j1.esEnJaqueMate & !j1.estaEstancado & !j2.esEnJaqueMate & !j2.estaEstancado) {
-                        if (j1.esSuTurno & j1.esMaquina) c.jugar();
-                        if (j1.esSuTurno & !j1.esMaquina) {
-                            //leer input
-                            c.jugar(posX...)
-                        }
-                        --N;
-                    }
-                    si j1 esta en jaque mate pues ha perdido jajaj salu2
-                    si j2 esta en ja.... ha perdido*/
                     break;
                 case 3:
-                    pintaTablero();
-
+                    System.out.println("Verificando problema");
+                    p.verificarProblema();
+                    if(p.getVerificado()) System.out.println("Problema verificado");
+                    else System.out.println("No se puede verificar el problema");
                     break;
                 default:
                     System.out.println("La opción introducida no es correcta. Por favor, seleccione una de las siguiente del menu");
