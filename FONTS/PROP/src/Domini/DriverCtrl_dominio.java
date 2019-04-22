@@ -99,8 +99,6 @@ public class DriverCtrl_dominio {
                     System.out.println("1 -> H1, 2 -> M1, 3 -> M2");
                     tmp = sc.nextLine();
                     String aux[] = tmp.split(" ");
-                    //if (!aux[0].equals("2") && !aux[1].equals("2")) System.out.println("La partida debe ser jugada por M1");
-                    //else if (aux[0] != "2" && aux[1] != "2") System.out.println("M2 no forma parte de esta entrega");
                     if ((aux[0].equals("2") && aux[1].equals("2")) && p != null) {
                         //jugamos, input OK
                         c = ctrl_dominio.getInstance();
@@ -108,16 +106,24 @@ public class DriverCtrl_dominio {
                         System.out.println("Partida creada con éxito");
                         pintaTablero();
                         int n = p.getN();
-                        //@TODO: Dejar de iterar si uno de los dos jugadores está en jaque mate
                         while (n > 0) {
                             try {
+                                System.out.println("Calculando movimientos");
                                 c.jugar(n);
+                                System.out.println("Movimientos realizados:");
                                 pintaTablero();
                             }catch (Exception e) {
+                                if(e.getMessage().equals("Jugador 1 en Jaque mate")) System.out.println("J1 ha perdido");
+                                else if(e.getMessage().equals("Jugador 2 en Jaque mate")) System.out.println("J2 ha perdido");
+                                System.out.println("Tablero final:");
+                                pintaTablero();
                                 n = 0;
                                 break;
                             }
                             --n;
+                            if(n == 0) {
+                                System.out.println("J1 ha perdido");
+                            }
                         }
                     }
                     else if(aux[0].equals("1") && aux[1].equals("2")) {
@@ -126,34 +132,38 @@ public class DriverCtrl_dominio {
                         pintaTablero();
                         int n = p.getN();
                         while(n > 0) {
-                            boolean inputOk = false;
-                            while(!inputOk) {
-                                try { //TODO: Si introduce un movimiento ilegal propagar la excepcion y pedirle otra vez un movimiento
-                                    //juega humano
-                                    System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
-                                    String tmp[] = sc.nextLine().split(" ");
-                                    if(verificarEntrada(tmp)) {
-                                        c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
-                                        System.out.println("Estado del tablero después del movimiento:");
-                                        pintaTablero();
-                                        inputOk = true;
-                                    } else System.out.println("Error en la entrada");
-                                } catch (Exception e) {
-                                    n = 0;
-                                    break;
-                                }
+                            try {
+                                //juega humano
+                                System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
+                                String tmp[] = sc.nextLine().split(" ");
+                                if(verificarEntrada(tmp)) {
+                                    c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
+                                    System.out.println("Movimiento:");
+                                    pintaTablero();
+                                } else System.out.println("Error en la entrada");
+                            }
+                            catch (Exception e) {
+                                System.out.println("J1 no puede moverse. Jaque Mate");
+                                n = 0;
+                                break;
                             }
                             try {
-                                //juega maquina
-                                System.out.println("Juega maquina");
+                                System.out.println("Calculando movimientos");
                                 c.jugar(n);
-                                System.out.println("Movimiento:");
+                                System.out.println("Movimientos realizados:");
                                 pintaTablero();
-                            } catch (Exception e) {
+                            }catch (Exception e) {
+                                if(e.getMessage().equals("Jugador 1 en Jaque mate")) System.out.println("J1 ha perdido");
+                                else if(e.getMessage().equals("Jugador 2 en Jaque mate")) System.out.println("J2 ha perdido");
+                                System.out.println("Tablero final:");
+                                pintaTablero();
                                 n = 0;
                                 break;
                             }
                             --n;
+                            if(n == 0) {
+                                System.out.println("J1 ha perdido");
+                            }
                         }
                     }
                     else if((aux[0].equals("2") && aux[1].equals("1"))) {
@@ -163,33 +173,39 @@ public class DriverCtrl_dominio {
                         int n = p.getN();
                         while(n > 0) {
                             try {
-                                //juega maquina
-                                System.out.println("Juega maquina");
+                                System.out.println("Calculando movimientos");
                                 c.jugar(n);
-                                System.out.println("Movimiento:");
+                                System.out.println("Movimientos realizados:");
                                 pintaTablero();
-                            } catch (Exception e) {
+                            }catch (Exception e) {
+                                if(e.getMessage().equals("Jugador 1 en Jaque mate")) System.out.println("J1 ha perdido");
+                                else if(e.getMessage().equals("Jugador 2 en Jaque mate")) System.out.println("J2 ha perdido");
+                                System.out.println("Tablero final:");
+                                pintaTablero();
                                 n = 0;
                                 break;
                             }
-                            boolean inputOk = false;
-                            while(!inputOk) {
-                                try { //TODO: Si introduce un movimiento ilegal propagar la excepcion y pedirle otra vez un movimiento
-                                    //juega humano
-                                    System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
-                                    String tmp[] = sc.nextLine().split(" ");
-                                    if(verificarEntrada(tmp)) {
-                                        c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
-                                        System.out.println("Estado del tablero después del movimiento:");
-                                        pintaTablero();
-                                        inputOk = true;
-                                    } else System.out.println("Error en la entrada");
-                                } catch (Exception e) {
-                                    n = 0;
-                                    break;
-                                }
+                            try {
+                                //juega humano
+                                System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
+                                String tmp[] = sc.nextLine().split(" ");
+                                if(verificarEntrada(tmp)) {
+                                    c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
+                                    System.out.println("Estado del tablero después del movimiento:");
+                                    pintaTablero();
+                                } else System.out.println("Error en la entrada");
+                            } catch (Exception e) {
+                                if(e.getMessage().equals("Jugador 1 en Jaque mate")) System.out.println("J1 ha perdido");
+                                else if(e.getMessage().equals("Jugador 2 en Jaque mate")) System.out.println("J2 ha perdido");
+                                System.out.println("Tablero final:");
+                                pintaTablero();
+                                n = 0;
+                                break;
                             }
                             --n;
+                            if(n == 0) {
+                                System.out.println("J1 ha perdido");
+                            }
                         }
                     }
                     break;

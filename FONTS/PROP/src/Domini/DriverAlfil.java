@@ -163,12 +163,12 @@ public class DriverAlfil {
                     Pieza test = null;
                     if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux[0])][Integer.parseInt(aux[1])])) { //pieza blanca
                         for(int i = 0; i < PiezasBlancas.size(); ++i) {
-                            if(PiezasBlancas.get(i).getTipo() == 'B') test = PiezasBlancas.get(i);
+                            if(PiezasBlancas.get(i).getTipo() == 'B' && PiezasBlancas.get(i).getPosX() == Integer.parseInt(aux[0]) && PiezasBlancas.get(i).getPosY() == Integer.parseInt(aux[1])) test = PiezasBlancas.get(i);
                         }
                     }
                     else { //Pieza negra
                         for(int i = 0; i < PiezasNegras.size(); ++i) {
-                            if(PiezasNegras.get(i).getTipo() == 'b') test = PiezasNegras.get(i);
+                            if(PiezasNegras.get(i).getTipo() == 'b' && PiezasNegras.get(i).getPosX() == Integer.parseInt(aux[0]) && PiezasNegras.get(i).getPosY() == Integer.parseInt(aux[1])) test = PiezasNegras.get(i);
                         }
                     }
                     if(test == null) { //no existe la pieza a probar

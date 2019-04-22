@@ -34,10 +34,10 @@ public class Caballo extends Pieza {
         //int posX = this.posX, posY = this.posY;
         int movX = m.getToX(), movY = m.getToY();
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
-            int auxX = movX - posX;
-            int auxY = movY - posY;
+            int auxX = movX - this.posX;
+            int auxY = movY - this.posY;
 
-            if((auxX > -3 && auxX < 3) && (auxY > -3 && auxY < 3)){ //movimiento alguno valido
+            if((auxX > -3 && auxX < 3) && (auxY > -3 && auxY < 3)) { //movimiento alguno valido
 
                 if ((auxX == -2 && auxY == -1) || (auxX == -1 && auxY == -2) || (auxX == 2 && auxY == -1) ||
                         (auxX == 1 && auxY == -2) || (auxX == -2 && auxY == 1) || (auxX == -1 && auxY == 2) || (auxX == 2 && auxY == 1) || (auxX == 1 && auxY == 2)) {

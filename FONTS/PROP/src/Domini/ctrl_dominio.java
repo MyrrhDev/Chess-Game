@@ -15,47 +15,7 @@ public class ctrl_dominio {
         return singleInstance;
     }
 
-    /*
-     Pre: j1 abre el juego
-     Post: Tanto para j1 como para j2:
-     Si jug1 == 1 -> j1 Persona
-     Si jug1 == 2 -> j1 M1
-     Si jug1 == 3 -> j1 M2
-     Si colorJug1 true entonces blancas abren juego y Jug1 es blanco
-     Si colorJug1 false entonces
-     */
 
-    /*public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
-        switch(jug1) {
-            case 1:
-                if(j1EsBlanco) j1 = new Persona(false, false, true); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
-                else j1 = new Persona(false, true, true); //negra
-                break;
-            case 2:
-                if(j1EsBlanco) j1 = new Maquina(true, false, true);
-                else j1 = new Maquina(true, false, true);
-                break;
-            case 3:
-                //j1 = new M2();
-                break;
-        }
-        switch(jug2) {
-            case 1:
-                if(j1EsBlanco) j2 = new Persona(false, false, false); //negra porque jug1 blanca
-                else j2 = new Persona(false, true, false); //blanca porque jug1 negra
-                break;
-            case 2:
-                if(j1EsBlanco) j2 = new Maquina(true, true, false);
-                else j2 = new Maquina(true, true, false);
-                //j2 = new M1();
-                break;
-            case 3:
-                //j2 = new M2();
-                break;
-        }
-    }*/
-
-    //@TODO Revisar
     public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
         switch(jug1) {
             case 1:
@@ -88,26 +48,34 @@ public class ctrl_dominio {
 
     public static void jugar(int n) throws Exception {
         if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
-            if ((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) {
+            if (((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) && j1.isEsMaquina()) {
                 try {
                     t = j1.jugar(t,n); // paso tablero y N
                     t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch(Exception e) {
-                    //hay jaque mate o has perdido
-                    System.out.println(e);
+                    Exception e1 = new Exception("Jugador 1 en Jaque mate");
+                    throw e1;
                 }
 
             }
-            if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
+            if (((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) && j2.isEsMaquina()) {
                 try {
                     t = j2.jugar(t,n); // paso tablero y N
                     t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch(Exception e) {
-                    //hay jaque mate o has perdido
-                    System.out.println(e);
+                    Exception e1 = new Exception("Jugador 2 en Jaque mate");
+                    throw e1;
                 }
 
             }
+        }
+        else if(j1.isEnJaqueMate()) {
+            Exception e = new Exception("Jugador 1 en Jaque mate");
+            throw e;
+        }
+        else if(j2.isEnJaqueMate()) {
+            Exception e = new Exception("Jugador 2 en Jaque mate");
+            throw e;
         }
     }
 
@@ -115,6 +83,13 @@ public class ctrl_dominio {
         return t.getTablero();
     }
 
+    public Jugador getJ1() {
+        return j1;
+    }
+
+    public Jugador getJ2() {
+        return j2;
+    }
 
     public static void jugar(int posX, int posY, int movX, int movY) throws Exception {
         if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
@@ -124,21 +99,22 @@ public class ctrl_dominio {
                     t = j1.jugar(t, m); // paso tablero y N
                     t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch(Exception e) {
-                    //hay jaque mate o has perdido
-                    System.out.println(e);
+                    throw e;
                 }
-
             }
             else if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
                 try {
                     t = j2.jugar(t,m); // paso tablero y N
                     t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch(Exception e) {
-                    //hay jaque mate o has perdido
-                    System.out.println(e);
+                    throw e;
                 }
 
             }
+        }
+        else {
+            Exception e = new Exception("H1 en Mate");
+            throw e;
         }
     }
 
@@ -157,8 +133,16 @@ public class ctrl_dominio {
         da.main(args);*/
         /*DriverProblema dp = new DriverProblema();
         dp.main(args);*/
-        DriverPeon dp = new DriverPeon();
-        dp.main(args);
+        /*DriverPeon dp = new DriverPeon();
+        dp.main(args);*/
+        /*DriverPersona dp = new DriverPersona();
+        dp.main(args);*/
+        /*DriverMaquina dm = new DriverMaquina();
+        dm.main(args);*/
+        /*DriverMovimiento dm = new DriverMovimiento();
+        dm.main(args);*/
+        DriverMovimientoPrueba dmp = new DriverMovimientoPrueba();
+        dmp.main(args);
 
     }
 

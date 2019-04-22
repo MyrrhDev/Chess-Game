@@ -138,14 +138,12 @@ public class DriverTorre {
                     while(!inputOK) {
                         System.out.println("Indica si el color de la pieza es negra (true) o es blanca (false)");
                         String s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            if (s.equals("true")) { esNegraInput = true; }
-                            else if (s.equals("false")) { esNegraInput = false;}
+                        if(!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
+                            if (s.equals("true"))  esNegraInput = true;
+                            else if (s.equals("false"))  esNegraInput = false;
                             else System.out.println("Valor incorrecto.");
-                        } else System.out.println("Valor incorrecto.");
-                        System.out.println("Indica si es el primer movimiento del Peon (true) o no (false)");
-                        s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
+                        }
+                        if(!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
                             if (s.equals("true")) { firstMov = true; }
                             else if (s.equals("false")) { firstMov = false;}
                             else System.out.println("Valor incorrecto.");

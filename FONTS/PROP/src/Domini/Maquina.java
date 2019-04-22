@@ -29,9 +29,8 @@ public class Maquina extends Jugador {
         //if(esSimple) { //Considera N*2 xq con cada min/max se reduce uno y N es por jugador
         Movimiento m = this.estrategia.estrategiaSimple(tablero,this.isEstaAtacando()); //No se si le pasa esto Jugador -> Maquina -> aqui
         //} else Movimiento m = estrategiaCompl.estrategiaCompleja();
-
+        Exception e = new Exception("No se puede mover, posible Jaque Mate");
         if(m.esNada()) {
-            Exception e = new Exception("No se puede mover, posible Jaque Mate");
             throw e;
         } else {
             t.ejecutarMovimiento(m);

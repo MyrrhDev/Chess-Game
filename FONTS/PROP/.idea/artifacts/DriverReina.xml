@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/DriverReina</output-path>
     <root id="archive" name="DriverReina.jar">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/DriverManifests/Reina/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/DriverManifests/DriverReina/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="PROP" />
     </root>

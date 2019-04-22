@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DriverRey">
+    <output-path>$PROJECT_DIR$/out/artifacts/DriverRey</output-path>
+    <root id="archive" name="DriverRey.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/DriverManifests/DriverRey/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="PROP" />
+    </root>
+  </artifact>
+</component>

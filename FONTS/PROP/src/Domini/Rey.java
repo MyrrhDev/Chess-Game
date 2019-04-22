@@ -70,6 +70,7 @@ public class Rey extends Pieza {
         return movs;
     }
 
+
     public void setTipo(char t) {
         this.tipo = t;
     }

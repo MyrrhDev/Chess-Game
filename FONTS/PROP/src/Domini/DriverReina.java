@@ -143,13 +143,6 @@ public class DriverReina {
                             else if (s.equals("false")) { esNegraInput = false;}
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
-                        System.out.println("Indica si es el primer movimiento del Peon (true) o no (false)");
-                        s = sc.nextLine();
-                        if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
-                            if (s.equals("true")) { firstMov = true; }
-                            else if (s.equals("false")) { firstMov = false;}
-                            else System.out.println("Valor incorrecto.");
-                        } else System.out.println("Valor incorrecto.");
                         System.out.println("Indica la posicion de la pieza en el tablero. Representamos el tablero como una matriz. El extremo superior de la matriz sera la posicion 0 0 mentras que, la esquina inferior derecha, será la posicion 7 7:");
                         String tmp[] = sc.nextLine().split(" ");
                         if(verificarEntrada(tmp)) {
