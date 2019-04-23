@@ -3,7 +3,7 @@ package Domini;
 public class ctrl_dominio {
     private static Jugador j1, j2;
     private static Tablero t;
-    private static int turnosBlancas, turnosNegras;
+    private static Problema p;
     private static ctrl_dominio singleInstance = null;
 
     private ctrl_dominio() {
@@ -46,6 +46,11 @@ public class ctrl_dominio {
         }
     }
 
+
+    /*
+        Pre: Cierto
+        Post: La función jugar intenta efectuar un movimiento según los parámetros de entrada
+     */
     public static void jugar(int n) throws Exception {
         if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
             if (((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) && j1.isEsMaquina()) {
@@ -91,62 +96,60 @@ public class ctrl_dominio {
         return j2;
     }
 
+    /*
+        Pre: Cierto
+        Post: La función jugar intenta efectuar un movimiento según los parámetros de entrada
+     */
     public static void jugar(int posX, int posY, int movX, int movY) throws Exception {
-        if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
+        if (!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
             Movimiento m = new Movimiento(posX, posY, movX, movY);
             if ((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) {
                 try {
-                    t = j1.jugar(t, m); // paso tablero y N
+                    t = j1.jugar(t, m);
                     t.setTurnoBlancas(!t.getTurnoBlancas());
-                } catch(Exception e) {
+                } catch (Exception e) {
                     throw e;
                 }
-            }
-            else if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
+            } else if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
                 try {
-                    t = j2.jugar(t,m); // paso tablero y N
+                    t = j2.jugar(t, m);
                     t.setTurnoBlancas(!t.getTurnoBlancas());
-                } catch(Exception e) {
+                } catch (Exception e) {
                     throw e;
                 }
 
             }
-        }
-        else {
+        } else {
             Exception e = new Exception("H1 en Mate");
             throw e;
         }
     }
 
-    public static void crearPartida(Problema p, int jug1, int jug2) {
+    /*
+    Pre: Cierto
+    Post: La función crea una partida nueva a partir del string FEN, el valor de N y los jugadores pasados por parámetro
+     */
+    public static void crearPartida(String FEN, int N, int jug1, int jug2) {
+        p = new Problema();
+        p.setFEN(FEN);
+        p.setN(N);
         seleccionarJugadores(jug1, jug2, p.getIniJuegoBlancas());
         t = new Tablero(j1, j2); //antigua FENToTablero
         t.FENToTablero(p.getFEN(), p.getIniJuegoBlancas());
     }
 
-    public static void main(String[] args) {
-        /*DriverCtrl_dominio cd = new DriverCtrl_dominio();
-        cd.main(args);*/
-        /*DriverCaballo dc = new DriverCaballo();
-        dc.main(args);*/
-        /*DriverAlfil da = new DriverAlfil();
-        da.main(args);*/
-        /*DriverProblema dp = new DriverProblema();
-        dp.main(args);*/
-        /*DriverPeon dp = new DriverPeon();
-        dp.main(args);*/
-        /*DriverPersona dp = new DriverPersona();
-        dp.main(args);*/
-        /*DriverMaquina dm = new DriverMaquina();
-        dm.main(args);*/
-        /*DriverMovimiento dm = new DriverMovimiento();
-        dm.main(args);*/
-        DriverMovimientoPrueba dmp = new DriverMovimientoPrueba();
-        dmp.main(args);
-
+    /*
+    Pre: Cierto
+    Post: Valida el problema FEN pasado por parámetro
+     */
+    public static boolean esProblemaValidable(String FEN, int N) {
+        p = new Problema();
+        p.setFEN(FEN);
+        p.setN(N);
+        return p.verificarProblema();
     }
 
-    /*
-    =================================== FUNCIONES A IMPLEMENTAR PARA SEGUNDA ENTREGA ===================================
-     */
+    public static void main(String[] args) {
+    }
+
 }

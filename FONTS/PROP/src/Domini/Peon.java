@@ -2,7 +2,6 @@
 package Domini;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Peon extends Pieza {
 

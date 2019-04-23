@@ -9,7 +9,7 @@ public final class MovimientoPrueba {
 
 
     public MovimientoPrueba(Tablero desdeTablero,Tablero aTablero, Movimiento movimientoPrueba, boolean sePuede) {
-        this.desdeTablero = desdeTablero;
+        this.desdeTablero =  desdeTablero;
         this.aTablero = aTablero;
         this.movimientoPrueba = movimientoPrueba;
         this.sePuede = sePuede;

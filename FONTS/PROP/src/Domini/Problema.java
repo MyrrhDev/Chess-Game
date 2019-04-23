@@ -3,11 +3,10 @@ package Domini;
 public class Problema {
     public String problema;
     int N;
-    public boolean iniJuegoBlancas; // true -> empiezan blancas, false -> empiezan negras
+    public boolean iniJuegoBlancas;
     Evaluacion evaluacion = new Evaluacion();
     private boolean verificado;
 
-    //constructoras
     public Problema() {
     }
 
@@ -18,7 +17,7 @@ public class Problema {
      */
     public void setFEN(String FEN) {
         int i = FEN.indexOf('w');
-        if(i == -1) { //no existe el carácter w, verificamos que efectivamente empiezan las negras atacando
+        if(i == -1) {
             i = FEN.indexOf('b');
         }
         if(FEN.charAt(i) == 'w') iniJuegoBlancas = true;
@@ -44,7 +43,11 @@ public class Problema {
         return this.iniJuegoBlancas;
     }
 
-    //FEN ya debe estar tratado
+    /*
+        Pre: La clase ya tiene los atributos de problema y N asignados
+        Post: Se valida el problema introducido. En concreto: se busca en el minimax que haya una hoja del árbol con
+        un jaque mate al color de las piezas contrarias al atributo iniJuegoBlancas
+     */
     public boolean verificarProblema() {
         String verificar = "";
         if(problema != null)  {
@@ -72,12 +75,12 @@ public class Problema {
             verificar(t, true);
             return verificado;
         }
-        //1. Nos va a entrar un FEN, queremos el tablero. Llamamos al tablero construido por el FEN
-        //2. Verificar problema significa que haya mate en n o menos movimientos del jugador que ataca
-        //3. estrategiaSimple(nuevo tablero creado, true);
         return false;
     }
 
+    /* Pre: Tablero existe y no esta vacio
+     * Post: Calcula si el problema se puede verificar
+     * */
     private void verificar(Tablero tablero, boolean maxAttackingPlayer) {
         int puntosAhora;
 
@@ -96,15 +99,15 @@ public class Problema {
         }
     }
 
-
+    /* Pre: Tablero existe y no esta vacio, depth
+     * Post: Devuelve la menor puntuacion posible de un movimiento dentro del tablero
+     * */
     private int min(Tablero tablero, int depth) {
         if (depth == 0) {
-            //return this.evaluacion.evaluar(tablero, depth);
         }
         if(gameOver(tablero)) {
             verificado = true;
             return this.evaluacion.evaluar(tablero, depth);
-            //aqui en una var booleana de la classe canviar-la a true
         }
         int menorPuntos = Integer.MAX_VALUE;
 
@@ -122,7 +125,9 @@ public class Problema {
         return menorPuntos;
     }
 
-
+    /* Pre: Tablero existe y no esta vacio
+     * Post: Devuelve la mayor puntuacion posible de un movimiento dentro del tablero
+     * */
     private int max(Tablero tablero, int depth) {
         if (depth == 0) {
             return this.evaluacion.evaluar(tablero, depth);
@@ -145,7 +150,9 @@ public class Problema {
         return mayorPuntos;
     }
 
-
+    /* Pre: Tablero existe y no esta vacio
+     * Post: Devuelve true si el Jugador esta en JaqueMate o si no le he es posible hacer Movimiento alguno
+     * */
     private static boolean gameOver(final Tablero tablero) {
         return tablero.esSuTurno().isEnJaqueMate() || tablero.esSuTurno().estaEstancado();
     }

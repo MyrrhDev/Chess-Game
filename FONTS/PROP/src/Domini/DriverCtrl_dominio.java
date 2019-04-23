@@ -4,13 +4,17 @@ import java.util.Scanner;
 
 public class DriverCtrl_dominio {
     static ctrl_dominio c = null;
-    private static Problema p;
+    private static String problema;
     private static String tmp;
+    private static int N;
     static private String f[][] = {{"b", "♝"}, {"B", "♗"}, {"n", "♞"}, {"N", "♘"},
             {"p", "♟"}, {"P", "♙"}, {"q", "♛"}, {"Q", "♕"},
             {"k", "♚"}, {"K", "♔"}, {"r", "♜"}, {"R", "♖"}};
 
-
+    /*
+    Pre: Cierto
+    Post: Pinta el tablero por consola
+     */
     private static void pintaTablero() {
         System.out.println();
         char[][] t = c.getTablero();
@@ -31,18 +35,6 @@ public class DriverCtrl_dominio {
             }
             System.out.println();
         }
-        /*System.out.println(f[0][0] + ' ' + f[0][1]);
-        System.out.println(f[1][0] + ' ' + f[1][1]);
-        System.out.println(f[2][0] + ' ' + f[2][1]);
-        System.out.println(f[3][0] + ' ' + f[3][1]);
-        System.out.println(f[4][0] + ' ' + f[4][1]);
-        System.out.println(f[5][0] + ' ' + f[5][1]);
-        System.out.println(f[6][0] + ' ' + f[6][1]);
-        System.out.println(f[7][0] + ' ' + f[7][1]);
-        System.out.println(f[8][0] + ' ' + f[8][1]);
-        System.out.println(f[9][0] + ' ' + f[9][1]);
-        System.out.println(f[10][0] + ' ' + f[10][1]);
-        System.out.println(f[11][0] + ' ' + f[11][1]);*/
     }
 
     /*
@@ -51,11 +43,12 @@ public class DriverCtrl_dominio {
      */
     private static void printMenuPrincipal() {
         System.out.println("Bienvenido al Driver de Controlador de Dominio. Selecciona qué deseas testear:");
-        System.out.println("    1- Alta objeto Problema");
-        System.out.println("    2- Empezar una partida");
-        System.out.println("    3- Verificar el problema creado");
+        System.out.println("    1- Alta objeto Controlador de Dominio");
+        System.out.println("    2- Alta objeto Problema y validación del mismo");
+        System.out.println("    3- Empezar una partida");
         System.out.println("    5- Salir");
     }
+
 
     private static boolean verificarEntrada(String tmp[]) {
         int posX = Integer.parseInt(tmp[0]);
@@ -70,7 +63,6 @@ public class DriverCtrl_dominio {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean driverIsRunning = true;
-        c = ctrl_dominio.getInstance();
         while (driverIsRunning) {
             printMenuPrincipal();
             String input = sc.nextLine();
@@ -81,142 +73,155 @@ public class DriverCtrl_dominio {
             } else op = -1;
             switch (op) {
                 case 1:
-                    //creo un problema
-                    tmp = sc.nextLine();
-                    p = new Problema();
-                    //p.setIniJuegoBlancas(tmp);
-                    p.setFEN(tmp);
-                    System.out.println("Introduce el valor de N:");
-                    p.setN(Integer.parseInt(sc.nextLine()));
-                    if (p != null)
-                        System.out.println("Problema creado con éxito, valores: " + p.getFEN() + ' ' + p.getIniJuegoBlancas() + ' ' + p.getN());
-                    else System.out.println("Error");
+                    System.out.println("Creando una instancia de Controlador de Dominio, espera");
+                    if(c == null) {
+                        c = ctrl_dominio.getInstance();
+                        System.out.println("Instancia de controlador creada con éxito");
+                    }
+                    else System.out.println("Ya existe una instancia de controlador");
                     break;
                 case 2:
-                    //jugar
-                    System.out.println("Introduce por terminal los jugadores que formaran parte de la partida, separados por un espacio");
-                    System.out.println("Tanto para el jugador 1 como para el jugador 2");
-                    System.out.println("1 -> H1, 2 -> M1, 3 -> M2");
-                    tmp = sc.nextLine();
-                    String aux[] = tmp.split(" ");
-                    if ((aux[0].equals("2") && aux[1].equals("2")) && p != null) {
-                        //jugamos, input OK
-                        c = ctrl_dominio.getInstance();
-                        c.crearPartida(p, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
-                        System.out.println("Partida creada con éxito");
-                        pintaTablero();
-                        int n = p.getN();
-                        while (n > 0) {
-                            try {
-                                System.out.println("Calculando movimientos");
-                                c.jugar(n);
-                                System.out.println("Movimientos realizados:");
-                                pintaTablero();
-                            }catch (Exception e) {
-                                if(e.getMessage().equals("Jugador 1 en Jaque mate")) System.out.println("J1 ha perdido");
-                                else if(e.getMessage().equals("Jugador 2 en Jaque mate")) System.out.println("J2 ha perdido");
-                                System.out.println("Tablero final:");
-                                pintaTablero();
-                                n = 0;
-                                break;
-                            }
-                            --n;
-                            if(n == 0) {
-                                System.out.println("J1 ha perdido");
-                            }
-                        }
-                    }
-                    else if(aux[0].equals("1") && aux[1].equals("2")) {
-                        c.crearPartida(p, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
-                        System.out.println("Partida creada con éxito");
-                        pintaTablero();
-                        int n = p.getN();
-                        while(n > 0) {
-                            try {
-                                //juega humano
-                                System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
-                                String tmp[] = sc.nextLine().split(" ");
-                                if(verificarEntrada(tmp)) {
-                                    c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
-                                    System.out.println("Movimiento:");
-                                    pintaTablero();
-                                } else System.out.println("Error en la entrada");
-                            }
-                            catch (Exception e) {
-                                System.out.println("J1 no puede moverse. Jaque Mate");
-                                n = 0;
-                                break;
-                            }
-                            try {
-                                System.out.println("Calculando movimientos");
-                                c.jugar(n);
-                                System.out.println("Movimientos realizados:");
-                                pintaTablero();
-                            }catch (Exception e) {
-                                if(e.getMessage().equals("Jugador 1 en Jaque mate")) System.out.println("J1 ha perdido");
-                                else if(e.getMessage().equals("Jugador 2 en Jaque mate")) System.out.println("J2 ha perdido");
-                                System.out.println("Tablero final:");
-                                pintaTablero();
-                                n = 0;
-                                break;
-                            }
-                            --n;
-                            if(n == 0) {
-                                System.out.println("J1 ha perdido");
-                            }
-                        }
-                    }
-                    else if((aux[0].equals("2") && aux[1].equals("1"))) {
-                        c.crearPartida(p, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
-                        System.out.println("Partida creada con éxito");
-                        pintaTablero();
-                        int n = p.getN();
-                        while(n > 0) {
-                            try {
-                                System.out.println("Calculando movimientos");
-                                c.jugar(n);
-                                System.out.println("Movimientos realizados:");
-                                pintaTablero();
-                            }catch (Exception e) {
-                                if(e.getMessage().equals("Jugador 1 en Jaque mate")) System.out.println("J1 ha perdido");
-                                else if(e.getMessage().equals("Jugador 2 en Jaque mate")) System.out.println("J2 ha perdido");
-                                System.out.println("Tablero final:");
-                                pintaTablero();
-                                n = 0;
-                                break;
-                            }
-                            try {
-                                //juega humano
-                                System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
-                                String tmp[] = sc.nextLine().split(" ");
-                                if(verificarEntrada(tmp)) {
-                                    c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
-                                    System.out.println("Estado del tablero después del movimiento:");
-                                    pintaTablero();
-                                } else System.out.println("Error en la entrada");
-                            } catch (Exception e) {
-                                if(e.getMessage().equals("Jugador 1 en Jaque mate")) System.out.println("J1 ha perdido");
-                                else if(e.getMessage().equals("Jugador 2 en Jaque mate")) System.out.println("J2 ha perdido");
-                                System.out.println("Tablero final:");
-                                pintaTablero();
-                                n = 0;
-                                break;
-                            }
-                            --n;
-                            if(n == 0) {
-                                System.out.println("J1 ha perdido");
-                            }
-                        }
-                    }
+                    if(c != null) {
+                        System.out.println("Introduce el código FEN del problema:");
+                        problema = sc.nextLine();
+                        System.out.println("Introduce el valor de N:");
+                        N = Integer.parseInt(sc.nextLine());
+                        System.out.println("Validando problema, espera");
+                        if(c.esProblemaValidable(problema, N)) System.out.println("Problema verificado");
+                        else System.out.println("No se puede verificar el problema");
+                    } else System.out.println("No existe ninguna instancia del controlador de dominio");
                     break;
                 case 3:
-                    System.out.println("Verificando problema");
-                    p.verificarProblema();
-                    if(p.getVerificado()) System.out.println("Problema verificado");
-                    else System.out.println("No se puede verificar el problema");
+                    if(c != null) {
+                        System.out.println("Introduce por terminal el FEN del problema a jugar");
+                        problema = sc.nextLine();
+                        System.out.println("Introduce el valor de N del problema");
+                        N = Integer.parseInt(sc.nextLine());
+                        System.out.println("Introduce por terminal los jugadores que formaran parte de la partida, separados por un espacio");
+                        System.out.println("Tanto para el jugador 1 como para el jugador 2");
+                        System.out.println("1 -> H1, 2 -> M1, 3 -> M2");
+                        tmp = sc.nextLine();
+                        String aux[] = tmp.split(" ");
+                        if ((aux[0].equals("2") && aux[1].equals("2"))) {
+                            c.crearPartida(problema, N, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
+                            System.out.println("Partida creada con éxito");
+                            pintaTablero();
+                            int n = N;
+                            while (n > 0) {
+                                try {
+                                    System.out.println("Calculando movimientos");
+                                    c.jugar(n);
+                                    System.out.println("Movimientos realizados:");
+                                    pintaTablero();
+                                } catch (Exception e) {
+                                    if (e.getMessage().equals("Jugador 1 en Jaque mate"))
+                                        System.out.println("J1 ha perdido");
+                                    else if (e.getMessage().equals("Jugador 2 en Jaque mate"))
+                                        System.out.println("J2 ha perdido");
+                                    System.out.println("Tablero final:");
+                                    pintaTablero();
+                                    n = 0;
+                                    break;
+                                }
+                                --n;
+                                if (n == 0) {
+                                    System.out.println("J1 ha perdido");
+                                }
+                            }
+                        } else if (aux[0].equals("1") && aux[1].equals("2")) {
+                            c.crearPartida(problema, N, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
+                            System.out.println("Partida creada con éxito");
+                            pintaTablero();
+                            int n = N;
+                            while (n > 0) {
+                                try {
+                                    //juega humano
+                                    System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
+                                    String tmp[] = sc.nextLine().split(" ");
+                                    if (verificarEntrada(tmp)) {
+                                        c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
+                                        System.out.println("Movimiento:");
+                                        pintaTablero();
+                                    } else System.out.println("Error en la entrada");
+                                } catch (Exception e) {
+                                    System.out.println("J1 no puede moverse. Jaque Mate");
+                                    n = 0;
+                                    break;
+                                }
+                                try {
+                                    System.out.println("Calculando movimientos");
+                                    c.jugar(n);
+                                    System.out.println("Movimientos realizados:");
+                                    pintaTablero();
+                                } catch (Exception e) {
+                                    if (e.getMessage().equals("Jugador 1 en Jaque mate"))
+                                        System.out.println("J1 ha perdido");
+                                    else if (e.getMessage().equals("Jugador 2 en Jaque mate"))
+                                        System.out.println("J2 ha perdido");
+                                    System.out.println("Tablero final:");
+                                    pintaTablero();
+                                    n = 0;
+                                    break;
+                                }
+                                --n;
+                                if (n == 0) {
+                                    System.out.println("J1 ha perdido");
+                                }
+                            }
+                        } else if ((aux[0].equals("2") && aux[1].equals("1"))) {
+                            c.crearPartida(problema, N, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
+                            System.out.println("Partida creada con éxito");
+                            pintaTablero();
+                            int n = N;
+                            while (n > 0) {
+                                try {
+                                    System.out.println("Calculando movimientos");
+                                    c.jugar(n);
+                                    System.out.println("Movimientos realizados:");
+                                    pintaTablero();
+                                } catch (Exception e) {
+                                    if (e.getMessage().equals("Jugador 1 en Jaque mate"))
+                                        System.out.println("J1 ha perdido");
+                                    else if (e.getMessage().equals("Jugador 2 en Jaque mate"))
+                                        System.out.println("J2 ha perdido");
+                                    System.out.println("Tablero final:");
+                                    pintaTablero();
+                                    n = 0;
+                                    break;
+                                }
+                                try {
+                                    //juega humano
+                                    System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
+                                    String tmp[] = sc.nextLine().split(" ");
+                                    if (verificarEntrada(tmp)) {
+                                        c.jugar(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
+                                        System.out.println("Estado del tablero después del movimiento:");
+                                        pintaTablero();
+                                    } else System.out.println("Error en la entrada");
+                                } catch (Exception e) {
+                                    if (e.getMessage().equals("Jugador 1 en Jaque mate"))
+                                        System.out.println("J1 ha perdido");
+                                    else if (e.getMessage().equals("Jugador 2 en Jaque mate"))
+                                        System.out.println("J2 ha perdido");
+                                    System.out.println("Tablero final:");
+                                    pintaTablero();
+                                    n = 0;
+                                    break;
+                                }
+                                --n;
+                                if (n == 0) {
+                                    System.out.println("J1 ha perdido");
+                                }
+                            }
+                        }
+                    } else System.out.println("No existe ninguna instancia del controlador de dominio");
+                    break;
+                case 5:
+                    System.out.println("Ejeccución del driver terminada");
                     break;
                 default:
                     System.out.println("La opción introducida no es correcta. Por favor, seleccione una de las siguiente del menu");
+                    break;
             }
         }
     }
