@@ -122,14 +122,6 @@ public class DriverRey {
             }
             else op = -1;
             switch(op) {
-                /*
-                    Opciones:
-                    1. Alta objeto Rey, situado en el tablero
-                    2. Ver como están situadas las piezas en el tablero
-                    3. esMovimientoOk de una pieza, dada su posición
-                    4. movimientosPosibles de esa pieza en concreto
-                    5. Salir
-                 */
                 case 1:
                     boolean esNegraInput = false;
                     System.out.println("Introduce, en orden y por terminal, los siguientes valores:");
@@ -166,7 +158,7 @@ public class DriverRey {
                             if(PiezasBlancas.get(i).getTipo() == 'K') test = PiezasBlancas.get(i);
                         }
                     }
-                    else { //Pieza negra
+                    else {
                         for(int i = 0; i < PiezasNegras.size(); ++i) {
                             if(PiezasNegras.get(i).getTipo() == 'k') test = PiezasNegras.get(i);
                         }
@@ -194,7 +186,7 @@ public class DriverRey {
                             if(PiezasBlancas.get(i).getTipo() == 'K' && PiezasBlancas.get(i).getPosX() == posX && PiezasBlancas.get(i).getPosY() == posY) test2 = PiezasBlancas.get(i);
                         }
                     }
-                    else { //Pieza negra
+                    else {
                         for(int i = 0; i < PiezasNegras.size(); ++i) {
                             if(PiezasNegras.get(i).getTipo() == 'k' && PiezasNegras.get(i).getPosX() == posX && PiezasNegras.get(i).getPosY() == posY) test2 = PiezasNegras.get(i);
                         }

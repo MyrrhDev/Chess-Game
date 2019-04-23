@@ -40,59 +40,55 @@ public class Peon extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
-        //int posX = this.posX, posY = this.posY;
         int movX = m.getToX(), movY = m.getToY();
-        //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
             int auxY = movY - posY;
-            if (!this.esNegra) { //soy una pieza blanca, solo me podré mover hacia arriba (auxX, auxY negativos)
-                if (auxX == -1 && auxY == -1) { //movimiento hacia esquina superior izquierda
-                    if (estadoTablero[movX][movY] != '0') {
-                        //me encuentro una pieza en mi camino
-                        if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
-                            return false;
-                        else return true;
-                    } else return false;
-                } else if (auxX == -1 && auxY == 1) { //movimiento hacia esquina superior derecha
+            if (!this.esNegra) {
+                if (auxX == -1 && auxY == -1) {
                     if (estadoTablero[movX][movY] != '0') {
                         if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
                             return false;
                         else return true;
                     } else return false;
-                } else if (movY == posY && posX > movX) { //movimiento hacia adelante
+                } else if (auxX == -1 && auxY == 1) {
+                    if (estadoTablero[movX][movY] != '0') {
+                        if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
+                            return false;
+                        else return true;
+                    } else return false;
+                } else if (movY == posY && posX > movX) {
                     if (firstMove && auxX == -2) {
-                        if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
+                        if (estadoTablero[movX][movY] == '0') {
                             return true;
                         } else return false;
                     } else if (auxX == -1) {
-                        if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
+                        if (estadoTablero[movX][movY] == '0') {
                             return true;
                         } else return false;
                     } else return false;
                 }
             }
-            if (this.esNegra) { //soy una pieza negra, solo me podré mover hacia abajo (auxX, auxY positivos)
-                if (auxX == 1 && auxY == -1) { //movimiento hacia esquina inferior izquierda
-                    if (estadoTablero[movX][movY] != '0') {
-                        //me encuentro una pieza en mi camino
-                        if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
-                            return false;
-                        else return true;
-                    } else return false;
-                } else if (auxX == 1 && auxY == 1) { //movimiento hacia esquina inferior derecha
+            if (this.esNegra) {
+                if (auxX == 1 && auxY == -1) {
                     if (estadoTablero[movX][movY] != '0') {
                         if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
                             return false;
                         else return true;
                     } else return false;
-                } else if (movY == posY && posX < movX) { //movimiento hacia adelante
+                } else if (auxX == 1 && auxY == 1) {
+                    if (estadoTablero[movX][movY] != '0') {
+                        if (Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY]))
+                            return false;
+                        else return true;
+                    } else return false;
+                } else if (movY == posY && posX < movX) {
                     if (firstMove && auxX == 2) {
-                        if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
+                        if (estadoTablero[movX][movY] == '0') {
                             return true;
                         } else return false;
                     } else if (auxX == 1) {
-                        if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
+                        if (estadoTablero[movX][movY] == '0') {
                             return true;
                         } else return false;
                     } else return false;
@@ -105,25 +101,24 @@ public class Peon extends Pieza {
     @Override
     ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
-        //int posX = this.posX, posY = this.posY;
         if(this.esNegra) {
-            if((posX+1 < 8) && (estadoTablero[posX+1][posY] == '0')) { //si no hay nada
+            if((posX+1 < 8) && (estadoTablero[posX+1][posY] == '0')) {
                 Movimiento r = new Movimiento(this.posX, this.posY,posX+1, posY);
                 listResult.add(r);
             }
             if(this.firstMove) { //una pos más
-                if((posX+2 < 8) && (estadoTablero[posX+2][posY] == '0')) { //si no hay nada
+                if((posX+2 < 8) && (estadoTablero[posX+2][posY] == '0')) {
                     Movimiento r = new Movimiento(this.posX, this.posY, posX+2, posY);
                     listResult.add(r);
                 }
             }
-            if((posX+1 < 8 & posY-1 > 0) && (estadoTablero[posX+1][posY-1] != '0')) { //miramos si podemos matar a otra pieza
+            if((posX+1 < 8 & posY-1 > 0) && (estadoTablero[posX+1][posY-1] != '0')) {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX+1][posY-1])) {
                     Movimiento r = new Movimiento(this.posX, this.posY, posX+1, posY-1, estadoTablero[posX+1][posY-1]);
                     listResult.add(r);
                 }
             }
-            if((posX+1 < 8 & posY+1 < 8) && (estadoTablero[posX+1][posY+1] != '0')) { //miramos si podemos matar a otra pieza
+            if((posX+1 < 8 & posY+1 < 8) && (estadoTablero[posX+1][posY+1] != '0')) {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX+1][posY+1])) {
                     Movimiento r = new Movimiento(this.posX, this.posY, posX+1, posY+1, estadoTablero[posX+1][posY+1]);
                     listResult.add(r);
@@ -131,23 +126,23 @@ public class Peon extends Pieza {
             }
         }
         if(!this.esNegra) {
-            if((posX-1 >= 0) && (estadoTablero[posX-1][posY] == '0')) { //si no hay nada
+            if((posX-1 >= 0) && (estadoTablero[posX-1][posY] == '0')) {
                 Movimiento r = new Movimiento(this.posX, this.posY, posX-1, posY);
                 listResult.add(r);
             }
-            if(this.firstMove) { //una pos más
-                if((posX-2 >= 0) && (estadoTablero[posX-2][posY] == '0')) { //si no hay nada
+            if(this.firstMove) {
+                if((posX-2 >= 0) && (estadoTablero[posX-2][posY] == '0')) {
                     Movimiento r = new Movimiento(this.posX, this.posY, posX-2, posY);
                     listResult.add(r);
                 }
             }
-            if((posX-1 >= 0 & posY-1 >= 0) && (estadoTablero[posX-1][posY-1] != '0')) { //miramos si podemos matar a otra pieza
+            if((posX-1 >= 0 & posY-1 >= 0) && (estadoTablero[posX-1][posY-1] != '0')) {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX-1][posY-1])) {
                     Movimiento r = new Movimiento(this.posX, this.posY, posX-1, posY-1, estadoTablero[posX-1][posY-1]);
                     listResult.add(r);
                 }
             }
-            if((posX-1 >= 0 & posY+1 < 8) && (estadoTablero[posX-1][posY+1] != '0')) { //miramos si podemos matar a otra pieza
+            if((posX-1 >= 0 & posY+1 < 8) && (estadoTablero[posX-1][posY+1] != '0')) {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX-1][posY+1])) {
                     Movimiento r = new Movimiento(this.posX, this.posY, posX-1, posY+1, estadoTablero[posX-1][posY+1]);
                     listResult.add(r);

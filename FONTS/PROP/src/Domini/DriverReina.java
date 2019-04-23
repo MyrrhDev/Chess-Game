@@ -122,14 +122,6 @@ public class DriverReina {
             }
             else op = -1;
             switch(op) {
-                /*
-                    Opciones:
-                    1. Alta objeto Reina, situado en el tablero
-                    2. Ver como están situadas las piezas en el tablero
-                    3. esMovimientoOk de una pieza, dada su posición
-                    4. movimientosPosibles de esa pieza en concreto
-                    5. Salir
-                 */
                 case 1:
                     boolean esNegraInput = false;
                     boolean firstMov = false;

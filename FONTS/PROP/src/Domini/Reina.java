@@ -28,53 +28,47 @@ public class Reina extends Pieza {
      * Post: Verifica que el movimiento horizontal o vertical sea correcto
      */
     boolean movimientoHorizontalVerticalOK(final Movimiento m, char estadoTablero[][]) {
-        //int posX = m.getFromX(), posY = m.getFromY();
         int movX = m.getToX(), movY = m.getToY();
-        //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
-            //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
-            if(movX == posX && movY != posY) { //horizontal
-                //derecha
+            if(movX == posX && movY != posY) {
+                //
                 if(movY > posY) {
                     for (int j = posY + 1; j < movY; ++j)
-                        if (estadoTablero[movX][j] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[movX][j] != '0')
                             return false;
-                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(estadoTablero[movX][movY] != '0') {
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;
                 }
                 else if(movY < posY) {
-                    //izquierda
                     for (int j = posY - 1; j > movY; --j)
-                        if (estadoTablero[movX][j] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[movX][j] != '0')
                             return false;
-                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(estadoTablero[movX][movY] != '0') {
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;
                 }
             }
-            else if(movX != posX && movY == posY) { //vertical
-                //abajo
+            else if(movX != posX && movY == posY) {
                 if(movX > posX) {
                     for (int i = posX + 1; i < movX; ++i)
-                        if (estadoTablero[i][movY] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][movY] != '0')
                             return false;
-                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(estadoTablero[movX][movY] != '0') {
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;
                 }
-                //arriba
                 if(movX < posX) {
                     for (int i = posX - 1; i > movX; --i)
-                        if (estadoTablero[i][movY] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][movY] != '0')
                             return false;
-                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(estadoTablero[movX][movY] != '0') {
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
@@ -91,24 +85,21 @@ public class Reina extends Pieza {
      * Post: Verifica que el movimiento diagonal sea correcto
      */
     boolean movimientoDiagonalOK(final Movimiento m, final char estadoTablero[][]) {
-        //int posX = m.getFromX(), posY = m.getFromY();
         int movX = m.getToX(), movY = m.getToY();
-        //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
             int auxY = movY - posY;
             int i = posX, j = posY;
-            //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
-            if(movX != posX && movY != posY) { //el movimiento es en diagonal estrictamente
-                if(auxX > 0 && auxY < 0) { //movimiento hacia esquina inferior izquierda
+            if(movX != posX && movY != posY) {
+                if(auxX > 0 && auxY < 0) {
                     ++i;
                     --j;
                     while(i < (movX) && j > (movY)) {
-                        if (estadoTablero[i][j] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][j] != '0')
                             return false;
                         ++i;
                         --j;
-                    } //cuando salimos del bucle estamos en la posicion i-1, j+1 i queremos revisar hasta i, j
+                    }
                     if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[i][j])) return false;
                         else return true;
@@ -116,15 +107,15 @@ public class Reina extends Pieza {
                     else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
                     else return false;
                 }
-                else if(auxX > 0 && auxY > 0) { //movimiento hacia esquina inferior derecha
+                else if(auxX > 0 && auxY > 0) {
                     ++i;
                     ++j;
                     while(i < (movX) && j < (movY)) {
-                        if (estadoTablero[i][j] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][j] != '0')
                             return false;
                         ++i;
                         ++j;
-                    } //cuando salimos del bucle estamos en la posicion i-1, j-1 i queremos revisar hasta i, j
+                    }
                     if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
@@ -132,15 +123,15 @@ public class Reina extends Pieza {
                     else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
                     else return false;
                 }
-                else if(auxX < 0 && auxY < 0) { //movimiento hacia esquina superior izquierda
+                else if(auxX < 0 && auxY < 0) {
                     --i;
                     --j;
                     while(i > (movX) && j > (movY)) {
-                        if (estadoTablero[i][j] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][j] != '0')
                             return false;
                         --i;
                         --j;
-                    } //cuando salimos del bucle estamos en la posicion i-1, j-1 i queremos revisar hasta i, j
+                    }
                     if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[i][j])) return false;
                         else return true;
@@ -148,15 +139,15 @@ public class Reina extends Pieza {
                     else if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY))) return true;
                     else return false;
                 }
-                else if(auxX < 0 && auxY > 0) { //movimiento hacia esquina superior derecha
+                else if(auxX < 0 && auxY > 0) {
                     --i;
                     ++j;
                     while(i > (movX) && j < (movY)) {
-                        if (estadoTablero[i][j] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][j] != '0')
                             return false;
                         --i;
                         ++j;
-                    } //cuando salimos del bucle estamos en la posicion i-1, j-1 i queremos revisar hasta i, j
+                    }
                     if(((i-1 == movX && j-1 == movY) || (i == movX && j == movY)) && estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
@@ -179,12 +170,9 @@ public class Reina extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, char estadoTablero[][]) {
-        //int posX = m.getFromX(), posY = m.getFromY();
         int movX = m.getToX(), movY = m.getToY();
-        //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
-            //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
-            if (movX == posX && movY != posY || movX != posX && movY == posY) { //horizontal o vertical
+            if (movX == posX && movY != posY || movX != posX && movY == posY) {
                 return movimientoHorizontalVerticalOK(m, estadoTablero);
             }
             else {
@@ -198,10 +186,7 @@ public class Reina extends Pieza {
     private ArrayList<Movimiento> movimientosPosiblesDiagonales(char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
         int i = posX, j = posY;
-        boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
-        // amiga o enemiga (en el caso particular de la torre)
-
-        //diagonal superior derecha --i ++j
+        boolean end = false;
         --i;
         ++j;
         while(i >= 0 && j < 8 && !end) {
@@ -226,7 +211,6 @@ public class Reina extends Pieza {
         j = posY;
         ++i;
         ++j;
-        //diagonal inferior derecha
         while(i < 8 && j < 8 && !end) {
             if(estadoTablero[i][j] == '0') {
                 Movimiento r = new Movimiento(posX, posY, i, j);
@@ -243,8 +227,6 @@ public class Reina extends Pieza {
             ++i;
             ++j;
         }
-        //diagonal inferior izquierda
-
         end = false;
         i = posX;
         j = posY;
@@ -266,7 +248,6 @@ public class Reina extends Pieza {
             ++i;
             --j;
         }
-        //diagonal superior izquierda
         end = false;
         i = posX;
         j = posY;
@@ -294,12 +275,8 @@ public class Reina extends Pieza {
 
     private ArrayList<Movimiento> movimientosPosiblesHorVert(char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
-        //debo mirar 4 posibles movimientos: arriba, abajo izquierda y derecha
         int i = posX, j = posY;
-        boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
-        // amiga o enemiga (en el caso particular de la torre)
-
-        //arriba
+        boolean end = false;
         --i;
         while(i >= 0 && !end) {
             if(estadoTablero[i][posY] == '0') {
@@ -316,11 +293,9 @@ public class Reina extends Pieza {
             }
             --i;
         }
-
         end = false;
         i = posX;
         j = posY;
-        //derecha
         ++j;
         while(j < 8 && !end) {
             if(estadoTablero[posX][j] == '0') {
@@ -337,11 +312,9 @@ public class Reina extends Pieza {
             }
             ++j;
         }
-
         end = false;
         i = posX;
         j = posY;
-        //abajo
         ++i;
         while(i < 8 && !end) {
             if(estadoTablero[i][posY] == '0') {
@@ -358,11 +331,9 @@ public class Reina extends Pieza {
             }
             ++i;
         }
-
         end = false;
         i = posX;
         j = posY;
-        //izquierda
         --j;
         while(j >= 0 && !end) {
             if(estadoTablero[posX][j] == '0') {

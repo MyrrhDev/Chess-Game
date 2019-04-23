@@ -31,7 +31,6 @@ public class Caballo extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
-        //int posX = this.posX, posY = this.posY;
         int movX = m.getToX(), movY = m.getToY();
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - this.posX;
@@ -54,7 +53,6 @@ public class Caballo extends Pieza {
 
     @Override
     ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]) {
-        //int posX = this.posX, posY = this.posY;
         ArrayList<Movimiento> listResult = new ArrayList<>();
         final int movPos[][] = {{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
         final int sizei = 8, sizej = 2;

@@ -30,53 +30,46 @@ public class Torre extends Pieza {
      */
     @Override
     public boolean esMovimientoOk(final Movimiento m, char estadoTablero[][]) {
-        //int posX = posX, posY = posY;
         int movX = m.getToX(), movY = m.getToY();
-        //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
-            //seguidamente verificamos que el movimiento sea en horizontal o vertical estrictamente
-            if(movX == posX && movY != posY) { //horizontal
-                //derecha
+            if(movX == posX && movY != posY) {
                 if(movY > posY) {
                     for (int j = posY + 1; j < movY; ++j)
-                        if (estadoTablero[movX][j] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[movX][j] != '0')
                             return false;
-                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(estadoTablero[movX][movY] != '0') {
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;
                 }
                 else if(movY < posY) {
-                    //izquierda
                     for (int j = posY - 1; j > movY; --j)
-                        if (estadoTablero[movX][j] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[movX][j] != '0')
                             return false;
-                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(estadoTablero[movX][movY] != '0') {
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;
                 }
             }
-            else if(movX != posX && movY == posY) { //vertical
-                //abajo
+            else if(movX != posX && movY == posY) {
                 if(movX > posX) {
                     for (int i = posX + 1; i < movX; ++i)
-                        if (estadoTablero[i][movY] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][movY] != '0')
                             return false;
-                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(estadoTablero[movX][movY] != '0') {
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
                     else return true;
                 }
-                //arriba
                 if(movX < posX) {
                     for (int i = posX - 1; i > movX; --i)
-                        if (estadoTablero[i][movY] != '0') //me encuentro una pieza en mi camino
+                        if (estadoTablero[i][movY] != '0')
                             return false;
-                    if(estadoTablero[movX][movY] != '0') { //si hay una pieza en mi destino, ver si puedo matarla
+                    if(estadoTablero[movX][movY] != '0') {
                         if(Character.isLowerCase(this.tipo) == Character.isLowerCase(estadoTablero[movX][movY])) return false;
                         else return true;
                     }
@@ -91,13 +84,8 @@ public class Torre extends Pieza {
     @Override
     ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]) {
         ArrayList<Movimiento> listResult = new ArrayList<>();
-        //debo mirar 4 posibles movimientos: arriba, abajo izquierda y derecha
-        //int i = posX, j = posY;
         int i = posX, j = posY;
-        boolean end = false; //end será true cuando llegue al final del tablero o me encuentre con una pieza
-        // amiga o enemiga (en el caso particular de la torre)
-
-        //arriba
+        boolean end = false;
         --i;
         while(i >= 0 && !end) {
             if(estadoTablero[i][posY] == '0') {
@@ -114,11 +102,9 @@ public class Torre extends Pieza {
             }
             --i;
         }
-
         end = false;
         i = posX;
         j = posY;
-        //derecha
         ++j;
         while(j < 8 && !end) {
             if(estadoTablero[posX][j] == '0') {
@@ -139,7 +125,6 @@ public class Torre extends Pieza {
         end = false;
         i = posX;
         j = posY;
-        //abajo
         ++i;
         while(i < 8 && !end) {
             if(estadoTablero[i][posY] == '0') {
@@ -160,7 +145,6 @@ public class Torre extends Pieza {
         end = false;
         i = posX;
         j = posY;
-        //izquierda
         --j;
         while(j >= 0 && !end) {
             if(estadoTablero[posX][j] == '0') {

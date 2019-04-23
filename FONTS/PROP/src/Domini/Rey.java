@@ -1,7 +1,6 @@
 package Domini;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Rey extends Pieza {
 
@@ -23,7 +22,6 @@ public class Rey extends Pieza {
     @Override
     boolean esMovimientoOk(final Movimiento m, char estadoTablero[][]) {
         int movX = m.getToX(), movY = m.getToY();
-        //primero verificamos que el movimiento deseado no salga del tablero
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             if (Math.abs(posX - movX) <= 1 && Math.abs(posY - movY) <= 1) {
                 if(estadoTablero[movX][movY] == '0') return true;

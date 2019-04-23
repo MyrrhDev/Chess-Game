@@ -42,7 +42,7 @@ public class DriverPeon {
 
     /*
      * Pre: Cierto
-     * Post: Lee el estado del tablero desde la terminal
+     * Post: Inicializa el tablero
      */
     public static void iniTablero() {
         for(int i = 0; i < 8; ++i)
@@ -122,14 +122,6 @@ public class DriverPeon {
             }
             else op = -1;
             switch(op) {
-                /*
-                    Opciones:
-                    1. Alta objeto Peon, situado en el tablero
-                    2. Ver como están situadas las piezas en el tablero
-                    3. esMovimientoOk de una pieza, dada su posición
-                    4. movimientosPosibles de esa pieza en concreto
-                    5. Salir
-                 */
                 case 1:
                     boolean esNegraInput = false;
                     boolean firstMov = false;

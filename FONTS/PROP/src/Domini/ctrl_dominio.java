@@ -10,12 +10,21 @@ public class ctrl_dominio {
         j1 = j2 = null;
     }
 
+    /*
+    Patron Singleton
+     */
     public static ctrl_dominio getInstance() {
         if(singleInstance == null) singleInstance = new ctrl_dominio();
         return singleInstance;
     }
 
-
+    /*
+    Pre: Cierto
+    Post: Tanto para jug1, como para jug2:
+        Si jug = 1 -> Se crea una instancia de Persona
+        Si jug = 2 -> Se crea una instancia de Maquina
+        j1EsBlanco detalla el color de piezas del jugador 1
+     */
     public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
         switch(jug1) {
             case 1:
