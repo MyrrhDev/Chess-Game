@@ -1,0 +1,2 @@
+Este directorio contiene:
+1. pdf con la especificación del programa, descripción de las clases y casos de uso. También contiene una descripción de los algoritmos y las estructuras de datos usadas.
