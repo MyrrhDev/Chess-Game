@@ -159,8 +159,6 @@ public class ctrl_dominio {
     }
 
     public static void main(String[] args) {
-        DriverMaquina dm = new DriverMaquina();
-        dm.main(args);
     }
 
 }

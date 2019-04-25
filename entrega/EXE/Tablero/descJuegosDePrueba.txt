@@ -1,0 +1,8 @@
+Objecte de la prova: La clase Tablero. Probamos todas sus funciones con JUnit.
+Altres elements integrats a la prova: 
+Drivers construïts per aquesta prova i integrats en l'executable, amb descripció de
+la seva missió (si n'hi ha): executorJUnitTests.jar
+Stubs construïts per aquesta prova i integrats en l'executable, amb descripció de la
+seva missió (si n'hi ha): No.
+Fitxers de dades necessaris:
+Operativa:

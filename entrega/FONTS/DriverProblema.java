@@ -13,7 +13,7 @@ public class DriverProblema {
     }
 
     private static void printMenuPrincipal() {
-        System.out.println("Bienvenido al Driver de Problema. Selecciona qué deseas testear:");
+        System.out.println("Bienvenido al Driver de Problema. Para testear el driver es necesario seguir el orden siguiente:");
         System.out.println("    1- Alta objeto Problema");
         System.out.println("    2- Verificar problema");
         System.out.println("    5- Salir");
@@ -46,11 +46,18 @@ public class DriverProblema {
                     System.out.println("Problema creado con éxito, valores: " + p.getFEN() + ' ' + p.getIniJuegoBlancas());
                     break;
                 case 2:
-                    System.out.println("Qué resultado esperas? true/false");
-                    boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                    if(resEsperado == p.verificarProblema()) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
-                    else System.out.println("Fallo en el test");
-                    p.verificarProblema();
+                    if(p != null) {
+                        System.out.println("Qué resultado esperas? true/false");
+                        System.out.println("Calculando solucion. Espera");
+                        boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
+                        if (resEsperado == p.verificarProblema())
+                            System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
+                        else System.out.println("Fallo en el test");
+                        p.verificarProblema();
+                    }
+                    else {
+                        System.out.println("Debes introducir primero un problema (opcion 1)");
+                    }
                     break;
                 case 5:
                     driverIsRunning = false;
