@@ -81,28 +81,60 @@ public class DriverCtrl_dominio {
                     else System.out.println("Ya existe una instancia de controlador");
                     break;
                 case 2:
-                    if(c != null) {
-                        System.out.println("Introduce el código FEN del problema:");
-                        problema = sc.nextLine();
-                        System.out.println("Introduce el valor de N:");
-                        N = Integer.parseInt(sc.nextLine());
-                        System.out.println("Validando problema, espera");
-                        if(c.esProblemaValidable(problema, N)) System.out.println("Problema verificado");
-                        else System.out.println("No se puede verificar el problema");
-                    } else System.out.println("No existe ninguna instancia del controlador de dominio");
+                    c = ctrl_dominio.getInstance();
+                    System.out.println("Introduce el código FEN del problema:");
+                    boolean go = false;
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        if(!tocheck.endsWith("- - 0 1")) {
+                            System.out.println("El FEN no es correcto, intentalo de nuevo.");
+                        } else {
+                            problema = tocheck;
+                            go = true;
+                        }
+                    }
+                    System.out.println("Introduce el valor de N:");
+                    N = Integer.parseInt(sc.nextLine());
+                    System.out.println("Validando problema, espera");
+                    if(c.esProblemaValidable(problema, N)) System.out.println("Problema verificado");
+                    else System.out.println("No se puede verificar el problema");
                     break;
                 case 3:
-                    if(c != null) {
-                        System.out.println("Introduce por terminal el FEN del problema a jugar");
-                        problema = sc.nextLine();
-                        System.out.println("Introduce el valor de N del problema");
-                        N = Integer.parseInt(sc.nextLine());
-                        System.out.println("Introduce por terminal los jugadores que formaran parte de la partida, separados por un espacio");
-                        System.out.println("Tanto para el jugador 1 como para el jugador 2");
-                        System.out.println("1 -> H1, 2 -> M1, 3 -> M2");
-                        tmp = sc.nextLine();
-                        String aux[] = tmp.split(" ");
+                    c = ctrl_dominio.getInstance();
+                    System.out.println("Introduce por terminal el FEN del problema a jugar");
+                    go = false;
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        if (!tocheck.endsWith("- - 0 1")) {
+                            System.out.println("El FEN no es correcto, intentalo de nuevo.");
+                        } else {
+                            problema = tocheck;
+                            go = true;
+                        }
+                    }
+                    go = false;
+                    System.out.println("Introduce el valor de N del problema");
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        char c = tocheck.charAt(0);
+                        if (!(Character.isDigit(c))) {
+                            System.out.println("El N no es correcto, intentalo de nuevo.");
+                        } else {
+                            N = Integer.parseInt(tocheck);
+                            go = true;
+                        }
+                    }
+                    go = false;
+
+                    System.out.println("Introduce por terminal los jugadores que formaran parte de la partida, separados por un espacio");
+                    System.out.println("Tanto para el jugador 1 como para el jugador 2");
+                    System.out.println("1 -> H1, 2 -> M1");
+                    String aux[]= new String[2];
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        aux = tocheck.split(" ");
                         if ((aux[0].equals("2") && aux[1].equals("2"))) {
+                            go = true;
                             c.crearPartida(problema, N, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
                             System.out.println("Partida creada con éxito");
                             pintaTablero();
@@ -129,8 +161,9 @@ public class DriverCtrl_dominio {
                                 }
                             }
                         } else if (aux[0].equals("1") && aux[1].equals("2")) {
+                            go = true;
                             c.crearPartida(problema, N, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
-                            System.out.println("Partida creada con éxito");
+                            System.out.println("Partida creada con éxito. Jugador humano tiene piezas blancas.");
                             pintaTablero();
                             int n = N;
                             while (n > 0) {
@@ -169,8 +202,9 @@ public class DriverCtrl_dominio {
                                 }
                             }
                         } else if ((aux[0].equals("2") && aux[1].equals("1"))) {
+                            go = true;
                             c.crearPartida(problema, N, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
-                            System.out.println("Partida creada con éxito");
+                            System.out.println("Partida creada con éxito. Jugador humano tiene piezas negras.");
                             pintaTablero();
                             int n = N;
                             while (n > 0) {
@@ -213,11 +247,15 @@ public class DriverCtrl_dominio {
                                     System.out.println("J1 ha perdido");
                                 }
                             }
+                        } else {
+                            System.out.println("Los numeros solo pueden ser 1 o 2");
                         }
-                    } else System.out.println("No existe ninguna instancia del controlador de dominio");
+                    }
+
                     break;
                 case 5:
                     System.out.println("Ejeccución del driver terminada");
+                    driverIsRunning = false;
                     break;
                 default:
                     System.out.println("La opción introducida no es correcta. Por favor, seleccione una de las siguiente del menu");

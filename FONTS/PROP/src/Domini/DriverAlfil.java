@@ -36,6 +36,17 @@ public class DriverAlfil {
         }
     }
 
+    private static void pintaTableroVacio() {
+        System.out.println();
+        System.out.println("   (0) (1) (2) (3) (4) (5) (6) (7)");
+        for (int i = 0; i < 8; ++i) {
+            System.out.print("(" + i + ")");
+            for (int j = 0; j < 8; ++j) {
+                System.out.print("[ ] ");
+            }
+            System.out.println();
+        }
+    }
     public DriverAlfil() {
 
     }
@@ -134,7 +145,8 @@ public class DriverAlfil {
                             else if (s.equals("false")) { esNegraInput = false;}
                             else System.out.println("Valor incorrecto.");
                         } else System.out.println("Valor incorrecto.");
-                        System.out.println("Indica la posicion de la pieza en el tablero. Representamos el tablero como una matriz. El extremo superior de la matriz sera la posicion 0 0 mentras que, la esquina inferior derecha, será la posicion 7 7:");
+                        System.out.println("Indica la posicion de la pieza en el tablero. Representamos el tablero como una matriz (i.e. 0 4 sera la posicion x[0]y[4])");
+                        pintaTableroVacio();
                         String tmp[] = sc.nextLine().split(" ");
                         if(verificarEntrada(tmp)) {
                             inputOK = true;

@@ -5,13 +5,12 @@ import java.util.ArrayList;
 
 public class Caballo extends Pieza {
 
-
     public Caballo() {
         this.firstMove = false;
     }
 
     /* Pre: Cierto
-     * Post: Se crea un objeto torre con los parámetros esNegra, id, posX, posY
+     * Post: Se crea un objeto torre con los parámetros esNegra, posX, posY
      */
     public Caballo(boolean esNegra, int posX, int posY) {
         this.esNegra = esNegra;
@@ -31,12 +30,13 @@ public class Caballo extends Pieza {
      */
     @Override
     boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]) {
+        //int posX = this.posX, posY = this.posY;
         int movX = m.getToX(), movY = m.getToY();
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
-            int auxX = movX - this.posX;
-            int auxY = movY - this.posY;
+            int auxX = movX - posX;
+            int auxY = movY - posY;
 
-            if((auxX > -3 && auxX < 3) && (auxY > -3 && auxY < 3)) { //movimiento alguno valido
+            if((auxX > -3 && auxX < 3) && (auxY > -3 && auxY < 3)){ //movimiento alguno valido
 
                 if ((auxX == -2 && auxY == -1) || (auxX == -1 && auxY == -2) || (auxX == 2 && auxY == -1) ||
                         (auxX == 1 && auxY == -2) || (auxX == -2 && auxY == 1) || (auxX == -1 && auxY == 2) || (auxX == 2 && auxY == 1) || (auxX == 1 && auxY == 2)) {
@@ -51,8 +51,13 @@ public class Caballo extends Pieza {
         return false;
     }
 
+    /*
+     * Pre: El parametro estadoTablero[][] existe y no esta vacio
+     * Post: La funcion devuelve un array con todos los movimientos posibles del parametro implicito
+     */
     @Override
     ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]) {
+        //int posX = this.posX, posY = this.posY;
         ArrayList<Movimiento> listResult = new ArrayList<>();
         final int movPos[][] = {{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
         final int sizei = 8, sizej = 2;
@@ -74,18 +79,30 @@ public class Caballo extends Pieza {
         return listResult;
     }
 
+    /* Pre: Cierto
+     * Post: Devuelve un boolean que es true si es el primer movimientos de la pieza
+     */
     public boolean isFirstMove() {
         return firstMove;
     }
 
+    /* Pre: Cierto
+     * Post: Asigna un boolean que es true si es el primer movimientos de la pieza
+     */
     public void setFirstMove(boolean firstMove) {
         this.firstMove = firstMove;
     }
 
+    /* Pre: Cierto
+     * Post: Asigna el tipo del parametro implicito
+     */
     public void setTipo(char t) {
         this.tipo = t;
     }
 
+    /* Pre: Cierto
+     * Post: Devuelve el tipo del parametro implicito
+     */
     public char getTipo() {
         return this.tipo;
     }

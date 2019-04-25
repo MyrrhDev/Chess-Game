@@ -6,8 +6,9 @@ public class DriverMovimientoPrueba {
     static private char estadoTablero[][] = new char[8][8];
     static private boolean esNegraInput;
     private static Tablero t, t2;
-    private static Maquina m, m2;
+    private static Maquina m1, m2;
     private static MovimientoPrueba mp;
+    private static Movimiento m;
     static private String f[][] = {{"b", "♝"}, {"B", "♗"}, {"n", "♞"}, {"N", "♘"},
             {"p", "♟"}, {"P", "♙"}, {"q", "♛"}, {"Q", "♕"},
             {"k", "♚"}, {"K", "♔"}, {"r", "♜"}, {"R", "♖"}};
@@ -92,10 +93,10 @@ public class DriverMovimientoPrueba {
             else op = -1;
             switch(op) {
                 case 1:
-                    m = new Maquina(true, false, true);
+                    m1 = new Maquina(true, false, true);
                     m2 = new Maquina(true, true, false);
-                    t = new Tablero(m, m2);
-                    t2 = new Tablero(m, m2);
+                    t = new Tablero(m1, m2);
+                    t2 = new Tablero(m1, m2);
                     System.out.println("Introduce un FEN para poblar el primer tablero");
                     String r = setFEN(sc.nextLine());
                     t.FENToTablero(r, esNegraInput);
@@ -106,20 +107,33 @@ public class DriverMovimientoPrueba {
                     pintaTablero(t2);
                     System.out.println("Introduce, por orden, los valores del objeto Movimiento.");
                     System.out.print("fromX: ");
+                    System.out.println();
                     int fromX = Integer.parseInt(sc.nextLine());
-                    System.out.println();
                     System.out.print("fromY: ");
+                    System.out.println();
                     int fromY = Integer.parseInt(sc.nextLine());
-                    System.out.println();
                     System.out.print("ToX: ");
+                    System.out.println();
                     int ToX = Integer.parseInt(sc.nextLine());
-                    System.out.println();
                     System.out.print("ToY: ");
-                    int ToY = Integer.parseInt(sc.nextLine());
                     System.out.println();
-                    System.out.print("p (char que identifica a una pieza): ");
-                    char c = sc.nextLine().charAt(0);
-                    Movimiento m = new Movimiento(fromX, fromY, ToX, ToY, c);
+                    int ToY = Integer.parseInt(sc.nextLine());
+                    System.out.print("Hay alguna Pieza a matar? si (true) o no (false):");
+                    System.out.println();
+                    String s = sc.nextLine();
+                    if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
+                        if (s.equals("true")) {
+                            System.out.print("Indica su tipo mediante un char");
+                            System.out.println();
+                            char c = sc.nextLine().charAt(0);
+                            m = new Movimiento(fromX, fromY, ToX, ToY, c);
+                        }
+                        else if (s.equals("false")) {
+                            m = new Movimiento(fromX,fromY,ToX,ToY);
+                        }
+                        else System.out.println("Valor incorrecto.");
+                    } else System.out.println("Valor incorrecto.");
+                    System.out.println("Objeto movimiento creado con éxito");
                     System.out.println("Se puede realizar el movimiento true/false?");
                     boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
                     mp = new MovimientoPrueba(t, t2, m, resEsperado);

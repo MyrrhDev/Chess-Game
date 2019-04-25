@@ -114,7 +114,8 @@ public class DriverPersona {
                     break;
                 case 2:
                     System.out.println("Para verificar la funcion Jugar, de la clase Persona, debemos primero crear un tablero");
-                    p2 = new Persona(false, !esNegraInput, false);
+                    p = new Persona(false, false, true);
+                    p2 = new Persona(false, true, false);
                     t = new Tablero(p, p2);
                     System.out.println("Introduce un FEN para poblar el tablero");
                     s = sc.nextLine();

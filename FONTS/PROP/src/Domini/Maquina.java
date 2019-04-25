@@ -2,49 +2,43 @@ package Domini;
 
 
 public class Maquina extends Jugador {
-    //boolean esSimple;
-    //boolean estaAtacando;
-    //boolean esNegro;
     EstrategiaSimple estrategia;
 
-    //Cambiado por Roger 21-04-2019 para solucionar problemas en verificarProblema()
+    /* Pre: Cierto
+     * Post: Crea un nuevo objeto Maquina con los parametros esMaquina, esNegro y estaAtacando
+     * */
     public Maquina(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
-        //super(esMaquina, esNegro, estaAtacando);
-        this.esMaquina = esMaquina;
-        this.estaAtacando = estaAtacando;
-        this.esNegro = esNegro;
+        super(esMaquina, esNegro, estaAtacando);
     }
 
-
-    //EstrategiaCompleja estrategiaCompl;
-
-
-    //int N es el numero de movimientos dados en el que se "resuelve" el problema para uno de los Jugadores
-    //TODO: N se tiene que reducir en el controlador dominio
+    /* Pre: Tablero existe y no esta vacio, N es el numero de movimientos que el Jugador puede hacer
+     * Post: Devuelve un nuevo Tablero modificado
+     * */
     @Override
     public Tablero jugar(final Tablero tablero, final int N) throws Exception {
         Tablero t = new Tablero(tablero);
-
-        this.estrategia = new EstrategiaSimple(N*2);
-        //if(esSimple) { //Considera N*2 xq con cada min/max se reduce uno y N es por jugador
-        Movimiento m = this.estrategia.estrategiaSimple(tablero,this.isEstaAtacando()); //No se si le pasa esto Jugador -> Maquina -> aqui
-        //} else Movimiento m = estrategiaCompl.estrategiaCompleja();
-        Exception e = new Exception("No se puede mover, posible Jaque Mate");
+        int level;
+        if(N > 4) {
+            level = 5;
+        } else {
+            level = N;
+        }
+        this.estrategia = new EstrategiaSimple(level*2);
+        Movimiento m = this.estrategia.estrategiaSimple(tablero);
         if(m.esNada()) {
+            Exception e = new Exception("No se puede mover, posible Jaque Mate");
             throw e;
         } else {
             t.ejecutarMovimiento(m);
         }
-
-
         return t;
     }
 
-    //private abstract Movimiento estrategiaSimple(Tablero tablero, int depth, boolean maxOfensivePlayer);
+    /* Pre: Tablero existe y no esta vacio, movimiento existe y no esta vacio con el movimiento que hace la Persona
+     * Post: Devuelve un nuevo Tablero modificado
+     * */
     @Override
     public Tablero jugar(Tablero t, Movimiento movimiento) throws Exception {
         return t;
     }
-
-
 }

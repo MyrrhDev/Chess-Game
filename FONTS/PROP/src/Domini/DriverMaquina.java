@@ -69,13 +69,6 @@ public class DriverMaquina {
         System.out.println("    5- Salir");
     }
 
-    private static boolean verificarEntrada(String tmp[]) {
-        int posX = Integer.parseInt(tmp[0]);
-        int posY = Integer.parseInt(tmp[1]);
-        if(posX >= 0 && posY >= 0 && posX < 8 && posY < 8) return true;
-        return false;
-    }
-
     public static void main(String[] args) {
         estadoTablero = new char[8][8];
         iniTablero();
@@ -101,7 +94,7 @@ public class DriverMaquina {
                         else if (s.equals("false")) { esNegraInput = false;}
                         else System.out.println("Valor incorrecto.");
                     } else System.out.println("Valor incorrecto.");
-                    System.out.println("Indica si la persona será la atacante(true) o la defensora (false)");
+                    System.out.println("Indica si la maquina será la atacante(true) o la defensora (false)");
                     s = sc.nextLine();
                     Boolean estaAtacando = false;
                     if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
@@ -113,21 +106,25 @@ public class DriverMaquina {
                     System.out.println("Maquina correctamente creada");
                     break;
                 case 2:
-                    System.out.println("Para verificar la funcion Jugar, de la clase Persona, debemos primero crear un tablero");
-                    m2 = new Maquina(false, !esNegraInput, false);
-                    t = new Tablero(m, m2);
-                    System.out.println("Introduce un FEN para poblar el tablero");
-                    s = sc.nextLine();
-                    String r = setFEN(s);
-                    t.FENToTablero(r, esNegraInput);
-                    pintaTablero();
-                    System.out.println("Introduce un valor N");
-                    int n = Integer.parseInt(sc.next());
-                    try {
-                        t = m.jugar(t, n);
-                    }catch(Exception e) {}
-                    System.out.println("Movimiento:");
-                    pintaTablero();
+                    if(m != null) {
+                        System.out.println("Para verificar la funcion Jugar, de la clase maquina, debemos primero crear un tablero");
+                        m2 = new Maquina(false, !esNegraInput, false);
+                        t = new Tablero(m, m2);
+                        System.out.println("Introduce un FEN para poblar el tablero");
+                        s = sc.nextLine();
+                        String r = setFEN(s);
+                        t.FENToTablero(r, esNegraInput);
+                        pintaTablero();
+                        System.out.println("Introduce un valor N");
+                        int n = Integer.parseInt(sc.nextLine());
+                        try {
+                            t = m.jugar(t, n);
+                        } catch (Exception e) {
+                        }
+                        System.out.println("Movimiento:");
+                        pintaTablero();
+                    }
+                    else System.out.println("Debes crear una instancia del objeto Maquina antes de poder usar sus funciones");
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");
@@ -135,6 +132,7 @@ public class DriverMaquina {
                     break;
                 default:
                     System.out.println("La opción introducida no es correcta. Por favor, seleccione una de las siguiente del menu");
+                    break;
             }
         }
     }

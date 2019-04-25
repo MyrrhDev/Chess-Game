@@ -72,7 +72,7 @@ public class Problema {
             }
             Tablero t = new Tablero(atacante, defensor);
             t.FENToTablero(verificar, iniJuegoBlancas);
-            verificar(t, true);
+            verificar(t);
             return verificado;
         }
         return false;
@@ -81,20 +81,16 @@ public class Problema {
     /* Pre: Tablero existe y no esta vacio
      * Post: Calcula si el problema se puede verificar
      * */
-    private void verificar(Tablero tablero, boolean maxAttackingPlayer) {
+    private void verificar(Tablero tablero) {
         int puntosAhora;
-
-        //Para todos las piezas+movimientos posibles
-        for (final Movimiento movimiento : tablero.getAttackPlayer(maxAttackingPlayer).getPosiblesMovimientos()) {
-
-            //Probamos de hacer el movimiento en un tablero nuevo creado en la clase de Movimiento Prueba
+        for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
             MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
-
             if (pruebaMovimiento.isSePuede()) {
-                puntosAhora = min(pruebaMovimiento.getaTablero(), (this.N*2) - 1);
-            }
-            else {
-            puntosAhora = max(pruebaMovimiento.getaTablero(), (this.N*2) - 1);
+                if (tablero.esSuTurno().isEstaAtacando()) {
+                    puntosAhora = min(pruebaMovimiento.getaTablero(), (this.N * 2) - 1);
+                } else {
+                    puntosAhora = max(pruebaMovimiento.getaTablero(), (this.N * 2) - 1);
+                }
             }
         }
     }
@@ -136,9 +132,7 @@ public class Problema {
             return this.evaluacion.evaluar(tablero, depth);
         }
         int mayorPuntos = Integer.MIN_VALUE;
-
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
-
             final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
             if (pruebaMovimiento.isSePuede()) {
                 final int puntosAhora = min(pruebaMovimiento.getaTablero(), depth - 1);

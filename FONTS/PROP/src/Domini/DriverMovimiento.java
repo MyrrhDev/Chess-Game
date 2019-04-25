@@ -47,20 +47,32 @@ public class DriverMovimiento {
                 case 1:
                     System.out.println("Introduce, por orden, los valores del objeto Movimiento.");
                     System.out.print("fromX: ");
+                    System.out.println();
                     int fromX = Integer.parseInt(sc.nextLine());
-                    System.out.println();
                     System.out.print("fromY: ");
+                    System.out.println();
                     int fromY = Integer.parseInt(sc.nextLine());
-                    System.out.println();
                     System.out.print("ToX: ");
+                    System.out.println();
                     int ToX = Integer.parseInt(sc.nextLine());
-                    System.out.println();
                     System.out.print("ToY: ");
-                    int ToY = Integer.parseInt(sc.nextLine());
                     System.out.println();
-                    System.out.print("p (char que identifica a una pieza): ");
-                    char c = sc.nextLine().charAt(0);
-                    m = new Movimiento(fromX, fromY, ToX, ToY, c);
+                    int ToY = Integer.parseInt(sc.nextLine());
+                    System.out.print("Hay alguna Pieza a matar? si (true) o no (false):");
+                    System.out.println();
+                    String s = sc.nextLine();
+                    if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
+                        if (s.equals("true")) {
+                            System.out.print("Indica su tipo mediante un char");
+                            System.out.println();
+                            char c = sc.nextLine().charAt(0);
+                            m = new Movimiento(fromX, fromY, ToX, ToY, c);
+                        }
+                        else if (s.equals("false")) {
+                            m = new Movimiento(fromX,fromY,ToX,ToY);
+                        }
+                        else System.out.println("Valor incorrecto.");
+                    } else System.out.println("Valor incorrecto.");
                     System.out.println("Objeto movimiento creado con éxito");
                     break;
                 case 2:

@@ -64,29 +64,6 @@ public class Tablero {
         }
     }
 
-    /* Pre: Una Persona crea/edita un problema en el parametro implicito
-     * Post: El parametro implicito es transformado en un String bajo el formato FEN
-     */
-    public String TableroToFEN() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 8; i++) {
-            int spaces = 0;
-            sb.append('/');
-            for (int j = 0; j < 8; j++) {
-                if(this.tablero[i][j] == '0') ++spaces;
-                else if(this.tablero[i][j] != '0') {
-                    if(spaces != 0) {
-                        sb.append((char)(spaces+'0'));
-                        spaces = 0;
-                    }
-                    sb.append(tablero[i][j]);
-                }
-            }
-        }
-        String fen = sb.toString();
-        return fen;
-    }
-
     /* Pre: El parametro implicito ha sido creado con Jugadores inicializados
      * Post: Las piezas del Problema en formato FEN han sido puestas en el atributo tablero[][]
      */
@@ -253,6 +230,14 @@ public class Tablero {
         this.jugador1.setEnMate(this.jugador2.getPosiblesMovimientos().stream().anyMatch(movi -> (movi.getToX() == this.jugador1.getReydelJugador().getPosX() && movi.getToY() == this.jugador1.getReydelJugador().getPosY())));
     }
 
+    public void setPiezasBlancas(ArrayList<Pieza> piezasBlancas) {
+        PiezasBlancas = piezasBlancas;
+    }
+
+    public void setPiezasNegras(ArrayList<Pieza> piezasNegras) {
+        PiezasNegras = piezasNegras;
+    }
+
     /* Pre: Cierto
      * Post: Devuelve un booleano
      *      true: si el Movimiento que se ha intentado es posible, y si es asi se ejecuta el Movimiento
@@ -270,14 +255,6 @@ public class Tablero {
             this.ejecutarMovimiento(movimiento);
         }
         return b;
-    }
-
-    /* Pre: Cierto
-     * Post: Devuelve el jugador asociado con las piezas blancas o negros dependiendo del parametro
-     */
-    public Jugador getJugador(boolean isNegro) {
-        if (jugador1.isEsNegro() == isNegro) return jugador1;
-        else return jugador2;
     }
 
     /* Pre: Cierto
@@ -362,27 +339,6 @@ public class Tablero {
      */
     public void setTurnoBlancas(boolean turnoBlancas) {
         this.turnoBlancas = turnoBlancas;
-    }
-
-    /* Pre: Cierto
-     * Post: Le asigna al Jugador1 del parametro implicito las piezas negras
-     */
-    void setJugadoresPiezas() {
-        this.jugador1.setMisPiezas(this.PiezasNegras);
-    }
-
-    /* Pre: Cierto
-     * Post: Asocia el parametro piezasNegras al del parametro implicito
-     */
-    public void setPiezasNegras(ArrayList<Pieza> piezasNegras) {
-        PiezasNegras = piezasNegras;
-    }
-
-    /* Pre: Cierto
-     * Post: Asocia el parametro piezasBlancas al del parametro implicito
-     */
-    public void setPiezasBlancas(ArrayList<Pieza> piezasBlancas) {
-        PiezasBlancas = piezasBlancas;
     }
 
     /* Pre: Cierto
