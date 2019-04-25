@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class DriverMovimiento {
     private static Movimiento m;
-    private Tablero desdeTablero;
-    private Tablero aTablero;
-    private Movimiento movimientoPrueba;
-    private boolean sePuede;
 
     public DriverMovimiento() {
 
@@ -22,13 +18,6 @@ public class DriverMovimiento {
         System.out.println("    1- Alta objeto Movimiento");
         System.out.println("    2- Consultar valores del objeto Movimiento");
         System.out.println("    5- Salir");
-    }
-
-    private static boolean verificarEntrada(String tmp[]) {
-        int posX = Integer.parseInt(tmp[0]);
-        int posY = Integer.parseInt(tmp[1]);
-        if(posX >= 0 && posY >= 0 && posX < 8 && posY < 8) return true;
-        return false;
     }
 
     public static void main(String[] args) {
@@ -76,11 +65,15 @@ public class DriverMovimiento {
                     System.out.println("Objeto movimiento creado con éxito");
                     break;
                 case 2:
-                    System.out.println("fromX: " + m.getFromX());
-                    System.out.println("fromY: " + m.getFromY());
-                    System.out.println("ToX: " + m.getToX());
-                    System.out.println("ToY: " + m.getToY());
-                    System.out.println("p: " + m.getP());
+                    if(m != null) {
+                        System.out.println("fromX: " + m.getFromX());
+                        System.out.println("fromY: " + m.getFromY());
+                        System.out.println("ToX: " + m.getToX());
+                        System.out.println("ToY: " + m.getToY());
+                        System.out.println("p: " + m.getP());
+                    } else {
+                        System.out.println("No existe una instancia de movimiento. Debes crearla primero");
+                    }
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");

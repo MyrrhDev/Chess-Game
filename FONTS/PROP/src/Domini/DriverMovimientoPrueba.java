@@ -70,12 +70,6 @@ public class DriverMovimientoPrueba {
         System.out.println("    5- Salir");
     }
 
-    private static boolean verificarEntrada(String tmp[]) {
-        int posX = Integer.parseInt(tmp[0]);
-        int posY = Integer.parseInt(tmp[1]);
-        if(posX >= 0 && posY >= 0 && posX < 8 && posY < 8) return true;
-        return false;
-    }
 
     public static void main(String[] args) {
         estadoTablero = new char[8][8];

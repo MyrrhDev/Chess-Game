@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class DriverMovimiento {
     private static Movimiento m;
-    private Tablero desdeTablero;
-    private Tablero aTablero;
-    private Movimiento movimientoPrueba;
-    private boolean sePuede;
 
     public DriverMovimiento() {
 
@@ -22,13 +18,6 @@ public class DriverMovimiento {
         System.out.println("    1- Alta objeto Movimiento");
         System.out.println("    2- Consultar valores del objeto Movimiento");
         System.out.println("    5- Salir");
-    }
-
-    private static boolean verificarEntrada(String tmp[]) {
-        int posX = Integer.parseInt(tmp[0]);
-        int posY = Integer.parseInt(tmp[1]);
-        if(posX >= 0 && posY >= 0 && posX < 8 && posY < 8) return true;
-        return false;
     }
 
     public static void main(String[] args) {
@@ -47,28 +36,44 @@ public class DriverMovimiento {
                 case 1:
                     System.out.println("Introduce, por orden, los valores del objeto Movimiento.");
                     System.out.print("fromX: ");
+                    System.out.println();
                     int fromX = Integer.parseInt(sc.nextLine());
-                    System.out.println();
                     System.out.print("fromY: ");
+                    System.out.println();
                     int fromY = Integer.parseInt(sc.nextLine());
-                    System.out.println();
                     System.out.print("ToX: ");
+                    System.out.println();
                     int ToX = Integer.parseInt(sc.nextLine());
-                    System.out.println();
                     System.out.print("ToY: ");
-                    int ToY = Integer.parseInt(sc.nextLine());
                     System.out.println();
-                    System.out.print("p (char que identifica a una pieza): ");
-                    char c = sc.nextLine().charAt(0);
-                    m = new Movimiento(fromX, fromY, ToX, ToY, c);
+                    int ToY = Integer.parseInt(sc.nextLine());
+                    System.out.print("Hay alguna Pieza a matar? si (true) o no (false):");
+                    System.out.println();
+                    String s = sc.nextLine();
+                    if (!s.equals("\r") && !s.equals("\n") && !s.equals("\t") && !s.equals("")) {
+                        if (s.equals("true")) {
+                            System.out.print("Indica su tipo mediante un char");
+                            System.out.println();
+                            char c = sc.nextLine().charAt(0);
+                            m = new Movimiento(fromX, fromY, ToX, ToY, c);
+                        }
+                        else if (s.equals("false")) {
+                            m = new Movimiento(fromX,fromY,ToX,ToY);
+                        }
+                        else System.out.println("Valor incorrecto.");
+                    } else System.out.println("Valor incorrecto.");
                     System.out.println("Objeto movimiento creado con éxito");
                     break;
                 case 2:
-                    System.out.println("fromX: " + m.getFromX());
-                    System.out.println("fromY: " + m.getFromY());
-                    System.out.println("ToX: " + m.getToX());
-                    System.out.println("ToY: " + m.getToY());
-                    System.out.println("p: " + m.getP());
+                    if(m != null) {
+                        System.out.println("fromX: " + m.getFromX());
+                        System.out.println("fromY: " + m.getFromY());
+                        System.out.println("ToX: " + m.getToX());
+                        System.out.println("ToY: " + m.getToY());
+                        System.out.println("p: " + m.getP());
+                    } else {
+                        System.out.println("No existe una instancia de movimiento. Debes crearla primero");
+                    }
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");
