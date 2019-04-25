@@ -1,0 +1,7 @@
+Objecte de la prova: La clase Maquina (M1). Que realice los movimientos correctos segun su heuristica.
+Altres elements integrats a la prova: 
+Drivers construïts per aquesta prova i integrats en l'executable, amb descripció de
+la seva missió (si n'hi ha): DriverMaquina.jar
+Stubs construïts per aquesta prova i integrats en l'executable, amb descripció de la
+seva missió (si n'hi ha): No.
+Operativa: El Driver contiene un menú con las opciones que permite testear.

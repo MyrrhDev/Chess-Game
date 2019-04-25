@@ -63,7 +63,7 @@ public class DriverPersona {
      * Post: Imprime por consola las posibles opciones a probar con el driver
      */
     private static void printMenuPrincipal() {
-        System.out.println("Bienvenido al Driver de Persona. Selecciona qué deseas testear:");
+        System.out.println("Bienvenido al Driver de Persona. Hay que ejecutar el menu en el orden que se indica:");
         System.out.println("    1- Alta objeto Persona");
         System.out.println("    2- Verificar la función jugar de la clase persona");
         System.out.println("    5- Salir");
@@ -113,9 +113,10 @@ public class DriverPersona {
                     System.out.println("Persona correctamente creada");
                     break;
                 case 2:
-                    System.out.println("Para verificar la funcion Jugar, de la clase Persona, debemos primero crear un tablero");
+                    System.out.println("Controlas las piezas negras.");
                     p = new Persona(false, false, true);
                     p2 = new Persona(false, true, false);
+                    System.out.println("Para verificar la funcion Jugar, de la clase Persona, debemos primero crear un tablero");
                     t = new Tablero(p, p2);
                     System.out.println("Introduce un FEN para poblar el tablero");
                     s = sc.nextLine();

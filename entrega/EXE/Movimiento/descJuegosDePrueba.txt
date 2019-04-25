@@ -1,0 +1,8 @@
+Objecte de la prova: La clase Movimiento. Que se pueda dar de alta correctamente.
+Altres elements integrats a la prova: 
+Drivers construïts per aquesta prova i integrats en l'executable, amb descripció de
+la seva missió (si n'hi ha): DriverMovimiento.jar
+Stubs construïts per aquesta prova i integrats en l'executable, amb descripció de la
+seva missió (si n'hi ha): No.
+tests: En testDriverMovimiento.txt
+Operativa: El Driver contiene un menú con las opciones que permite testear.
