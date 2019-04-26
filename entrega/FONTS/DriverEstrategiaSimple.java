@@ -47,7 +47,16 @@ public class DriverEstrategiaSimple {
                     System.out.println("Para verificar la funcion debemos primero crear un tablero");
                     Tablero t = new Tablero(m1, m2);
                     System.out.println("Introduce un FEN para poblar el tablero");
-                    String s = sc.nextLine();
+                    boolean go = false;
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        if(!tocheck.endsWith("- - 0 1")) {
+                            System.out.println("El FEN no es correcto, intentalo de nuevo.");
+                        } else {
+                            s = tocheck;
+                            go = true;
+                        }
+                    }
                     String r = setFEN(s);
                     t.FENToTablero(r, true);
                     System.out.println("Creando objeto estrategia simple. Profundidad default: 2");
