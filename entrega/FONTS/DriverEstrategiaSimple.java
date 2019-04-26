@@ -50,7 +50,7 @@ public class DriverEstrategiaSimple {
                     String s = sc.nextLine();
                     String r = setFEN(s);
                     t.FENToTablero(r, true);
-                    System.out.println("Creando objeto estrategia simple. Profundiad default: 2");
+                    System.out.println("Creando objeto estrategia simple. Profundidad default: 2");
                     EstrategiaSimple es2 = new EstrategiaSimple(2);
                     Movimiento mv = es2.estrategiaSimple(t);
                     System.out.println("El movimiento es:");
