@@ -119,7 +119,16 @@ public class DriverPersona {
                     System.out.println("Para verificar la funcion Jugar, de la clase Persona, debemos primero crear un tablero");
                     t = new Tablero(p, p2);
                     System.out.println("Introduce un FEN para poblar el tablero");
-                    s = sc.nextLine();
+                    boolean go = false;
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        if(!tocheck.endsWith("- - 0 1")) {
+                            System.out.println("El FEN no es correcto, intentalo de nuevo.");
+                        } else {
+                            s = tocheck;
+                            go = true;
+                        }
+                    }
                     String r = setFEN(s);
                     t.FENToTablero(r, esNegraInput);
                     pintaTablero();
