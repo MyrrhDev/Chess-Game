@@ -93,7 +93,7 @@ public class DriverMovimientoPrueba {
                     t2 = new Tablero(m1, m2);
                     System.out.println("Introduce un FEN para poblar el primer tablero");
                     boolean go = false;
-                    String fen;
+                    String fen = "";
                     while(!go) {
                         String tocheck = sc.nextLine();
                         if(!tocheck.endsWith("- - 0 1")) {
