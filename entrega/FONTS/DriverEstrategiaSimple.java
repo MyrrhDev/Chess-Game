@@ -48,6 +48,7 @@ public class DriverEstrategiaSimple {
                     Tablero t = new Tablero(m1, m2);
                     System.out.println("Introduce un FEN para poblar el tablero");
                     boolean go = false;
+                    String s = "";
                     while(!go) {
                         String tocheck = sc.nextLine();
                         if(!tocheck.endsWith("- - 0 1")) {
