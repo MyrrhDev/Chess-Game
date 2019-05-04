@@ -49,9 +49,13 @@ public class DriverEstrategiaSimple {
                     System.out.println("Introduce un FEN para poblar el tablero");
                     boolean go = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
                     String s = "";
 =======
 >>>>>>> 56ab6e61d0a70d9fa4a7dc36a8727b6b95c1a3c8
+=======
+                    String s = "";
+>>>>>>> 3d15b64eaad9806abd43c33ae5d42adbe3f1c8cd
                     while(!go) {
                         String tocheck = sc.nextLine();
                         if(!tocheck.endsWith("- - 0 1")) {

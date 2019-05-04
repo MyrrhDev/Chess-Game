@@ -51,9 +51,13 @@ public class DriverEvaluacion {
                     tablero = new Tablero(jugador1,jugador2);
                     System.out.println("Inserte el codigo FEN!");
 <<<<<<< HEAD
+<<<<<<< HEAD
                     String fen = "";
 =======
 >>>>>>> 56ab6e61d0a70d9fa4a7dc36a8727b6b95c1a3c8
+=======
+                    String fen = "";
+>>>>>>> 3d15b64eaad9806abd43c33ae5d42adbe3f1c8cd
                     boolean go = false;
                     while(!go) {
                         String tocheck = sc.nextLine();

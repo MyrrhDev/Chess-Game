@@ -36,10 +36,14 @@ public class DriverProblema {
                 case 1:
                     //creo un problema
 <<<<<<< HEAD
+<<<<<<< HEAD
                     String tmp="";
 =======
                     String tmp;
 >>>>>>> 56ab6e61d0a70d9fa4a7dc36a8727b6b95c1a3c8
+=======
+                    String tmp="";
+>>>>>>> 3d15b64eaad9806abd43c33ae5d42adbe3f1c8cd
                     System.out.println("Introduce el FEN:");
                     boolean go = false;
                     while(!go) {
@@ -63,10 +67,14 @@ public class DriverProblema {
                             System.out.println("El N no es correcto, intentalo de nuevo.");
                         } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
                             tmp = tocheck;
 =======
                             tmp = Integer.parseInt(tocheck);
 >>>>>>> 56ab6e61d0a70d9fa4a7dc36a8727b6b95c1a3c8
+=======
+                            tmp = tocheck;
+>>>>>>> 3d15b64eaad9806abd43c33ae5d42adbe3f1c8cd
                             go = true;
                         }
                     }
