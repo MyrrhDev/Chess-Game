@@ -111,12 +111,32 @@ public class DriverMaquina {
                         m2 = new Maquina(false, !esNegraInput, false);
                         t = new Tablero(m, m2);
                         System.out.println("Introduce un FEN para poblar el tablero");
-                        s = sc.nextLine();
+                        boolean go = false;
+                        while(!go) {
+                            String tocheck = sc.nextLine();
+                            if(!tocheck.endsWith("- - 0 1")) {
+                                System.out.println("El FEN no es correcto, intentalo de nuevo.");
+                            } else {
+                                s = tocheck;
+                                go = true;
+                            }
+                        }
                         String r = setFEN(s);
                         t.FENToTablero(r, esNegraInput);
                         pintaTablero();
                         System.out.println("Introduce un valor N");
-                        int n = Integer.parseInt(sc.nextLine());
+                        go = false;
+                        int n = 0;
+                        while(!go) {
+                        String tocheck = sc.nextLine();
+                        char c = tocheck.charAt(0);
+                            if (!(Character.isDigit(c))) {
+                                System.out.println("El N no es correcto, intentalo de nuevo.");
+                            } else {
+                                n = Integer.parseInt(tocheck);
+                                go = true;
+                            }
+                        }
                         try {
                             t = m.jugar(t, n);
                         } catch (Exception e) {

@@ -35,7 +35,11 @@ public class DriverProblema {
             switch(op) {
                 case 1:
                     //creo un problema
+<<<<<<< HEAD
                     String tmp="";
+=======
+                    String tmp;
+>>>>>>> 56ab6e61d0a70d9fa4a7dc36a8727b6b95c1a3c8
                     System.out.println("Introduce el FEN:");
                     boolean go = false;
                     while(!go) {
@@ -58,7 +62,11 @@ public class DriverProblema {
                         if (!(Character.isDigit(c))) {
                             System.out.println("El N no es correcto, intentalo de nuevo.");
                         } else {
+<<<<<<< HEAD
                             tmp = tocheck;
+=======
+                            tmp = Integer.parseInt(tocheck);
+>>>>>>> 56ab6e61d0a70d9fa4a7dc36a8727b6b95c1a3c8
                             go = true;
                         }
                     }
