@@ -50,6 +50,7 @@ public class DriverEvaluacion {
                     jugador1 = new Maquina(true, true, true);
                     tablero = new Tablero(jugador1,jugador2);
                     System.out.println("Inserte el codigo FEN!");
+                    String fen = "";
                     boolean go = false;
                     while(!go) {
                         String tocheck = sc.nextLine();
