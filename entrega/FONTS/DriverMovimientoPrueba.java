@@ -92,13 +92,20 @@ public class DriverMovimientoPrueba {
                     t = new Tablero(m1, m2);
                     t2 = new Tablero(m1, m2);
                     System.out.println("Introduce un FEN para poblar el primer tablero");
-                    String r = setFEN(sc.nextLine());
+                    boolean go = false;
+                    String fen = "";
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        if(!tocheck.endsWith("- - 0 1")) {
+                            System.out.println("El FEN no es correcto, intentalo de nuevo.");
+                        } else {
+                            fen = tocheck;
+                            go = true;
+                        }
+                    }
+                    String r = setFEN(fen);
                     t.FENToTablero(r, esNegraInput);
                     pintaTablero(t);
-                    System.out.println("Introduce un FEN para poblar el segundo tablero");
-                    r = setFEN(sc.nextLine());
-                    t2.FENToTablero(r, true);
-                    pintaTablero(t2);
                     System.out.println("Introduce, por orden, los valores del objeto Movimiento.");
                     System.out.print("fromX: ");
                     System.out.println();

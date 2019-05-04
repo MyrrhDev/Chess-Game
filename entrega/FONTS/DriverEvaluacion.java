@@ -8,6 +8,7 @@ public class DriverEvaluacion {
     private static Evaluacion eval;
     private static Jugador jugador2;
     private static Jugador jugador1;
+    private static int N;
 
     public DriverEvaluacion() {
 
@@ -49,14 +50,35 @@ public class DriverEvaluacion {
                     jugador1 = new Maquina(true, true, true);
                     tablero = new Tablero(jugador1,jugador2);
                     System.out.println("Inserte el codigo FEN!");
-                    String fen = sc.nextLine();
+                    String fen = "";
+                    boolean go = false;
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        if(!tocheck.endsWith("- - 0 1")) {
+                            System.out.println("El FEN no es correcto, intentalo de nuevo.");
+                        } else {
+                            fen = tocheck;
+                            go = true;
+                        }
+                    }
                     p = new Problema();
                     p.setFEN(fen);
                     tablero.FENToTablero(p.getFEN(), p.getIniJuegoBlancas());
                     break;
                 case 3:
                     System.out.println("Indica el nivel de profundidad:");
-                    p.setN(Integer.parseInt(sc.nextLine()));
+                    go = false;
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        char c = tocheck.charAt(0);
+                        if (!(Character.isDigit(c))) {
+                            System.out.println("El N no es correcto, intentalo de nuevo.");
+                        } else {
+                            N = Integer.parseInt(tocheck);
+                            go = true;
+                        }
+                    }
+                    p.setN(N);
                     break;
                 case 4:
                     System.out.println("Puntos de la evaluacion: " + eval.evaluar(tablero,p.getN()));

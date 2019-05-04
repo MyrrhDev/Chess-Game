@@ -69,13 +69,6 @@ public class DriverPersona {
         System.out.println("    5- Salir");
     }
 
-    private static boolean verificarEntrada(String tmp[]) {
-        int posX = Integer.parseInt(tmp[0]);
-        int posY = Integer.parseInt(tmp[1]);
-        if(posX >= 0 && posY >= 0 && posX < 8 && posY < 8) return true;
-        return false;
-    }
-
     public static void main(String[] args) {
         estadoTablero = new char[8][8];
         iniTablero();
@@ -119,7 +112,17 @@ public class DriverPersona {
                     System.out.println("Para verificar la funcion Jugar, de la clase Persona, debemos primero crear un tablero");
                     t = new Tablero(p, p2);
                     System.out.println("Introduce un FEN para poblar el tablero");
-                    s = sc.nextLine();
+                    boolean go = false;
+                    s = "";
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        if(!tocheck.endsWith("- - 0 1")) {
+                            System.out.println("El FEN no es correcto, intentalo de nuevo.");
+                        } else {
+                            s = tocheck;
+                            go = true;
+                        }
+                    }
                     String r = setFEN(s);
                     t.FENToTablero(r, esNegraInput);
                     pintaTablero();

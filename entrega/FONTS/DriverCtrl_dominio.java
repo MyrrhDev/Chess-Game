@@ -56,7 +56,7 @@ public class DriverCtrl_dominio {
         int movX = Integer.parseInt(tmp[2]);
         int movY = Integer.parseInt(tmp[3]);
         if(posX >= 0 && posY >= 0 && posX < 8 && posY < 8 &&
-            movX >= 0 && movY >= 0 && movX < 8 && movY <8) return true;
+                movX >= 0 && movY >= 0 && movX < 8 && movY <8) return true;
         return false;
     }
 
@@ -94,7 +94,17 @@ public class DriverCtrl_dominio {
                         }
                     }
                     System.out.println("Introduce el valor de N:");
-                    N = Integer.parseInt(sc.nextLine());
+                    go = false;
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        char c = tocheck.charAt(0);
+                        if (!(Character.isDigit(c))) {
+                            System.out.println("El N no es correcto, intentalo de nuevo.");
+                        } else {
+                            N = Integer.parseInt(tocheck);
+                            go = true;
+                        }
+                    }
                     System.out.println("Validando problema, espera");
                     if(c.esProblemaValidable(problema, N)) System.out.println("Problema verificado");
                     else System.out.println("No se puede verificar el problema");

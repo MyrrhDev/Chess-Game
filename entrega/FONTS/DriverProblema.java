@@ -35,21 +35,41 @@ public class DriverProblema {
             switch(op) {
                 case 1:
                     //creo un problema
+                    String tmp="";
                     System.out.println("Introduce el FEN:");
-                    String tmp = sc.nextLine();
+                    boolean go = false;
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        if(!tocheck.endsWith("- - 0 1")) {
+                            System.out.println("El FEN no es correcto, intentalo de nuevo.");
+                        } else {
+                            tmp = tocheck;
+                            go = true;
+                        }
+                    }
                     p = new Problema();
                     //p.setIniJuegoBlancas(tmp);
                     p.setFEN(tmp);
                     System.out.println("Introduce el valor de N:");
-                    tmp = sc.nextLine();
+                    go = false;
+                    while(!go) {
+                        String tocheck = sc.nextLine();
+                        char c = tocheck.charAt(0);
+                        if (!(Character.isDigit(c))) {
+                            System.out.println("El N no es correcto, intentalo de nuevo.");
+                        } else {
+                            tmp = tocheck;
+                            go = true;
+                        }
+                    }
                     p.setN(Integer.parseInt(tmp));
                     System.out.println("Problema creado con éxito, valores: " + p.getFEN() + ' ' + p.getIniJuegoBlancas());
                     break;
                 case 2:
                     if(p != null) {
                         System.out.println("Qué resultado esperas? true/false");
-                        System.out.println("Calculando solucion. Espera");
                         boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
+                        System.out.println("Calculando solucion. Espera");
                         if (resEsperado == p.verificarProblema())
                             System.out.println(ANSI_RED + "Test completado con exito" + ANSI_RESET);
                         else System.out.println("Fallo en el test");
@@ -60,6 +80,7 @@ public class DriverProblema {
                     }
                     break;
                 case 5:
+                    System.out.println("Ejecucion del driver terminada");
                     driverIsRunning = false;
                     break;
                 default:
