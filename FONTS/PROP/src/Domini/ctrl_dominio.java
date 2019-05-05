@@ -1,6 +1,6 @@
 package Domini;
 
-import Persistencia.ctrl_persistencia;
+import PersistenciaJSON.ctrl_persistencia;
 
 public class ctrl_dominio {
     private static Jugador j1, j2;
@@ -165,22 +165,7 @@ public class ctrl_dominio {
         try {
             cp.guardarJugador("pepito");
         } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            cp.guardarJugador("pepito");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            cp.guardarProblemaGanado("pepito", "8/2p2P2/p1n3b1/3p3p/Q2pk3/rp4B1/1rnP1R1K/2NB3R w - - 0 1", 2);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            cp.guardarProblemaGanado("pepito", "3NK3/4Pp2/3P1Rp1/1Bpk4/n1N5/5P2/1r2b3/Q3R1B1 w - - 0 1", 2);
-        } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }

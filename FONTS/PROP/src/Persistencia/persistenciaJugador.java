@@ -1,4 +1,4 @@
-package Persistencia;
+/*package Persistencia;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -65,16 +65,16 @@ public class persistenciaJugador {
         }
     }
 
-    public void guardarProblemasGanadosJugador(String nombreJugador, String FEN, int N) {
+    public void guardarProblemasGanadosJugador(final String nombreJugador, final String FEN, final int N, final String dificultad) {
         BufferedWriter bw = null;
         try {
             String currentPath = path+"/"+nombreJugador+".txt";
             bw = Files.newBufferedWriter(Paths.get(currentPath), StandardOpenOption.APPEND);
-            bw.write(FEN + " N: " + String.valueOf(N));
+            bw.write(FEN + " N: " + String.valueOf(N) + " Dificultad: " + dificultad);
             bw.newLine();
             bw.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-}
+}*/

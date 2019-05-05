@@ -28,4 +28,6 @@ public class Ranking {
     public void setPuntMin(int puntMin) {
         this.puntMin = puntMin;
     }
+
+
 }
