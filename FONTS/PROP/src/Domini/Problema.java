@@ -6,8 +6,43 @@ public class Problema {
     public boolean iniJuegoBlancas;
     Evaluacion evaluacion = new Evaluacion();
     private boolean verificado;
+    private double dificultad;
 
     public Problema() {
+    }
+
+
+    private void calcularDificultad() {
+        double diff = 0.0;
+        if(problema != null) {
+            //numero de piezas
+            for(char c : problema.toCharArray()) {
+                if(Character.isAlphabetic(c)) {
+                    ++diff;
+                }
+            }
+            diff *= N;
+            dificultad = diff;
+        }
+    }
+
+    /*
+    Devolvera "Facil" si 2 <= dificultad < 10
+    Devolvera "Medio" si 10 <= dificultad < 21
+    Devolvera "Dificil" si 21 <= dificultad
+     */
+    public String getDificultad() {
+        String ret = "";
+        if(dificultad >= 2.0 && dificultad < 10.0) {
+            ret = "Facil";
+        }
+        else if(dificultad >= 10.0 && dificultad < 21.0) {
+            ret = "Medio";
+        }
+        else if(dificultad >= 21.0) {
+            ret = "Dificil";
+        }
+        return ret;
     }
 
     /*
@@ -37,6 +72,7 @@ public class Problema {
 
     public void setN(int N) {
         this.N = N;
+        calcularDificultad();
     }
 
     public boolean getIniJuegoBlancas() {

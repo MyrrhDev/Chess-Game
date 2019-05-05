@@ -16,6 +16,7 @@ public class DriverProblema {
         System.out.println("Bienvenido al Driver de Problema. Para testear el driver es necesario seguir el orden siguiente:");
         System.out.println("    1- Alta objeto Problema");
         System.out.println("    2- Verificar problema");
+        System.out.println("    3- Verificar calculo dificultad de un problema");
         System.out.println("    5- Salir");
     }
 
@@ -77,6 +78,23 @@ public class DriverProblema {
                     }
                     else {
                         System.out.println("Debes introducir primero un problema (opcion 1)");
+                    }
+                    break;
+                case 3:
+                    boolean cont = true;
+                    while(cont) {
+                        String inputCase3 = "";
+                        System.out.println("FEN completo");
+                        String FEN = sc.nextLine();
+                        Problema pCase3 = new Problema();
+                        pCase3.setFEN(FEN);
+                        System.out.println("N");
+                        Integer N = Integer.parseInt(sc.nextLine());
+                        pCase3.setN(N);
+                        System.out.println(pCase3.getDificultad());
+                        System.out.println("Continuar? (true/false)");
+                        inputCase3 = sc.nextLine();
+                        if(!Boolean.parseBoolean(inputCase3)) cont = false;
                     }
                     break;
                 case 5:
