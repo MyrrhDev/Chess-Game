@@ -57,6 +57,10 @@ public class ctrl_persistencia {
         }
     }
 
+    public boolean puedeJugarProblema(final String nombreJugador, final String FEN, final int N, final String contra) {
+        return dbJugadores.puedeJugarProblema(nombreJugador, FEN, N, contra);
+    }
+
     public void incrementarPartidaGanada(final String nombreJugador) {
         try {
             dbJugadores.incrementarPartidaGanada(nombreJugador);

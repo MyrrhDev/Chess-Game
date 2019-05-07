@@ -11,6 +11,25 @@ public class persistenciaJugador {
     String path = "./Database/Jugadores";
     String currentPath = path + "/" +"data.JSON5";
 
+    public boolean puedeJugarProblema(final String nombreJugador, final String FEN, final int N, final String contra) {
+        if(existeJugador(nombreJugador)) {
+            JSONArray jarr = leerJSONdata();
+            for (int i = 0; i < jarr.length(); ++i) {
+                JSONObject jo = jarr.optJSONObject(i);
+                if (jo.get("nombre").equals(nombreJugador)) {
+                    JSONArray pr = jo.getJSONArray("problemas");
+                    for(int j = 0; j < pr.length(); ++j) {
+                        if (pr.getJSONObject(j).get("FEN").equals(FEN) && (int) pr.getJSONObject(j).get("N") == N) {
+                            if (pr.getJSONObject(j).get("Contra").equals(contra)) return false;
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     private void guardaJSONdb(final JSONArray ja) throws Exception {
         String json = ja.toString();
         BufferedWriter bw;
@@ -78,22 +97,27 @@ public class persistenciaJugador {
         }
     }
 
+    private JSONArray leerJSONdata() {
+        String jsonObject = "";
+        File f = new File(currentPath);
+        Scanner sc = null;
+        try {
+            sc = new Scanner(f);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        while(sc.hasNext()) {
+            jsonObject += sc.nextLine();
+        }
+        JSONArray jarr = new JSONArray(jsonObject);
+        return jarr;
+    }
+
     public boolean existeJugador(final String nombreJugador) {
         boolean res = false;
         File dir = new File(currentPath);
         if(dir.exists()) {
-            String jsonObject = "";
-            File f = new File(currentPath);
-            Scanner sc = null;
-            try {
-                sc = new Scanner(f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            while(sc.hasNext()) {
-                jsonObject += sc.nextLine();
-            }
-            JSONArray jarr = new JSONArray(jsonObject);
+            JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
                 if(jo.get("nombre").equals(nombreJugador)) return true;
@@ -104,18 +128,7 @@ public class persistenciaJugador {
 
     public void borrarJugador(final String nombreJugador) throws Exception {
         if(existeJugador(nombreJugador)) {
-            String jsonObject = "";
-            File f = new File(currentPath);
-            Scanner sc = null;
-            try {
-                sc = new Scanner(f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            while(sc.hasNext()) {
-                jsonObject += sc.nextLine();
-            }
-            JSONArray jarr = new JSONArray(jsonObject);
+            JSONArray jarr = leerJSONdata();
             JSONArray newjarr = new JSONArray();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
@@ -138,18 +151,7 @@ public class persistenciaJugador {
 
     public void guardarProblemasGanadosJugador(final String nombreJugador, final String FEN, final int N, final String dificultad, final String vs, final int tiempo) throws Exception {
         if(existeJugador(nombreJugador)) {
-            String jsonObject = "";
-            File f = new File(currentPath);
-            Scanner sc = null;
-            try {
-                sc = new Scanner(f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            while(sc.hasNext()) {
-                jsonObject += sc.nextLine();
-            }
-            JSONArray jarr = new JSONArray(jsonObject);
+            JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
                 if(jo.get("nombre").equals(nombreJugador)) {
@@ -175,18 +177,7 @@ public class persistenciaJugador {
 
     void incrementarPartidaGanada(final String nombreJugador) throws Exception {
         if(existeJugador(nombreJugador)) {
-            String jsonObject = "";
-            File f = new File(currentPath);
-            Scanner sc = null;
-            try {
-                sc = new Scanner(f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            while(sc.hasNext()) {
-                jsonObject += sc.nextLine();
-            }
-            JSONArray jarr = new JSONArray(jsonObject);
+            JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
                 if (jo.get("nombre").equals(nombreJugador)) {
@@ -204,18 +195,7 @@ public class persistenciaJugador {
 
     void incrementarPartidaJugada(final String nombreJugador) throws Exception {
         if(existeJugador(nombreJugador)) {
-            String jsonObject = "";
-            File f = new File(currentPath);
-            Scanner sc = null;
-            try {
-                sc = new Scanner(f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            while(sc.hasNext()) {
-                jsonObject += sc.nextLine();
-            }
-            JSONArray jarr = new JSONArray(jsonObject);
+            JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
                 if (jo.get("nombre").equals(nombreJugador)) {
