@@ -3,6 +3,7 @@ package PersistenciaJSON;
 import PersistenciaJSON.persistenciaJugador;
 
 import java.io.File;
+import java.util.Date;
 
 public class ctrl_persistencia {
     private static ctrl_persistencia singleInstance = null;
@@ -35,8 +36,12 @@ public class ctrl_persistencia {
         }
     }
 
-    public void guardarProblemaGanado(final String nombreJugador, final String FEN, final int N, final String dificultad) {
-        dbJugadores.guardarProblemasGanadosJugador(nombreJugador, FEN, N, dificultad);
+    public void guardarProblemaGanado(final String nombreJugador, final String FEN, final int N, final String vs, final String dificultad, final int tiempo) {
+        try {
+            dbJugadores.guardarProblemasGanadosJugador(nombreJugador, FEN, N, dificultad, vs, tiempo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean existeJugador(final String nombreJugador) {
@@ -49,6 +54,22 @@ public class ctrl_persistencia {
         }
         catch(Exception e) {
             throw e;
+        }
+    }
+
+    public void incrementarPartidaGanada(final String nombreJugador) {
+        try {
+            dbJugadores.incrementarPartidaGanada(nombreJugador);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void incrementarPartidaJugada(final String nombreJugador) {
+        try {
+            dbJugadores.incrementarPartidaJugada(nombreJugador);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

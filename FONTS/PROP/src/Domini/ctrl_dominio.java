@@ -162,10 +162,36 @@ public class ctrl_dominio {
 
     public static void main(String[] args) {
         ctrl_persistencia cp = ctrl_persistencia.getInstance();
-        try {
+        /*try {
             cp.guardarJugador("pepito");
         } catch (Exception e) {
-            e.printStackTrace();
-        }
+            System.out.println(e);
+        }*/
+        /*try {
+            cp.guardarJugador("menganito");
+        } catch (Exception e) {
+            System.out.println(e);
+        }*/
+        /*try {
+            cp.borrarJugador("pepito");
+        } catch (Exception e) {
+            System.out.println(e);
+        }*/
+        /*try {
+            cp.guardarJugador("fulanito");
+        } catch (Exception e) {
+            System.out.println(e);
+        }*/
+        /*try {
+            int t = (int)System.currentTimeMillis();
+            cp.guardarProblemaGanado("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1", "Facil", t);
+        } catch (Exception e) {
+            System.out.println(e);
+        }*/
+        /*try {
+            cp.incrementarPartidaJugada("menganito");
+        } catch (Exception e) {
+            System.out.println(e);
+        }*/
     }
 }
