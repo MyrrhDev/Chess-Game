@@ -2,6 +2,9 @@ package Domini;
 
 import PersistenciaJSON.ctrl_persistencia;
 
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
 public class ctrl_dominio {
     private static Jugador j1, j2;
     private static Tablero t;
@@ -188,9 +191,14 @@ public class ctrl_dominio {
         } catch (Exception e) {
             System.out.println(e);
         }
-        System.out.println(cp.puedeJugarProblema("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1"));
-        System.out.println(cp.puedeJugarProblema("pepito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 2, "H1"));
+        ArrayList<ArrayList<String>> tmp = cp.getProblemasGanadosJugador("pepito");
+        Stream.of(tmp)
+                .flatMap(Stream::of)
+                .forEach(System.out::println);
+        //System.out.println(cp.puedeJugarProblema("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1"));
+        //System.out.println(cp.puedeJugarProblema("pepito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 2, "H1"));
 
+        //cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 5, "Dificil", false, 0, 0);
         /*try {
             cp.incrementarPartidaJugada("menganito");
         } catch (Exception e) {

@@ -3,12 +3,13 @@ package PersistenciaJSON;
 import PersistenciaJSON.persistenciaJugador;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ctrl_persistencia {
     private static ctrl_persistencia singleInstance = null;
     private static persistenciaJugador dbJugadores;
-    //private static persistenciaProblema dbProblemas;
+    private static persistenciaProblema dbProblemas;
 
     private ctrl_persistencia() {
         new File("./Database").mkdirs();
@@ -17,7 +18,7 @@ public class ctrl_persistencia {
         //creamos la base de datos para problemas
         new File("./Database/Problemas").mkdir();
         dbJugadores = new persistenciaJugador();
-        //dbProblemas = new persistenciaProblema();
+        dbProblemas = new persistenciaProblema();
     }
 
     /*
@@ -77,6 +78,18 @@ public class ctrl_persistencia {
         }
     }
 
-    public static void main(String[] args) {
+    public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean val, final int vecesJugado, final int tiempoMedio) {
+        try {
+            dbProblemas.guardarProblema(FEN, N, dificultad, val, vecesJugado, tiempoMedio);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<ArrayList<String>> getProblemasGanadosJugador(final String nombreJugador) {
+        return dbJugadores.getProblemasGanadosJugador(nombreJugador);
+    }
+
+        public static void main(String[] args) {
     }
 }
