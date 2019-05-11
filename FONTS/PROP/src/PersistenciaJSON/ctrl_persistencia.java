@@ -29,9 +29,9 @@ public class ctrl_persistencia {
         return singleInstance;
     }
 
-    public void guardarJugador(String nombre) throws Exception{
+    public void guardarJugador(final String nombre, final String contrasena) throws Exception {
         try {
-            dbJugadores.guardarJugador(nombre);
+            dbJugadores.guardarJugador(nombre, contrasena);
         } catch(Exception e) {
             throw e;
         }
@@ -45,8 +45,12 @@ public class ctrl_persistencia {
         }
     }
 
-    public boolean existeJugador(final String nombreJugador) {
-        return dbJugadores.existeJugador(nombreJugador);
+    public boolean esLoginOk(final String nombreJugador, final String contrasena) throws Exception {
+        try {
+            return dbJugadores.esLoginOk(nombreJugador, contrasena);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public void borrarJugador(final String nombreJugador) throws Exception {
@@ -90,6 +94,14 @@ public class ctrl_persistencia {
         return dbJugadores.getProblemasGanadosJugador(nombreJugador);
     }
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
+    }
+
+    public ArrayList<String> getTodosLosJugadores() {
+        return dbJugadores.getTodosJugadores();
+    }
+
+    public int getTiempoMedioProblema(final String FEN, final int N) {
+        return dbProblemas.getTiempoMedio(FEN, N);
     }
 }

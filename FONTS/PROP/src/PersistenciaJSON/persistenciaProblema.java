@@ -191,6 +191,17 @@ public class persistenciaProblema {
         }
     }
 
+    public int getTiempoMedio(final String FEN, final int N) {
+        JSONArray jarr = leerJSONdata();
+        for(int i = 0; i < jarr.length(); ++i) {
+            JSONObject jo = jarr.optJSONObject(i);
+            if(jo.get("FEN").equals(FEN) && Integer.parseInt((String)jo.get("N")) == N) {
+                return (Integer)jo.get("Tiempo medio");
+            }
+        }
+        return -1;
+    }
+
 
     //listar problemas segun dificultad si validados
     //guardar veces jugado

@@ -7,6 +7,15 @@ public class Problema {
     Evaluacion evaluacion = new Evaluacion();
     private boolean verificado;
     private double dificultad;
+    private int tiempo;
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
 
     public Problema() {
     }
@@ -52,14 +61,16 @@ public class Problema {
      */
     public void setFEN(String FEN) {
         int i = FEN.indexOf('w');
-        if(i == -1) {
+        /*if(i == -1) {
             i = FEN.indexOf('b');
+        }*/
+        if(i != -1) {
+            if(FEN.charAt(i) == 'w') iniJuegoBlancas = true;
+            else iniJuegoBlancas = false;
+            //ejemplo: 1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B w - - 0 1
+            int newLength = FEN.indexOf(' ');
+            this.problema = FEN.substring(0, newLength);
         }
-        if(FEN.charAt(i) == 'w') iniJuegoBlancas = true;
-        else iniJuegoBlancas = false;
-        //ejemplo: 1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B w - - 0 1
-        int newLength = FEN.indexOf(' ');
-        this.problema = FEN.substring(0, newLength);
     }
 
     public String getFEN() {

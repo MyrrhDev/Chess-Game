@@ -10,6 +10,7 @@ public class ctrl_dominio {
     private static Tablero t;
     private static Problema p;
     private static ctrl_dominio singleInstance = null;
+    private static ctrl_persistencia cp;
 
     private ctrl_dominio() {
         j1 = j2 = null;
@@ -163,18 +164,31 @@ public class ctrl_dominio {
         return p.verificarProblema();
     }
 
+    public ArrayList<String> getTodosLosJugadores() {
+        return cp.getTodosLosJugadores();
+    }
+
     public static void main(String[] args) {
-        ctrl_persistencia cp = ctrl_persistencia.getInstance();
+        cp = ctrl_persistencia.getInstance();
         try {
-            cp.guardarJugador("pepito");
+            cp.guardarJugador("pepito", "test1");
         } catch (Exception e) {
             System.out.println(e);
         }
         try {
-            cp.guardarJugador("menganito");
+            cp.guardarJugador("menganito", "test2");
         } catch (Exception e) {
             System.out.println(e);
         }
+        cp.guardarProblemaGanado("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1", 2, "H2", "Facil", 2);
+        cp.guardarProblemaGanado("pepito", "5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5", 2, "H2", "Dificil", 3);
+        cp.guardarProblema("B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1",2,"Facil", true, 1, 2);
+        cp.guardarProblema("5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5 w - - 0 1",2,"Dificil", true, 1, 2);
+        cp.guardarProblemaGanado("menganito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4", 1, "H2", "Facil", 2);
+        cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1", 1, "Facil", true, 1, 1);
+        Ranking r = new Ranking();
+        r.refrescarRanking();
+
         /*try {
             cp.borrarJugador("pepito");
         } catch (Exception e) {
@@ -185,7 +199,7 @@ public class ctrl_dominio {
         } catch (Exception e) {
             System.out.println(e);
         }*/
-        try {
+        /*try {
             int t = (int)System.currentTimeMillis();
             cp.guardarProblemaGanado("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1", "Facil", t);
         } catch (Exception e) {
@@ -194,15 +208,42 @@ public class ctrl_dominio {
         ArrayList<ArrayList<String>> tmp = cp.getProblemasGanadosJugador("pepito");
         Stream.of(tmp)
                 .flatMap(Stream::of)
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
         //System.out.println(cp.puedeJugarProblema("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1"));
         //System.out.println(cp.puedeJugarProblema("pepito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 2, "H1"));
 
-        //cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 5, "Dificil", false, 0, 0);
+        cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 5, "Dificil", false, 0, 0);
         /*try {
             cp.incrementarPartidaJugada("menganito");
         } catch (Exception e) {
             System.out.println(e);
         }*/
+
+    }
+
+
+    /*
+    FEN
+    N
+    Contra
+    Dificultad
+    Tiempo
+     */
+
+    public ArrayList<Problema> getProblemasGanadosJugador(final String nombreJugador) {
+        ArrayList<ArrayList<String>> tmp = cp.getProblemasGanadosJugador(nombreJugador);
+        ArrayList<Problema> res = new ArrayList<>();
+        for(int i = 0; i < tmp.size(); ++i) {
+            Problema p = new Problema();
+            p.setFEN(tmp.get(i).get(0));
+            p.setN(Integer.parseInt(tmp.get(i).get(1)));
+            p.setTiempo(Integer.parseInt(tmp.get(i).get(4)));
+            res.add(p);
+        }
+        return res;
+    }
+
+    public int getTiempoMedioProblema(final String FEN, final int N) {
+        return cp.getTiempoMedioProblema(FEN,N);
     }
 }
