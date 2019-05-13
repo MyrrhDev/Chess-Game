@@ -195,7 +195,7 @@ public class persistenciaProblema {
         JSONArray jarr = leerJSONdata();
         for(int i = 0; i < jarr.length(); ++i) {
             JSONObject jo = jarr.optJSONObject(i);
-            if(jo.get("FEN").equals(FEN) && Integer.parseInt((String)jo.get("N")) == N) {
+            if(String.valueOf(jo.get("FEN")).equals(FEN) && (int)jo.get("N") == N) {
                 return (Integer)jo.get("Tiempo medio");
             }
         }

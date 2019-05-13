@@ -60,16 +60,23 @@ public class Problema {
            que se eliminan los elementos inútiles de la codificacion
      */
     public void setFEN(String FEN) {
-        int i = FEN.indexOf('w');
-        /*if(i == -1) {
-            i = FEN.indexOf('b');
-        }*/
+        int i = -1;
+        if(FEN.indexOf('-') != -1) {
+            i = FEN.indexOf('w');
+            if (i == -1) {
+                i = FEN.indexOf('b');
+            }
+        }
         if(i != -1) {
             if(FEN.charAt(i) == 'w') iniJuegoBlancas = true;
             else iniJuegoBlancas = false;
             //ejemplo: 1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B w - - 0 1
             int newLength = FEN.indexOf(' ');
             this.problema = FEN.substring(0, newLength);
+        }
+        else {
+            this.problema = FEN;
+            iniJuegoBlancas = true;
         }
     }
 

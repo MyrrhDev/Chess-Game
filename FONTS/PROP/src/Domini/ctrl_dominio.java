@@ -20,7 +20,10 @@ public class ctrl_dominio {
     Patron Singleton
      */
     public static ctrl_dominio getInstance() {
-        if(singleInstance == null) singleInstance = new ctrl_dominio();
+        if(singleInstance == null) {
+            singleInstance = new ctrl_dominio();
+            cp = ctrl_persistencia.getInstance();
+        }
         return singleInstance;
     }
 
@@ -164,13 +167,18 @@ public class ctrl_dominio {
         return p.verificarProblema();
     }
 
+    public String[][] refrescarRanking() {
+        Ranking r = new Ranking();
+        return r.refrescarRanking();
+    }
+
     public ArrayList<String> getTodosLosJugadores() {
         return cp.getTodosLosJugadores();
     }
 
     public static void main(String[] args) {
         cp = ctrl_persistencia.getInstance();
-        try {
+        /*try {
             cp.guardarJugador("pepito", "test1");
         } catch (Exception e) {
             System.out.println(e);
@@ -182,12 +190,11 @@ public class ctrl_dominio {
         }
         cp.guardarProblemaGanado("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1", 2, "H2", "Facil", 2);
         cp.guardarProblemaGanado("pepito", "5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5", 2, "H2", "Dificil", 3);
-        cp.guardarProblema("B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1",2,"Facil", true, 1, 2);
-        cp.guardarProblema("5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5 w - - 0 1",2,"Dificil", true, 1, 2);
         cp.guardarProblemaGanado("menganito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4", 1, "H2", "Facil", 2);
-        cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1", 1, "Facil", true, 1, 1);
-        Ranking r = new Ranking();
-        r.refrescarRanking();
+        cp.guardarProblema("B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1", 2,"Facil", true, 1, 2);
+        cp.guardarProblema("5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5", 2,"Dificil", true, 1, 2);
+        cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4", 1, "Facil", true, 1, 1);
+*/
 
         /*try {
             cp.borrarJugador("pepito");
@@ -212,7 +219,7 @@ public class ctrl_dominio {
         //System.out.println(cp.puedeJugarProblema("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1"));
         //System.out.println(cp.puedeJugarProblema("pepito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 2, "H1"));
 
-        cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 5, "Dificil", false, 0, 0);
+        //cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 5, "Dificil", false, 0, 0);
         /*try {
             cp.incrementarPartidaJugada("menganito");
         } catch (Exception e) {

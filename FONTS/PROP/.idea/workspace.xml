@@ -30,94 +30,45 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="237" selection-start-line="237" selection-end-line="237" />
+            <state relative-caret-position="408">
+              <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5519#5520#0" expanded="true" />
-                <element signature="e#5566#5567#0" expanded="true" />
-                <element signature="e#7979#7980#0" expanded="true" />
-                <element signature="e#8005#8006#0" expanded="true" />
+                <element signature="e#5515#5516#0" expanded="true" />
+                <element signature="e#5563#5564#0" expanded="true" />
+                <element signature="e#8584#8585#0" expanded="true" />
+                <element signature="e#8639#8640#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/ranking.form">
+          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Domini/Problema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="68" column="16" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
-              <folding>
-                <element signature="e#277#278#0" expanded="true" />
-                <element signature="e#306#307#0" expanded="true" />
-                <element signature="e#347#348#0" expanded="true" />
-                <element signature="e#383#384#0" expanded="true" />
-                <element signature="e#2003#2004#0" expanded="true" />
-                <element signature="e#2052#2053#0" expanded="true" />
-                <element signature="e#2225#2226#0" expanded="true" />
-                <element signature="e#6457#6458#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="104" selection-start-line="104" selection-end-line="104" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3299#3300#0" expanded="true" />
-                <element signature="e#3332#3333#0" expanded="true" />
-                <element signature="e#3451#3452#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="193" column="62" selection-start-line="193" selection-start-column="62" selection-end-line="193" selection-end-column="62" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="256" selection-start-line="256" selection-end-line="256" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Domini/Ranking.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="462">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1680#1697#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domini/test.java">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/ranking.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="452">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,8 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>stream</find>
-      <find>pinta</find>
       <find>'N'</find>
       <find>'n'</find>
       <find>iniPieza</find>
@@ -164,6 +113,8 @@
       <find>array</find>
       <find>borrar</find>
       <find>calcularDificultad</find>
+      <find>B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1</find>
+      <find>2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4</find>
     </findStrings>
     <replaceStrings>
       <replace>'N'</replace>
@@ -180,8 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ctrl_dominio.java" />
-        <option value="$PROJECT_DIR$/src/Domini/Drivers/DriverTorre.java" />
         <option value="$PROJECT_DIR$/src/res.java" />
         <option value="$PROJECT_DIR$/src/Domini/res.java" />
         <option value="$PROJECT_DIR$/src/Domini/Partida.java" />
@@ -222,15 +171,17 @@
         <option value="$PROJECT_DIR$/src/Persistencia/ctrl_persistencia.java" />
         <option value="$PROJECT_DIR$/src/Persistencia/persistenciaJugador.java" />
         <option value="$PROJECT_DIR$/src/Persistencia/persistenciaProblema.java" />
-        <option value="$PROJECT_DIR$/Database/Jugadores/data.JSON5" />
-        <option value="$PROJECT_DIR$/Database/Problemas/data.JSON5" />
         <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java" />
         <option value="$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java" />
         <option value="$PROJECT_DIR$/src/Domini/test.java" />
-        <option value="$PROJECT_DIR$/src/Domini/Ranking.java" />
-        <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java" />
-        <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
         <option value="$PROJECT_DIR$/src/Domini/Problema.java" />
+        <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java" />
+        <option value="$PROJECT_DIR$/Database/Jugadores/data.JSON5" />
+        <option value="$PROJECT_DIR$/Database/Problemas/data.JSON5" />
+        <option value="$PROJECT_DIR$/src/Presentacion/ranking.form" />
+        <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/ranking.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Ranking.java" />
       </list>
     </option>
   </component>
@@ -260,6 +211,12 @@
               <item name="PROP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PROP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Domini" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -275,7 +232,8 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557613981618" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="675" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557730071889" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -313,7 +271,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.test">
+  <component name="RunManager" selected="Application.rankingGUI">
     <configuration name="Driver_ctrl_domini" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Domini.DriverCtrl_dominio" />
       <module name="PROP" />
@@ -323,6 +281,13 @@
     </configuration>
     <configuration name="ctrl_dominio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Domini.ctrl_dominio" />
+      <module name="PROP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="rankingGUI" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.ranking" />
       <module name="PROP" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -338,6 +303,7 @@
     <list>
       <item itemvalue="Application.Driver_ctrl_domini" />
       <item itemvalue="Application.test" />
+      <item itemvalue="Application.rankingGUI" />
       <item itemvalue="Application.ctrl_dominio" />
     </list>
     <recent_temporary>
@@ -370,8 +336,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4976672" visible="true" weight="0.17634052" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976672" visible="true" weight="0.19845219" />
       <window_info id="Structure" order="1" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -380,7 +347,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295099" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.29301354" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.29301354" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4991708" weight="0.33263817" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -421,18 +388,6 @@
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Domini/Ranking.java</url>
-          <line>24</line>
-          <properties />
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Domini/Ranking.java</url>
-          <line>21</line>
-          <properties />
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java</url>
           <line>196</line>
           <properties />
@@ -448,23 +403,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Domini/DriverRey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3840">
-          <caret line="160" column="26" selection-start-line="160" selection-start-column="26" selection-end-line="160" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/DriverTablero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/DriverTorre.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2952">
@@ -853,20 +791,6 @@
     <entry file="file://$PROJECT_DIR$/src/Persistencia/ctrl_persistencia.java" />
     <entry file="file://$PROJECT_DIR$/src/Persistencia/persistenciaJugador.java" />
     <entry file="file://$PROJECT_DIR$/src/Persistencia/persistenciaProblema.java" />
-    <entry file="file://$PROJECT_DIR$/Database/Problemas/data.JSON5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Database/Jugadores/data.JSON5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="321" selection-start-column="321" selection-end-column="321" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
@@ -874,9 +798,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Database/Problemas/data.JSON5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="57" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Problema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="e#277#278#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#2145#2146#0" expanded="true" />
+            <element signature="e#2181#2182#0" expanded="true" />
+            <element signature="e#2206#2207#0" expanded="true" />
+            <element signature="e#2230#2231#0" expanded="true" />
+            <element signature="e#2360#2361#0" expanded="true" />
+            <element signature="e#2403#2404#0" expanded="true" />
+            <element signature="e#6631#6632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
+        <state relative-caret-position="380">
           <caret line="104" selection-start-line="104" selection-end-line="104" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -887,20 +838,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java">
+    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="256" selection-start-line="256" selection-end-line="256" />
+        <state relative-caret-position="222">
+          <caret line="198" selection-start-line="198" selection-end-line="198" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java">
+    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="193" column="62" selection-start-line="193" selection-start-column="62" selection-end-line="193" selection-end-column="62" />
+        <state relative-caret-position="328">
+          <caret line="242" column="46" selection-start-line="242" selection-start-column="46" selection-end-line="242" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -909,48 +860,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="144">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Ranking.java">
+    <entry file="file://$PROJECT_DIR$/Database/Jugadores/data.JSON5">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="290">
+          <caret line="30" column="56" lean-forward="true" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="237" selection-start-line="237" selection-end-line="237" />
+        <state relative-caret-position="408">
+          <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5519#5520#0" expanded="true" />
-            <element signature="e#5566#5567#0" expanded="true" />
-            <element signature="e#7979#7980#0" expanded="true" />
-            <element signature="e#8005#8006#0" expanded="true" />
+            <element signature="e#5515#5516#0" expanded="true" />
+            <element signature="e#5563#5564#0" expanded="true" />
+            <element signature="e#8584#8585#0" expanded="true" />
+            <element signature="e#8639#8640#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Problema.java">
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/ranking.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="68" column="16" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+        <state relative-caret-position="452">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#306#307#0" expanded="true" />
-            <element signature="e#347#348#0" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#2003#2004#0" expanded="true" />
-            <element signature="e#2052#2053#0" expanded="true" />
-            <element signature="e#2225#2226#0" expanded="true" />
-            <element signature="e#6457#6458#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/ranking.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Ranking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1680#1697#0" expanded="true" />
           </folding>
         </state>
       </provider>
