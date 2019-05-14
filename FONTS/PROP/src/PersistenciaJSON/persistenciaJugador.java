@@ -165,7 +165,7 @@ public class persistenciaJugador {
         }
     }
 
-    public void guardarProblemasGanadosJugador(final String nombreJugador, final String FEN, final int N, final String dificultad, final String vs, final int tiempo) throws Exception {
+    public void guardarProblemasGanadosJugador(final String nombreJugador, final String FEN, final int N, final String dificultad, final String vs, final long tiempo) throws Exception {
         if(existeJugador(nombreJugador)) {
             JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {

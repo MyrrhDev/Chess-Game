@@ -37,7 +37,7 @@ public class ctrl_persistencia {
         }
     }
 
-    public void guardarProblemaGanado(final String nombreJugador, final String FEN, final int N, final String vs, final String dificultad, final int tiempo) {
+    public void guardarProblemaGanado(final String nombreJugador, final String FEN, final int N, final String vs, final String dificultad, final long tiempo) {
         try {
             dbJugadores.guardarProblemasGanadosJugador(nombreJugador, FEN, N, dificultad, vs, tiempo);
         } catch (Exception e) {

@@ -1,9 +1,10 @@
 package Domini;
 
 import PersistenciaJSON.ctrl_persistencia;
+import Presentacion.TableroGUI;
 
 import java.util.ArrayList;
-import java.util.stream.Stream;
+import java.util.Date;
 
 public class ctrl_dominio {
     private static Jugador j1, j2;
@@ -11,6 +12,7 @@ public class ctrl_dominio {
     private static Problema p;
     private static ctrl_dominio singleInstance = null;
     private static ctrl_persistencia cp;
+    private static long tini, tfin, tpartida;
 
     private ctrl_dominio() {
         j1 = j2 = null;
@@ -70,12 +72,28 @@ public class ctrl_dominio {
         Post: La función jugar intenta efectuar un movimiento según los parámetros de entrada
      */
     public static void jugar(int n) throws Exception {
+        if(tini == -1 && tfin == -1) {
+            tini = new Date().getTime();
+        }
         if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
             if (((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) && j1.isEsMaquina()) {
                 try {
                     t = j1.jugar(t,n); // paso tablero y N
                     t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch(Exception e) {
+                    if(j2 instanceof Persona) {
+                        tfin = new Date().getTime();
+                        tpartida = tfin - tini;
+                        tpartida = tpartida/60000;
+                        String vs = "";
+                        if(j1 instanceof Maquina) vs = "M";
+                        else vs = "H1";
+                        //cambiar nombre pepito por nombre del jugador
+                        cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
+                        tini = -1;
+                        tfin = -1;
+                        tpartida = -1;
+                    }
                     Exception e1 = new Exception("Jugador 1 en Jaque mate");
                     throw e1;
                 }
@@ -86,6 +104,19 @@ public class ctrl_dominio {
                     t = j2.jugar(t,n); // paso tablero y N
                     t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch(Exception e) {
+                    if(j1 instanceof Persona) {
+                        tfin = new Date().getTime();
+                        tpartida = tfin - tini;
+                        tpartida = tpartida/60000;
+                        String vs = "";
+                        if(j1 instanceof Maquina) vs = "M";
+                        else vs = "H2";
+                        //cambiar nombre pepito por nombre del jugador
+                        cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
+                        tini = -1;
+                        tfin = -1;
+                        tpartida = -1;
+                    }
                     Exception e1 = new Exception("Jugador 2 en Jaque mate");
                     throw e1;
                 }
@@ -93,10 +124,36 @@ public class ctrl_dominio {
             }
         }
         else if(j1.isEnJaqueMate()) {
+            if(j2 instanceof Persona) {
+                tfin = new Date().getTime();
+                tpartida = tfin - tini;
+                tpartida = tpartida/60000;
+                String vs = "";
+                if(j1 instanceof Maquina) vs = "M";
+                else vs = "H1";
+                //cambiar nombre pepito por nombre del jugador
+                cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
+                tini = -1;
+                tfin = -1;
+                tpartida = -1;
+            }
             Exception e = new Exception("Jugador 1 en Jaque mate");
             throw e;
         }
         else if(j2.isEnJaqueMate()) {
+            if(j1 instanceof Persona) {
+                tfin = new Date().getTime();
+                tpartida = tfin - tini;
+                tpartida = tpartida/60000;
+                String vs = "";
+                if(j1 instanceof Maquina) vs = "M";
+                else vs = "H2";
+                //cambiar nombre pepito por nombre del jugador
+                cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
+                tini = -1;
+                tfin = -1;
+                tpartida = -1;
+            }
             Exception e = new Exception("Jugador 2 en Jaque mate");
             throw e;
         }
@@ -119,6 +176,9 @@ public class ctrl_dominio {
         Post: La función jugar intenta efectuar un movimiento según los parámetros de entrada
      */
     public static void jugar(int posX, int posY, int movX, int movY) throws Exception {
+        if(tini == -1 && tfin == -1) {
+            tini = new Date().getTime();
+        }
         if (!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
             Movimiento m = new Movimiento(posX, posY, movX, movY);
             if ((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) {

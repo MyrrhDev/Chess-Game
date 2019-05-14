@@ -107,27 +107,33 @@ public class Problema {
         if(problema != null)  {
             verificar = this.problema;
             verificado = false;
+            boolean reyNegro = false, reyBlanco = false;
+            for(int i = 0; i < problema.length(); ++i) {
+                if(problema.charAt(i) == 'k') reyNegro = true;
+                else if(problema.charAt(i) == 'K') reyBlanco = true;
+            }
+            if(reyBlanco && reyNegro) {
             /*
             Si w:
             Atacante: blancas, defensor: Negras
             Si b:
             Atacante: negras, defensor: Blancas
              */
-            Maquina atacante = null, defensor = null;
-            if(this.iniJuegoBlancas) {
-                atacante = new Maquina(true, false, true);
-                defensor = new Maquina(true, true, false);
+                Maquina atacante = null, defensor = null;
+                if (this.iniJuegoBlancas) {
+                    atacante = new Maquina(true, false, true);
+                    defensor = new Maquina(true, true, false);
 
-            }
-            else if(!this.iniJuegoBlancas) {
-                atacante = new Maquina(true, true, true);
-                defensor = new Maquina(true, false, false);
+                } else if (!this.iniJuegoBlancas) {
+                    atacante = new Maquina(true, true, true);
+                    defensor = new Maquina(true, false, false);
 
+                }
+                Tablero t = new Tablero(atacante, defensor);
+                t.FENToTablero(verificar, iniJuegoBlancas);
+                verificar(t);
+                return verificado;
             }
-            Tablero t = new Tablero(atacante, defensor);
-            t.FENToTablero(verificar, iniJuegoBlancas);
-            verificar(t);
-            return verificado;
         }
         return false;
     }
