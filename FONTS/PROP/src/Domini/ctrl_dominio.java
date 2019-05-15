@@ -159,8 +159,20 @@ public class ctrl_dominio {
         }
     }
 
-    public char[][] getTablero() {
-        return t.getTablero();
+    public char[] getTablero() {
+        //return t.getTablero();
+
+        //For testing pruposes
+        char[] tablero = {'K', '0', '0', '0', 'n', '0', 'P', '0',
+                            '0', '0', '0', '0', '0', '0', '0', '0',
+                            '0', '0', '0', '0', 'P', '0', 'k', '0',
+                            '0', '0', 'P', '0', '0', '0', '0', '0',
+                            '0', '0', '0', '0', '0', 'Q', '0', '0',
+                            '0', '0', '0', '0', '0', '0', '0', '0',
+                            '0', 'Q', '0', '0', 'P', '0', '0', '0',
+                            '0', '0', 'K', '0', '0', '0', 'p', 'P'};
+        return tablero;
+
     }
 
     public Jugador getJ1() {
