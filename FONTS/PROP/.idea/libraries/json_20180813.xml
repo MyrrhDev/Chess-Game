@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="json-20180813">
+    <CLASSES>
+      <root url="jar:///Volumes/Ithaca/FIB/PROP/json-20180813.jar!/" />
+      <root url="jar:///Volumes/Ithaca/FIB/PROP/junit-4.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

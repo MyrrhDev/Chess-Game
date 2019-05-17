@@ -121,12 +121,12 @@ public class Problema {
              */
                 Maquina atacante = null, defensor = null;
                 if (this.iniJuegoBlancas) {
-                    atacante = new Maquina(true, false, true);
-                    defensor = new Maquina(true, true, false);
+                    atacante = new M1(false, true);
+                    defensor = new M1(true, false);
 
                 } else if (!this.iniJuegoBlancas) {
-                    atacante = new Maquina(true, true, true);
-                    defensor = new Maquina(true, false, false);
+                    atacante = new M1(true, true);
+                    defensor = new M1(false, false);
 
                 }
                 Tablero t = new Tablero(atacante, defensor);

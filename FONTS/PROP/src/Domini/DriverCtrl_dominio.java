@@ -17,7 +17,7 @@ public class DriverCtrl_dominio {
      */
     private static void pintaTablero() {
         System.out.println();
-        char[][] t = c.getTablero();
+        char[][] t = c.getTableroPrint();
         System.out.println("   (a) (b) (c) (d) (e) (f) (g) (h)");
         for(int i = 0; i < 8; ++i) {
             System.out.print("(" + i + ")");
@@ -138,7 +138,7 @@ public class DriverCtrl_dominio {
 
                     System.out.println("Introduce por terminal los jugadores que formaran parte de la partida, separados por un espacio");
                     System.out.println("Tanto para el jugador 1 como para el jugador 2");
-                    System.out.println("1 -> H1, 2 -> M1");
+                    System.out.println("1 -> H1, 2 -> M1, 3 -> M2");
                     String aux[]= new String[2];
                     while(!go) {
                         String tocheck = sc.nextLine();
@@ -242,6 +242,87 @@ public class DriverCtrl_dominio {
                                         System.out.println("Estado del tablero después del movimiento:");
                                         pintaTablero();
                                     } else System.out.println("Error en la entrada");
+                                } catch (Exception e) {
+                                    if (e.getMessage().equals("Jugador 1 en Jaque mate"))
+                                        System.out.println("J1 ha perdido");
+                                    else if (e.getMessage().equals("Jugador 2 en Jaque mate"))
+                                        System.out.println("J2 ha perdido");
+                                    System.out.println("Tablero final:");
+                                    pintaTablero();
+                                    n = 0;
+                                    break;
+                                }
+                                --n;
+                                if (n == 0) {
+                                    System.out.println("J1 ha perdido");
+                                }
+                            }
+                        } else if ((aux[0].equals("3") && aux[1].equals("3"))) {
+                            go = true;
+                            c.crearPartida(problema, N, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
+                            System.out.println("Partida creada con éxito");
+                            pintaTablero();
+                            int n = N;
+                            while (n > 0) {
+                                try {
+                                    System.out.println("Calculando movimientos");
+                                    c.jugar(n);
+                                    System.out.println("Movimientos realizados:");
+                                    pintaTablero();
+                                } catch (Exception e) {
+                                    if (e.getMessage().equals("Jugador 1 en Jaque mate"))
+                                        System.out.println("J1 ha perdido");
+                                    else if (e.getMessage().equals("Jugador 2 en Jaque mate"))
+                                        System.out.println("J2 ha perdido");
+                                    System.out.println("Tablero final:");
+                                    pintaTablero();
+                                    n = 0;
+                                    break;
+                                }
+                                --n;
+                                if (n == 0) {
+                                    System.out.println("J1 ha perdido");
+                                }
+                            }
+                        } else if ((aux[0].equals("2") && aux[1].equals("3"))) {
+                            go = true;
+                            c.crearPartida(problema, N, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
+                            System.out.println("Partida creada con éxito");
+                            pintaTablero();
+                            int n = N;
+                            while (n > 0) {
+                                try {
+                                    System.out.println("Calculando movimientos");
+                                    c.jugar(n);
+                                    System.out.println("Movimientos realizados:");
+                                    pintaTablero();
+                                } catch (Exception e) {
+                                    if (e.getMessage().equals("Jugador 1 en Jaque mate"))
+                                        System.out.println("J1 ha perdido");
+                                    else if (e.getMessage().equals("Jugador 2 en Jaque mate"))
+                                        System.out.println("J2 ha perdido");
+                                    System.out.println("Tablero final:");
+                                    pintaTablero();
+                                    n = 0;
+                                    break;
+                                }
+                                --n;
+                                if (n == 0) {
+                                    System.out.println("J1 ha perdido");
+                                }
+                            }
+                        } else if ((aux[0].equals("3") && aux[1].equals("2"))) {
+                            go = true;
+                            c.crearPartida(problema, N, Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
+                            System.out.println("Partida creada con éxito");
+                            pintaTablero();
+                            int n = N;
+                            while (n > 0) {
+                                try {
+                                    System.out.println("Calculando movimientos");
+                                    c.jugar(n);
+                                    System.out.println("Movimientos realizados:");
+                                    pintaTablero();
                                 } catch (Exception e) {
                                     if (e.getMessage().equals("Jugador 1 en Jaque mate"))
                                         System.out.println("J1 ha perdido");

@@ -1,6 +1,6 @@
 package Domini;
 
-public class EstrategiaCompleja extends Estrategia {
+public class EstrategiaCompleja {
 
     void estrategiaOfensiva() {
 

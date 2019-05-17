@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public abstract class Jugador {
-    public boolean esMaquina;
     boolean enMate;
     boolean esNegro;
     boolean estaAtacando;
@@ -16,8 +15,8 @@ public abstract class Jugador {
     /* Pre: Cierto
      * Post: Crea un nuevo objeto Jugador con los parametros esMaquina, esNegro y estaAtacando
      * */
-    public Jugador(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
-        this.esMaquina = esMaquina;
+    public Jugador(boolean esNegro, boolean estaAtacando) {
+        //this.esMaquina = esMaquina;
         this.esNegro = esNegro;
         this.estaAtacando = estaAtacando;
     }
@@ -67,16 +66,16 @@ public abstract class Jugador {
     /* Pre: Cierto
      * Post: Devuelve el boolean del parametro implicito que indica si el Jugador es una Maquina
      */
-    public boolean isEsMaquina() {
-        return esMaquina;
-    }
-
-    /* Pre: Cierto
-     * Post: Asigna al boolean del parametro implicito que le indica si el Jugador es una Maquina
-     */
-    public void setEsMaquina(boolean esMaquina) {
-        this.esMaquina = esMaquina;
-    }
+//    public boolean isEsMaquina() {
+//        return esMaquina;
+//    }
+//
+//    /* Pre: Cierto
+//     * Post: Asigna al boolean del parametro implicito que le indica si el Jugador es una Maquina
+//     */
+//    public void setEsMaquina(boolean esMaquina) {
+//        this.esMaquina = esMaquina;
+//    }
 
     /* Pre: Cierto
      * Post: Devuelve el boolean del parametro implicito que indica si el Jugador tiene las piezas negras

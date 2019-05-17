@@ -15,15 +15,15 @@ public class Tablero {
      * Post: Se crea un nuevo objeto Tablero con un Tablero pasado por parametro.
      */
     public Tablero(final Tablero iniTablero) {
-        if(iniTablero.jugador1.isEsMaquina()) {
-            this.jugador1 = new Maquina(iniTablero.jugador1.esMaquina, iniTablero.jugador1.esNegro, iniTablero.jugador1.estaAtacando);
+        if(iniTablero.jugador1 instanceof M1) {
+            this.jugador1 = new M1(iniTablero.jugador1.esNegro, iniTablero.jugador1.estaAtacando);
         } else {
-            this.jugador1 = new Persona(iniTablero.jugador1.esMaquina, iniTablero.jugador1.esNegro, iniTablero.jugador1.estaAtacando);
+            this.jugador1 = new Persona(iniTablero.jugador1.esNegro, iniTablero.jugador1.estaAtacando);
         }
-        if(iniTablero.jugador2.isEsMaquina()) {
-            this.jugador2 = new Maquina(iniTablero.jugador2.esMaquina,iniTablero.jugador2.esNegro, iniTablero.jugador2.estaAtacando);
+        if(iniTablero.jugador2 instanceof M1) {
+            this.jugador2 = new M1(iniTablero.jugador2.esNegro, iniTablero.jugador2.estaAtacando);
         } else {
-            this.jugador2 = new Persona(iniTablero.jugador2.esMaquina,iniTablero.jugador2.esNegro, iniTablero.jugador2.estaAtacando);
+            this.jugador2 = new Persona(iniTablero.jugador2.esNegro, iniTablero.jugador2.estaAtacando);
         }
         this.PiezasBlancas = new ArrayList<>();
         this.PiezasNegras = new ArrayList<>();
@@ -52,15 +52,15 @@ public class Tablero {
      * Post: Se crea un nuevo objeto Tablero con nuevos objetos Jugadores pasados por parametros
      */
     public Tablero(final Jugador jugador1, final Jugador jugador2) {
-        if(jugador1.isEsMaquina()) {
-            this.jugador1 = new Maquina(jugador1.esMaquina,jugador1.esNegro, jugador1.estaAtacando);
+        if(jugador1 instanceof M1) {
+            this.jugador1 = new M1(jugador1.esNegro, jugador1.estaAtacando);
         } else {
-            this.jugador1 = new Persona(jugador1.esMaquina, jugador1.esNegro, jugador1.estaAtacando);
+            this.jugador1 = new Persona(jugador1.esNegro, jugador1.estaAtacando);
         }
-        if(jugador2.isEsMaquina()) {
-            this.jugador2 = new Maquina(jugador2.esMaquina,jugador2.esNegro, jugador2.estaAtacando);
+        if(jugador2 instanceof M1) {
+            this.jugador2 = new M1(jugador2.esNegro, jugador2.estaAtacando);
         } else {
-            this.jugador2 = new Persona(jugador2.esMaquina,jugador2.esNegro, jugador2.estaAtacando);
+            this.jugador2 = new Persona(jugador2.esNegro, jugador2.estaAtacando);
         }
     }
 

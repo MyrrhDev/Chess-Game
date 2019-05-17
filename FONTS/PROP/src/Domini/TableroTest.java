@@ -8,8 +8,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class TableroTest {
-    private Jugador jugador2 = new Maquina(true,false, false);
-    private Jugador jugador1 = new Maquina(true, true, true);
+    private Jugador jugador2 = new M1(false, false);
+    private Jugador jugador1 = new M1(true, true);
     private Tablero tablero = new Tablero(jugador1,jugador2);
 
 
@@ -44,8 +44,8 @@ public class TableroTest {
 
     @Test
     public void movimientoHumano() {
-        Jugador j1 = new Persona(false, false, true);
-        Jugador j2 = new Maquina(true, true, false);
+        Jugador j1 = new Persona(false, true);
+        Jugador j2 = new M1(true, false);
         Tablero permaq = new Tablero(j1, j2);
         permaq.FENToTablero("5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5", true);
         Movimiento m = new Movimiento(1,5,2,6);

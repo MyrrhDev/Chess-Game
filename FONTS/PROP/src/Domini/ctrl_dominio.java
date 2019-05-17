@@ -1,7 +1,6 @@
 package Domini;
 
 import PersistenciaJSON.ctrl_persistencia;
-import Presentacion.TableroGUI;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,29 +38,31 @@ public class ctrl_dominio {
     public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
         switch(jug1) {
             case 1:
-                if(j1EsBlanco) j1 = new Persona(false, false, true); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
-                else j1 = new Persona(false, true, true); //negra
+                if(j1EsBlanco) j1 = new Persona(false, true); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
+                else j1 = new Persona(true, true); //negra
                 break;
             case 2:
-                if(j1EsBlanco) j1 = new Maquina(true, false, true);
-                else j1 = new Maquina(true, true, true);
+                if(j1EsBlanco) j1 = new M1(false, true);
+                else j1 = new M1(true, true);
                 break;
             case 3:
-                //j1 = new M2();
+                if(j1EsBlanco) j1 = new M2(false, true);
+                else j1 = new M2(true, true);
                 break;
         }
         switch(jug2) {
             case 1:
-                if(j1EsBlanco) j2 = new Persona(false, true, false); //negra porque jug1 blanca
-                else j2 = new Persona(false, false, false); //blanca porque jug1 negra
+                if(j1EsBlanco) j2 = new Persona(true, false); //negra porque jug1 blanca
+                else j2 = new Persona(false, false); //blanca porque jug1 negra
                 break;
             case 2:
-                if(j1EsBlanco) j2 = new Maquina(true, true, false);
-                else j2 = new Maquina(true, false, false);
+                if(j1EsBlanco) j2 = new M1(true, false);
+                else j2 = new M1(false, false);
                 //j2 = new M1();
                 break;
             case 3:
-                //j2 = new M2();
+                if(j1EsBlanco) j1 = new M2(true, false);
+                else j1 = new M2(false, false);
                 break;
         }
     }
@@ -76,7 +77,7 @@ public class ctrl_dominio {
             tini = new Date().getTime();
         }
         if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
-            if (((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) && j1.isEsMaquina()) {
+            if (((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) && j1 instanceof M1) {
                 try {
                     t = j1.jugar(t,n); // paso tablero y N
                     t.setTurnoBlancas(!t.getTurnoBlancas());
@@ -86,7 +87,8 @@ public class ctrl_dominio {
                         tpartida = tfin - tini;
                         tpartida = tpartida/60000;
                         String vs = "";
-                        if(j1 instanceof Maquina) vs = "M";
+                        if(j1 instanceof M1) vs = "M1";
+                        else if(j1 instanceof M2) vs = "M2";
                         else vs = "H1";
                         //cambiar nombre pepito por nombre del jugador
                         cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
@@ -99,7 +101,7 @@ public class ctrl_dominio {
                 }
 
             }
-            if (((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) && j2.isEsMaquina()) {
+            if (((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) && j2 instanceof M1) {
                 try {
                     t = j2.jugar(t,n); // paso tablero y N
                     t.setTurnoBlancas(!t.getTurnoBlancas());
@@ -109,7 +111,8 @@ public class ctrl_dominio {
                         tpartida = tfin - tini;
                         tpartida = tpartida/60000;
                         String vs = "";
-                        if(j1 instanceof Maquina) vs = "M";
+                        if(j2 instanceof M1) vs = "M1";
+                        else if(j2 instanceof M2) vs = "M2";
                         else vs = "H2";
                         //cambiar nombre pepito por nombre del jugador
                         cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
@@ -129,7 +132,8 @@ public class ctrl_dominio {
                 tpartida = tfin - tini;
                 tpartida = tpartida/60000;
                 String vs = "";
-                if(j1 instanceof Maquina) vs = "M";
+                if(j1 instanceof M1) vs = "M1";
+                else if(j1 instanceof M2) vs = "M2";
                 else vs = "H1";
                 //cambiar nombre pepito por nombre del jugador
                 cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
@@ -146,7 +150,8 @@ public class ctrl_dominio {
                 tpartida = tfin - tini;
                 tpartida = tpartida/60000;
                 String vs = "";
-                if(j1 instanceof Maquina) vs = "M";
+                if(j2 instanceof M1) vs = "M1";
+                else if(j2 instanceof M2) vs = "M2";
                 else vs = "H2";
                 //cambiar nombre pepito por nombre del jugador
                 cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
@@ -158,6 +163,12 @@ public class ctrl_dominio {
             throw e;
         }
     }
+
+    public char[][] getTableroPrint() {
+        return t.getTablero();
+    }
+
+
 
     public char[] getTablero() {
         //return t.getTablero();
