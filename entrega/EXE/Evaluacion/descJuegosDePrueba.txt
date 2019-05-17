@@ -1,8 +1,0 @@
-Objecte de la prova: Que, dado un problema, devuelva los puntos de evaluación correctos. Basicamente probamos que la heuristica funciona tal y como queremos.
-Altres elements integrats a la prova: 
-Drivers construïts per aquesta prova i integrats en l'executable, amb descripció de
-la seva missió (si n'hi ha): DriverEvaluacion.jar
-Stubs construïts per aquesta prova i integrats en l'executable, amb descripció de la
-seva missió (si n'hi ha): No.
-Fitxers de dades necessaris: testDriverEvaluacion.txt
-Operativa: El Driver contiene un menú con las opciones que permite testear. Hay que seguir el meny en orden.

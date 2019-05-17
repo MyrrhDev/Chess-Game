@@ -1,8 +1,0 @@
-Objecte de la prova: La clase MovimientoPrueba. Que se pueda crear correctamente y pase los juegos de prueba.
-Altres elements integrats a la prova: 
-Drivers construïts per aquesta prova i integrats en l'executable, amb descripció de
-la seva missió (si n'hi ha): DriverAlfil.jar
-Stubs construïts per aquesta prova i integrats en l'executable, amb descripció de la
-seva missió (si n'hi ha): No.
-Fitxers de dades necessaris: testDriverMovimientoPrueba.txt
-Operativa: El Driver contiene un menú con las opciones que permite testear.

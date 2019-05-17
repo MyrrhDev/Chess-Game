@@ -1,8 +1,0 @@
-Objecte de la prova: La clase Problema. Se prueba que verifique los problemas que tienen solucion.
-Altres elements integrats a la prova: 
-Drivers construïts per aquesta prova i integrats en l'executable, amb descripció de
-la seva missió (si n'hi ha): DriverProblema.jar
-Stubs construïts per aquesta prova i integrats en l'executable, amb descripció de la
-seva missió (si n'hi ha): No.
-Fitxers de dades necessaris: testDriverProblema.txt
-Operativa: El Driver contiene un menú con las opciones que permite testear. Hay que seguirlas en orden.

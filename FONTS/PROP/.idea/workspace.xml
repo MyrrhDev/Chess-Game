@@ -34,7 +34,7 @@
     <favorites_list name="PROP" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -309,7 +309,7 @@
   <component name="ToolWindowManager">
     <frame x="501" y="23" width="1413" height="970" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4976672" visible="true" weight="0.2808169" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4976672" visible="true" weight="0.28446388" />
       <window_info id="Structure" order="1" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
