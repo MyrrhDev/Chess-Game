@@ -28,7 +28,7 @@ public class Movimiento {
     /* Pre: Cierto
      * Post: Crea un nuevo objeto Movimiento con los parametros fromX, fromY, toX, toY
      * */
-    Movimiento(Pieza pieza, int fromX, int fromY, int toX, int toY) {
+    Movimiento(Pieza pieza, int fromX, int fromY, int toX, int toY, Tablero tablero) {
         this.pieza = pieza;
         this.fromX = fromX;
         this.fromY = fromY;
@@ -37,12 +37,13 @@ public class Movimiento {
         this.p = '-';
 
         this.esUnAtaque = false;
+        this.aTablero = tablero;
     }
 
     /* Pre: Cierto
      * Post: Crea un nuevo objeto Movimiento con los parametros fromX, fromY, toX, toY y un char p
      * */
-    Movimiento(Pieza pieza, int fromX, int fromY, int toX, int toY, char p) {
+    Movimiento(Pieza pieza, int fromX, int fromY, int toX, int toY, char p, Tablero tablero) {
         this.pieza = pieza;
         this.fromX = fromX;
         this.fromY = fromY;
@@ -51,6 +52,8 @@ public class Movimiento {
         this.p = p;
 
         this.esUnAtaque = true;
+        this.aTablero = tablero;
+
     }
 
     //Copied from Movimiento Prueba:
@@ -68,6 +71,7 @@ public class Movimiento {
         return sePuede;
     }
 
+    //MovimientoPrueba
     Movimiento(int fromX, int fromY, int toX, int toY, Tablero aTablero, boolean sePuede) {
         this.fromX = fromX;
         this.fromY = fromY;
@@ -79,16 +83,17 @@ public class Movimiento {
         this.aTablero = aTablero;
     }
 
+//
+//    Movimiento(int fromX, int fromY, int toX, int toY, char p, Tablero aTablero) {
+//        this.fromX = fromX;
+//        this.fromY = fromY;
+//        this.toX = toX;
+//        this.toY = toY;
+//        this.p = p;
+//
+//        this.aTablero = aTablero;
+//    }
 
-    Movimiento(int fromX, int fromY, int toX, int toY, char p, Tablero aTablero) {
-        this.fromX = fromX;
-        this.fromY = fromY;
-        this.toX = toX;
-        this.toY = toY;
-        this.p = p;
-
-        this.aTablero = aTablero;
-    }
 
 
 

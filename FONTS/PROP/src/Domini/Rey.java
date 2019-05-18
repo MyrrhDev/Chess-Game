@@ -58,11 +58,11 @@ public class Rey extends Pieza {
                 if(k >= 0 && k < 8 && l >= 0 && l < 8) {
                     if (k != posX || l != posY) {
                         if (estadoTablero[k][l] == '0') {
-                            Movimiento m = new Movimiento(this, this.posX, this.posY, k, l);
+                            Movimiento m = new Movimiento(this, this.posX, this.posY, k, l, tablero);
                             movs.add(m);
                         } else {
                             if ((this.esNegra && !Character.isLowerCase(estadoTablero[k][l])) || (!this.esNegra && Character.isLowerCase(estadoTablero[k][l]))) {
-                                Movimiento m = new Movimiento(this, this.posX, this.posY, k, l, estadoTablero[k][l]);
+                                Movimiento m = new Movimiento(this, this.posX, this.posY, k, l, estadoTablero[k][l], tablero);
                                 movs.add(m);
                             }
                         }

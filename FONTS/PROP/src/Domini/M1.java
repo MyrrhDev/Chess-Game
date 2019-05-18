@@ -37,7 +37,7 @@ public class M1 extends Maquina {
      * Post: Devuelve el mejor movimiento del Jugador
      * */
     public Movimiento estrategiaSimple(final Tablero tablero) {
-        Movimiento mejorMov = new Movimiento(-1,-1, -1, -1);
+        Movimiento mejorMov = new Movimiento(null, -1,-1, -1, -1,null);
         int mayorPuntos = Integer.MIN_VALUE;
         int menorPuntos = Integer.MAX_VALUE;
         int puntosAhora;

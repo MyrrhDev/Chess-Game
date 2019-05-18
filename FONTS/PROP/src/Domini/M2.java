@@ -20,7 +20,7 @@ public class M2 extends Maquina {
      * */
     @Override
     public Tablero jugar(final Tablero tablero, final int N) throws Exception {
-        Tablero t = new Tablero(tablero);
+        Tablero tab = new Tablero(tablero);
         int level;
         if(N > 4) {
             level = 5;
@@ -33,22 +33,15 @@ public class M2 extends Maquina {
             Exception e = new Exception("No se puede mover, posible Jaque Mate");
             throw e;
         } else {
-            t.ejecutarMovimiento(m);
+            tab.ejecutarMovimiento(m);
         }
-        return t;
+        return tab;
     }
 
     public ArrayList<Movimiento> sort(ArrayList<Movimiento> movimientos) {
-        ArrayList <Movimiento> movimientosSorted = new ArrayList<>();
+        //ArrayList <Movimiento> movimientosSorted = new ArrayList<>();
 
-//        Comparator<Parent> byAttr1ofFirstChild = Comparator.comparing(
-//                parent -> parent.getChildren().get(0).getAttr1()
-//        );
-//
-//      movimientoPoneEnMate(movimiento.tablero)
-        //movimientosSorted = movimientos;
-
-        Comparator<Movimiento> enJaquees = Comparator.comparing(movimiento -> tablero.movimientoHumano(movimiento));
+        Comparator<Movimiento> enJaquees = Comparator.comparing(movimiento -> movimiento.getaTablero().movimientoPoneEnMate());
 
         Comparator<Movimiento> esUnAtaque = Comparator.comparing(movimiento -> movimiento.isEsUnAtaque());
         Comparator<Movimiento> valorPieza = Comparator.comparingInt(movimiento -> movimiento.getPieza().getPts());
@@ -59,9 +52,8 @@ public class M2 extends Maquina {
     }
 
 
-
     public Movimiento estrategiaCompleja(final Tablero tablero) {
-        Movimiento mejorMov = new Movimiento(-1,-1, -1, -1);
+        Movimiento mejorMov = new Movimiento(null, -1,-1, -1, -1, null);
         int mayorPuntos = Integer.MIN_VALUE;
         int menorPuntos = Integer.MAX_VALUE;
         int puntosAhora;
@@ -130,13 +122,5 @@ public class M2 extends Maquina {
      * */
     private static boolean gameOver(final Tablero tablero) {
         return tablero.esSuTurno().isEnJaqueMate() || tablero.esSuTurno().estaEstancado();
-    }
-
-    /* Pre: Tablero existe y no esta vacio, movimiento existe y no esta vacio con el movimiento que hace la Persona
-     * Post: Devuelve un nuevo Tablero modificado
-     * */
-    @Override
-    public Tablero jugar(Tablero t, Movimiento movimiento) throws Exception {
-        return t;
     }
 }

@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ctrl_dominio {
-    private static Jugador j1, j2;
-    private static Tablero t;
-    private static Problema p;
+    private static Jugador jugador1, jugador2;
+    private static Tablero tablero;
+    private static Problema problema;
     private static ctrl_dominio singleInstance = null;
-    private static ctrl_persistencia cp;
-    private static long tini, tfin, tpartida;
+    private static ctrl_persistencia controlPersistencia;
+    private static long tinicio, tfin, tpartida;
 
     private ctrl_dominio() {
-        j1 = j2 = null;
+        jugador1 = jugador2 = null;
     }
 
     /*
@@ -23,7 +23,7 @@ public class ctrl_dominio {
     public static ctrl_dominio getInstance() {
         if(singleInstance == null) {
             singleInstance = new ctrl_dominio();
-            cp = ctrl_persistencia.getInstance();
+            controlPersistencia = ctrl_persistencia.getInstance();
         }
         return singleInstance;
     }
@@ -38,31 +38,30 @@ public class ctrl_dominio {
     public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {
         switch(jug1) {
             case 1:
-                if(j1EsBlanco) j1 = new Persona(false, true); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
-                else j1 = new Persona(true, true); //negra
+                if(j1EsBlanco) jugador1 = new Persona(false, true); //blanca //TODO: li he de passar es maquina, es negro i esta atacando
+                else jugador1 = new Persona(true, true); //negra
                 break;
             case 2:
-                if(j1EsBlanco) j1 = new M1(false, true);
-                else j1 = new M1(true, true);
+                if(j1EsBlanco) jugador1 = new M1(false, true);
+                else jugador1 = new M1(true, true);
                 break;
             case 3:
-                if(j1EsBlanco) j1 = new M2(false, true);
-                else j1 = new M2(true, true);
+                if(j1EsBlanco) jugador1 = new M2(false, true);
+                else jugador1 = new M2(true, true);
                 break;
         }
         switch(jug2) {
             case 1:
-                if(j1EsBlanco) j2 = new Persona(true, false); //negra porque jug1 blanca
-                else j2 = new Persona(false, false); //blanca porque jug1 negra
+                if(j1EsBlanco) jugador2 = new Persona(true, false); //negra porque jug1 blanca
+                else jugador2 = new Persona(false, false); //blanca porque jug1 negra
                 break;
             case 2:
-                if(j1EsBlanco) j2 = new M1(true, false);
-                else j2 = new M1(false, false);
-                //j2 = new M1();
+                if(j1EsBlanco) jugador2 = new M1(true, false);
+                else jugador2 = new M1(false, false);
                 break;
             case 3:
-                if(j1EsBlanco) j1 = new M2(true, false);
-                else j1 = new M2(false, false);
+                if(j1EsBlanco) jugador2 = new M2(true, false);
+                else jugador2 = new M2(false, false);
                 break;
         }
     }
@@ -73,26 +72,26 @@ public class ctrl_dominio {
         Post: La función jugar intenta efectuar un movimiento según los parámetros de entrada
      */
     public static void jugar(int n) throws Exception {
-        if(tini == -1 && tfin == -1) {
-            tini = new Date().getTime();
+        if(tinicio == -1 && tfin == -1) {
+            tinicio = new Date().getTime();
         }
-        if(!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
-            if (((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) && j1 instanceof M1) {
+        if(!jugador1.isEnJaqueMate() && !jugador2.isEnJaqueMate()) {
+            if (((jugador1.isEsNegro() && !tablero.getTurnoBlancas()) || (!jugador1.isEsNegro() && tablero.getTurnoBlancas())) && (jugador1 instanceof M1 || jugador1 instanceof  M2)) {
                 try {
-                    t = j1.jugar(t,n); // paso tablero y N
-                    t.setTurnoBlancas(!t.getTurnoBlancas());
+                    tablero = jugador1.jugar(tablero,n); // paso tablero y N
+                    tablero.setTurnoBlancas(!tablero.getTurnoBlancas());
                 } catch(Exception e) {
-                    if(j2 instanceof Persona) {
+                    if(jugador2 instanceof Persona) {
                         tfin = new Date().getTime();
-                        tpartida = tfin - tini;
+                        tpartida = tfin - tinicio;
                         tpartida = tpartida/60000;
                         String vs = "";
-                        if(j1 instanceof M1) vs = "M1";
-                        else if(j1 instanceof M2) vs = "M2";
+                        if(jugador1 instanceof M1) vs = "M1";
+                        else if(jugador1 instanceof M2) vs = "M2";
                         else vs = "H1";
                         //cambiar nombre pepito por nombre del jugador
-                        cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
-                        tini = -1;
+                        controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
+                        tinicio = -1;
                         tfin = -1;
                         tpartida = -1;
                     }
@@ -101,22 +100,22 @@ public class ctrl_dominio {
                 }
 
             }
-            if (((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) && j2 instanceof M1) {
+            if (((jugador2.isEsNegro() && !tablero.getTurnoBlancas()) || (!jugador2.isEsNegro() && tablero.getTurnoBlancas())) && (jugador2 instanceof M1 || jugador2 instanceof M2)) {
                 try {
-                    t = j2.jugar(t,n); // paso tablero y N
-                    t.setTurnoBlancas(!t.getTurnoBlancas());
+                    tablero = jugador2.jugar(tablero,n); // paso tablero y N
+                    tablero.setTurnoBlancas(!tablero.getTurnoBlancas());
                 } catch(Exception e) {
-                    if(j1 instanceof Persona) {
+                    if(jugador1 instanceof Persona) {
                         tfin = new Date().getTime();
-                        tpartida = tfin - tini;
+                        tpartida = tfin - tinicio;
                         tpartida = tpartida/60000;
                         String vs = "";
-                        if(j2 instanceof M1) vs = "M1";
-                        else if(j2 instanceof M2) vs = "M2";
+                        if(jugador2 instanceof M1) vs = "M1";
+                        else if(jugador2 instanceof M2) vs = "M2";
                         else vs = "H2";
                         //cambiar nombre pepito por nombre del jugador
-                        cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
-                        tini = -1;
+                        controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
+                        tinicio = -1;
                         tfin = -1;
                         tpartida = -1;
                     }
@@ -126,36 +125,36 @@ public class ctrl_dominio {
 
             }
         }
-        else if(j1.isEnJaqueMate()) {
-            if(j2 instanceof Persona) {
+        else if(jugador1.isEnJaqueMate()) {
+            if(jugador2 instanceof Persona) {
                 tfin = new Date().getTime();
-                tpartida = tfin - tini;
+                tpartida = tfin - tinicio;
                 tpartida = tpartida/60000;
                 String vs = "";
-                if(j1 instanceof M1) vs = "M1";
-                else if(j1 instanceof M2) vs = "M2";
+                if(jugador1 instanceof M1) vs = "M1";
+                else if(jugador1 instanceof M2) vs = "M2";
                 else vs = "H1";
                 //cambiar nombre pepito por nombre del jugador
-                cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
-                tini = -1;
+                controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
+                tinicio = -1;
                 tfin = -1;
                 tpartida = -1;
             }
             Exception e = new Exception("Jugador 1 en Jaque mate");
             throw e;
         }
-        else if(j2.isEnJaqueMate()) {
-            if(j1 instanceof Persona) {
+        else if(jugador2.isEnJaqueMate()) {
+            if(jugador1 instanceof Persona) {
                 tfin = new Date().getTime();
-                tpartida = tfin - tini;
+                tpartida = tfin - tinicio;
                 tpartida = tpartida/60000;
                 String vs = "";
-                if(j2 instanceof M1) vs = "M1";
-                else if(j2 instanceof M2) vs = "M2";
+                if(jugador2 instanceof M1) vs = "M1";
+                else if(jugador2 instanceof M2) vs = "M2";
                 else vs = "H2";
                 //cambiar nombre pepito por nombre del jugador
-                cp.guardarProblemaGanado("pepito", p.getFEN(), p.getN(), vs, p.getDificultad(), tpartida);
-                tini = -1;
+                controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
+                tinicio = -1;
                 tfin = -1;
                 tpartida = -1;
             }
@@ -165,13 +164,13 @@ public class ctrl_dominio {
     }
 
     public char[][] getTableroPrint() {
-        return t.getTablero();
+        return tablero.getTablero();
     }
 
 
 
     public char[] getTablero() {
-        //return t.getTablero();
+        //return tablero.getTablero();
 
         //For testing pruposes
         char[] tablero = {'K', '0', '0', '0', 'n', '0', 'P', '0',
@@ -187,11 +186,11 @@ public class ctrl_dominio {
     }
 
     public Jugador getJ1() {
-        return j1;
+        return jugador1;
     }
 
     public Jugador getJ2() {
-        return j2;
+        return jugador2;
     }
 
     /*
@@ -199,22 +198,26 @@ public class ctrl_dominio {
         Post: La función jugar intenta efectuar un movimiento según los parámetros de entrada
      */
     public static void jugar(int posX, int posY, int movX, int movY) throws Exception {
-        if(tini == -1 && tfin == -1) {
-            tini = new Date().getTime();
+        if(tinicio == -1 && tfin == -1) {
+            tinicio = new Date().getTime();
         }
-        if (!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
-            Movimiento m = new Movimiento(posX, posY, movX, movY);
-            if ((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) {
+        if (!jugador1.isEnJaqueMate() && !jugador2.isEnJaqueMate()) {
+            //TODO: Need to change: need to get Pieza from posX,posY somehow
+            Pieza pieza = new Peon();
+
+            Movimiento m = new Movimiento(pieza, posX, posY, movX, movY, tablero);
+            //////
+            if ((jugador1.isEsNegro() && !tablero.getTurnoBlancas()) || (!jugador1.isEsNegro() && tablero.getTurnoBlancas())) {
                 try {
-                    t = j1.jugar(t, m);
-                    t.setTurnoBlancas(!t.getTurnoBlancas());
+                    tablero = jugador1.jugar(tablero, m);
+                    tablero.setTurnoBlancas(!tablero.getTurnoBlancas());
                 } catch (Exception e) {
                     throw e;
                 }
-            } else if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
+            } else if ((jugador2.isEsNegro() && !tablero.getTurnoBlancas()) || (!jugador2.isEsNegro() && tablero.getTurnoBlancas())) {
                 try {
-                    t = j2.jugar(t, m);
-                    t.setTurnoBlancas(!t.getTurnoBlancas());
+                    tablero = jugador2.jugar(tablero, m);
+                    tablero.setTurnoBlancas(!tablero.getTurnoBlancas());
                 } catch (Exception e) {
                     throw e;
                 }
@@ -231,12 +234,12 @@ public class ctrl_dominio {
     Post: La función crea una partida nueva a partir del string FEN, el valor de N y los jugadores pasados por parámetro
      */
     public static void crearPartida(String FEN, int N, int jug1, int jug2) {
-        p = new Problema();
-        p.setFEN(FEN);
-        p.setN(N);
-        seleccionarJugadores(jug1, jug2, p.getIniJuegoBlancas());
-        t = new Tablero(j1, j2); //antigua FENToTablero
-        t.FENToTablero(p.getFEN(), p.getIniJuegoBlancas());
+        problema = new Problema();
+        problema.setFEN(FEN);
+        problema.setN(N);
+        seleccionarJugadores(jug1, jug2, problema.getIniJuegoBlancas());
+        tablero = new Tablero(jugador1, jugador2); //antigua FENToTablero
+        tablero.FENToTablero(problema.getFEN(), problema.getIniJuegoBlancas());
     }
 
     /*
@@ -244,10 +247,10 @@ public class ctrl_dominio {
     Post: Valida el problema FEN pasado por parámetro
      */
     public static boolean esProblemaValidable(String FEN, int N) {
-        p = new Problema();
-        p.setFEN(FEN);
-        p.setN(N);
-        return p.verificarProblema();
+        problema = new Problema();
+        problema.setFEN(FEN);
+        problema.setN(N);
+        return problema.verificarProblema();
     }
 
     public String[][] refrescarRanking() {
@@ -256,55 +259,55 @@ public class ctrl_dominio {
     }
 
     public ArrayList<String> getTodosLosJugadores() {
-        return cp.getTodosLosJugadores();
+        return controlPersistencia.getTodosLosJugadores();
     }
 
     public static void main(String[] args) {
-        cp = ctrl_persistencia.getInstance();
+        controlPersistencia = ctrl_persistencia.getInstance();
         /*try {
-            cp.guardarJugador("pepito", "test1");
+            controlPersistencia.guardarJugador("pepito", "test1");
         } catch (Exception e) {
             System.out.println(e);
         }
         try {
-            cp.guardarJugador("menganito", "test2");
+            controlPersistencia.guardarJugador("menganito", "test2");
         } catch (Exception e) {
             System.out.println(e);
         }
-        cp.guardarProblemaGanado("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1", 2, "H2", "Facil", 2);
-        cp.guardarProblemaGanado("pepito", "5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5", 2, "H2", "Dificil", 3);
-        cp.guardarProblemaGanado("menganito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4", 1, "H2", "Facil", 2);
-        cp.guardarProblema("B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1", 2,"Facil", true, 1, 2);
-        cp.guardarProblema("5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5", 2,"Dificil", true, 1, 2);
-        cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4", 1, "Facil", true, 1, 1);
+        controlPersistencia.guardarProblemaGanado("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1", 2, "H2", "Facil", 2);
+        controlPersistencia.guardarProblemaGanado("pepito", "5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5", 2, "H2", "Dificil", 3);
+        controlPersistencia.guardarProblemaGanado("menganito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4", 1, "H2", "Facil", 2);
+        controlPersistencia.guardarProblema("B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1", 2,"Facil", true, 1, 2);
+        controlPersistencia.guardarProblema("5B1b/1p2rR2/8/1B4N1/K2kP3/5n1R/1N6/2Q5", 2,"Dificil", true, 1, 2);
+        controlPersistencia.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4", 1, "Facil", true, 1, 1);
 */
 
         /*try {
-            cp.borrarJugador("pepito");
+            controlPersistencia.borrarJugador("pepito");
         } catch (Exception e) {
             System.out.println(e);
         }*/
         /*try {
-            cp.guardarJugador("fulanito");
+            controlPersistencia.guardarJugador("fulanito");
         } catch (Exception e) {
             System.out.println(e);
         }*/
         /*try {
-            int t = (int)System.currentTimeMillis();
-            cp.guardarProblemaGanado("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1", "Facil", t);
+            int tablero = (int)System.currentTimeMillis();
+            controlPersistencia.guardarProblemaGanado("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1", "Facil", tablero);
         } catch (Exception e) {
             System.out.println(e);
         }
-        ArrayList<ArrayList<String>> tmp = cp.getProblemasGanadosJugador("pepito");
+        ArrayList<ArrayList<String>> tmp = controlPersistencia.getProblemasGanadosJugador("pepito");
         Stream.of(tmp)
                 .flatMap(Stream::of)
                 .forEach(System.out::println);*/
-        //System.out.println(cp.puedeJugarProblema("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1"));
-        //System.out.println(cp.puedeJugarProblema("pepito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 2, "H1"));
+        //System.out.println(controlPersistencia.puedeJugarProblema("pepito", "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1 w - - 0 1" , 2, "H1"));
+        //System.out.println(controlPersistencia.puedeJugarProblema("pepito", "2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 2, "H1"));
 
-        //cp.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 5, "Dificil", false, 0, 0);
+        //controlPersistencia.guardarProblema("2R5/2N4K/2pn2B1/Nb6/5p2/B1k1p2Q/2pn4/3R4 w - - 0 1" , 5, "Dificil", false, 0, 0);
         /*try {
-            cp.incrementarPartidaJugada("menganito");
+            controlPersistencia.incrementarPartidaJugada("menganito");
         } catch (Exception e) {
             System.out.println(e);
         }*/
@@ -321,7 +324,7 @@ public class ctrl_dominio {
      */
 
     public ArrayList<Problema> getProblemasGanadosJugador(final String nombreJugador) {
-        ArrayList<ArrayList<String>> tmp = cp.getProblemasGanadosJugador(nombreJugador);
+        ArrayList<ArrayList<String>> tmp = controlPersistencia.getProblemasGanadosJugador(nombreJugador);
         ArrayList<Problema> res = new ArrayList<>();
         for(int i = 0; i < tmp.size(); ++i) {
             Problema p = new Problema();
@@ -334,6 +337,6 @@ public class ctrl_dominio {
     }
 
     public int getTiempoMedioProblema(final String FEN, final int N) {
-        return cp.getTiempoMedioProblema(FEN,N);
+        return controlPersistencia.getTiempoMedioProblema(FEN,N);
     }
 }

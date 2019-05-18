@@ -1,3 +1,4 @@
+/*
 package Domini;
 
         import org.junit.runner.JUnitCore;
@@ -13,3 +14,4 @@ public class executorJUnitTests {
         }
     }
 }
+*/
