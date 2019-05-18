@@ -105,7 +105,9 @@ public class Peon extends Pieza {
      * Post: La funcion devuelve un array con todos los movimientos posibles del parametro implicito
      */
     @Override
-    ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]) {
+    ArrayList<Movimiento> movimientosPosibles(Tablero tablero) {
+        final char estadoTablero[][] = tablero.getTablero();
+
         ArrayList<Movimiento> listResult = new ArrayList<>();
         //int posX = this.posX, posY = this.posY;
         if(this.esNegra) {

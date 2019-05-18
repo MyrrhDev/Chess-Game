@@ -353,7 +353,8 @@ public class Reina extends Pieza {
     }
 
     @Override
-    ArrayList<Movimiento> movimientosPosibles(final char estadoTablero[][]) {
+    ArrayList<Movimiento> movimientosPosibles(Tablero tablero) {
+        final char estadoTablero[][] = tablero.getTablero();
         ArrayList<Movimiento> listResult = new ArrayList<>();
         ArrayList<Movimiento> ltemp1 = movimientosPosiblesDiagonales(estadoTablero);
         ArrayList<Movimiento> ltemp2 = movimientosPosiblesHorVert(estadoTablero);

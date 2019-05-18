@@ -81,7 +81,8 @@ public class Torre extends Pieza {
     }
 
     @Override
-    ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]) {
+    ArrayList<Movimiento> movimientosPosibles(Tablero tablero) {
+        final char estadoTablero[][] = tablero.getTablero();
         ArrayList<Movimiento> listResult = new ArrayList<>();
         int i = posX, j = posY;
         boolean end = false;

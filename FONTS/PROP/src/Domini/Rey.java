@@ -46,7 +46,8 @@ public class Rey extends Pieza {
      * Post: La funcion devuelve un array con todos los movimientos posibles del parametro implicito
      */
     @Override
-    ArrayList<Movimiento> movimientosPosibles(final char estadoTablero[][]) {
+    ArrayList<Movimiento> movimientosPosibles(Tablero tablero) {
+        final char estadoTablero[][] = tablero.getTablero();
         ArrayList<Movimiento> movs = new ArrayList<>();
 
         int i = posX-1;

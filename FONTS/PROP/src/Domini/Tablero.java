@@ -153,7 +153,7 @@ public class Tablero {
     private ArrayList<Movimiento> todosLosMovimientosPosibles(final ArrayList<Pieza> piezasJugador) {
         ArrayList<Movimiento> movs = new ArrayList<Movimiento>();
         for (Pieza p: piezasJugador) {
-            ArrayList <Movimiento> piezaMov = p.movimientosPosibles(this.tablero);
+            ArrayList <Movimiento> piezaMov = p.movimientosPosibles(this);
             movs.addAll(piezaMov);
         }
         return movs;

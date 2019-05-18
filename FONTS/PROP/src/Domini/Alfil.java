@@ -110,7 +110,10 @@ public class Alfil extends Pieza {
     }
 
     @Override
-    ArrayList<Movimiento> movimientosPosibles(final char estadoTablero[][]) {
+    ArrayList<Movimiento> movimientosPosibles(Tablero tablero) {
+
+        final char estadoTablero[][] = tablero.getTablero();
+
         ArrayList<Movimiento> listResult = new ArrayList<>();
         int i = this.posX, j = this.posY;
         boolean end = false;
