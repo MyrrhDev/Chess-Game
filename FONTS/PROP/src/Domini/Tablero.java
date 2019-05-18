@@ -292,6 +292,12 @@ public class Tablero {
         }
     }
 
+    public static boolean movimientoPoneEnMate(final Tablero tablero) {
+        return tablero.getAttackPlayer(true).isEnMate() || tablero.getAttackPlayer(false).isEnMate();
+    }
+
+
+
     /* Pre: Cierto
      * Post: Devuelve el char[][] tablero del parametro implicito
      */

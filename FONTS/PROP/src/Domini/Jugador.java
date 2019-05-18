@@ -36,18 +36,39 @@ public abstract class Jugador {
         return (ArrayList<Movimiento>) movimientos.stream().filter(movi -> movi.getToX() == theX && movi.getToY() == theY).collect(Collectors.toList());
     }
 
+    //Copied from Refactoring:
     /* Pre: Tablero y movimiento existen y no esta vacios
      * Post: Devuelve en un objeto de MovimientoPrueba que indica si ha sido posible hacer el Movimiento
      * */
-    public MovimientoPrueba hacerMovimiento(final Tablero tablero, final Movimiento movimiento) {
+    public Movimiento hacerMovimiento(final Tablero tablero, final Movimiento movimiento) {
         Tablero tempTablero = movimiento.intentar(tablero);
         ArrayList <Movimiento> ataquesAlRey = Jugador.hayAtaquesPendientes(tempTablero.miOponenteEs(tempTablero.esSuTurno()).getReydelJugador().getPosX(),
                 tempTablero.miOponenteEs(tempTablero.esSuTurno()).getReydelJugador().getPosY(), tempTablero.esSuTurno().getPosiblesMovimientos());
         if (!ataquesAlRey.isEmpty()) {
-            return new MovimientoPrueba(tablero, tablero, movimiento, false);
+            Movimiento temp = new Movimiento(movimiento.getFromX(), movimiento.getFromY(), movimiento.getToX(), movimiento.getToY(), tablero, false);
+            return temp;
         }
-        return new MovimientoPrueba(tablero, tempTablero, movimiento, true); //todo bien
+
+        Movimiento tempGood = new Movimiento(movimiento.getFromX(), movimiento.getFromY(), movimiento.getToX(), movimiento.getToY(), tempTablero, true);
+        return tempGood; //todo bien
     }
+
+
+//
+//
+//
+//    /* Pre: Tablero y movimiento existen y no esta vacios
+//     * Post: Devuelve en un objeto de MovimientoPrueba que indica si ha sido posible hacer el Movimiento
+//     * */
+//    public MovimientoPrueba hacerMovimiento(final Tablero tablero, final Movimiento movimiento) {
+//        Tablero tempTablero = movimiento.intentar(tablero);
+//        ArrayList <Movimiento> ataquesAlRey = Jugador.hayAtaquesPendientes(tempTablero.miOponenteEs(tempTablero.esSuTurno()).getReydelJugador().getPosX(),
+//                tempTablero.miOponenteEs(tempTablero.esSuTurno()).getReydelJugador().getPosY(), tempTablero.esSuTurno().getPosiblesMovimientos());
+//        if (!ataquesAlRey.isEmpty()) {
+//            return new MovimientoPrueba(tablero, tablero, movimiento, false);
+//        }
+//        return new MovimientoPrueba(tablero, tempTablero, movimiento, true); //todo bien
+//    }
 
     /* Pre: Cierto
      * Post: Devuelve el ArrayList de posibles Movimientos del parametro implicito posiblesMovimientos

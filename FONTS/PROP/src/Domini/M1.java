@@ -42,7 +42,7 @@ public class M1 extends Maquina {
         int menorPuntos = Integer.MAX_VALUE;
         int puntosAhora;
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
-            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            final Movimiento pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
             if (pruebaMovimiento.isSePuede()) {
                 if(tablero.esSuTurno().isEstaAtacando()) {
                     puntosAhora = min(pruebaMovimiento.getaTablero(), this.profundidadDada - 1);
@@ -74,7 +74,7 @@ public class M1 extends Maquina {
         }
         int menorPuntos = Integer.MAX_VALUE;
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
-            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            final Movimiento pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
             if (pruebaMovimiento.isSePuede()) {
                 final int puntosAhora = max(pruebaMovimiento.getaTablero(), depth - 1);
                 if (puntosAhora <= menorPuntos) {
@@ -97,7 +97,7 @@ public class M1 extends Maquina {
         }
         int mayorPuntos = Integer.MIN_VALUE;
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
-            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            final Movimiento pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
             if (pruebaMovimiento.isSePuede()) {
                 final int puntosAhora = min(pruebaMovimiento.getaTablero(), depth - 1);
                 if (puntosAhora >= mayorPuntos) {

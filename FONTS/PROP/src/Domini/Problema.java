@@ -144,7 +144,7 @@ public class Problema {
     private void verificar(Tablero tablero) {
         int puntosAhora;
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
-            MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            Movimiento pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
             if (pruebaMovimiento.isSePuede()) {
                 if (tablero.esSuTurno().isEstaAtacando()) {
                     puntosAhora = min(pruebaMovimiento.getaTablero(), (this.N * 2) - 1);
@@ -169,7 +169,7 @@ public class Problema {
 
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
 
-            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            final Movimiento pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
 
             if (pruebaMovimiento.isSePuede()) {
                 final int puntosAhora = max(pruebaMovimiento.getaTablero(), depth - 1);
@@ -193,7 +193,7 @@ public class Problema {
         }
         int mayorPuntos = Integer.MIN_VALUE;
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
-            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            final Movimiento pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
             if (pruebaMovimiento.isSePuede()) {
                 final int puntosAhora = min(pruebaMovimiento.getaTablero(), depth - 1);
                 if (puntosAhora >= mayorPuntos) {

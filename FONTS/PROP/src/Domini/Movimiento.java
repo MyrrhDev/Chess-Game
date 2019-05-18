@@ -7,6 +7,12 @@ public class Movimiento {
     private int toY;
     private char p;
 
+    //Copied from Movimiento Prueba:
+    private Tablero aTablero;
+    private boolean sePuede;
+
+
+
     /* Pre: Cierto
      * Post: Crea un nuevo objeto Movimiento con los parametros fromX, fromY, toX, toY
      * */
@@ -28,6 +34,34 @@ public class Movimiento {
         this.toY = toY;
         this.p = p;
     }
+
+    //Copied from Movimiento Prueba:
+    /* Pre: Cierto
+     * Post: Devuelve el Tablero al que el movimiento hecho nos lleva del parametro implicito
+     */
+    public Tablero getaTablero() {
+        return aTablero;
+    }
+
+    /* Pre: Cierto
+     * Post: Devuelve el boolean si el Movimiento del parametro implicito dado se puede hacer
+     */
+    public boolean isSePuede() {
+        return sePuede;
+    }
+
+    Movimiento(int fromX, int fromY, int toX, int toY, Tablero aTablero, boolean sePuede) {
+        this.fromX = fromX;
+        this.fromY = fromY;
+        this.toX = toX;
+        this.toY = toY;
+        this.p = '-';
+
+        this.sePuede = sePuede;
+        this.aTablero = aTablero;
+    }
+
+
 
     /* Pre: Cierto
      * Post: Devuelve un Tablero editado con el nuevo movimiento
