@@ -29,6 +29,18 @@ public class ctrl_dominio {
         return singleInstance;
     }
 
+    public static String[][] getProblemasDificultad(final String diff) {
+        ArrayList<ArrayList<String>> tmpres = cp.getProblemasDificultad(diff);
+        String[][] result = new String[tmpres.size()][2];
+        for(int i = 0; i < tmpres.size(); ++i) {
+            for(int j = 0; j < tmpres.get(i).size(); ++j) {
+                result[i][0] = tmpres.get(i).get(0);
+                result[i][1] = tmpres.get(i).get(1);
+            }
+        }
+        return result;
+    }
+
     /*
     Pre: Cierto
     Post: Tanto para jug1, como para jug2:
