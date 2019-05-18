@@ -62,6 +62,18 @@ public class Movimiento {
     }
 
 
+    Movimiento(int fromX, int fromY, int toX, int toY, char p, Tablero aTablero) {
+        this.fromX = fromX;
+        this.fromY = fromY;
+        this.toX = toX;
+        this.toY = toY;
+        this.p = p;
+
+        this.aTablero = aTablero;
+    }
+
+
+
 
     /* Pre: Cierto
      * Post: Devuelve un Tablero editado con el nuevo movimiento

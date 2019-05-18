@@ -54,7 +54,6 @@ public class M2 extends Maquina {
 
         movimientos.stream().sorted(enJaquees.thenComparing(esUnAtaque).thenComparing(valorPieza)).collect(Collectors.toList());
 
-
         return movimientos;
     }
 
@@ -90,7 +89,6 @@ public class M2 extends Maquina {
 
     public int max(final Tablero tablero, final int profundidad, final int highest, final int lowest) {
         if (profundidad == 0 || gameOver(tablero)) {
-            //this.boardsEvaluated++;
             return this.evaluacion.evaluar(tablero, profundidad);
         }
         int mayorPuntos = highest;
@@ -99,7 +97,6 @@ public class M2 extends Maquina {
             if (pruebaMovimiento.isSePuede()) {
                 mayorPuntos = Math.max(mayorPuntos, min(pruebaMovimiento.getaTablero(), calcularQuiescence(tablero, movimiento, profundidad), mayorPuntos, lowest));
                 if (lowest <= mayorPuntos) {
-                    //this.cutOffsProduced++;
                     break;
                 }
             }
@@ -117,7 +114,6 @@ public class M2 extends Maquina {
             if (pruebaMovimiento.isSePuede()) {
                 menorPuntos = Math.min(menorPuntos, max(pruebaMovimiento.getaTablero(), calcularQuiescence(tablero, movimiento, profundidad), highest, menorPuntos));
                 if (menorPuntos <= highest) {
-                    //this.cutOffsProduced++;
                     break;
                 }
             }
