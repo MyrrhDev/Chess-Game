@@ -7,14 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="535ddb54-757d-4b7c-b4fa-bf11e7c2cd9a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/B.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/B.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/K.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/K.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/N.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/N.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/P.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/P.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/Q.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/Q.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/R.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/R.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domini/Alfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domini/Alfil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domini/EstrategiaCompleja.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Domini/M2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domini/M2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Domini/Movimiento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domini/Movimiento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domini/Peon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domini/Peon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domini/Reina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domini/Reina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domini/Rey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domini/Rey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domini/Torre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domini/Torre.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,23 +42,23 @@
     <favorites_list name="PROP" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.54519284">
+    <splitter split-orientation="horizontal" split-proportion="0.57640904">
       <split-first>
         <leaf>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Domini/Movimiento.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="745">
-                  <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
+                  <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Domini/M2.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="337">
-                  <caret line="116" selection-start-line="116" selection-end-line="116" />
+                <state relative-caret-position="394">
+                  <caret line="51" selection-start-line="51" selection-end-line="51" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -68,7 +75,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Domini/Pieza.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="60">
@@ -80,29 +87,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Domini/Alfil.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="473">
-                  <caret line="125" column="87" lean-forward="true" selection-start-line="125" selection-start-column="87" selection-end-line="125" selection-end-column="87" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Domini/Caballo.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#106#107#0" expanded="true" />
-                    <element signature="e#144#145#0" expanded="true" />
-                    <element signature="e#3412#3413#0" expanded="true" />
-                    <element signature="e#3444#3445#0" expanded="true" />
-                    <element signature="e#3605#3606#0" expanded="true" />
-                    <element signature="e#3647#3648#0" expanded="true" />
-                    <element signature="e#3761#3762#0" expanded="true" />
-                    <element signature="e#3790#3791#0" expanded="true" />
-                    <element signature="e#3900#3901#0" expanded="true" />
-                    <element signature="e#3932#3933#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="2805">
+                  <caret line="189" column="56" selection-start-line="189" selection-start-column="56" selection-end-line="189" selection-end-column="56" />
                 </state>
               </provider>
             </entry>
@@ -110,8 +96,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Domini/Peon.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+                <state relative-caret-position="2265">
+                  <caret line="153" column="56" selection-start-line="153" selection-start-column="56" selection-end-line="153" selection-end-column="56" />
                 </state>
               </provider>
             </entry>
@@ -119,28 +105,23 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Domini/Rey.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+                <state relative-caret-position="945">
+                  <caret line="63" column="68" selection-start-line="63" selection-start-column="68" selection-end-line="63" selection-end-column="68" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Domini/Torre.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-                </state>
-              </provider>
+              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Domini/Reina.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+                <state relative-caret-position="45">
+                  <caret line="3" selection-start-line="3" selection-end-line="3" />
                   <folding>
-                    <element signature="imports" expanded="true" />
                     <element signature="e#128#129#0" expanded="true" />
                     <element signature="e#166#167#0" expanded="true" />
                   </folding>
@@ -155,8 +136,14 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Domini/Movimiento.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="334">
-                  <caret line="59" column="31" lean-forward="true" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+                <state relative-caret-position="533">
+                  <caret line="46" selection-start-line="46" selection-end-line="46" />
+                  <folding>
+                    <element signature="e#324#325#0" expanded="true" />
+                    <element signature="e#352#353#0" expanded="true" />
+                    <element signature="e#389#390#0" expanded="true" />
+                    <element signature="e#422#423#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -229,15 +216,11 @@
         <option value="$PROJECT_DIR$/src/Domini/DriverRey.java" />
         <option value="$PROJECT_DIR$/src/Domini/DriverTablero.java" />
         <option value="$PROJECT_DIR$/src/Domini/DriverTorre.java" />
-        <option value="$PROJECT_DIR$/src/Domini/Reina.java" />
-        <option value="$PROJECT_DIR$/src/Domini/Torre.java" />
         <option value="$PROJECT_DIR$/src/Domini/DriverMaquina.java" />
         <option value="$PROJECT_DIR$/src/Domini/Caballo.java" />
         <option value="$PROJECT_DIR$/src/Domini/MovimientoPrueba.java" />
         <option value="$PROJECT_DIR$/src/Domini/EstrategiaSimple.java" />
         <option value="$PROJECT_DIR$/src/Domini/Evaluacion.java" />
-        <option value="$PROJECT_DIR$/src/Domini/Rey.java" />
-        <option value="$PROJECT_DIR$/src/Domini/Peon.java" />
         <option value="$PROJECT_DIR$/src/Domini/DriverAlfil.java" />
         <option value="$PROJECT_DIR$/src/Domini/junitExecutor.java" />
         <option value="$PROJECT_DIR$/src/Domini/executor.java" />
@@ -272,16 +255,20 @@
         <option value="$PROJECT_DIR$/src/Domini/Problema.java" />
         <option value="$PROJECT_DIR$/src/Domini/Jugador.java" />
         <option value="$PROJECT_DIR$/src/Domini/Tablero.java" />
+        <option value="$PROJECT_DIR$/src/Domini/M2.java" />
         <option value="$PROJECT_DIR$/src/Domini/Movimiento.java" />
         <option value="$PROJECT_DIR$/src/Domini/Alfil.java" />
-        <option value="$PROJECT_DIR$/src/Domini/M2.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Peon.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Rey.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Torre.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Reina.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="141" />
+    <option name="x" value="157" />
     <option name="y" value="23" />
-    <option name="width" value="1779" />
+    <option name="width" value="1763" />
     <option name="height" value="970" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -326,7 +313,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="675" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558189978035" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558193196578" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -439,9 +426,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="141" y="23" width="1779" height="970" extended-state="0" />
+    <frame x="157" y="23" width="1763" height="970" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49658313" visible="true" weight="0.2084053" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49658313" weight="0.13485852" />
       <window_info id="Structure" order="1" sideWeight="0.50341684" side_tool="true" weight="0.17432532" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -626,13 +614,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/Estrategia.java" />
-    <entry file="file://$PROJECT_DIR$/src/Domini/EstrategiaCompleja.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/Evaluacion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
@@ -770,39 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Peon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Rey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Torre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Reina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#128#129#0" expanded="true" />
-            <element signature="e#166#167#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/Tablero.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -810,24 +758,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Pieza.java">
+    <entry file="file://$PROJECT_DIR$/src/Domini/EstrategiaCompleja.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/Alfil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="125" column="87" lean-forward="true" selection-start-line="125" selection-start-column="87" selection-end-line="125" selection-end-column="87" />
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/M2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
+        <state relative-caret-position="394">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -836,8 +777,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/Movimiento.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="59" column="31" lean-forward="true" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+        <state relative-caret-position="745">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Reina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#128#129#0" expanded="true" />
+            <element signature="e#166#167#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Torre.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Rey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="68" selection-start-line="63" selection-start-column="68" selection-end-line="63" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Peon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2265">
+          <caret line="153" column="56" selection-start-line="153" selection-start-column="56" selection-end-line="153" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Alfil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2805">
+          <caret line="189" column="56" selection-start-line="189" selection-start-column="56" selection-end-line="189" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Pieza.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>

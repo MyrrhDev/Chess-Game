@@ -88,12 +88,12 @@ public class Torre extends Pieza {
         --i;
         while(i >= 0 && !end) {
             if(estadoTablero[i][posY] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, posY);
+                Movimiento r = new Movimiento(this, posX, posY, i, posY);
                 listResult.add(r);
             }
             if(estadoTablero[i][posY] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][posY])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][posY]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][posY]);
                     listResult.add(r);
                     end = true;
                 }
@@ -107,12 +107,12 @@ public class Torre extends Pieza {
         ++j;
         while(j < 8 && !end) {
             if(estadoTablero[posX][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, posX, j);
+                Movimiento r = new Movimiento(this, posX, posY, posX, j);
                 listResult.add(r);
             }
             if(estadoTablero[posX][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX][j])) {
-                    Movimiento r = new Movimiento(posX, posY, posX, j, estadoTablero[posX][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, posX, j, estadoTablero[posX][j]);
                     listResult.add(r);
                     end = true;
                 }
@@ -127,12 +127,12 @@ public class Torre extends Pieza {
         ++i;
         while(i < 8 && !end) {
             if(estadoTablero[i][posY] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, posY);
+                Movimiento r = new Movimiento(this, posX, posY, i, posY);
                 listResult.add(r);
             }
             if(estadoTablero[i][posY] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][posY])) {
-                    Movimiento r = new Movimiento(posX, posY, i, posY, estadoTablero[i][posY]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, posY, estadoTablero[i][posY]);
                     listResult.add(r);
                     end = true;
                 }
@@ -147,12 +147,12 @@ public class Torre extends Pieza {
         --j;
         while(j >= 0 && !end) {
             if(estadoTablero[posX][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, posX, j);
+                Movimiento r = new Movimiento(this, posX, posY, posX, j);
                 listResult.add(r);
             }
             if(estadoTablero[posX][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX][j])) {
-                    Movimiento r = new Movimiento(posX, posY, posX, j, estadoTablero[posX][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, posX, j, estadoTablero[posX][j]);
                     listResult.add(r);
                     end = true;
                 }

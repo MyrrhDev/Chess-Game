@@ -12,27 +12,45 @@ public class Movimiento {
     private boolean sePuede;
 
 
+    //Para el sort:
+    private Pieza pieza;
+
+    public Pieza getPieza() {
+        return pieza;
+    }
+
+    public boolean isEsUnAtaque() {
+        return esUnAtaque;
+    }
+
+    private boolean esUnAtaque;
 
     /* Pre: Cierto
      * Post: Crea un nuevo objeto Movimiento con los parametros fromX, fromY, toX, toY
      * */
-    Movimiento(int fromX, int fromY, int toX, int toY) {
+    Movimiento(Pieza pieza, int fromX, int fromY, int toX, int toY) {
+        this.pieza = pieza;
         this.fromX = fromX;
         this.fromY = fromY;
         this.toX = toX;
         this.toY = toY;
         this.p = '-';
+
+        this.esUnAtaque = false;
     }
 
     /* Pre: Cierto
      * Post: Crea un nuevo objeto Movimiento con los parametros fromX, fromY, toX, toY y un char p
      * */
-    Movimiento(int fromX, int fromY, int toX, int toY, char p) {
+    Movimiento(Pieza pieza, int fromX, int fromY, int toX, int toY, char p) {
+        this.pieza = pieza;
         this.fromX = fromX;
         this.fromY = fromY;
         this.toX = toX;
         this.toY = toY;
         this.p = p;
+
+        this.esUnAtaque = true;
     }
 
     //Copied from Movimiento Prueba:

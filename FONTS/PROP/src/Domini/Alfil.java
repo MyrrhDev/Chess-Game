@@ -118,12 +118,12 @@ public class Alfil extends Pieza {
         ++j;
         while(i >= 0 && j < 8 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, j);
+                Movimiento r = new Movimiento(this, posX, posY, i, j);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][j]);
                     listResult.add(r);
                     end = true;
                 }
@@ -140,12 +140,12 @@ public class Alfil extends Pieza {
         ++j;
         while(i < 8 && j < 8 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, j);
+                Movimiento r = new Movimiento(this,posX, posY, i, j);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][j]);
                     listResult.add(r);
                     end = true;
                 }
@@ -161,12 +161,12 @@ public class Alfil extends Pieza {
         --j;
         while(i < 8 && j >= 0 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, j);
+                Movimiento r = new Movimiento(this, posX, posY, i, j);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][j]);
                     listResult.add(r);
                     end = true;
                 }
@@ -182,12 +182,12 @@ public class Alfil extends Pieza {
         --j;
         while(i >= 0 && j >= 0 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, j);
+                Movimiento r = new Movimiento(this,posX, posY, i, j);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][j]);
                     listResult.add(r);
                     end = true;
                 }

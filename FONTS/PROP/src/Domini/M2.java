@@ -49,8 +49,9 @@ public class M2 extends Maquina {
         //movimientosSorted = movimientos;
 
         Comparator<Movimiento> enJaquees = Comparator.comparing(movimiento -> tablero.movimientoHumano(movimiento));
-        Comparator<Movimiento> esUnAtaque = Comparator.comparing(movimiento -> tablero.movimientoHumano(movimiento));
-        Comparator<Movimiento> valorPieza = Comparator.comparingInt(movimiento -> movimiento.getToX());
+
+        Comparator<Movimiento> esUnAtaque = Comparator.comparing(movimiento -> movimiento.isEsUnAtaque());
+        Comparator<Movimiento> valorPieza = Comparator.comparingInt(movimiento -> movimiento.getPieza().getPts());
 
         movimientos.stream().sorted(enJaquees.thenComparing(esUnAtaque).thenComparing(valorPieza)).collect(Collectors.toList());
 
@@ -81,7 +82,6 @@ public class M2 extends Maquina {
                     menorPuntos = puntosAhora;
                     mejorMov = movimiento;
                 }
-//
             }
         }
         return mejorMov;
