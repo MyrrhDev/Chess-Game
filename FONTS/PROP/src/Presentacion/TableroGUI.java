@@ -36,35 +36,35 @@ public class TableroGUI {
 
 
 
-     private class BoardPanel extends JPanel {
-         final List<TilePanel> boardTiles;
+    private class BoardPanel extends JPanel {
+        final List<TilePanel> boardTiles;
 
-         BoardPanel() {
-             super(new GridLayout(8,8));
-             this.boardTiles = new ArrayList<>();
-             for(int i = 0; i < 64; ++i) {
-                 final TilePanel tilePanel = new TilePanel(this, i);
-                 this.boardTiles.add(tilePanel);
-                 add(tilePanel);
-             }
-             setPreferredSize(new Dimension(400, 350));
-             validate();
-         }
+        BoardPanel() {
+            super(new GridLayout(8,8));
+            this.boardTiles = new ArrayList<>();
+            for(int i = 0; i < 64; ++i) {
+                final TilePanel tilePanel = new TilePanel(this, i);
+                this.boardTiles.add(tilePanel);
+                add(tilePanel);
+            }
+            setPreferredSize(new Dimension(400, 350));
+            validate();
+        }
 
-         public void drawBoard(final char[] board) {
-             validate();
-             for(final TilePanel tlpan : boardTiles) {
-                 tlpan.drawTile(board);
-             }
-             validate();
-             repaint();
-         }
-     }
+        public void drawBoard(final char[] board) {
+            validate();
+            for(final TilePanel tlpan : boardTiles) {
+                tlpan.drawTile(board);
+            }
+            validate();
+            repaint();
+        }
+    }
 
-     private class TilePanel extends JPanel {
+    private class TilePanel extends JPanel {
         private final int tileId;
-         private Color lightTileColor = Color.decode("#FFFACD");
-         private Color darkTileColor = Color.decode("#593E1A");
+        private Color lightTileColor = Color.decode("#FFFACD");
+        private Color darkTileColor = Color.decode("#593E1A");
 
 
         TilePanel(final BoardPanel boardPanel, final int tileId) {
@@ -98,13 +98,13 @@ public class TableroGUI {
                                 @Override
                                 public void run() {
                                     char[] tablero = {'K', '0', '0', '0', 'n', '0', 'P', '0',
-                                                    '0', 'Q', '0', '0', '0', '0', '0', '0',
-                                                    '0', '0', '0', '0', 'P', '0', 'k', '0',
-                                                    '0', '0', 'P', '0', '0', '0', '0', '0',
-                                                    '0', '0', '0', '0', '0', 'Q', '0', '0',
-                                                    '0', '0', '0', '0', '0', '0', '0', '0',
-                                                    '0', '0', '0', '0', 'P', '0', '0', '0',
-                                                    '0', '0', 'K', '0', '0', '0', 'p', 'P'};
+                                            '0', 'Q', '0', '0', '0', '0', '0', '0',
+                                            '0', '0', '0', '0', 'P', '0', 'k', '0',
+                                            '0', '0', 'P', '0', '0', '0', '0', '0',
+                                            '0', '0', '0', '0', '0', 'Q', '0', '0',
+                                            '0', '0', '0', '0', '0', '0', '0', '0',
+                                            '0', 'Q', '0', '0', 'P', '0', '0', '0',
+                                            '0', '0', 'K', '0', '0', '0', 'p', 'P'};
                                     //aqui iria c.getTablero() y le pasaríamos ese tablero a la función drawBoard()
                                     boardPanel.drawBoard(tablero);
                                 }
@@ -136,17 +136,17 @@ public class TableroGUI {
 
         }
 
-         public void drawTile(final char[] board) {
-             assignTileColor();
-             assignTilePiceIcon(board);
-             validate();
-             repaint();
-         }
+        public void drawTile(final char[] board) {
+            assignTileColor();
+            assignTilePiceIcon(board);
+            validate();
+            repaint();
+        }
 
         //@TODO: OJO NO LI PUC PASSAR UN OBJECTE DEL DOMINI
-         private void assignTilePiceIcon(final char[] tablero) {
+        private void assignTilePiceIcon(final char[] tablero) {
             this.removeAll();
-             if(tablero[tileId] != '0') {
+            if(tablero[tileId] != '0') {
                 try {
                     final BufferedImage im = ImageIO.read(new File("./res/" + tablero[tileId] + ".gif"));
                     add(new JLabel(new ImageIcon(im)));
@@ -155,60 +155,60 @@ public class TableroGUI {
                     System.out.println(e);
                 }
             }
-         }
+        }
 
-         private boolean isFirstRow(int tileId) {
+        private boolean isFirstRow(int tileId) {
             if(tileId/8 == 0) return true;
             return false;
-         }
-
-         private boolean isSecondRow(int tileId) {
-             if(tileId/8 == 1) return true;
-             return false;
-         }
-
-         private boolean isThirdRow(int tileId) {
-             if(tileId/8 == 2) return true;
-             return false;
-         }
-
-         private boolean isFourthRow(int tileId) {
-             if(tileId/8 == 3) return true;
-             return false;
-         }
-
-         private boolean isFifthRow(int tileId) {
-             if(tileId/8 == 4) return true;
-             return false;
-         }
-
-
-         private boolean isSixthRow(int tileId) {
-             if(tileId/8 == 5) return true;
-             return false;
-         }
-
-         private boolean isSeventhRow(int tileId) {
-             if(tileId/8 == 6) return true;
-             return false;
-         }
-
-         private boolean isEightRow(int tileId) {
-             if(tileId/8 == 7) return true;
-             return false;
-         }
-
-
-         private void assignTileColor() {
-             if (isFirstRow(this.tileId) || isThirdRow(this.tileId) ||
-                     isFifthRow(this.tileId) || isSeventhRow(this.tileId)) {
-                 setBackground(this.tileId % 2 == 0 ? lightTileColor : darkTileColor);
-             } else if(isSecondRow(this.tileId) || isFourthRow(this.tileId) ||
-                     isSixthRow(this.tileId)  || isEightRow(this.tileId)) {
-                 setBackground(this.tileId % 2 != 0 ? lightTileColor : darkTileColor);
-             }
         }
-     }
+
+        private boolean isSecondRow(int tileId) {
+            if(tileId/8 == 1) return true;
+            return false;
+        }
+
+        private boolean isThirdRow(int tileId) {
+            if(tileId/8 == 2) return true;
+            return false;
+        }
+
+        private boolean isFourthRow(int tileId) {
+            if(tileId/8 == 3) return true;
+            return false;
+        }
+
+        private boolean isFifthRow(int tileId) {
+            if(tileId/8 == 4) return true;
+            return false;
+        }
+
+
+        private boolean isSixthRow(int tileId) {
+            if(tileId/8 == 5) return true;
+            return false;
+        }
+
+        private boolean isSeventhRow(int tileId) {
+            if(tileId/8 == 6) return true;
+            return false;
+        }
+
+        private boolean isEightRow(int tileId) {
+            if(tileId/8 == 7) return true;
+            return false;
+        }
+
+
+        private void assignTileColor() {
+            if (isFirstRow(this.tileId) || isThirdRow(this.tileId) ||
+                    isFifthRow(this.tileId) || isSeventhRow(this.tileId)) {
+                setBackground(this.tileId % 2 == 0 ? lightTileColor : darkTileColor);
+            } else if(isSecondRow(this.tileId) || isFourthRow(this.tileId) ||
+                    isSixthRow(this.tileId)  || isEightRow(this.tileId)) {
+                setBackground(this.tileId % 2 != 0 ? lightTileColor : darkTileColor);
+            }
+        }
+    }
 
     public static void main(String[] args)
     {

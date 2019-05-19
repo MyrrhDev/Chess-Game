@@ -46,14 +46,14 @@ public class persistenciaJugador {
         }
     }
 
-    public void guardarJugador(final String nombreJugador, final String contrasena) throws Exception {
+    public void guardarJugador(final String nombreJugador, final String password) throws Exception {
         File dir = new File(path);
         JSONArray rootA;
         if(dir.exists()) {
             File dbJugadores = new File(currentPath);
             JSONObject jo = new JSONObject();
             jo.put("nombre", nombreJugador);
-            jo.put("contraseña", contrasena);
+            jo.put("password", password);
             jo.put("partidasTotales", 0);
             jo.put("partidasGanadas", 0);
             JSONArray problemas = new JSONArray();
@@ -122,13 +122,13 @@ public class persistenciaJugador {
         return res;
     }
 
-    public boolean esLoginOk(final String nombreJugador, final String contrasena) throws Exception {
+    public boolean esLoginOk(final String nombreJugador, final String password) throws Exception {
         if(existeJugador(nombreJugador)) {
             JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.getJSONObject(i);
                 if(jo.get("nombre").equals(nombreJugador)) {
-                    if(jo.get("contrasena").equals(contrasena)) {
+                    if(jo.get("password").equals(password)) {
                         return true;
                     }
                     else return false;

@@ -4,25 +4,25 @@ import Domini.ctrl_dominio;
 
 import javax.swing.*;
 
-public class ranking {
+public class RankingGUI {
     private JTable Ranking;
     private JPanel panel1;
+    private JButton button1;
     // frame
     JFrame f;
     //test only
     private static ctrl_dominio cd;
 
 
-    ranking(String[][] data) {
+    RankingGUI(String[][] data) {
         // Frame initiallization
         f = new JFrame();
-
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Frame Title
         f.setTitle("Ranking");
 
         // Column Names
         String[] columnNames = { "Posición", "Jugador", "Puntuación" };
-
         // Initializing the JTable
         Ranking = new JTable(data, columnNames);
         //Ranking.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -44,6 +44,6 @@ public class ranking {
     public static void main(String[] args)
     {
         cd = ctrl_dominio.getInstance();
-        new ranking(cd.refrescarRanking());
+        new RankingGUI(cd.refrescarRanking());
     }
 }

@@ -1,6 +1,7 @@
 package Domini;
 
 import PersistenciaJSON.ctrl_persistencia;
+import Presentacion.TableroGUI;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,11 +29,47 @@ public class ctrl_dominio {
         return singleInstance;
     }
 
+
+    public static String[][] getProblemasDificultad(final String diff) {
+        ArrayList<ArrayList<String>> tmpres = controlPersistencia.getProblemasDificultad(diff);
+        String[][] result = new String[tmpres.size()][2];
+        for(int i = 0; i < tmpres.size(); ++i) {
+            for(int j = 0; j < tmpres.get(i).size(); ++j) {
+                result[i][0] = tmpres.get(i).get(0);
+                result[i][1] = tmpres.get(i).get(1);
+            }
+        }
+        return result;
+    }
+
+
+    public boolean verificarJugador(final String nombre, final String password) throws Exception {
+        try {
+            if(controlPersistencia.esLoginOk(nombre, password)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void registrarJugador(final String nombre, final String password) throws Exception {
+        try {
+            controlPersistencia.guardarJugador(nombre, password);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+
     /*
     Pre: Cierto
     Post: Tanto para jug1, como para jug2:
         Si jug = 1 -> Se crea una instancia de Persona
-        Si jug = 2 -> Se crea una instancia de Maquina
+        Si jug = 2 -> Se crea una instancia de M1
+        Si jug = 3 -> Se crea una instancia de M2
         j1EsBlanco detalla el color de piezas del jugador 1
      */
     public static void seleccionarJugadores(int jug1, int jug2, boolean j1EsBlanco) {

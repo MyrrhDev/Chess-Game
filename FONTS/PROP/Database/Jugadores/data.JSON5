@@ -19,7 +19,7 @@
     ],
     "partidasTotales": 0,
     "nombre": "pepito",
-    "contraseña": "test1"
+    "password": "test1"
   },
   {
     "partidasGanadas": 0,
@@ -34,6 +34,6 @@
     ],
     "partidasTotales": 0,
     "nombre": "menganito",
-    "contraseña": "test2"
+    "password": "test2"
   }
 ]

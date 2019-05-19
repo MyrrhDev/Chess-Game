@@ -97,6 +97,10 @@ public class ctrl_persistencia {
     public static void main(String[] args) {
     }
 
+    public static ArrayList<ArrayList<String>> getProblemasDificultad(final String dif) {
+        return dbProblemas.getProblemasDificultad(dif);
+    }
+
     public ArrayList<String> getTodosLosJugadores() {
         return dbJugadores.getTodosJugadores();
     }
