@@ -29,25 +29,25 @@ public class ctrl_persistencia {
         return singleInstance;
     }
 
-    public void guardarJugador(final String nombre, final String password) throws Exception {
+    public void guardarJugador(final String username, final String password) throws Exception {
         try {
-            dbJugadores.guardarJugador(nombre, password);
+            dbJugadores.guardarJugador(username, password);
         } catch(Exception e) {
             throw e;
         }
     }
 
-    public void guardarProblemaGanado(final String nombreJugador, final String FEN, final int N, final String vs, final String dificultad, final long tiempo) {
+    public void guardarProblemaGanado(final String username, final String FEN, final int N, final String vs, final String dificultad, final long tiempo) {
         try {
-            dbJugadores.guardarProblemasGanadosJugador(nombreJugador, FEN, N, dificultad, vs, tiempo);
+            dbJugadores.guardarProblemasGanadosJugador(username, FEN, N, dificultad, vs, tiempo);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public boolean esLoginOk(final String nombreJugador, final String password) throws Exception {
+    public boolean esLoginOk(final String username, final String password) throws Exception {
         try {
-            return dbJugadores.esLoginOk(nombreJugador, password);
+            return dbJugadores.esLoginOk(username, password);
         } catch (Exception e) {
             throw e;
         }

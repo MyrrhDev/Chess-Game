@@ -44,9 +44,9 @@ public class ctrl_dominio {
     }
 
 
-    public boolean verificarJugador(final String nombre, final String password) throws Exception {
+    public boolean verificarJugador(final String username, final String password) throws Exception {
         try {
-            if(controlPersistencia.esLoginOk(nombre, password)) {
+            if(controlPersistencia.esLoginOk(username, password)) {
                 return true;
             } else {
                 return false;
@@ -56,9 +56,9 @@ public class ctrl_dominio {
         }
     }
 
-    public void registrarJugador(final String nombre, final String password) throws Exception {
+    public void registrarJugador(final String username, final String password) throws Exception {
         try {
-            controlPersistencia.guardarJugador(nombre, password);
+            controlPersistencia.guardarJugador(username, password);
         } catch (Exception e) {
             throw e;
         }
