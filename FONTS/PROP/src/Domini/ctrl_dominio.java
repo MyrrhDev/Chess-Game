@@ -3,6 +3,7 @@ package Domini;
 import PersistenciaJSON.ctrl_persistencia;
 import Presentacion.TableroGUI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -50,7 +51,7 @@ public class ctrl_dominio {
             } else {
                 return false;
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw e;
         }
     }

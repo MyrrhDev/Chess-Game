@@ -69,7 +69,8 @@ public class persistenciaJugador {
                     bw.write(json);
                     bw.close();
                 }
-                catch(Exception e) {
+                catch(IOException e) {
+                    System.err.println("An IOException was caught :"+e.getMessage());
                     throw e;
                 }
             }

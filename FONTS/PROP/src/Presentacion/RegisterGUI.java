@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class RegisterGUI {
     private JPanel registerPanel;
@@ -24,20 +25,20 @@ public class RegisterGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        controlador_dominio = ctrl_dominio.getInstance();
 
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     controlador_dominio.registrarJugador(textField1.getText(), textField2.getText());
-                } catch (Exception exp) {
-                    JOptionPane.showMessageDialog(null, exp.getMessage());
+                } catch (Exception e1) {
+                    e1.printStackTrace();
                 }
 
                 JOptionPane.showMessageDialog(null, "¡Ya estas registrado!");
                 new MenuGUI();
                 frame.setVisible(false);
-
             }
         });
     }

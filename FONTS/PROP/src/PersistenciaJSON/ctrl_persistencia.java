@@ -29,9 +29,9 @@ public class ctrl_persistencia {
         return singleInstance;
     }
 
-    public void guardarJugador(final String nombre, final String contrasena) throws Exception {
+    public void guardarJugador(final String nombre, final String password) throws Exception {
         try {
-            dbJugadores.guardarJugador(nombre, contrasena);
+            dbJugadores.guardarJugador(nombre, password);
         } catch(Exception e) {
             throw e;
         }
@@ -45,9 +45,9 @@ public class ctrl_persistencia {
         }
     }
 
-    public boolean esLoginOk(final String nombreJugador, final String contrasena) throws Exception {
+    public boolean esLoginOk(final String nombreJugador, final String password) throws Exception {
         try {
-            return dbJugadores.esLoginOk(nombreJugador, contrasena);
+            return dbJugadores.esLoginOk(nombreJugador, password);
         } catch (Exception e) {
             throw e;
         }
