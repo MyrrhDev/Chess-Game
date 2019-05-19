@@ -11,28 +11,43 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JPanel;
+
 
 import static javax.swing.SwingUtilities.isLeftMouseButton;
 import static javax.swing.SwingUtilities.isRightMouseButton;
 
-public class TableroGUI {
+public class ProblemaGUI {
 
-    private final JFrame gameFrame;
-    private final BoardPanel boardPanel;
+    private JFrame gameFrame;
+    //private final JPanel boardPanel;
     private final String imgPiecesPath = "./res";
-    private final ctrl_dominio c;
+    private final ctrl_dominio controladorDom;
     private int sourceTile = -1;
     private int destinationTile = -1;
+    private JTextField textField1;
+    private JButton validarYGuardarButton;
+    private JButton validarButton;
+    private JPanel aquiTablero;
+    private JPanel problemaPanel;
+    private JPanel leftPanel;
+    private JButton loadButton;
+    private JButton menuButton;
+    private JPanel menuPanel;
 
-    public TableroGUI() {
-        c = ctrl_dominio.getInstance();
-        this.gameFrame = new JFrame("Chess Game");
-        this.gameFrame.setLayout(new BorderLayout());
-        this.gameFrame.setSize(new Dimension(600, 600));
-        this.boardPanel = new BoardPanel();
-        this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
-        this.gameFrame.setVisible(true);
+    public ProblemaGUI() {
+        controladorDom = ctrl_dominio.getInstance();
+        gameFrame = new JFrame("Logic - A Chess Game");
+        gameFrame.setContentPane(problemaPanel);
+        gameFrame.setLayout(new BorderLayout());
+        gameFrame.setSize(new Dimension(900, 700));
+        aquiTablero = new BoardPanel();
+        gameFrame.add(menuPanel, BorderLayout.NORTH);
+        gameFrame.add(aquiTablero, BorderLayout.CENTER);
+        gameFrame.add(leftPanel, BorderLayout.EAST);
+        gameFrame.setVisible(true);
     }
+
 
 
 
@@ -72,7 +87,7 @@ public class TableroGUI {
             this.tileId = tileId;
             setPreferredSize(new Dimension(10, 10));
             assignTileColor();
-            assignTilePiceIcon(c.getTablero());
+            assignTilePiceIcon(controladorDom.getTablero());
 
             addMouseListener(new MouseListener() {
                 @Override
@@ -90,7 +105,7 @@ public class TableroGUI {
                             destinationTile = tileId;
                             System.out.println("segundo click " + tileId + " x " + tileId/8 + " y " + tileId%8 + " destinationTile: " + destinationTile);
                             try {
-                                //c.jugar(1,1,1,1);
+                                //controladorDom.jugar(1,1,1,1);
                             } catch (Exception e1) {
                                 e1.printStackTrace();
                             }
@@ -105,7 +120,7 @@ public class TableroGUI {
                                             '0', '0', '0', '0', '0', '0', '0', '0',
                                             '0', 'Q', '0', '0', 'P', '0', '0', '0',
                                             '0', '0', 'K', '0', '0', '0', 'p', 'P'};
-                                    //aqui iria c.getTablero() y le pasaríamos ese tablero a la función drawBoard()
+                                    //aqui iria controladorDom.getTablero() y le pasaríamos ese tablero a la función drawBoard()
                                     boardPanel.drawBoard(tablero);
                                 }
                             });
@@ -227,7 +242,13 @@ public class TableroGUI {
 
     public static void main(String[] args)
     {
-        new TableroGUI();
+        new ProblemaGUI();
     }
+
+
+
+
+
+
 
 }
