@@ -35,7 +35,7 @@ public class MenuGUI {
         rankingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new RankingGUI(new String[][] {{"1", "pepe", "pepeee"}});
+                new RankingGUI();
                 jf.setVisible(false);
             }
         });

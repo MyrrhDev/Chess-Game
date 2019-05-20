@@ -4,14 +4,9 @@ import Domini.ctrl_dominio;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 public class JugarMenuGUI {
     private JPanel menuJugarPanel;
@@ -29,9 +24,9 @@ public class JugarMenuGUI {
     private static JFrame jframeMain;
     private String diff;
     private boolean problemasBuscados = false;
+    private JFrame jf;
 
     public JugarMenuGUI() {
-        JFrame jf;
         jf = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
         jf.setSize(600, 600);
         jf.setContentPane(menuJugarPanel);
@@ -55,6 +50,8 @@ public class JugarMenuGUI {
                     problemasBuscados = true;
                     diff = String.valueOf(dificultadMenu.getSelectedItem());
                     String[][] resultProblemas = buscarProblemas(String.valueOf(dificultadMenu.getSelectedItem()));
+                    //resultProblemas[0] Fen
+                    //resultProblemas[1] N
                     addProblemasToTable(resultProblemas);
                 }
                 else if(problemasBuscados && diff.equals((String)dificultadMenu.getSelectedItem())) {
@@ -78,6 +75,7 @@ public class JugarMenuGUI {
                 table1.setModel(model);
                 table1.getColumnModel().getColumn(0).sizeWidthToFit();
                 table1.getColumnModel().getColumn(1).sizeWidthToFit();
+                table1.setRowSelectionAllowed(true);
             }
 
             @Override
@@ -112,7 +110,49 @@ public class JugarMenuGUI {
                     jferror.pack();
                     jferror.setVisible(true);
                 }
-                else System.out.println(dificultadMenu.getSelectedItem() + " " + table1.getValueAt(table1.getSelectedRow(), table1.getSelectedColumn()) + " " + jugadores.getSelectedItem());
+                else {
+                    //extract N value from string
+                    int n = Integer.parseInt((String)table1.getValueAt(table1.getSelectedRow(), 1));
+                    //extract FEN value from string
+                    String FEN = (String)table1.getValueAt(table1.getSelectedRow(), 0);
+                    String jugadoresSeleccionados = (String)jugadores.getSelectedItem();
+                    String [] jugadoresSeleccionadosSplit = jugadoresSeleccionados.split(" ");
+                    String player1 = jugadoresSeleccionadosSplit[0], player2 = jugadoresSeleccionadosSplit[2];
+                    int playerId1 = 0, playerId2 = 0;
+                    switch(player1) {
+                        case "H1":
+                            playerId1 = 1;
+                            break;
+                        case "H2":
+                            playerId1 = 1;
+                            break;
+                        case "M1":
+                            playerId1 = 2;
+                            break;
+                        case "M2":
+                            playerId1 = 3;
+                            break;
+                    }
+                    switch(player2) {
+                        case "H1":
+                            playerId2 = 1;
+                            break;
+                        case "H2":
+                            playerId2 = 1;
+                            break;
+                        case "M1":
+                            playerId2 = 2;
+                            break;
+                        case "M2":
+                            playerId2 = 3;
+                            break;
+                    }
+                    //creamos una partida con los datos seleccionados
+                    ctrl_dominio.getInstance().crearPartida(FEN, n, playerId1, playerId2);
+                    System.out.println(dificultadMenu.getSelectedItem() + " FEN:  " + FEN + " N: " + n + " playerId1: "+ playerId1 + " playerId2: " + playerId2 + " " + jugadores.getSelectedItem());
+                    jf.setVisible(false);
+                    new JugarPartidaGUI(jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2], n);
+                }
             }
 
             @Override
@@ -189,6 +229,7 @@ public class JugarMenuGUI {
         table1.getColumnModel().getColumn(0).sizeWidthToFit();
         table1.getColumnModel().getColumn(1).sizeWidthToFit();
         table1.setSize(200, 300);
+        table1.setRowSelectionAllowed(true);
         scrollPane1.add(table1);
     }
 }

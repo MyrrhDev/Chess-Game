@@ -3,47 +3,69 @@ package Presentacion;
 import Domini.ctrl_dominio;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class RankingGUI {
-    private JTable Ranking;
+    private JTable rankingTable;
     private JPanel panel1;
-    private JButton button1;
-    // frame
-    JFrame f;
-    //test only
+    private JButton atrasButton;
+    private JScrollPane scrollPane1;
+    JFrame frame;
     private static ctrl_dominio cd;
 
 
-    RankingGUI(String[][] data) {
-        // Frame initiallization
-        f = new JFrame();
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Frame Title
-        f.setTitle("Ranking");
+    RankingGUI() {
+        frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Logic: Entorno de resolución de problemas de ajedrez");
+        frame.setContentPane(panel1);
+        frame.setSize(600, 300);
+        frame.setVisible(true);
+        atrasButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new MenuGUI();
+                frame.setVisible(false);
+            }
 
-        // Column Names
-        String[] columnNames = { "Posición", "Jugador", "Puntuación" };
-        // Initializing the JTable
-        Ranking = new JTable(data, columnNames);
-        //Ranking.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        Ranking.getColumnModel().getColumn(0).sizeWidthToFit();
-        Ranking.getColumnModel().getColumn(1).sizeWidthToFit();
-        Ranking.getColumnModel().getColumn(2).sizeWidthToFit();
+            @Override
+            public void mousePressed(MouseEvent e) {
 
-        Ranking.setBounds(30, 40, 200, 300);
+            }
 
-        // adding it to JScrollPane
-        JScrollPane sp = new JScrollPane(Ranking);
-        f.add(sp);
-        // Frame Size
-        f.setSize(600, 300);
-        // Frame Visible = true
-        f.setVisible(true);
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 
     public static void main(String[] args)
     {
+        new RankingGUI();
+    }
+
+    private void createUIComponents() {
         cd = ctrl_dominio.getInstance();
-        new RankingGUI(cd.refrescarRanking());
+        String[][] data = cd.refrescarRanking();
+        String[] columnNames = { "Posición", "Jugador", "Puntuación" };
+        scrollPane1 = new JScrollPane();
+        rankingTable = new JTable(data, columnNames);
+        rankingTable.getColumnModel().getColumn(0).sizeWidthToFit();
+        rankingTable.getColumnModel().getColumn(1).sizeWidthToFit();
+        rankingTable.getColumnModel().getColumn(2).sizeWidthToFit();
+        scrollPane1.add(rankingTable);
     }
 }

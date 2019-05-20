@@ -35,5 +35,12 @@
     "partidasTotales": 0,
     "nombre": "menganito",
     "contraseña": "test2"
+  },
+  {
+    "partidasGanadas": 0,
+    "problemas": [],
+    "partidasTotales": 0,
+    "nombre": "hola",
+    "contraseña": "adeu"
   }
 ]

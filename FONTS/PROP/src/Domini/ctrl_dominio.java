@@ -29,13 +29,29 @@ public class ctrl_dominio {
         return singleInstance;
     }
 
+    public boolean isJ1EnJaqueMate() {
+        return j1.isEnJaqueMate();
+    }
+
+    public boolean isJ2EnJaqueMate() {
+        return j2.isEnJaqueMate();
+    }
+
+    public boolean isJ1EnMate() {
+        return j1.isEnMate();
+    }
+
+    public boolean isJ2EnMate() {
+        return j2.isEnMate();
+    }
+
     public static String[][] getProblemasDificultad(final String diff) {
         ArrayList<ArrayList<String>> tmpres = cp.getProblemasDificultad(diff);
         String[][] result = new String[tmpres.size()][2];
         for(int i = 0; i < tmpres.size(); ++i) {
             for(int j = 0; j < tmpres.get(i).size(); ++j) {
-                result[i][0] = tmpres.get(i).get(0);
-                result[i][1] = tmpres.get(i).get(1);
+                result[i][0] = tmpres.get(i).get(0); //FEN
+                result[i][1] = tmpres.get(i).get(1); //N
             }
         }
         return result;
@@ -136,6 +152,7 @@ public class ctrl_dominio {
             }
         }
         else if(j1.isEnJaqueMate()) {
+            System.out.println("jaque mate j1");
             if(j2 instanceof Persona) {
                 tfin = new Date().getTime();
                 tpartida = tfin - tini;
@@ -153,6 +170,7 @@ public class ctrl_dominio {
             throw e;
         }
         else if(j2.isEnJaqueMate()) {
+            System.out.println("jaque mate j2");
             if(j1 instanceof Persona) {
                 tfin = new Date().getTime();
                 tpartida = tfin - tini;
@@ -172,19 +190,16 @@ public class ctrl_dominio {
     }
 
     public char[] getTablero() {
-        //return t.getTablero();
-
-        //For testing pruposes
-        char[] tablero = {'K', '0', '0', '0', 'n', '0', 'P', '0',
-                            '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', '0', '0', '0', 'P', '0', 'k', '0',
-                            '0', '0', 'P', '0', '0', '0', '0', '0',
-                            '0', '0', '0', '0', '0', 'Q', '0', '0',
-                            '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', 'Q', '0', '0', 'P', '0', '0', '0',
-                            '0', '0', 'K', '0', '0', '0', 'p', 'P'};
-        return tablero;
-
+        char[][] tmpTablero = t.getTablero();
+        char[] tableroArray = new char[64];
+        int count = 0;
+        for(int i = 0; i < 8; ++i) {
+            for(int j = 0; j < 8; ++j) {
+                tableroArray[count] = tmpTablero[i][j];
+                ++count;
+            }
+        }
+        return tableroArray;
     }
 
     public Jugador getJ1() {
@@ -204,12 +219,14 @@ public class ctrl_dominio {
             tini = new Date().getTime();
         }
         if (!j1.isEnJaqueMate() && !j2.isEnJaqueMate()) {
+            System.out.println("nadie en jaque mate");
             Movimiento m = new Movimiento(posX, posY, movX, movY);
             if ((j1.isEsNegro() && !t.getTurnoBlancas()) || (!j1.isEsNegro() && t.getTurnoBlancas())) {
                 try {
                     t = j1.jugar(t, m);
                     t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch (Exception e) {
+                    e.printStackTrace();
                     throw e;
                 }
             } else if ((j2.isEsNegro() && !t.getTurnoBlancas()) || (!j2.isEsNegro() && t.getTurnoBlancas())) {
@@ -217,11 +234,13 @@ public class ctrl_dominio {
                     t = j2.jugar(t, m);
                     t.setTurnoBlancas(!t.getTurnoBlancas());
                 } catch (Exception e) {
+                    e.printStackTrace();
                     throw e;
                 }
 
             }
-        } else {
+        }
+        else {
             Exception e = new Exception("H1 en Mate");
             throw e;
         }
@@ -262,6 +281,11 @@ public class ctrl_dominio {
 
     public static void main(String[] args) {
         cp = ctrl_persistencia.getInstance();
+        try {
+            cp.guardarJugador("hola", "adeu");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /*try {
             cp.guardarJugador("pepito", "test1");
         } catch (Exception e) {
