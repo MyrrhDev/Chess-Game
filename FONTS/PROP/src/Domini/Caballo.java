@@ -56,8 +56,9 @@ public class Caballo extends Pieza {
      * Post: La funcion devuelve un array con todos los movimientos posibles del parametro implicito
      */
     @Override
-    ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]) {
-        //int posX = this.posX, posY = this.posY;
+    ArrayList<Movimiento> movimientosPosibles(Tablero tablero) {
+
+        final char estadoTablero[][] = tablero.getTablero();
         ArrayList<Movimiento> listResult = new ArrayList<>();
         final int movPos[][] = {{-2, -1}, {-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}};
         final int sizei = 8, sizej = 2;
@@ -65,12 +66,12 @@ public class Caballo extends Pieza {
             int moveX = posX + movPos[i][0], moveY = posY + movPos[i][1];
             if(moveX >= 0 & moveX < 8 & moveY >= 0 & moveY < 8) {
                 if(estadoTablero[moveX][moveY] == '0') {
-                    Movimiento r = new Movimiento(this.posX, this.posY, moveX, moveY);
+                    Movimiento r = new Movimiento(this, this.posX, this.posY, moveX, moveY, tablero);
                     listResult.add(r);
                 }
                 else if(estadoTablero[moveX][moveY] != '0') {
                     if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[moveX][moveY])) {
-                        Movimiento r = new Movimiento(this.posX, this.posY, moveX, moveY, estadoTablero[moveX][moveY]);
+                        Movimiento r = new Movimiento(this, this.posX, this.posY, moveX, moveY, estadoTablero[moveX][moveY], tablero);
                         listResult.add(r);
                     }
                 }

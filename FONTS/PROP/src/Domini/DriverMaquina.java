@@ -102,13 +102,13 @@ public class DriverMaquina {
                         else if (s.equals("false")) { estaAtacando = false;}
                         else System.out.println("Valor incorrecto.");
                     } else System.out.println("Valor incorrecto.");
-                    m = new Maquina(false, esNegraInput, estaAtacando);
+                    //m = new Maquina(false, esNegraInput, estaAtacando);
                     System.out.println("Maquina correctamente creada");
                     break;
                 case 2:
                     if(m != null) {
                         System.out.println("Para verificar la funcion Jugar, de la clase maquina, debemos primero crear un tablero");
-                        m2 = new Maquina(false, !esNegraInput, false);
+                        //m2 = new Maquina(false, !esNegraInput, false);
                         t = new Tablero(m, m2);
                         System.out.println("Introduce un FEN para poblar el tablero");
                         s = sc.nextLine();

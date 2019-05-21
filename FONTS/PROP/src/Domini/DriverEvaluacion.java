@@ -46,8 +46,8 @@ public class DriverEvaluacion {
                     System.out.println("Objeto Evaluacion creado!");
                     break;
                 case 2:
-                    jugador2 = new Maquina(true,false, false);
-                    jugador1 = new Maquina(true, true, true);
+                    jugador2 = new M1(true,false);
+                    jugador1 = new M1(true, true);
                     tablero = new Tablero(jugador1,jugador2);
                     System.out.println("Inserte el codigo FEN!");
                     String fen = "";
@@ -84,8 +84,8 @@ public class DriverEvaluacion {
                     System.out.println("Puntos de la evaluacion: " + eval.evaluar(tablero,p.getN()));
                     break;
                 case 5 :
-                    jugador2 = new Maquina(true,false, true);
-                    jugador1 = new Maquina(true, true, false);
+                    jugador2 = new M1(true,false);
+                    jugador1 = new M1(true, true);
                     tablero = new Tablero(jugador1,jugador2);
                     tablero.FENToTablero(p.getFEN(), p.getIniJuegoBlancas());
                     System.out.println("Puntos de la evaluacion: " + eval.evaluar(tablero,p.getN()));

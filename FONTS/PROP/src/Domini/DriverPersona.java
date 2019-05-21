@@ -102,13 +102,13 @@ public class DriverPersona {
                         else if (s.equals("false")) { estaAtacando = false;}
                         else System.out.println("Valor incorrecto.");
                     } else System.out.println("Valor incorrecto.");
-                    p = new Persona(false, esNegraInput, estaAtacando);
+                    p = new Persona(false, estaAtacando);
                     System.out.println("Persona correctamente creada");
                     break;
                 case 2:
                     System.out.println("Controlas las piezas negras.");
-                    p = new Persona(false, false, true);
-                    p2 = new Persona(false, true, false);
+                    p = new Persona(false, false);
+                    p2 = new Persona(false, true);
                     System.out.println("Para verificar la funcion Jugar, de la clase Persona, debemos primero crear un tablero");
                     t = new Tablero(p, p2);
                     System.out.println("Introduce un FEN para poblar el tablero");
@@ -128,9 +128,9 @@ public class DriverPersona {
                     pintaTablero();
                     System.out.println("Introduce el movimiento de la pieza: posX pieza, posY pieza, moveX, movY");
                     String tmp[] = sc.nextLine().split(" ");
-                    Movimiento m = new Movimiento(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
+                    //Movimiento m = new Movimiento(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]), Integer.parseInt(tmp[2]), Integer.parseInt(tmp[3]));
                     try {
-                        p.jugar(t, m);
+                        //p.jugar(t, m);
                     }catch(Exception e) {}
                     System.out.println("Movimiento:");
                     pintaTablero();

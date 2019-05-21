@@ -18,8 +18,8 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
 
 public class JugarPartidaGUI {
     private JPanel panel1;
-    private JRadioButton turnoJugador2;
-    private JRadioButton turnoJugador1;
+    private JRadioButton radioButtonTurnoJugador2;
+    private JRadioButton radioButtonTurnoJugador1;
     private JPanel tableroPlace;
     private JPanel panelmain;
     private JLabel tiempoLabel;
@@ -32,8 +32,10 @@ public class JugarPartidaGUI {
     private Cronometro cronometro;
     private String jugador1 = "";
     private String jugador2 = "";
-    private int n;
+    private int nJugador2;
+    private int nJugador1;
     private BoardPanel boardPanel;
+    private boolean turnoJugador1 = true, turnoJugador2 = false;
 
     public JugarPartidaGUI(String jugador1, String jugador2, int n) {
         frame = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
@@ -44,29 +46,60 @@ public class JugarPartidaGUI {
         frame.setVisible(true);
         cronometro = new Cronometro();
         Thread threadCronometro = new Thread(cronometro);
-        this.n = n;
+        this.nJugador1 = n;
+        this.nJugador2 = n;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         if(this.jugador1.equals("H1")) jugadorblanco.setText("get ctrl persist");
         else jugadorblanco.setText("Jugador: " + jugador1);
         if(this.jugador2.equals("H1")) jugadornegro.setText("get ctrl persist");
         else jugadornegro.setText("Jugador: " + jugador2);
-        turnoJugador1.setSelected(true);
-        turnoJugador2.setSelected(false);
-        if(jugador1.equals("M1") || jugador1.equals("M2") || jugador2.equals("M1") || jugador2.equals("M2")) jugar();
+        radioButtonTurnoJugador1.setSelected(true);
+        radioButtonTurnoJugador2.setSelected(false);
+        /*if((jugador1.equals("M1") && jugador2.equals("M1")) || (jugador1.equals("M1") && jugador2.equals("M2")) || (jugador1.equals("M2") && jugador2.equals("M1")) || (jugador1.equals("M2") && jugador2.equals("M2"))) {
+            jugarMaquinas();
+        }*/
+        if((jugador1.equals("M1") || jugador1.equals("M2")) && !(jugador2.equals("M1") || jugador2.equals("M2")) ||
+                (jugador2.equals("M1") || jugador2.equals("M2")) && !(jugador1.equals("M1") || jugador1.equals("M2"))) jugar();
+    }
+
+    public int getnJugador2() {
+        return nJugador2;
+    }
+
+    public int getnJugador1() {
+        return nJugador1;
     }
 
     public void jugar() {
         System.out.println("jugar");
-        try {
-            char[] tableroAntes = ctrl_dominio.getInstance().getTablero();
-            ctrl_dominio.getInstance().jugar(n);
-            char[] tableroDespues = ctrl_dominio.getInstance().getTablero();
-            if(Arrays.equals(tableroAntes, tableroDespues)) System.out.println("iguales");
-            else System.out.println("distintos");
-            this.boardPanel.drawBoard(tableroDespues);
-        } catch(Exception e) {
-            e.printStackTrace();
+        if(((this.jugador1.equals("M1") || this.jugador1.equals("M2")) && turnoJugador1 && nJugador1 > 0)  ||
+                ((this.jugador2.equals("M1") || this.jugador2.equals("M2")) && turnoJugador2 && nJugador2 > 0)) { //si j1 es maquina i es turno j1 o si j2 es maquina i es turno de j2
+            System.out.println("dentro " + nJugador1 + " " + nJugador2);
+            try {
+                char[] tableroAntes = ctrl_dominio.getInstance().getTablero();
+                if(turnoJugador1) ctrl_dominio.getInstance().jugar(nJugador1);
+                else if(turnoJugador2) ctrl_dominio.getInstance().jugar(nJugador2);
+                char[] tableroDespues = ctrl_dominio.getInstance().getTablero();
+                if (Arrays.equals(tableroAntes, tableroDespues)) System.out.println("iguales");
+                else System.out.println("distintos");
+                if((this.jugador1.equals("M1") || this.jugador1.equals("M2")) && turnoJugador1) --nJugador1;
+                else if((this.jugador2.equals("M1") || this.jugador2.equals("M2")) && turnoJugador2) --nJugador2;
+                if (radioButtonTurnoJugador1.isSelected()) {
+                    radioButtonTurnoJugador1.setSelected(false);
+                    turnoJugador1 = false;
+                    radioButtonTurnoJugador2.setSelected(true);
+                    turnoJugador2 = true;
+                } else {
+                    radioButtonTurnoJugador2.setSelected(false);
+                    turnoJugador2 = false;
+                    radioButtonTurnoJugador1.setSelected(true);
+                    turnoJugador1 = true;
+                }
+                boardPanel.drawBoard(ctrl_dominio.getInstance().getTablero());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -108,12 +141,17 @@ public class JugarPartidaGUI {
         private Color darkTileColor = Color.decode("#593E1A");
 
 
+        public void printTablero(char[] tablero) {
+            //System.out.println(Arrays.toString(tablero));
+        }
+
         TilePanel(final BoardPanel boardPanel, final int tileId) {
             super(new GridBagLayout());
             this.tileId = tileId;
             setPreferredSize(new Dimension(10, 10));
             assignTileColor();
             assignTilePiceIcon(ctrl_dominio.getInstance().getTablero());
+            printTablero(ctrl_dominio.getInstance().getTablero());
 
             addMouseListener(new MouseListener() {
                 @Override
@@ -132,33 +170,38 @@ public class JugarPartidaGUI {
                             try {
                                 if(esMovimientoGUIOk(sourceTile)) {
                                     ctrl_dominio.getInstance().jugar(sourceTile / 8, sourceTile % 8, destinationTile / 8, destinationTile % 8);
-                                    if(turnoJugador1.isSelected()) {
-                                        turnoJugador1.setSelected(false);
-                                        turnoJugador2.setSelected(true);
+                                    if(radioButtonTurnoJugador1.isSelected()) {
+                                        radioButtonTurnoJugador1.setSelected(false);
+                                        --nJugador1;
+                                        turnoJugador1 = false;
+                                        radioButtonTurnoJugador2.setSelected(true);
+                                        turnoJugador2 = true;
                                     }
                                     else {
-                                        turnoJugador2.setSelected(false);
-                                        turnoJugador1.setSelected(true);
-                                        --n;
-                                        if(n == 0) { //fin de la partida
-                                            cronometro.pararCronometro();
-                                            //verificamos quien gana: J1 si J2 está en mate o J2 si no está en mate
-                                            if(ctrl_dominio.getInstance().isJ2EnJaqueMate()) {
-                                                JFrame jframeWinner = new JFrame();
-                                                JLabel errorText = new JLabel("TODO: Hacer get nombre H1: Ha ganado!!");
-                                                jframeWinner.add(errorText);
-                                                jframeWinner.setSize(new Dimension(300, 100));
-                                                jframeWinner.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                                                jframeWinner.setVisible(true);
-                                            }
-                                            else {
-                                                JFrame jframeWinner = new JFrame();
-                                                JLabel errorText = new JLabel("TODO: Hacer get nombre H2: Ha ganado!!");
-                                                jframeWinner.add(errorText);
-                                                jframeWinner.setSize(new Dimension(300, 100));
-                                                jframeWinner.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                                                jframeWinner.setVisible(true);
-                                            }
+                                        radioButtonTurnoJugador2.setSelected(false);
+                                        turnoJugador2 = false;
+                                        radioButtonTurnoJugador1.setSelected(true);
+                                        turnoJugador1 = true;
+                                        --nJugador2;
+                                        }
+                                    if(nJugador1 == 0) { //fin de la partida
+                                        cronometro.pararCronometro();
+                                        //verificamos quien gana: J1 si J2 está en mate o J2 si no está en mate
+                                        if(ctrl_dominio.getInstance().isJ2EnJaqueMate()) {
+                                            JFrame jframeWinner = new JFrame();
+                                            JLabel errorText = new JLabel("TODO: Hacer get nombre H1: Ha ganado!!");
+                                            jframeWinner.add(errorText);
+                                            jframeWinner.setSize(new Dimension(300, 100));
+                                            jframeWinner.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                            jframeWinner.setVisible(true);
+                                        }
+                                        else {
+                                            JFrame jframeWinner = new JFrame();
+                                            JLabel errorText = new JLabel("TODO: Hacer get nombre H2: Ha ganado!!");
+                                            jframeWinner.add(errorText);
+                                            jframeWinner.setSize(new Dimension(300, 100));
+                                            jframeWinner.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                            jframeWinner.setVisible(true);
                                         }
                                     }
                                 }
@@ -180,6 +223,7 @@ public class JugarPartidaGUI {
                                     jerror.setSize(new Dimension(300, 100));
                                     jerror.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                                     jerror.setVisible(true);
+                                    e1.printStackTrace();
                                 }
                                 else e1.printStackTrace();
                             }
@@ -236,7 +280,7 @@ public class JugarPartidaGUI {
                     } else if(tablero[tileId] == 'Q') {
                         im = ImageIO.read(new File("./res/Queen.gif"));
                     } else if(tablero[tileId] == 'R') {
-                        im = ImageIO.read(new File("./res/Rook.gif"));
+                        im = ImageIO.read(new File("./res/Rock.gif"));
                     } else if(tablero[tileId] == 'N') {
                         im = ImageIO.read(new File("./res/Norse.gif"));
                     } else {

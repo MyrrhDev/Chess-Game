@@ -7,27 +7,96 @@ public class Movimiento {
     private int toY;
     private char p;
 
+    //Copied from Movimiento Prueba:
+    private Tablero aTablero;
+    private boolean sePuede;
+
+
+    //Para el sort:
+    private Pieza pieza;
+
+    public Pieza getPieza() {
+        return pieza;
+    }
+
+    public boolean isEsUnAtaque() {
+        return esUnAtaque;
+    }
+
+    private boolean esUnAtaque;
+
     /* Pre: Cierto
      * Post: Crea un nuevo objeto Movimiento con los parametros fromX, fromY, toX, toY
      * */
-    Movimiento(int fromX, int fromY, int toX, int toY) {
+    Movimiento(Pieza pieza, int fromX, int fromY, int toX, int toY, Tablero tablero) {
+        this.pieza = pieza;
         this.fromX = fromX;
         this.fromY = fromY;
         this.toX = toX;
         this.toY = toY;
         this.p = '-';
+
+        this.esUnAtaque = false;
+        this.aTablero = tablero;
     }
 
     /* Pre: Cierto
      * Post: Crea un nuevo objeto Movimiento con los parametros fromX, fromY, toX, toY y un char p
      * */
-    Movimiento(int fromX, int fromY, int toX, int toY, char p) {
+    Movimiento(Pieza pieza, int fromX, int fromY, int toX, int toY, char p, Tablero tablero) {
+        this.pieza = pieza;
         this.fromX = fromX;
         this.fromY = fromY;
         this.toX = toX;
         this.toY = toY;
         this.p = p;
+
+        this.esUnAtaque = true;
+        this.aTablero = tablero;
+
     }
+
+    //Copied from Movimiento Prueba:
+    /* Pre: Cierto
+     * Post: Devuelve el Tablero al que el movimiento hecho nos lleva del parametro implicito
+     */
+    public Tablero getaTablero() {
+        return aTablero;
+    }
+
+    /* Pre: Cierto
+     * Post: Devuelve el boolean si el Movimiento del parametro implicito dado se puede hacer
+     */
+    public boolean isSePuede() {
+        return sePuede;
+    }
+
+    //MovimientoPrueba
+    Movimiento(int fromX, int fromY, int toX, int toY, Tablero aTablero, boolean sePuede) {
+        this.fromX = fromX;
+        this.fromY = fromY;
+        this.toX = toX;
+        this.toY = toY;
+        this.p = '-';
+
+        this.sePuede = sePuede;
+        this.aTablero = aTablero;
+    }
+
+//
+//    Movimiento(int fromX, int fromY, int toX, int toY, char p, Tablero aTablero) {
+//        this.fromX = fromX;
+//        this.fromY = fromY;
+//        this.toX = toX;
+//        this.toY = toY;
+//        this.p = p;
+//
+//        this.aTablero = aTablero;
+//    }
+
+
+
+
 
     /* Pre: Cierto
      * Post: Devuelve un Tablero editado con el nuevo movimiento

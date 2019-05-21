@@ -157,7 +157,7 @@ public class DriverTorre {
                     System.out.println("Introduce el movimiento a realizar (posicion inicial de la pieza y posicion final, separado por un espacio)");
                     String tmp = sc.nextLine();
                     String aux[] = tmp.split(" ");
-                    Movimiento m = new Movimiento(Integer.parseInt(aux[0]), Integer.parseInt(aux[1]), Integer.parseInt(aux[2]), Integer.parseInt(aux[3]));
+                    //Movimiento m = new Movimiento(Integer.parseInt(aux[0]), Integer.parseInt(aux[1]), Integer.parseInt(aux[2]), Integer.parseInt(aux[3]));
                     Pieza test = null;
                     if(Character.isUpperCase(estadoTablero[Integer.parseInt(aux[0])][Integer.parseInt(aux[1])])) { //pieza blanca
                         for(int i = 0; i < PiezasBlancas.size(); ++i) {
@@ -175,8 +175,8 @@ public class DriverTorre {
                     else {
                         System.out.println("Que resultado esperas (true/false)?");
                         boolean resEsperado = Boolean.parseBoolean(sc.nextLine());
-                        if(resEsperado == test.esMovimientoOk(m, estadoTablero)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
-                        else System.out.println("Fallo en el test");
+                        /*if(resEsperado == test.esMovimientoOk(m, estadoTablero)) System.out.println(ANSI_RED + "Test completado con exito"+ ANSI_RESET);
+                        else System.out.println("Fallo en el test");*/
                     }
                     System.out.println();
                     break;
@@ -202,10 +202,10 @@ public class DriverTorre {
                     }
                     else {
                         System.out.println("Estos son todos los posibles movimientos de la pieza Caballo:");
-                        ArrayList<Movimiento> res = test2.movimientosPosibles(estadoTablero);
+                        /*ArrayList<Movimiento> res = test2.movimientosPosibles(estadoTablero);
                         for(int i = 0; i < res.size(); ++i) {
                             System.out.println("("+ "FromX: " + res.get(i).getFromX() + " FromY: " + res.get(i).getFromY() + " ToX: " + res.get(i).getToX() + " ToY: " + res.get(i).getToY() + " Pieza: " + res.get(i).getP() +")");
-                        }
+                        }*/
                     }
                     break;
                 case 5:

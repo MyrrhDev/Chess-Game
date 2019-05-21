@@ -1,7 +1,6 @@
 package Domini;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Reina extends Pieza {
 
@@ -84,7 +83,7 @@ public class Reina extends Pieza {
      * Pre: Cierto
      * Post: Verifica que el movimiento diagonal sea correcto
      */
-    boolean movimientoDiagonalOK(final Movimiento m, final char estadoTablero[][]) {
+    boolean movimientoDiagonalOK(final Movimiento m, char estadoTablero[][]) {
         int movX = m.getToX(), movY = m.getToY();
         if(movX >= 0 && movX < 8 && movY >= 0 && movY < 8) {
             int auxX = movX - posX;
@@ -183,7 +182,8 @@ public class Reina extends Pieza {
     }
 
 
-    private ArrayList<Movimiento> movimientosPosiblesDiagonales(char estadoTablero[][]) {
+    private ArrayList<Movimiento> movimientosPosiblesDiagonales(Tablero tablero) {
+        final char estadoTablero[][] = tablero.getTablero();
         ArrayList<Movimiento> listResult = new ArrayList<>();
         int i = posX, j = posY;
         boolean end = false;
@@ -191,12 +191,12 @@ public class Reina extends Pieza {
         ++j;
         while(i >= 0 && j < 8 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, j);
+                Movimiento r = new Movimiento(this, posX, posY, i, j, tablero);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][j], tablero);
                     listResult.add(r);
                     end = true;
                 }
@@ -213,12 +213,12 @@ public class Reina extends Pieza {
         ++j;
         while(i < 8 && j < 8 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, j);
+                Movimiento r = new Movimiento(this, posX, posY, i, j, tablero);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][j], tablero);
                     listResult.add(r);
                     end = true;
                 }
@@ -234,12 +234,12 @@ public class Reina extends Pieza {
         --j;
         while(i < 8 && j >= 0 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, j);
+                Movimiento r = new Movimiento(this, posX, posY, i, j, tablero);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][j], tablero);
                     listResult.add(r);
                     end = true;
                 }
@@ -255,12 +255,12 @@ public class Reina extends Pieza {
         --j;
         while(i >= 0 && j >= 0 && !end) {
             if(estadoTablero[i][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, j);
+                Movimiento r = new Movimiento(this, posX, posY, i, j, tablero);
                 listResult.add(r);
             }
             else if(estadoTablero[i][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][j])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][j], tablero);
                     listResult.add(r);
                     end = true;
                 }
@@ -273,19 +273,20 @@ public class Reina extends Pieza {
         return listResult;
     }
 
-    private ArrayList<Movimiento> movimientosPosiblesHorVert(char estadoTablero[][]) {
+    private ArrayList<Movimiento> movimientosPosiblesHorVert(Tablero tablero) {
+        final char estadoTablero[][] = tablero.getTablero();
         ArrayList<Movimiento> listResult = new ArrayList<>();
         int i = posX, j = posY;
         boolean end = false;
         --i;
         while(i >= 0 && !end) {
             if(estadoTablero[i][posY] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, posY);
+                Movimiento r = new Movimiento(this, posX, posY, i, posY, tablero);
                 listResult.add(r);
             }
             if(estadoTablero[i][posY] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][posY])) {
-                    Movimiento r = new Movimiento(posX, posY, i, j, estadoTablero[i][posY]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, j, estadoTablero[i][posY], tablero);
                     listResult.add(r);
                     end = true;
                 }
@@ -299,12 +300,12 @@ public class Reina extends Pieza {
         ++j;
         while(j < 8 && !end) {
             if(estadoTablero[posX][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, posX, j);
+                Movimiento r = new Movimiento(this, posX, posY, posX, j, tablero);
                 listResult.add(r);
             }
             if(estadoTablero[posX][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX][j])) {
-                    Movimiento r = new Movimiento(posX, posY, posX, j, estadoTablero[posX][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, posX, j, estadoTablero[posX][j], tablero);
                     listResult.add(r);
                     end = true;
                 }
@@ -318,12 +319,12 @@ public class Reina extends Pieza {
         ++i;
         while(i < 8 && !end) {
             if(estadoTablero[i][posY] == '0') {
-                Movimiento r = new Movimiento(posX, posY, i, posY);
+                Movimiento r = new Movimiento(this, posX, posY, i, posY, tablero);
                 listResult.add(r);
             }
             if(estadoTablero[i][posY] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[i][posY])) {
-                    Movimiento r = new Movimiento(posX, posY, i, posY, estadoTablero[i][posY]);
+                    Movimiento r = new Movimiento(this, posX, posY, i, posY, estadoTablero[i][posY], tablero);
                     listResult.add(r);
                     end = true;
                 }
@@ -337,12 +338,12 @@ public class Reina extends Pieza {
         --j;
         while(j >= 0 && !end) {
             if(estadoTablero[posX][j] == '0') {
-                Movimiento r = new Movimiento(posX, posY, posX, j);
+                Movimiento r = new Movimiento(this, posX, posY, posX, j, tablero);
                 listResult.add(r);
             }
             if(estadoTablero[posX][j] != '0') {
                 if(Character.isLowerCase(this.tipo) != Character.isLowerCase(estadoTablero[posX][j])) {
-                    Movimiento r = new Movimiento(posX, posY, posX, j, estadoTablero[posX][j]);
+                    Movimiento r = new Movimiento(this, posX, posY, posX, j, estadoTablero[posX][j], tablero);
                     listResult.add(r);
                     end = true;
                 }
@@ -354,10 +355,11 @@ public class Reina extends Pieza {
     }
 
     @Override
-    ArrayList<Movimiento> movimientosPosibles(final char estadoTablero[][]) {
+    ArrayList<Movimiento> movimientosPosibles(Tablero tablero) {
+        final char estadoTablero[][] = tablero.getTablero();
         ArrayList<Movimiento> listResult = new ArrayList<>();
-        ArrayList<Movimiento> ltemp1 = movimientosPosiblesDiagonales(estadoTablero);
-        ArrayList<Movimiento> ltemp2 = movimientosPosiblesHorVert(estadoTablero);
+        ArrayList<Movimiento> ltemp1 = movimientosPosiblesDiagonales(tablero);
+        ArrayList<Movimiento> ltemp2 = movimientosPosiblesHorVert(tablero);
         listResult.addAll(ltemp1);
         listResult.addAll(ltemp2);
         return listResult;

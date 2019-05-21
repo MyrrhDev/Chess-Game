@@ -55,10 +55,10 @@ public class DriverMovimiento {
                             System.out.print("Indica su tipo mediante un char");
                             System.out.println();
                             char c = sc.nextLine().charAt(0);
-                            m = new Movimiento(fromX, fromY, ToX, ToY, c);
+                            //m = new Movimiento(fromX, fromY, ToX, ToY, c);
                         }
                         else if (s.equals("false")) {
-                            m = new Movimiento(fromX,fromY,ToX,ToY);
+                            //m = new Movimiento(fromX,fromY,ToX,ToY);
                         }
                         else System.out.println("Valor incorrecto.");
                     } else System.out.println("Valor incorrecto.");

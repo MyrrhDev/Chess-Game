@@ -36,10 +36,22 @@ public class JugarMenuGUI {
         dificultadMenu.addItem("Facil");
         dificultadMenu.addItem("Medio");
         dificultadMenu.addItem("Dificil");
+        /*
+        H1 vs H2
+        H1 vs M1
+        H1 vs M2
+        H2 vs H1
+        M1 vs H1
+        M2 vs H1
+        M1 vs M2
+        M2 vs M1
+         */
         jugadores.addItem("H1 vs H2");
-        jugadores.addItem("M1 vs M2");
         jugadores.addItem("H1 vs M1");
+        jugadores.addItem("H1 vs M2");
         jugadores.addItem("H2 vs H1");
+        jugadores.addItem("M1 vs H1");
+        jugadores.addItem("M2 vs H1");
         jugadores.addItem("M1 vs M2");
         jugadores.addItem("M2 vs M1");
         buscarProblemasButton.addMouseListener(new MouseListener() {
@@ -147,11 +159,12 @@ public class JugarMenuGUI {
                             playerId2 = 3;
                             break;
                     }
-                    //creamos una partida con los datos seleccionados
+                    //creamos una partida con los datos seleccionados                     //@TODO: Arreglar la crida al controlador de domini, s'ha de cridar desde el controlador de presentació
                     ctrl_dominio.getInstance().crearPartida(FEN, n, playerId1, playerId2);
                     System.out.println(dificultadMenu.getSelectedItem() + " FEN:  " + FEN + " N: " + n + " playerId1: "+ playerId1 + " playerId2: " + playerId2 + " " + jugadores.getSelectedItem());
+                    JugarPartidaGUI partidaTablero = new JugarPartidaGUI(jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2], n);
+                    if(playerId1 > 1 && playerId2 > 1) ctrl_presentacion.getInstance().controlarPartidaMaquinas(partidaTablero);
                     jf.setVisible(false);
-                    new JugarPartidaGUI(jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2], n);
                 }
             }
 

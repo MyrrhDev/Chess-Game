@@ -5,8 +5,8 @@ public class Persona extends Jugador {
     /* Pre: Cierto
      * Post: Crea un nuevo objeto Maquina con los parametros esMaquina, esNegro y estaAtacando
      * */
-    public Persona(boolean esMaquina, boolean esNegro, boolean estaAtacando) {
-        super(esMaquina, esNegro, estaAtacando);
+    public Persona(boolean esNegro, boolean estaAtacando) {
+        super(esNegro, estaAtacando);
     }
 
     /* Pre: Tablero existe y no esta vacio, movimiento existe y no esta vacio con el movimiento que hace la Persona

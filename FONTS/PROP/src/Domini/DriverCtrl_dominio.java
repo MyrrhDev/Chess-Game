@@ -16,7 +16,7 @@ public class DriverCtrl_dominio {
     Post: Pinta el tablero por consola
      */
     private static void pintaTablero() {
-        System.out.println();
+        /*System.out.println();
         char[][] t = c.getTablero();
         System.out.println("   (a) (b) (c) (d) (e) (f) (g) (h)");
         for(int i = 0; i < 8; ++i) {
@@ -34,7 +34,7 @@ public class DriverCtrl_dominio {
                 }
             }
             System.out.println();
-        }
+        }*/
     }
 
     /*

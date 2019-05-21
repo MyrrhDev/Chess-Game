@@ -35,15 +35,15 @@ public class DriverEstrategiaSimple {
             else op = -1;
             switch(op) {
                 case 1:
-                    System.out.println("Introduce la profundidad de la busqueda (maximo: 5)");
+                    /*System.out.println("Introduce la profundidad de la busqueda (maximo: 5)");
                     EstrategiaSimple es = new EstrategiaSimple(Integer.parseInt(sc.nextLine()));
                     if(es != null) System.out.println("Estrategia simple creada con exito");
                     else System.out.println("Error");
-                    break;
+                    break;*/
                 case 2:
                     System.out.println("Introduce un FEN para poblar el tablero");
-                    Maquina m1 = new Maquina(true, false, true);
-                    Maquina m2 = new Maquina(false, true, false);
+                    Maquina m1 = new M1(true, false);
+                    Maquina m2 = new M1(false, true);
                     System.out.println("Para verificar la funcion debemos primero crear un tablero");
                     Tablero t = new Tablero(m1, m2);
                     System.out.println("Introduce un FEN para poblar el tablero");
@@ -61,10 +61,10 @@ public class DriverEstrategiaSimple {
                     String r = setFEN(s);
                     t.FENToTablero(r, true);
                     System.out.println("Creando objeto estrategia simple. Profundidad default: 2");
-                    EstrategiaSimple es2 = new EstrategiaSimple(2);
+                    /*EstrategiaSimple es2 = new EstrategiaSimple(2);
                     Movimiento mv = es2.estrategiaSimple(t);
                     System.out.println("El movimiento es:");
-                    System.out.println(mv.getFromX() + " " + mv.getFromY() + " " + mv.getToX() + " " + mv.getToY());
+                    System.out.println(mv.getFromX() + " " + mv.getFromY() + " " + mv.getToX() + " " + mv.getToY());*/
                     break;
                 case 5:
                     System.out.println("Ejecucion del driver terminada");

@@ -121,12 +121,12 @@ public class Problema {
              */
                 Maquina atacante = null, defensor = null;
                 if (this.iniJuegoBlancas) {
-                    atacante = new Maquina(true, false, true);
-                    defensor = new Maquina(true, true, false);
+                    atacante = new M1(false, true);
+                    defensor = new M1(true, false);
 
                 } else if (!this.iniJuegoBlancas) {
-                    atacante = new Maquina(true, true, true);
-                    defensor = new Maquina(true, false, false);
+                    atacante = new M1(true, true);
+                    defensor = new M1(false, false);
 
                 }
                 Tablero t = new Tablero(atacante, defensor);
@@ -144,7 +144,7 @@ public class Problema {
     private void verificar(Tablero tablero) {
         int puntosAhora;
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
-            MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            Movimiento pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
             if (pruebaMovimiento.isSePuede()) {
                 if (tablero.esSuTurno().isEstaAtacando()) {
                     puntosAhora = min(pruebaMovimiento.getaTablero(), (this.N * 2) - 1);
@@ -169,7 +169,7 @@ public class Problema {
 
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
 
-            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            final Movimiento pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
 
             if (pruebaMovimiento.isSePuede()) {
                 final int puntosAhora = max(pruebaMovimiento.getaTablero(), depth - 1);
@@ -193,7 +193,7 @@ public class Problema {
         }
         int mayorPuntos = Integer.MIN_VALUE;
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
-            final MovimientoPrueba pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
+            final Movimiento pruebaMovimiento = tablero.esSuTurno().hacerMovimiento(tablero,movimiento);
             if (pruebaMovimiento.isSePuede()) {
                 final int puntosAhora = min(pruebaMovimiento.getaTablero(), depth - 1);
                 if (puntosAhora >= mayorPuntos) {
