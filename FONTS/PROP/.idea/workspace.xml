@@ -27,27 +27,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="222" column="24" lean-forward="true" selection-start-line="222" selection-start-column="24" selection-end-line="222" selection-end-column="24" />
+            <state relative-caret-position="408">
+              <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2730#2731#0" expanded="true" />
-                <element signature="e#2762#2763#0" expanded="true" />
-                <element signature="e#2795#2796#0" expanded="true" />
-                <element signature="e#2827#2828#0" expanded="true" />
+                <element signature="e#465#466#0" expanded="true" />
+                <element signature="e#518#519#0" expanded="true" />
+                <element signature="e#589#590#0" expanded="true" />
+                <element signature="e#642#643#0" expanded="true" />
+                <element signature="e#709#710#0" expanded="true" />
+                <element signature="e#762#763#0" expanded="true" />
+                <element signature="e#829#830#0" expanded="true" />
+                <element signature="e#882#883#0" expanded="true" />
+                <element signature="e#439#440#0" expanded="true" />
+                <element signature="e#467#468#0" expanded="true" />
+                <element signature="e#974#975#0" expanded="true" />
+                <element signature="e#995#996#0" expanded="true" />
+                <element signature="e#882#883#0" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/VistaLogin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state relative-caret-position="360">
+              <caret line="31" column="103" selection-start-line="31" selection-start-column="103" selection-end-line="31" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -55,34 +64,62 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarMenuGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4341">
-              <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+            <state relative-caret-position="-13">
+              <caret line="149" column="33" selection-start-line="149" selection-start-column="33" selection-end-line="149" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8292#8293#0" expanded="true" />
-                <element signature="e#8342#8343#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/r.gif">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="53" column="32" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/LoginH2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/Rock.gif">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/LoginH2.form">
+          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="129" column="68" selection-start-line="129" selection-start-column="68" selection-end-line="129" selection-end-column="68" />
+            <state relative-caret-position="213">
+              <caret line="64" column="51" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1392#1393#0" expanded="true" />
+                <element signature="e#1439#1440#0" expanded="true" />
+                <element signature="e#1479#1480#0" expanded="true" />
+                <element signature="e#1526#1527#0" expanded="true" />
+                <element signature="e#1561#1562#0" expanded="true" />
+                <element signature="e#1603#1604#0" expanded="true" />
+                <element signature="e#1638#1639#0" expanded="true" />
+                <element signature="e#1680#1681#0" expanded="true" />
+                <element signature="e#7149#7150#0" expanded="true" />
+                <element signature="e#7180#7181#0" expanded="true" />
+                <element signature="e#7210#7211#0" expanded="true" />
+                <element signature="e#7241#7242#0" expanded="true" />
+                <element signature="e#9895#9896#0" expanded="true" />
+                <element signature="e#9960#9961#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,36 +137,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setDefaultCloseOperation</find>
-      <find>No se puede ejecutar el movimiento</find>
-      <find>j1.isEnJa</find>
-      <find>jferr</find>
-      <find>cronome</find>
-      <find>hola</find>
-      <find>cronometro.sto</find>
-      <find>tieneEscape</find>
-      <find>tablero</find>
-      <find>is</find>
-      <find>tieneEsc</find>
-      <find>enMate</find>
-      <find>EnJaque</find>
-      <find>Jugador 1 en Jaque mate</find>
-      <find>movimientoHumano</find>
-      <find>seleccionarJugadores</find>
-      <find>crea</find>
-      <find>assignTileColor</find>
-      <find>assignTilePice</find>
-      <find>drawBoard</find>
-      <find>drawTile</find>
-      <find>boardPannel</find>
-      <find>TilePanel</find>
-      <find>verificarJugador</find>
-      <find>no se</find>
-      <find>T</find>
-      <find>getTablero</find>
-      <find>print</find>
-      <find>jugar</find>
       <find>draw</find>
+      <find>no se pued</find>
+      <find>frame</find>
+      <find>jugarMaq</find>
+      <find>&quot;jugar&quot;</find>
+      <find>jugarPart</find>
+      <find>cronometro</find>
+      <find>jugar</find>
+      <find>jframeError</find>
+      <find>jugar()</find>
+      <find>guardar</find>
+      <find>getn</find>
+      <find>existeJ</find>
+      <find>&quot;yay</find>
+      <find>Logic -</find>
+      <find>tiempo</find>
+      <find>guardarPr</find>
+      <find>contr</find>
+      <find>ctr</find>
+      <find>diff</find>
+      <find>getInsta</find>
+      <find>ctrl</find>
+      <find>setDefaultCloseOperation</find>
+      <find>iniciar</find>
+      <find>setText</find>
+      <find>Login</find>
+      <find>getProblemasDificultad</find>
+      <find>H2</find>
+      <find>jfram</find>
+      <find>getNombre</find>
     </findStrings>
     <replaceStrings>
       <replace>'N'</replace>
@@ -149,21 +186,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Database/Problemas/data.JSON5" />
-        <option value="$PROJECT_DIR$/src/Presentacion/ranking.form" />
-        <option value="$PROJECT_DIR$/src/Domini/Ranking.java" />
-        <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java" />
-        <option value="$PROJECT_DIR$/src/Presentacion/BoardUtils.java" />
-        <option value="$PROJECT_DIR$/src/Presentacion/MenuGUI.form" />
         <option value="$PROJECT_DIR$/src/Presentacion/ranking.java" />
         <option value="$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/JugarMenuGUI.form" />
         <option value="$PROJECT_DIR$/src/Presentacion/RankingGUI.form" />
         <option value="$PROJECT_DIR$/src/Presentacion/MenuGUI.java" />
-        <option value="$PROJECT_DIR$/src/Presentacion/RankingGUI.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/TableroGUI.java" />
-        <option value="$PROJECT_DIR$/Database/Jugadores/data.JSON5" />
-        <option value="$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form" />
         <option value="$PROJECT_DIR$/src/Domini/Alfil.java" />
         <option value="$PROJECT_DIR$/src/Domini/Caballo.java" />
         <option value="$PROJECT_DIR$/src/Domini/Jugador.java" />
@@ -195,17 +223,26 @@
         <option value="$PROJECT_DIR$/src/Domini/DriverRey.java" />
         <option value="$PROJECT_DIR$/src/Domini/DriverMovimiento.java" />
         <option value="$PROJECT_DIR$/src/Domini/DriverCaballo.java" />
-        <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/Ctrl_presentacion.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form" />
+        <option value="$PROJECT_DIR$/src/Presentacion/JugarPartidaGUIMvsM.form" />
+        <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
+        <option value="$PROJECT_DIR$/Database/Jugadores/data.JSON5" />
+        <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/RegisterGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/RankingGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/VistaLogin.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/LoginH2.form" />
         <option value="$PROJECT_DIR$/src/Presentacion/JugarMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java" />
-        <option value="$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/LoginH2.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="664" />
-    <option name="y" value="24" />
+    <option name="x" value="501" />
+    <option name="y" value="34" />
     <option name="width" value="1419" />
     <option name="height" value="970" />
   </component>
@@ -215,6 +252,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -257,11 +295,24 @@
               <item name="Presentacion" type="462c0819:PsiDirectoryNode" />
               <item name="JugarMenuGUI" type="e9f4de52:FormNode" />
             </path>
+            <path>
+              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PROP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Presentacion" type="462c0819:PsiDirectoryNode" />
+              <item name="LoginH2" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PROP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Presentacion" type="462c0819:PsiDirectoryNode" />
+              <item name="VistaLogin" type="e9f4de52:FormNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -275,11 +326,11 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="294" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558449323876" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558611312247" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documentos/PROP/PROP-Chess-Logic/FONTS/PROP" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Escritorio/PROP-Chess/FONTS/PROP" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -316,7 +367,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.JugarMenuGUI">
+  <component name="RunManager" selected="Application.ctrl_presentacion">
     <configuration name="Driver_ctrl_domini" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Domini.DriverCtrl_dominio" />
       <module name="PROP" />
@@ -339,7 +390,14 @@
       </method>
     </configuration>
     <configuration name="ctrl_dominio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Domini.ctrl_dominio" />
+      <option name="MAIN_CLASS_NAME" value="Presentacion.ctrl_dominio" />
+      <module name="PROP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ctrl_presentacion" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.ctrl_presentacion" />
       <module name="PROP" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -368,11 +426,12 @@
     </configuration>
     <list>
       <item itemvalue="Application.Driver_ctrl_domini" />
-      <item itemvalue="Application.test" />
-      <item itemvalue="Application.rankingGUI" />
-      <item itemvalue="Application.MenuGUI" />
       <item itemvalue="Application.JugarMenuGUI" />
+      <item itemvalue="Application.ctrl_presentacion" />
+      <item itemvalue="Application.MenuGUI" />
       <item itemvalue="Application.jugarPartidaGUI" />
+      <item itemvalue="Application.rankingGUI" />
+      <item itemvalue="Application.test" />
       <item itemvalue="Application.ctrl_dominio" />
     </list>
     <recent_temporary>
@@ -404,10 +463,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976672" visible="true" weight="0.15754561" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976672" visible="true" weight="0.1641791" />
       <window_info id="Structure" order="1" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -416,7 +475,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295099" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.22106361" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.24817519" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4991708" weight="0.33159542" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -493,12 +552,6 @@
           <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java</url>
-          <line>59</line>
-          <properties />
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -509,101 +562,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/VistaLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/RankingGUI.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/TableroGUI.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="28" selection-start-line="19" selection-start-column="8" selection-end-line="24" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuGUI.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/RankingGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="62" column="56" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="135" column="54" lean-forward="true" selection-start-line="134" selection-start-column="16" selection-end-line="135" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Optional.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="134" selection-start-line="134" selection-end-line="134" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Database/Problemas/data.JSON5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="57" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarMenuGUI.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/TableroGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2280">
-          <caret line="108" column="54" selection-start-line="108" selection-end-line="109" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7605#7606#0" expanded="true" />
-            <element signature="e#7637#7638#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Database/Jugadores/data.JSON5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/Alfil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -834,13 +792,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/EstrategiaSimple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/EstrategiaSimple.java" />
     <entry file="file://$PROJECT_DIR$/src/Domini/DriverMovimientoPrueba.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="733">
@@ -922,52 +874,154 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/r.gif">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/awt/AWTEventMulticaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="269" selection-start-line="269" selection-end-line="269" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/Rock.gif">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/r.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUIMvsM.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Database/Jugadores/data.JSON5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/VistaRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/RegisterGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="34" column="17" lean-forward="true" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="78" column="90" lean-forward="true" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/RankingGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-759">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarMenuGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="129" column="68" selection-start-line="129" selection-start-column="68" selection-end-line="129" selection-end-column="68" />
+        <state relative-caret-position="213">
+          <caret line="64" column="51" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1392#1393#0" expanded="true" />
+            <element signature="e#1439#1440#0" expanded="true" />
+            <element signature="e#1479#1480#0" expanded="true" />
+            <element signature="e#1526#1527#0" expanded="true" />
+            <element signature="e#1561#1562#0" expanded="true" />
+            <element signature="e#1603#1604#0" expanded="true" />
+            <element signature="e#1638#1639#0" expanded="true" />
+            <element signature="e#1680#1681#0" expanded="true" />
+            <element signature="e#7149#7150#0" expanded="true" />
+            <element signature="e#7180#7181#0" expanded="true" />
+            <element signature="e#7210#7211#0" expanded="true" />
+            <element signature="e#7241#7242#0" expanded="true" />
+            <element signature="e#9895#9896#0" expanded="true" />
+            <element signature="e#9960#9961#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/LoginH2.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/VistaLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="31" column="103" selection-start-line="31" selection-start-column="103" selection-end-line="31" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+          <folding>
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#518#519#0" expanded="true" />
+            <element signature="e#589#590#0" expanded="true" />
+            <element signature="e#642#643#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+            <element signature="e#829#830#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#439#440#0" expanded="true" />
+            <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#974#975#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarMenuGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4341">
-          <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+        <state relative-caret-position="-13">
+          <caret line="149" column="33" selection-start-line="149" selection-start-column="33" selection-end-line="149" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8292#8293#0" expanded="true" />
-            <element signature="e#8342#8343#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="222" column="24" lean-forward="true" selection-start-line="222" selection-start-column="24" selection-end-line="222" selection-end-column="24" />
+        <state relative-caret-position="395">
+          <caret line="53" column="32" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2730#2731#0" expanded="true" />
-            <element signature="e#2762#2763#0" expanded="true" />
-            <element signature="e#2795#2796#0" expanded="true" />
-            <element signature="e#2827#2828#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/LoginH2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
         </state>
       </provider>
     </entry>

@@ -1,7 +1,5 @@
 package Presentacion;
 
-import Domini.ctrl_dominio;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -36,16 +34,6 @@ public class JugarMenuGUI {
         dificultadMenu.addItem("Facil");
         dificultadMenu.addItem("Medio");
         dificultadMenu.addItem("Dificil");
-        /*
-        H1 vs H2
-        H1 vs M1
-        H1 vs M2
-        H2 vs H1
-        M1 vs H1
-        M2 vs H1
-        M1 vs M2
-        M2 vs M1
-         */
         jugadores.addItem("H1 vs H2");
         jugadores.addItem("H1 vs M1");
         jugadores.addItem("H1 vs M2");
@@ -159,33 +147,40 @@ public class JugarMenuGUI {
                             playerId2 = 3;
                             break;
                     }
-                    //creamos una partida con los datos seleccionados                     //@TODO: Arreglar la crida al controlador de domini, s'ha de cridar desde el controlador de presentació
-                    ctrl_dominio.getInstance().crearPartida(FEN, n, playerId1, playerId2);
-                    System.out.println(dificultadMenu.getSelectedItem() + " FEN:  " + FEN + " N: " + n + " playerId1: "+ playerId1 + " playerId2: " + playerId2 + " " + jugadores.getSelectedItem());
-                    JugarPartidaGUI partidaTablero = new JugarPartidaGUI(jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2], n);
-                    if(playerId1 > 1 && playerId2 > 1) ctrl_presentacion.getInstance().controlarPartidaMaquinas(partidaTablero);
-                    jf.setVisible(false);
+                    if(player1.equals("H2") || player2.equals("H2")) {
+                        //pedimos login H2
+                        new LoginH2(FEN, n, playerId1, playerId2, jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2]);
+                        jf.setVisible(false);
+                    }
+                    else {
+                        iniciarPartida(FEN, n, playerId1, playerId2, jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2]);
+                    }
                 }
+            }
+
+            public void iniciarPartida(final String FEN, final int n, final int playerId1, final int playerId2, final String jugadorSeleccionado1, final String jugadorSeleccionado2) {
+                //creamos una partida con los datos seleccionados //@TODO: Arreglar la crida al controlador de domini, s'ha de cridar desde el controlador de presentació
+                ctrl_presentacion.getInstance().crearPartida(FEN, n, playerId1, playerId2);
+                //System.out.println(dificultadMenu.getSelectedItem() + " FEN:  " + FEN + " N: " + n + " playerId1: "+ playerId1 + " playerId2: " + playerId2 + " " + jugadores.getSelectedItem());
+                JugarPartidaGUI partidaTablero = new JugarPartidaGUI(jugadorSeleccionado1, jugadorSeleccionado2, n);
+                jf.setVisible(false);
+                System.out.println("fuera del set visible");
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-
             }
         });
 
@@ -219,17 +214,7 @@ public class JugarMenuGUI {
     }
 
     private String[][] buscarProblemas(String dificultad) {
-        ctrl_dominio dom = ctrl_dominio.getInstance();
-        return dom.getProblemasDificultad(diff);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new JugarMenuGUI();
-            }
-        });
+        return ctrl_presentacion.getInstance().getProblemasDificultad(diff);
     }
 
     private void createUIComponents() {

@@ -13,8 +13,6 @@ public class RankingGUI {
     private JButton atrasButton;
     private JScrollPane scrollPane1;
     JFrame frame;
-    private static ctrl_dominio cd;
-
 
     RankingGUI() {
         frame = new JFrame();
@@ -52,14 +50,8 @@ public class RankingGUI {
         });
     }
 
-    public static void main(String[] args)
-    {
-        new RankingGUI();
-    }
-
     private void createUIComponents() {
-        cd = ctrl_dominio.getInstance();
-        String[][] data = cd.refrescarRanking();
+        String[][] data = ctrl_presentacion.getInstance().refrescarRanking();
         String[] columnNames = { "Posición", "Jugador", "Puntuación" };
         scrollPane1 = new JScrollPane();
         rankingTable = new JTable(data, columnNames);

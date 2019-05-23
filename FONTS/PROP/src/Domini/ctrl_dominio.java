@@ -31,11 +31,8 @@ public class ctrl_dominio {
 
     public boolean verificarJugador(final String username, final String password) throws Exception {
         try {
-            if(controlPersistencia.esLoginOk(username, password)) {
-                return true;
-            } else {
-                return false;
-            }
+            if(controlPersistencia.esLoginOk(username, password))return true;
+            else return false;
         } catch (IOException e) {
             throw e;
         }
@@ -48,9 +45,6 @@ public class ctrl_dominio {
             throw e;
         }
     }
-
-
-
 
     public boolean isJ1EnJaqueMate() {
         return jugador1.isEnJaqueMate();
@@ -134,41 +128,19 @@ public class ctrl_dominio {
                     tablero.setTurnoBlancas(!tablero.getTurnoBlancas());
                 } catch(Exception e) {
                     if(jugador2 instanceof Persona) {
-                        tfin = new Date().getTime();
-                        tpartida = tfin - tinicio;
-                        tpartida = tpartida/60000;
-                        String vs = "";
-                        if(jugador1 instanceof Maquina) vs = "M";
-                        else vs = "H1";
-                        //cambiar nombre pepito por nombre del jugador
-                        controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
-                        tinicio = -1;
-                        tfin = -1;
-                        tpartida = -1;
+                        guardarDatosTiempo(false);
                     }
                     Exception e1 = new Exception("Jugador 1 en Jaque mate");
                     throw e1;
                 }
 
             }
-            if (((jugador2.isEsNegro() && !tablero.getTurnoBlancas()) || (!jugador2.isEsNegro() && tablero.getTurnoBlancas())) && jugador2 instanceof Maquina) {
+            else if (((jugador2.isEsNegro() && !tablero.getTurnoBlancas()) || (!jugador2.isEsNegro() && tablero.getTurnoBlancas())) && jugador2 instanceof Maquina) {
                 try {
                     tablero = jugador2.jugar(tablero,n); // paso tablero y N
                     tablero.setTurnoBlancas(!tablero.getTurnoBlancas());
                 } catch(Exception e) {
-                    if(jugador1 instanceof Persona) {
-                        tfin = new Date().getTime();
-                        tpartida = tfin - tinicio;
-                        tpartida = tpartida/60000;
-                        String vs = "";
-                        if(jugador1 instanceof Maquina) vs = "M";
-                        else vs = "H2";
-                        //cambiar nombre pepito por nombre del jugador
-                        controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
-                        tinicio = -1;
-                        tfin = -1;
-                        tpartida = -1;
-                    }
+                    if(jugador1 instanceof Persona) guardarDatosTiempo(true);
                     Exception e1 = new Exception("Jugador 2 en Jaque mate");
                     throw e1;
                 }
@@ -177,40 +149,41 @@ public class ctrl_dominio {
         }
         else if(jugador1.isEnJaqueMate()) {
             System.out.println("jaque mate jugador1");
-            if(jugador2 instanceof Persona) {
-                tfin = new Date().getTime();
-                tpartida = tfin - tinicio;
-                tpartida = tpartida/60000;
-                String vs = "";
-                if(jugador1 instanceof Maquina) vs = "M";
-                else vs = "H1";
-                //cambiar nombre pepito por nombre del jugador
-                controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
-                tinicio = -1;
-                tfin = -1;
-                tpartida = -1;
-            }
+            if(jugador2 instanceof Persona) guardarDatosTiempo(false);
             Exception e = new Exception("Jugador 1 en Jaque mate");
             throw e;
         }
         else if(jugador2.isEnJaqueMate()) {
             System.out.println("jaque mate jugador2");
-            if(jugador1 instanceof Persona) {
-                tfin = new Date().getTime();
-                tpartida = tfin - tinicio;
-                tpartida = tpartida/60000;
-                String vs = "";
-                if(jugador1 instanceof Maquina) vs = "M";
-                else vs = "H2";
-                //cambiar nombre pepito por nombre del jugador
-                controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
-                tinicio = -1;
-                tfin = -1;
-                tpartida = -1;
-            }
+            if(jugador1 instanceof Persona) guardarDatosTiempo(true);
             Exception e = new Exception("Jugador 2 en Jaque mate");
             throw e;
         }
+    }
+
+
+    /*
+    Guardamos en la capa de persistencia los datos de la partida en referencia al tiempo requerido para solucionar el problema
+     */
+    private static void guardarDatosTiempo(boolean ganaJugador1) {
+        tfin = new Date().getTime();
+        tpartida = tfin - tinicio;
+        tpartida = tpartida/60000;
+        //cambiar nombre pepito por nombre del jugador
+        String vs = "";
+        if(ganaJugador1) {
+            if (jugador2 instanceof Maquina) vs = "M";
+            else vs = "H2";
+        }
+        else {
+            if (jugador1 instanceof Maquina) vs = "M";
+            else vs = "H2";
+        }
+        //@TODO: Hacer get del nombre del jugador en la capa de presentación y cambiarlo por pepito
+        controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
+        tinicio = -1;
+        tfin = -1;
+        tpartida = -1;
     }
 
     public char[] getTablero() {
@@ -264,8 +237,12 @@ public class ctrl_dominio {
                 }
 
             }
-        } else {
+        } else if(jugador1.isEnJaqueMate()) {
             Exception e = new Exception("H1 en Mate");
+            throw e;
+        }
+        else if(jugador2.isEnJaqueMate()) {
+            Exception e = new Exception("H2 en Mate");
             throw e;
         }
     }

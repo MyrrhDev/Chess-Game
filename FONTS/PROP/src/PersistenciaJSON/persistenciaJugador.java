@@ -17,7 +17,7 @@ public class persistenciaJugador {
             JSONArray jarr = leerJSONdata();
             for (int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
-                if (jo.get("nombre").equals(nombreJugador)) {
+                if (jo.get("username").equals(nombreJugador)) {
                     JSONArray pr = jo.getJSONArray("problemas");
                     for(int j = 0; j < pr.length(); ++j) {
                         if (pr.getJSONObject(j).get("FEN").equals(FEN) && (int) pr.getJSONObject(j).get("N") == N) {
@@ -46,14 +46,14 @@ public class persistenciaJugador {
         }
     }
 
-    public void guardarJugador(final String nombreJugador, final String contrasena) throws Exception {
+    public void guardarJugador(final String username, final String password) throws Exception {
         File dir = new File(path);
         JSONArray rootA;
         if(dir.exists()) {
             File dbJugadores = new File(currentPath);
             JSONObject jo = new JSONObject();
-            jo.put("nombre", nombreJugador);
-            jo.put("contraseña", contrasena);
+            jo.put("username", username);
+            jo.put("password", password);
             jo.put("partidasTotales", 0);
             jo.put("partidasGanadas", 0);
             JSONArray problemas = new JSONArray();
@@ -69,13 +69,14 @@ public class persistenciaJugador {
                     bw.write(json);
                     bw.close();
                 }
-                catch(Exception e) {
+                catch(IOException e) {
+                    System.err.println("An IOException was caught :"+e.getMessage());
                     throw e;
                 }
             }
             else {
-                if(existeJugador(nombreJugador)) {
-                    Exception e = new Exception("El jugador ya existe");
+                if(existeJugador(username)) {
+                    Exception e = new Exception("El nombre de usario ya existe, elije otro");
                     throw e;
                 }
                 else {
@@ -92,6 +93,7 @@ public class persistenciaJugador {
             }
         }
     }
+
 
     private JSONArray leerJSONdata() {
         String jsonObject = "";
@@ -116,19 +118,19 @@ public class persistenciaJugador {
             JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
-                if(jo.get("nombre").equals(nombreJugador)) return true;
+                if(jo.get("username").equals(nombreJugador)) return true;
             }
         }
         return res;
     }
 
-    public boolean esLoginOk(final String nombreJugador, final String contrasena) throws Exception {
+    public boolean esLoginOk(final String nombreJugador, final String password) throws Exception {
         if(existeJugador(nombreJugador)) {
             JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.getJSONObject(i);
-                if(jo.get("nombre").equals(nombreJugador)) {
-                    if(jo.get("contrasena").equals(contrasena)) {
+                if(jo.get("username").equals(nombreJugador)) {
+                    if(jo.get("password").equals(password)) {
                         return true;
                     }
                     else return false;
@@ -148,7 +150,7 @@ public class persistenciaJugador {
             JSONArray newjarr = new JSONArray();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
-                if(jo.get("nombre").equals(nombreJugador)) {
+                if(jo.get("username").equals(nombreJugador)) {
                 }
                 else {
                     newjarr.put(jo);
@@ -170,7 +172,7 @@ public class persistenciaJugador {
             JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
-                if(jo.get("nombre").equals(nombreJugador)) {
+                if(jo.get("username").equals(nombreJugador)) {
                     JSONObject nuevoProb = new JSONObject();
                     nuevoProb.put("FEN", FEN);
                     nuevoProb.put("N", N);
@@ -195,7 +197,7 @@ public class persistenciaJugador {
             JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
-                if (jo.get("nombre").equals(nombreJugador)) {
+                if (jo.get("username").equals(nombreJugador)) {
                     int tmpPartidas = (int)jo.get("partidasGanadas");
                     ++tmpPartidas;
                     jo.put("partidasGanadas", tmpPartidas);
@@ -213,7 +215,7 @@ public class persistenciaJugador {
             JSONArray jarr = leerJSONdata();
             for(int i = 0; i < jarr.length(); ++i) {
                 JSONObject jo = jarr.optJSONObject(i);
-                if (jo.get("nombre").equals(nombreJugador)) {
+                if (jo.get("username").equals(nombreJugador)) {
                     int tmpPartidas = (int)jo.get("partidasTotales");
                     ++tmpPartidas;
                     jo.put("partidasTotales", tmpPartidas);
@@ -235,7 +237,7 @@ public class persistenciaJugador {
         JSONArray jarr = leerJSONdata();
         for(int i = 0; i < jarr.length(); ++i) {
             JSONObject jo = jarr.optJSONObject(i);
-            if(jo.get("nombre").equals(nombreJugador)) {
+            if(jo.get("username").equals(nombreJugador)) {
                 JSONArray prob = jo.optJSONArray("problemas");
                 for(int j = 0; j < prob.length(); ++j) {
                     ArrayList<String> data = new ArrayList<>();
@@ -257,7 +259,7 @@ public class persistenciaJugador {
         JSONArray jarr = leerJSONdata();
         for(int i = 0; i < jarr.length(); ++i) {
             JSONObject jo = jarr.getJSONObject(i);
-            res.add((String)jo.get("nombre"));
+            res.add((String)jo.get("username"));
         }
         return res;
     }
