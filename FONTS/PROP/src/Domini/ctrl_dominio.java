@@ -32,6 +32,9 @@ public class ctrl_dominio {
 
 
 
+    public static void FENtoTablero() {
+
+    }
 
 
     public static String TableroToFEN() {
@@ -130,6 +133,29 @@ public class ctrl_dominio {
         }
     }
 
+    /*
+    Guardamos en la capa de persistencia los datos de la partida en referencia al tiempo requerido para solucionar el problema
+     */
+    private static void guardarDatosTiempo(boolean ganaJugador1) {
+        tfin = new Date().getTime();
+        tpartida = tfin - tinicio;
+        tpartida = tpartida/60000;
+        //cambiar nombre pepito por nombre del jugador
+        String vs = "";
+        if(ganaJugador1) {
+            if (jugador2 instanceof Maquina) vs = "M";
+            else vs = "H2";
+        }
+        else {
+            if (jugador1 instanceof Maquina) vs = "M";
+            else vs = "H2";
+        }
+        //@TODO: Hacer get del nombre del jugador en la capa de presentación y cambiarlo por pepito
+        controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
+        tinicio = -1;
+        tfin = -1;
+        tpartida = -1;
+    }
 
     public boolean isJ1EnJaqueMate() {
         return jugador1.isEnJaqueMate();
@@ -289,9 +315,22 @@ public class ctrl_dominio {
     }
 
 
-
     public char[] getTablero() {
-            ArrayList<Character> list = new ArrayList<Character>();
+        char[][] tmpTablero = tablero.getTablero();
+        char[] tableroArray = new char[64];
+        int count = 0;
+        for(int i = 0; i < 8; ++i) {
+            for(int j = 0; j < 8; ++j) {
+                tableroArray[count] = tmpTablero[i][j];
+                ++count;
+            }
+        }
+        return tableroArray;
+    }
+
+
+    //public char[] getTablero() {
+           /* ArrayList<Character> list = new ArrayList<Character>();
             char[][] board = tablero.getTablero();
             for (int i = 0; i < board.length; i++) {
                 // tiny change 1: proper dimensions
@@ -305,22 +344,22 @@ public class ctrl_dominio {
                 newBoard[i] = list.get(i);
             }
 
-            System.out.println(newBoard);
+            System.out.println(newBoard);*/
 
         //return tablero.getTablero();
 
-/*        //For testing pruposes
-        char[] tablero = {'K', '0', '0', '0', 'n', '0', 'P', '0',
-                            '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', '0', '0', '0', 'P', '0', 'k', '0',
-                            '0', '0', 'P', '0', '0', '0', '0', '0',
-                            '0', '0', '0', '0', '0', 'Q', '0', '0',
-                            '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', 'Q', '0', '0', 'P', '0', '0', '0',
-                            '0', '0', 'K', '0', '0', '0', 'p', 'P'};*/
-        return newBoard;
-
-    }
+        //For testing pruposes
+//        char[] tablero = {'K', '0', '0', '0', 'n', '0', 'P', '0',
+//                            '0', '0', '0', '0', '0', '0', '0', '0',
+//                            '0', '0', '0', '0', 'P', '0', 'k', '0',
+//                            '0', '0', 'P', '0', '0', '0', '0', '0',
+//                            '0', '0', '0', '0', '0', 'Q', '0', '0',
+//                            '0', '0', '0', '0', '0', '0', '0', '0',
+//                            '0', 'Q', '0', '0', 'P', '0', '0', '0',
+//                            '0', '0', 'K', '0', '0', '0', 'p', 'P'};
+//        return tablero;
+//
+//    }
 
     public Jugador getJ1() {
         return jugador1;

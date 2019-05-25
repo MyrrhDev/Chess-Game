@@ -1,5 +1,7 @@
 package Presentacion;
 
+import Domini.ctrl_dominio;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -23,14 +25,13 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
 public class ProblemaGUI {
 
     private JFrame gameFrame;
-    //private final JPanel boardPanel;
-    private final String imgPiecesPath = "./res";
     private int sourceTile = -1;
     private int destinationTile = -1;
-    private JTextField textField1;
+    private JTextField fenString;
     private JButton validarYGuardarButton;
     private JButton validarButton;
-    private JPanel aquiTablero;
+    private BoardPanel aquiTablero;
+    private JPanel tableroPanel;
     private JPanel problemaPanel;
     private JPanel leftPanel;
     private JButton loadButton;
@@ -46,19 +47,19 @@ public class ProblemaGUI {
         gameFrame = new JFrame("Logic - A Chess Game");
         gameFrame.setContentPane(problemaPanel);
         gameFrame.setLayout(new BorderLayout());
-        gameFrame.setSize(new Dimension(1040, 700));
-        //frame.setResizable(false);
-        //gameFrame.pack();
-
+        gameFrame.setSize(new Dimension(1130, 700));
+        gameFrame.setResizable(false);
         gameFrame.setLocationRelativeTo(null);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        tableroPanel = new JPanel();
+        tableroPanel.setSize(635,625);
         aquiTablero = new BoardPanel();
+        tableroPanel.add(aquiTablero);
         gameFrame.add(menuPanel, BorderLayout.NORTH);
-        gameFrame.add(aquiTablero, BorderLayout.CENTER);
+        gameFrame.add(tableroPanel, BorderLayout.CENTER);
         gameFrame.add(leftPanel, BorderLayout.EAST);
         gameFrame.setVisible(true);
-
 
         menuButton.addActionListener(new ActionListener() {
             @Override
@@ -76,10 +77,10 @@ public class ProblemaGUI {
                 Integer N = new Integer(tableProblemas.getModel().getValueAt(row, 1).toString());
 
                 ctrl_presentacion.getInstance().borrarProblema(FEN,N);
-                DefaultTableModel model =
-                        (DefaultTableModel)tableProblemas.getModel();
-                model.removeRow(row);
 
+                tableProblemas.setRowSelectionInterval(0, 0);
+                DefaultTableModel model = (DefaultTableModel)tableProblemas.getModel();
+                model.removeRow(row);
             }
         });
         validarYGuardarButton.addActionListener(new ActionListener() {
@@ -112,45 +113,46 @@ public class ProblemaGUI {
 
         tableProblemas.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent event) {
-                // do some actions here, for example
-                // print first column value from selected row
-                System.out.println(tableProblemas.getValueAt(tableProblemas.getSelectedRow(), 0).toString());
+                int row = tableProblemas.getSelectedRow();
+
+                String FEN = tableProblemas.getModel().getValueAt(row, 0).toString();
+                Integer N = new Integer(tableProblemas.getModel().getValueAt(row, 1).toString());
+                ctrl_presentacion.getInstance().crearPartidaProblema(FEN, N, 2, 2);
+                aquiTablero.drawBoard(ctrl_presentacion.getInstance().getTablero());
             }
         });
 
+        loadButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String FEN = fenString.getText();
+                ctrl_presentacion.getInstance().crearPartidaProblema(FEN, 2, 2, 2);
+                aquiTablero.drawBoard(ctrl_presentacion.getInstance().getTablero());
+
+            }
+        });
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         problemsList = new JScrollPane();
-        /*String[] columnNames = { "FEN", "dificultad"};
-        String[][] data = {{"", ""}};
-        table1 = new JTable(data, columnNames);*/
         tableProblemas = new JTable(0,3);
-
         JTableHeader header= tableProblemas.getTableHeader();
         TableColumnModel colMod = header.getColumnModel();
         TableColumn fenColumn = colMod.getColumn(0);
         fenColumn.setHeaderValue("FEN");
         TableColumn nColumn = colMod.getColumn(1);
         nColumn.setHeaderValue("Movimientos");
-
         TableColumn validColumn = colMod.getColumn(2);
         validColumn.setHeaderValue("Validado?");
         header.repaint();
-
         tableProblemas.getColumnModel().getColumn(0).sizeWidthToFit();
         tableProblemas.getColumnModel().getColumn(1).sizeWidthToFit();
         tableProblemas.getColumnModel().getColumn(2).sizeWidthToFit();
-        //tableProblemas.setEnabled(false);
-
-        //tableProblemas.ed
         tableProblemas.setSize(200, 300);
         tableProblemas.setRowSelectionAllowed(true);
         problemsList.add(tableProblemas);
         String[][] resultProblemas = buscarProblemas();
         addProblemasToTable(resultProblemas);
-
     }
 
     private String[][] buscarProblemas() {
@@ -168,9 +170,17 @@ public class ProblemaGUI {
         tableProblemas.getColumnModel().getColumn(0).sizeWidthToFit();
         tableProblemas.getColumnModel().getColumn(1).sizeWidthToFit();
         tableProblemas.getColumnModel().getColumn(2).sizeWidthToFit();
+        if(tableProblemas != null) {
+            tableProblemas.setRowSelectionInterval(0, 0);
 
+            String FEN = tableProblemas.getModel().getValueAt(0, 0).toString();
+            Integer N = new Integer(tableProblemas.getModel().getValueAt(0, 1).toString());
+            ctrl_presentacion.getInstance().crearPartidaProblema(FEN, N, 2, 2);
+        }
         tableProblemas.setRowSelectionAllowed(true);
     }
+
+
 
     private class BoardPanel extends JPanel {
         final List<TilePanel> boardTiles;
@@ -183,8 +193,8 @@ public class ProblemaGUI {
                 this.boardTiles.add(tilePanel);
                 add(tilePanel);
             }
-            setSize(630,620);
-            //setPreferredSize(new Dimension(400, 350));
+            //setSize(630,620);
+            setPreferredSize(new Dimension(630, 620));
             validate();
         }
 
@@ -231,21 +241,7 @@ public class ProblemaGUI {
                             } catch (Exception e1) {
                                 e1.printStackTrace();
                             }
-                            SwingUtilities.invokeLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    char[] tablero = {'K', '0', '0', '0', 'n', '0', 'P', '0',
-                                            '0', 'Q', '0', '0', '0', '0', '0', '0',
-                                            '0', '0', '0', '0', 'P', '0', 'k', '0',
-                                            '0', '0', 'P', '0', '0', '0', '0', '0',
-                                            '0', '0', '0', '0', '0', 'Q', '0', '0',
-                                            '0', '0', '0', '0', '0', '0', '0', '0',
-                                            '0', 'Q', '0', '0', 'P', '0', '0', '0',
-                                            '0', '0', 'K', '0', '0', '0', 'p', 'P'};
-                                    //aqui iria controladorDom.getTablero() y le pasaríamos ese tablero a la función drawBoard()
-                                    boardPanel.drawBoard(tablero);
-                                }
-                            });
+                            boardPanel.drawBoard(ctrl_dominio.getInstance().getTablero());
                             sourceTile = -1;
                             destinationTile = -1;
                         }
@@ -280,7 +276,6 @@ public class ProblemaGUI {
             repaint();
         }
 
-        //@TODO: OJO NO LI PUC PASSAR UN OBJECTE DEL DOMINI
         private void assignTilePiceIcon(final char[] tablero) {
             this.removeAll();
             if(tablero[tileId] != '0') {
@@ -366,11 +361,4 @@ public class ProblemaGUI {
     {
         new ProblemaGUI();
     }
-
-
-
-
-
-
-
 }

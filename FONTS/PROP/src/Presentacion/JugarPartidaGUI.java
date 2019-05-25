@@ -5,8 +5,6 @@ import Domini.ctrl_dominio;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -25,9 +23,10 @@ public class JugarPartidaGUI {
     private JLabel tiempoLabel;
     private JLabel jugadornegro;
     private JLabel jugadorblanco;
-    private JButton buttonAtras;
+    private JPanel butttonpanel;
+    private JButton button1;
     private JPanel panelButton;
-    private JFrame partidaFrame;
+    private JFrame frame;
     private int sourceTile = -1;
     private int destinationTile = -1;
     private boolean cronometroActivo = true;
@@ -41,15 +40,12 @@ public class JugarPartidaGUI {
 
     public JugarPartidaGUI(String jugador1, String jugador2, int n) {
         System.out.println("creo el objeto Jugar Partida GUI");
-        this.partidaFrame = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
-        //this.partidaFrame.setPreferredSize(new Dimension(900, 750));
-        this.partidaFrame.setSize(844, 650);
-        this.partidaFrame.setResizable(false);
-        this.partidaFrame.setContentPane(panelmain);
-        this.partidaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.partidaFrame.setLocationRelativeTo(null);
-        this.partidaFrame.pack();
-        this.partidaFrame.setVisible(true);
+        this.frame = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
+        this.frame.setPreferredSize(new Dimension(900, 750));
+        this.frame.setContentPane(panelmain);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.pack();
+        this.frame.setVisible(true);
         cronometro = new Cronometro();
         Thread threadCronometro = new Thread(cronometro);
         this.nJugador1 = n;
@@ -62,16 +58,15 @@ public class JugarPartidaGUI {
         if(this.jugador2.equals("H1")) jugadornegro.setText("Jugador: " + ctrl_presentacion.getInstance().getNombreJugadorSesionH1());
         else if(this.jugador2.equals("H2"))jugadornegro.setText("Jugador: " + ctrl_presentacion.getInstance().getNombreJugadorSesionH2());
         else jugadornegro.setText("Jugador: " + jugador2);
-        //radioButtonTurnoJugador1.setSelected(true);
-        //radioButtonTurnoJugador2.setSelected(false);
+        radioButtonTurnoJugador1.setSelected(true);
+        radioButtonTurnoJugador2.setSelected(false);
         if(jugador1.equals("M1") || jugador1.equals("M2") || jugador2.equals("M1") || jugador2.equals("M2")) {
-            //buttonAtras.setVisible(true);
-            //buttonAtras.setText("Calcular siguiente movimiento de la Máquina");
-        }
-        //else buttonAtras.setVisible(false);
+            button1.setVisible(true);
+            button1.setText("Calcular siguiente movimiento de la Máquina");
+        } else button1.setVisible(false);
         System.out.println("acabo la creadora");
 
-        /*button1.addMouseListener(new MouseListener() {
+        button1.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(jugador1.equals("M1") || jugador1.equals("M2") || jugador2.equals("M1") || jugador2.equals("M2")) {
@@ -102,41 +97,13 @@ public class JugarPartidaGUI {
             public void mouseExited(MouseEvent e) {
 
             }
-        });*/
-
-        buttonAtras.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                new MenuPartidaGUI();
-                partidaFrame.setVisible(false);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
         });
     }
 
 
     /*
     Pre: Cierto
-    Post: Se muestra en un partidaFrame nuevo el mensaje pasado por parámetro
+    Post: Se muestra en un frame nuevo el mensaje pasado por parámetro
      */
     private void displayFrameMessage(final String message, final int width, final int height) {
         JFrame jframeMessage = new JFrame();
@@ -144,7 +111,6 @@ public class JugarPartidaGUI {
         jframeMessage.add(errorText);
         jframeMessage.setSize(new Dimension(width, height));
         jframeMessage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        jframeMessage.setLocationRelativeTo(null);
         jframeMessage.setVisible(true);
     }
 
@@ -352,7 +318,7 @@ public class JugarPartidaGUI {
                     } else if(tablero[tileId] == 'Q') {
                         im = ImageIO.read(new File("./res/Queen.gif"));
                     } else if(tablero[tileId] == 'R') {
-                        im = ImageIO.read(new File("./res/Rock.gif"));
+                        im = ImageIO.read(new File("./res/Rook.gif"));
                     } else if(tablero[tileId] == 'N') {
                         im = ImageIO.read(new File("./res/Norse.gif"));
                     } else {
@@ -463,9 +429,4 @@ public class JugarPartidaGUI {
             cronometroActivo = false;
         }
     }
-
-    /*public static void main(String args[]) {
-
-        new JugarPartidaGUI("H1", "M2", 2);
-    }*/
 }

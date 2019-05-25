@@ -13,6 +13,11 @@ public class ctrl_presentacion {
 
     }
 
+    public void loadFEN() {
+        ctrl_dominio.FENtoTablero();
+
+    }
+
     public void crearFENdeTablero() {
         ctrl_dominio.TableroToFEN();
     }
@@ -75,6 +80,10 @@ public class ctrl_presentacion {
     }
 
     public static void crearPartida(final String FEN, final int n, final int playerId1, final int playerId2) {
+        ctrl_dominio.crearPartida(FEN, n, playerId1, playerId2);
+    }
+
+    public static void crearPartidaProblema(final String FEN, final int n, final int playerId1, final int playerId2) {
         ctrl_dominio.crearPartida(FEN, n, playerId1, playerId2);
     }
 
