@@ -31,13 +31,79 @@ public class ctrl_dominio {
     }
 
 
+
+
+
+    public static String TableroToFEN() {
+        String FEN = tablero.TableroToFEN();
+
+        return FEN;
+    }
+
+
+    public static boolean validarYGuardarProblema(final String FEN, final int N) {
+        try {
+            Problema prob = new Problema();
+            prob.setFEN(FEN);
+            prob.setN(N);
+            boolean validado = prob.verificarProblema();
+
+            if(validado) {
+                //Calcular dificultad
+                //Calcular val(??)
+                controlPersistencia.guardarProblema(FEN, N,"Facil", true, 0, 0);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean validarProblema(final String FEN, final int N) {
+        try {
+            Problema prob = new Problema();
+            prob.setFEN(FEN);
+            prob.setN(N);
+            return prob.verificarProblema();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static void borrarProblema(final String FEN, final int N) {
+        try {
+            controlPersistencia.borrarProblema(FEN, N);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String[][] getTodosProblemas() {
+        ArrayList<ArrayList<String>> tmpres = controlPersistencia.getProblemas();
+        String[][] result = new String[tmpres.size()][3];
+        for(int i = 0; i < tmpres.size(); ++i) {
+            for(int j = 0; j < tmpres.get(i).size(); ++j) {
+                result[i][0] = tmpres.get(i).get(0); //FEN
+                result[i][1] = tmpres.get(i).get(1); //N
+
+                result[i][2] = tmpres.get(i).get(3); //Validado?
+
+            }
+        }
+        return result;
+    }
+
     public static String[][] getProblemasDificultad(final String diff) {
         ArrayList<ArrayList<String>> tmpres = controlPersistencia.getProblemasDificultad(diff);
         String[][] result = new String[tmpres.size()][2];
         for(int i = 0; i < tmpres.size(); ++i) {
             for(int j = 0; j < tmpres.get(i).size(); ++j) {
-                result[i][0] = tmpres.get(i).get(0);
-                result[i][1] = tmpres.get(i).get(1);
+                result[i][0] = tmpres.get(i).get(0); //FEN
+                result[i][1] = tmpres.get(i).get(1); //N
             }
         }
         return result;
@@ -62,6 +128,23 @@ public class ctrl_dominio {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+
+    public boolean isJ1EnJaqueMate() {
+        return jugador1.isEnJaqueMate();
+    }
+
+    public boolean isJ2EnJaqueMate() {
+        return jugador2.isEnJaqueMate();
+    }
+
+    public boolean isJ1EnMate() {
+        return jugador1.isEnMate();
+    }
+
+    public boolean isJ2EnMate() {
+        return jugador2.isEnMate();
     }
 
 
@@ -208,9 +291,25 @@ public class ctrl_dominio {
 
 
     public char[] getTablero() {
+            ArrayList<Character> list = new ArrayList<Character>();
+            char[][] board = tablero.getTablero();
+            for (int i = 0; i < board.length; i++) {
+                // tiny change 1: proper dimensions
+                for (int j = 0; j < board[i].length; j++) {
+                    // tiny change 2: actually store the values
+                    list.add(board[i][j]);
+                }
+            }
+            char[] newBoard = new char[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                newBoard[i] = list.get(i);
+            }
+
+            System.out.println(newBoard);
+
         //return tablero.getTablero();
 
-        //For testing pruposes
+/*        //For testing pruposes
         char[] tablero = {'K', '0', '0', '0', 'n', '0', 'P', '0',
                             '0', '0', '0', '0', '0', '0', '0', '0',
                             '0', '0', '0', '0', 'P', '0', 'k', '0',
@@ -218,8 +317,8 @@ public class ctrl_dominio {
                             '0', '0', '0', '0', '0', 'Q', '0', '0',
                             '0', '0', '0', '0', '0', '0', '0', '0',
                             '0', 'Q', '0', '0', 'P', '0', '0', '0',
-                            '0', '0', 'K', '0', '0', '0', 'p', 'P'};
-        return tablero;
+                            '0', '0', 'K', '0', '0', '0', 'p', 'P'};*/
+        return newBoard;
 
     }
 
@@ -302,6 +401,12 @@ public class ctrl_dominio {
 
     public static void main(String[] args) {
         controlPersistencia = ctrl_persistencia.getInstance();
+        try {
+            controlPersistencia.guardarJugador("hola", "adeu");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         /*try {
             controlPersistencia.guardarJugador("pepito", "test1");
         } catch (Exception e) {

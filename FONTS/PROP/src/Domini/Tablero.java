@@ -73,6 +73,33 @@ public class Tablero {
         }
     }
 
+
+    /* Pre: El parametro implicito existe
+     * Post: Despues de editar un problema en el Tablero, lo transformamos en un String
+     */
+    public String TableroToFEN() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 8; i++) {
+            int spaces = 0;
+            sb.append('/');
+            for (int j = 0; j < 8; j++) {
+                if(this.tablero[i][j] == '0') ++spaces;
+                else if(this.tablero[i][j] != '0') {
+                    if(spaces != 0) {
+                        sb.append((char)(spaces+'0'));
+                        spaces = 0;
+                    }
+                    sb.append(tablero[i][j]);
+                }
+            }
+        }
+        //Esto no da: la w o b del final, tampoco el "- -0 1", lo necesitamos?
+        String fen = sb.toString();
+        return fen;
+    }
+
+
+
     /* Pre: El parametro implicito ha sido creado con Jugadores inicializados
      * Post: Las piezas del Problema en formato FEN han sido puestas en el atributo tablero[][]
      */

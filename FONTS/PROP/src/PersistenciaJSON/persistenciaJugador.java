@@ -94,6 +94,7 @@ public class persistenciaJugador {
         }
     }
 
+
     private JSONArray leerJSONdata() {
         String jsonObject = "";
         File f = new File(currentPath);

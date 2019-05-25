@@ -82,6 +82,14 @@ public class ctrl_persistencia {
         }
     }
 
+    public void borrarProblema(final String FEN, final int N) {
+        try {
+            dbProblemas.borrarProblema(FEN, N);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean val, final int vecesJugado, final int tiempoMedio) {
         try {
             dbProblemas.guardarProblema(FEN, N, dificultad, val, vecesJugado, tiempoMedio);
@@ -89,6 +97,11 @@ public class ctrl_persistencia {
             e.printStackTrace();
         }
     }
+
+    public static ArrayList<ArrayList<String>> getProblemas() {
+        return dbProblemas.getProblemas();
+    }
+
 
     public ArrayList<ArrayList<String>> getProblemasGanadosJugador(final String nombreJugador) {
         return dbJugadores.getProblemasGanadosJugador(nombreJugador);

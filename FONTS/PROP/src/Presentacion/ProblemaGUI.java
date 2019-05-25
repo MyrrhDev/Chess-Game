@@ -1,17 +1,20 @@
 package Presentacion;
 
-import Domini.ctrl_dominio;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 
 import static javax.swing.SwingUtilities.isLeftMouseButton;
@@ -22,7 +25,6 @@ public class ProblemaGUI {
     private JFrame gameFrame;
     //private final JPanel boardPanel;
     private final String imgPiecesPath = "./res";
-    private final ctrl_dominio controladorDom;
     private int sourceTile = -1;
     private int destinationTile = -1;
     private JTextField textField1;
@@ -34,22 +36,141 @@ public class ProblemaGUI {
     private JButton loadButton;
     private JButton menuButton;
     private JPanel menuPanel;
+    private JScrollPane problemsList;
+    private JTable tableProblemas;
+    private JButton borrarButton;
+    private JButton guardarButton;
 
     public ProblemaGUI() {
-        controladorDom = ctrl_dominio.getInstance();
+        //Pending:
         gameFrame = new JFrame("Logic - A Chess Game");
         gameFrame.setContentPane(problemaPanel);
         gameFrame.setLayout(new BorderLayout());
-        gameFrame.setSize(new Dimension(900, 700));
+        gameFrame.setSize(new Dimension(1040, 700));
+        //frame.setResizable(false);
+        //gameFrame.pack();
+
+        gameFrame.setLocationRelativeTo(null);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         aquiTablero = new BoardPanel();
         gameFrame.add(menuPanel, BorderLayout.NORTH);
         gameFrame.add(aquiTablero, BorderLayout.CENTER);
         gameFrame.add(leftPanel, BorderLayout.EAST);
         gameFrame.setVisible(true);
+
+
+        menuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameFrame.setVisible(false);
+                new MenuPrincipalGUI();
+            }
+        });
+        borrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int row = tableProblemas.getSelectedRow();
+                String FEN = tableProblemas.getModel().getValueAt(row, 0).toString();
+                Integer N = new Integer(tableProblemas.getModel().getValueAt(row, 1).toString());
+
+                ctrl_presentacion.getInstance().borrarProblema(FEN,N);
+                DefaultTableModel model =
+                        (DefaultTableModel)tableProblemas.getModel();
+                model.removeRow(row);
+
+            }
+        });
+        validarYGuardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //Get FEN de Tablero...
+                //Usuario inserta N
+                //ctrl_presentacion.getInstance().validarYGuardarProblema(FEN,N);
+
+            }
+        });
+        validarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Get FEN de Tablero...
+                //Usuario inserta N
+                //ctrl_presentacion.getInstance().validarProblema(FEN,N);
+            }
+        });
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Get FEN de Tablero...
+                //Usuario inserta N
+                //ctrl_presentacion.getInstance().guardarProblema(FEN,N);
+
+            }
+        });
+
+        tableProblemas.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event) {
+                // do some actions here, for example
+                // print first column value from selected row
+                System.out.println(tableProblemas.getValueAt(tableProblemas.getSelectedRow(), 0).toString());
+            }
+        });
+
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        problemsList = new JScrollPane();
+        /*String[] columnNames = { "FEN", "dificultad"};
+        String[][] data = {{"", ""}};
+        table1 = new JTable(data, columnNames);*/
+        tableProblemas = new JTable(0,3);
 
+        JTableHeader header= tableProblemas.getTableHeader();
+        TableColumnModel colMod = header.getColumnModel();
+        TableColumn fenColumn = colMod.getColumn(0);
+        fenColumn.setHeaderValue("FEN");
+        TableColumn nColumn = colMod.getColumn(1);
+        nColumn.setHeaderValue("Movimientos");
 
+        TableColumn validColumn = colMod.getColumn(2);
+        validColumn.setHeaderValue("Validado?");
+        header.repaint();
+
+        tableProblemas.getColumnModel().getColumn(0).sizeWidthToFit();
+        tableProblemas.getColumnModel().getColumn(1).sizeWidthToFit();
+        tableProblemas.getColumnModel().getColumn(2).sizeWidthToFit();
+        //tableProblemas.setEnabled(false);
+
+        //tableProblemas.ed
+        tableProblemas.setSize(200, 300);
+        tableProblemas.setRowSelectionAllowed(true);
+        problemsList.add(tableProblemas);
+        String[][] resultProblemas = buscarProblemas();
+        addProblemasToTable(resultProblemas);
+
+    }
+
+    private String[][] buscarProblemas() {
+        return ctrl_presentacion.getInstance().getTodosLosProblemas();
+    }
+
+    private void addProblemasToTable(String[][] resultProblemas) {
+        DefaultTableModel model = (DefaultTableModel) tableProblemas.getModel();
+        model.setRowCount(0);
+        tableProblemas.setModel(model); //emty table with new problems
+        for(int i = 0; i < resultProblemas.length; ++i) {
+            model.addRow(new Object[] {resultProblemas[i][0], resultProblemas[i][1], resultProblemas[i][2]});
+        }
+        tableProblemas.setModel(model);
+        tableProblemas.getColumnModel().getColumn(0).sizeWidthToFit();
+        tableProblemas.getColumnModel().getColumn(1).sizeWidthToFit();
+        tableProblemas.getColumnModel().getColumn(2).sizeWidthToFit();
+
+        tableProblemas.setRowSelectionAllowed(true);
+    }
 
     private class BoardPanel extends JPanel {
         final List<TilePanel> boardTiles;
@@ -62,7 +183,8 @@ public class ProblemaGUI {
                 this.boardTiles.add(tilePanel);
                 add(tilePanel);
             }
-            setPreferredSize(new Dimension(400, 350));
+            setSize(630,620);
+            //setPreferredSize(new Dimension(400, 350));
             validate();
         }
 
@@ -87,7 +209,7 @@ public class ProblemaGUI {
             this.tileId = tileId;
             setPreferredSize(new Dimension(10, 10));
             assignTileColor();
-            assignTilePiceIcon(controladorDom.getTablero());
+            assignTilePiceIcon(ctrl_presentacion.getInstance().getTablero());
 
             addMouseListener(new MouseListener() {
                 @Override

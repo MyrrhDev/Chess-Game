@@ -1,49 +1,63 @@
 package Presentacion;
 
-import Domini.ctrl_dominio;
-
 import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class RankingGUI {
-    private JTable Ranking;
+    private JTable rankingTable;
     private JPanel panel1;
-    private JButton button1;
-    // frame
-    JFrame f;
-    //test only
-    private static ctrl_dominio cd;
+    private JButton atrasButton;
+    private JScrollPane scrollPane1;
+    JFrame frame;
 
+    RankingGUI() {
+        frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Logic - A Chess Game");
+        frame.setContentPane(panel1);
+        frame.setSize(600, 300);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        atrasButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                frame.setVisible(false);
+                new MenuPrincipalGUI();
+            }
 
-    RankingGUI(String[][] data) {
-        // Frame initiallization
-        f = new JFrame();
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Frame Title
-        f.setTitle("Ranking");
+            @Override
+            public void mousePressed(MouseEvent e) {
 
-        // Column Names
-        String[] columnNames = { "Posición", "Jugador", "Puntuación" };
-        // Initializing the JTable
-        Ranking = new JTable(data, columnNames);
-        //Ranking.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        Ranking.getColumnModel().getColumn(0).sizeWidthToFit();
-        Ranking.getColumnModel().getColumn(1).sizeWidthToFit();
-        Ranking.getColumnModel().getColumn(2).sizeWidthToFit();
+            }
 
-        Ranking.setBounds(30, 40, 200, 300);
+            @Override
+            public void mouseReleased(MouseEvent e) {
 
-        // adding it to JScrollPane
-        JScrollPane sp = new JScrollPane(Ranking);
-        f.add(sp);
-        // Frame Size
-        f.setSize(600, 300);
-        // Frame Visible = true
-        f.setVisible(true);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 
-    public static void main(String[] args)
-    {
-        cd = ctrl_dominio.getInstance();
-        new RankingGUI(cd.refrescarRanking());
+    private void createUIComponents() {
+        String[][] data = ctrl_presentacion.getInstance().refrescarRanking();
+        String[] columnNames = { "Posición", "Jugador", "Puntuación" };
+        scrollPane1 = new JScrollPane();
+        rankingTable = new JTable(data, columnNames);
+
+        rankingTable.setEnabled(false);
+        rankingTable.getColumnModel().getColumn(0).sizeWidthToFit();
+        rankingTable.getColumnModel().getColumn(1).sizeWidthToFit();
+        rankingTable.getColumnModel().getColumn(2).sizeWidthToFit();
+        scrollPane1.add(rankingTable);
     }
 }
