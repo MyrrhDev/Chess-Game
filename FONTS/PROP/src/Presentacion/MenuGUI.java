@@ -28,8 +28,8 @@ public class MenuGUI {
         newProblemaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Welcome!");
-
+                new ProblemaGUI();
+                jf.setVisible(false);
             }
         });
         rankingButton.addActionListener(new ActionListener() {

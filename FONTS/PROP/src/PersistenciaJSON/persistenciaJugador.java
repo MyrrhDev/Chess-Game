@@ -12,6 +12,12 @@ public class persistenciaJugador {
     String path = "./Database/Jugadores";
     String currentPath = path + "/" +"data.JSON5";
 
+    /*
+    Pre: El usuario identificado con nombreJugador está autenticado en el sistema
+    Post: Develve cierto si puede jugar el problema identificado con los parámetros FEN y N contra un oponente
+    identificado con el parámetro con el mismo nombre
+    Excepciones: Ninguna
+     */
     public boolean puedeJugarProblema(final String nombreJugador, final String FEN, final int N, final String contra) {
         if(existeJugador(nombreJugador)) {
             JSONArray jarr = leerJSONdata();
@@ -31,6 +37,22 @@ public class persistenciaJugador {
         return true;
     }
 
+    private JSONArray leerJSONdata() {
+        String jsonObject = "";
+        File f = new File(currentPath);
+        Scanner sc = null;
+        try {
+            sc = new Scanner(f);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        while(sc.hasNext()) {
+            jsonObject += sc.nextLine();
+        }
+        JSONArray jarr = new JSONArray(jsonObject);
+        return jarr;
+    }
+
     private void guardaJSONdb(final JSONArray ja) throws Exception {
         String json = ja.toString();
         BufferedWriter bw;
@@ -46,6 +68,24 @@ public class persistenciaJugador {
         }
     }
 
+    private boolean existeJugador(final String nombreJugador) {
+        boolean res = false;
+        File dir = new File(currentPath);
+        if(dir.exists()) {
+            JSONArray jarr = leerJSONdata();
+            for(int i = 0; i < jarr.length(); ++i) {
+                JSONObject jo = jarr.optJSONObject(i);
+                if(jo.get("username").equals(nombreJugador)) return true;
+            }
+        }
+        return res;
+    }
+
+    /*
+    Pre: Cierto
+    Post: Se guarda el jugador con nombre: nombre y password: password en la base de datos de los jugadores
+    Excepciones: IOException, El nombre de usario ya existe, elije otro
+     */
     public void guardarJugador(final String username, final String password) throws Exception {
         File dir = new File(path);
         JSONArray rootA;
@@ -94,36 +134,12 @@ public class persistenciaJugador {
         }
     }
 
-
-    private JSONArray leerJSONdata() {
-        String jsonObject = "";
-        File f = new File(currentPath);
-        Scanner sc = null;
-        try {
-            sc = new Scanner(f);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        while(sc.hasNext()) {
-            jsonObject += sc.nextLine();
-        }
-        JSONArray jarr = new JSONArray(jsonObject);
-        return jarr;
-    }
-
-    private boolean existeJugador(final String nombreJugador) {
-        boolean res = false;
-        File dir = new File(currentPath);
-        if(dir.exists()) {
-            JSONArray jarr = leerJSONdata();
-            for(int i = 0; i < jarr.length(); ++i) {
-                JSONObject jo = jarr.optJSONObject(i);
-                if(jo.get("username").equals(nombreJugador)) return true;
-            }
-        }
-        return res;
-    }
-
+        /*
+    Pre: Cierto
+    Post: La función devuelve true si existe un jugador, almacenado en la base de datos, que esté identificado por nombre como
+    nombreJugador y tenga, como contraseña, el atributo passowrd
+    Excepciones: No existe ningun jugador en la base de datos con el nombre igual a nombreJugador
+     */
     public boolean esLoginOk(final String nombreJugador, final String password) throws Exception {
         if(existeJugador(nombreJugador)) {
             JSONArray jarr = leerJSONdata();
@@ -144,6 +160,10 @@ public class persistenciaJugador {
         return false;
     }
 
+    /*
+    Pre: El usuario identificado con nombreJugador está autenticado en el sistema
+    Post: Se borra de la base de datos el jugador con nombre igual a nombre de jugador
+     */
     public void borrarJugador(final String nombreJugador) throws Exception {
         if(existeJugador(nombreJugador)) {
             JSONArray jarr = leerJSONdata();
@@ -167,6 +187,12 @@ public class persistenciaJugador {
         }
     }
 
+    /*
+    Pre: Cierto
+    Post: Si existe el jugador con nombre igual al parámetro nombreJugador, se guarda el problema FEN, con N, en la base de datos,
+    guardando también contra quien se ha ganado, la dificultad y el tiempo empleado para solucionar el problema
+    Excepciones: No existe ningun jugador en la base de datos con el nombre igual a nombreJugador
+     */
     public void guardarProblemasGanadosJugador(final String nombreJugador, final String FEN, final int N, final String dificultad, final String vs, final long tiempo) throws Exception {
         if(existeJugador(nombreJugador)) {
             JSONArray jarr = leerJSONdata();
@@ -192,6 +218,11 @@ public class persistenciaJugador {
         }
     }
 
+    /*
+    Pre: Cierto
+    Post: Se incrementa en uno el número de partidas ganadas por parte del jugador
+    Excepciones: No existe el jugador identificado como nombreJugador en el sistema
+     */
     void incrementarPartidaGanada(final String nombreJugador) throws Exception {
         if(existeJugador(nombreJugador)) {
             JSONArray jarr = leerJSONdata();
@@ -210,6 +241,11 @@ public class persistenciaJugador {
         }
     }
 
+    /*
+    Pre: Cierto
+    Post: Se incrementa en uno el número de partidas jugadas por parte del jugador
+    Excepciones: No existe el jugador identificado como nombreJugador en el sistema
+     */
     void incrementarPartidaJugada(final String nombreJugador) throws Exception {
         if(existeJugador(nombreJugador)) {
             JSONArray jarr = leerJSONdata();

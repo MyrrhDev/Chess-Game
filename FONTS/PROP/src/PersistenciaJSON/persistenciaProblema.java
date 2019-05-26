@@ -52,12 +52,9 @@ public class persistenciaProblema {
     }
 
     /*
-    FEN
-    N
-    Dificultad
-    Validado?
-    Veces jugado
-    Tiempo medio
+    Pre: Cierto
+    Post: Se guarda el problema identificado con FEN y con N en la base de datos del sistema.
+    Excepciones: IO Exception
      */
     public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean val, final int vecesJugado, final int tiempoMedio) throws Exception {
         File dir = new File(path);
@@ -94,6 +91,11 @@ public class persistenciaProblema {
         }
     }
 
+    /*
+    Pre: Cierto
+    Post: Se borra del sistema el problema identificado por FEN y por N
+    Excepciones: IO Exception
+     */
     public void borrarProblema(final String FEN, final int N) throws Exception {
         JSONArray jarr = leerJSONdata();
         JSONArray newjarr = new JSONArray();
@@ -116,15 +118,9 @@ public class persistenciaProblema {
     }
 
     /*
-    FEN
-    N
-    Dificultad
-    Validado?
-    Veces jugado
-    Tiempo medio
+    Pre: El usuario identificado con nombreJugador está autenticado en el sistema
+    Post: La función devuelve todos los problemas que sean de la misma dificultad que el parámetro dif de la función
      */
-
-    //public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean val, final int vecesJugado, final int tiempoMedio)
     public ArrayList<ArrayList<String>> getProblemasDificultad(final String dificultad) {
         ArrayList<ArrayList<String>> result = new ArrayList<>();
         JSONArray jarr = leerJSONdata();
@@ -144,6 +140,10 @@ public class persistenciaProblema {
         return result;
     }
 
+    /*
+    Pre: Cierto
+    Post: Devuelve una lista de todos los problemas que aún no han sido validados
+     */
     public ArrayList<ArrayList<String>> getProblemasNoValidados() {
         ArrayList<ArrayList<String>> result = new ArrayList<>();
         JSONArray jarr = leerJSONdata();
@@ -163,6 +163,11 @@ public class persistenciaProblema {
         return result;
     }
 
+    /*
+    Pre: Cierto
+    Post: Se incrementa en uno el número de partidas jugadas por parte del jugador
+    Excepciones: No existe el jugador identificado como nombreJugador en el sistema
+     */
     public void incVecesJugado(final String FEN, final int N) {
         JSONArray jarr = leerJSONdata();
         for(int i = 0; i < jarr.length(); ++i) {
@@ -174,6 +179,7 @@ public class persistenciaProblema {
             }
         }
     }
+
 
     //https://math.stackexchange.com/questions/22348/how-to-add-and-subtract-values-from-an-average
     //average new = average old + ((value new - average old)/size new)
@@ -191,6 +197,11 @@ public class persistenciaProblema {
         }
     }
 
+    /*
+    Pre: Cierto
+    Post: Devuelve el tiempo medio empleado por todos los jugadores para solucionar el problema identificado por FEN
+    y por N
+     */
     public int getTiempoMedio(final String FEN, final int N) {
         JSONArray jarr = leerJSONdata();
         for(int i = 0; i < jarr.length(); ++i) {
