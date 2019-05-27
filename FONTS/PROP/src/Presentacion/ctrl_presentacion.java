@@ -13,11 +13,6 @@ public class ctrl_presentacion {
 
     }
 
-    public void loadFEN() {
-        ctrl_dominio.FENtoTablero();
-
-    }
-
     public void crearFENdeTablero() {
         ctrl_dominio.TableroToFEN();
     }
