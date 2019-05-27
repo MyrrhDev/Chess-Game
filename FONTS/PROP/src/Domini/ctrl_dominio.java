@@ -78,6 +78,17 @@ public class ctrl_dominio {
         controlPersistencia.guardarProblemaGanado(nombre, FEN, N, contra, dificultad, tpartida);
     }
 
+    public void incrementarPartidaGanada(final String nombreJugador) {
+        controlPersistencia.incrementarPartidaJugada(nombreJugador);
+    }
+
+    public void incrementarPartidaJugada(final String nombreJugador) {
+        try {
+            controlPersistencia.incrementarPartidaJugada(nombreJugador);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /*
     Pre: Cierto

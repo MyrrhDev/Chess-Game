@@ -49,6 +49,18 @@ public class ctrl_presentacion {
         }
     }
 
+    public void incrementarPartidaJugada(final String nombreJugador) {
+        try {
+            ctrl_dominio.incrementarPartidaJugada(nombreJugador);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void incrementarPartidaGanada(final String nombreJugador) {
+        ctrl_dominio.incrementarPartidaGanada(nombreJugador);
+    }
+
     public void guardarProblemaGanadoJugador(final String nombre, final String FEN, final int N, final String contra, final String dificultad, final int tpartida) {
         ctrl_dominio.guardarProblemaGanadoJugador(nombre, FEN, N, contra, dificultad, tpartida);
     }

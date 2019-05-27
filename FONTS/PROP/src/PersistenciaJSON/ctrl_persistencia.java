@@ -163,4 +163,5 @@ public class ctrl_persistencia {
     public int getTiempoMedioProblema(final String FEN, final int N) {
         return dbProblemas.getTiempoMedio(FEN, N);
     }
+
 }

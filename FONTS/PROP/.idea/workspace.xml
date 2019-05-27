@@ -30,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="52" column="54" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="54" />
+            <state relative-caret-position="363">
+              <caret line="104" column="32" lean-forward="true" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -39,22 +39,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="78" column="5" lean-forward="true" selection-start-line="76" selection-start-column="4" selection-end-line="78" selection-end-column="5" />
+            <state relative-caret-position="459">
+              <caret line="90" column="5" lean-forward="true" selection-start-line="84" selection-start-column="4" selection-end-line="90" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1392#1393#0" expanded="true" />
-                <element signature="e#1439#1440#0" expanded="true" />
-                <element signature="e#1479#1480#0" expanded="true" />
-                <element signature="e#1526#1527#0" expanded="true" />
-                <element signature="e#1561#1562#0" expanded="true" />
-                <element signature="e#1603#1604#0" expanded="true" />
-                <element signature="e#1638#1639#0" expanded="true" />
-                <element signature="e#1680#1681#0" expanded="true" />
-                <element signature="e#7318#7319#0" expanded="true" />
-                <element signature="e#7379#7380#0" expanded="true" />
-                <element signature="e#10098#10099#0" expanded="true" />
+                <element signature="e#7704#7705#0" expanded="true" />
+                <element signature="e#7765#7766#0" expanded="true" />
+                <element signature="e#10484#10485#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domini/Ranking.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-480">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -62,8 +63,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="268" column="52" selection-start-line="268" selection-start-column="52" selection-end-line="268" selection-end-column="52" />
+            <state relative-caret-position="303">
+              <caret line="277" column="49" lean-forward="true" selection-start-line="277" selection-start-column="49" selection-end-line="277" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#8468#8469#0" expanded="true" />
@@ -74,22 +75,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuPartidaGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="157" column="21" lean-forward="true" selection-start-line="157" selection-start-column="21" selection-end-line="157" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Presentacion/LoginH2GUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="95" column="123" selection-start-line="95" selection-start-column="123" selection-end-line="95" selection-end-column="123" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-576">
+              <caret line="195" column="46" selection-start-line="195" selection-start-column="16" selection-end-line="195" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -97,24 +86,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+            <state relative-caret-position="495">
+              <caret line="55" column="32" lean-forward="true" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+              <folding>
+                <element signature="e#2178#2179#0" expanded="true" />
+                <element signature="e#3037#3038#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java">
+        <entry file="file://$PROJECT_DIR$/Database/Jugadores/data.JSON5">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="195" column="46" selection-start-line="195" selection-start-column="16" selection-end-line="195" selection-end-column="46" />
+            <state relative-caret-position="141">
+              <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form">
-          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
     </leaf>
@@ -129,11 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getNombre</find>
-      <find>password</find>
-      <find>guardarJugador</find>
-      <find>guardarProbl</find>
-      <find>existejugad</find>
       <find>esloginO</find>
       <find>incrementarPartidaGanada</find>
       <find>getProblem</find>
@@ -152,13 +135,18 @@
       <find>tableModel</find>
       <find>pane</find>
       <find>table1</find>
-      <find>ha ganado</find>
-      <find>guardarProble</find>
-      <find>guardarProblemasGanadosJugador</find>
       <find>== 0</find>
       <find>dificultad</find>
-      <find>dific</find>
       <find>jugar</find>
+      <find>H1</find>
+      <find>ha ganado</find>
+      <find>guardarProblemasGanadosJugador</find>
+      <find>dific</find>
+      <find>guardarProble</find>
+      <find>nJugador1 == 0</find>
+      <find>partidaganada</find>
+      <find>incrementar</find>
+      <find>partidaGand</find>
     </findStrings>
     <replaceStrings>
       <replace>'N'</replace>
@@ -216,18 +204,18 @@
         <option value="$PROJECT_DIR$/src/Presentacion/LoginH2.form" />
         <option value="$PROJECT_DIR$/src/Presentacion/JugarMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/MenuGUI.java" />
-        <option value="$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java" />
         <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java" />
         <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/MenuPrincipalGUI.form" />
-        <option value="$PROJECT_DIR$/Database/Jugadores/data.JSON5" />
         <option value="$PROJECT_DIR$/src/Presentacion/LoginGUI.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/LoginH2.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/LoginGUIH2.java" />
-        <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
-        <option value="$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/LoginH2GUI.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/MenuPartidaGUI.java" />
+        <option value="$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java" />
+        <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java" />
+        <option value="$PROJECT_DIR$/Database/Jugadores/data.JSON5" />
         <option value="$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java" />
       </list>
     </option>
@@ -352,7 +340,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="589" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558957391130" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558963751883" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -584,27 +572,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Domini/Torre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="859">
-          <caret line="191" lean-forward="true" selection-start-line="191" selection-end-line="191" />
-          <folding>
-            <element signature="e#6260#6261#0" expanded="true" />
-            <element signature="e#6289#6290#0" expanded="true" />
-            <element signature="e#6318#6319#0" expanded="true" />
-            <element signature="e#6350#6351#0" expanded="true" />
-            <element signature="e#6384#6385#0" expanded="true" />
-            <element signature="e#6414#6415#0" expanded="true" />
-            <element signature="e#6461#6462#0" expanded="true" />
-            <element signature="e#6499#6500#0" expanded="true" />
-            <element signature="e#6535#6536#0" expanded="true" />
-            <element signature="e#6567#6568#0" expanded="true" />
-            <element signature="e#6618#6619#0" expanded="true" />
-            <element signature="e#6660#6661#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/Persona.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -842,13 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Database/Jugadores/data.JSON5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuPrincipalGUI.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
@@ -863,51 +823,6 @@
             <element signature="e#2475#2476#0" expanded="true" />
             <element signature="e#2551#2552#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="195" column="46" selection-start-line="195" selection-start-column="16" selection-end-line="195" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="78" column="5" lean-forward="true" selection-start-line="76" selection-start-column="4" selection-end-line="78" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1479#1480#0" expanded="true" />
-            <element signature="e#1526#1527#0" expanded="true" />
-            <element signature="e#1561#1562#0" expanded="true" />
-            <element signature="e#1603#1604#0" expanded="true" />
-            <element signature="e#1638#1639#0" expanded="true" />
-            <element signature="e#1680#1681#0" expanded="true" />
-            <element signature="e#7318#7319#0" expanded="true" />
-            <element signature="e#7379#7380#0" expanded="true" />
-            <element signature="e#10098#10099#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="52" column="54" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -928,10 +843,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-576">
+          <caret line="195" column="46" selection-start-line="195" selection-start-column="16" selection-end-line="195" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Database/Jugadores/data.JSON5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="55" column="32" lean-forward="true" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+          <folding>
+            <element signature="e#2178#2179#0" expanded="true" />
+            <element signature="e#3037#3038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="104" column="32" lean-forward="true" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="90" column="5" lean-forward="true" selection-start-line="84" selection-start-column="4" selection-end-line="90" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7704#7705#0" expanded="true" />
+            <element signature="e#7765#7766#0" expanded="true" />
+            <element signature="e#10484#10485#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Ranking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="268" column="52" selection-start-line="268" selection-start-column="52" selection-end-line="268" selection-end-column="52" />
+        <state relative-caret-position="303">
+          <caret line="277" column="49" lean-forward="true" selection-start-line="277" selection-start-column="49" selection-end-line="277" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#8468#8469#0" expanded="true" />

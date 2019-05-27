@@ -58,6 +58,10 @@ public class JugarPartidaGUI {
         this.nJugador2 = n;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+        if(this.jugador1.equals("H1")) ctrl_presentacion.getInstance().incrementarPartidaJugada(ctrl_presentacion.getInstance().getNombreJugadorSesionH1());
+        if(this.jugador1.equals("H2")) ctrl_presentacion.getInstance().incrementarPartidaJugada(ctrl_presentacion.getInstance().getNombreJugadorSesionH2());
+        if(this.jugador2.equals("H1"))ctrl_presentacion.getInstance().incrementarPartidaJugada(ctrl_presentacion.getInstance().getNombreJugadorSesionH1());
+        if(this.jugador2.equals("H2"))ctrl_presentacion.getInstance().incrementarPartidaJugada(ctrl_presentacion.getInstance().getNombreJugadorSesionH2());
         this.dificultad = dificultad;
         if(this.jugador1.equals("H1")) jugadorblanco.setText("Jugador: " + ctrl_presentacion.getInstance().getNombreJugadorSesionH1());
         else if(this.jugador1.equals("H2")) jugadorblanco.setText("Jugador: " + ctrl_presentacion.getInstance().getNombreJugadorSesionH2());
@@ -155,12 +159,13 @@ public class JugarPartidaGUI {
                 this.boardPanel.drawBoard(ctrl_presentacion.getInstance().getTablero());
             } catch (Exception e) {
                 if(e.getMessage().equals("Jugador 2 en Jaque mate")) {
-                    displayFrameMessage("Ha ganado " + jugador1, 300, 100); //j1 ha ganado
+                    if(jugador1.equals("H1")) displayFrameMessage("Ha ganado " + ctrl_presentacion.getInstance().getNombreJugadorSesionH1(), 300, 100); //j1 ha ganado
+                    else if(jugador1.equals("H1")) displayFrameMessage("Ha ganado " + ctrl_presentacion.getInstance().getNombreJugadorSesionH2(), 300, 100); //j2 ha ganado
                     cronometro.pararCronometro();
-                    System.out.println("hola hola holaaa");
                 }
                 else {
-                    displayFrameMessage("Ha ganado " + jugador2, 300, 100); //j2 ha ganado
+                    if(jugador2.equals("H1")) displayFrameMessage("Ha ganado " + ctrl_presentacion.getInstance().getNombreJugadorSesionH1(), 300, 100); //j1 ha ganado
+                    else if(jugador2.equals("H1")) displayFrameMessage("Ha ganado " + ctrl_presentacion.getInstance().getNombreJugadorSesionH2(), 300, 100); //j2 ha ganado
                     cronometro.pararCronometro();
                     System.out.println("hola");
 
@@ -251,7 +256,7 @@ public class JugarPartidaGUI {
                                 //System.out.println("segundo click " + tileId + " x " + tileId / 8 + " y " + tileId % 8 + " destinationTile: " + destinationTile);
                                 try {
                                     if (esMovimientoGUIOk(sourceTile)) {
-                                        if (nJugador1 == 0) { //fin de la partida
+                                        if (nJugador1 == 0 && (jugador1.equals("H1") || jugador1.equals("H2")) && radioButtonTurnoJugador1.isSelected()) { //fin de la partida
                                             System.out.println("nJugador1 == 0");
                                             cronometro.pararCronometro();
                                             long tiempoFinalProblema = new Date().getTime();
@@ -273,6 +278,41 @@ public class JugarPartidaGUI {
                                                 }
                                                 else if(jugador1.equals("M1")) displayFrameMessage("el jugador M1 ha ganado la partida!", 300, 100);
                                                 else if(jugador1.equals("M2")) displayFrameMessage("el jugador M2 ha ganado la partida!", 300, 100);
+                                            }
+                                            else {
+                                                if(jugador2.equals("M1")) displayFrameMessage("el jugador M1 ha ganado la partida!", 300, 100);
+                                                else if(jugador2.equals("M2")) displayFrameMessage("el jugador M2 ha ganado la partida!", 300, 100);
+                                                else {
+                                                    displayFrameMessage("el jugador " + ctrl_presentacion.getInstance().getNombreJugadorSesionH2() +  " ha ganado la partida!", 300, 100);
+                                                    ctrl_presentacion.getInstance().guardarProblemaGanadoJugador(ctrl_presentacion.getInstance().getNombreJugadorSesionH2(), FEN, nTotal, jugador1, dificultad, tiempoAguardar);
+                                                }
+                                            }
+                                        }
+                                        else if(nJugador2 == 0 && (jugador2.equals("H1") || jugador2.equals("H2")) && radioButtonTurnoJugador2.isSelected()) {
+                                            System.out.println("nJugador1 == 0");
+                                            cronometro.pararCronometro();
+                                            long tiempoFinalProblema = new Date().getTime();
+                                            long tiempo = tiempoFinalProblema - boardPanel.getTiempoInicioProblema();
+                                            int tiempoAguardar = (int) tiempo;
+                                            //verificamos quien gana: J1 si J2 está en mate o J2 si no está en mate
+                                            if (!ctrl_presentacion.getInstance().isJ2EnJaqueMate()) {
+                                                if(!jugador2.equals("M1") && !jugador2.equals("M2")) {
+                                                    String nombre = "";
+                                                    if(jugador2.equals("H1")) {
+                                                        nombre = ctrl_presentacion.getInstance().getNombreJugadorSesionH1();
+                                                        ctrl_presentacion.getInstance().guardarProblemaGanadoJugador(nombre, FEN, nTotal, jugador2,  dificultad,tiempoAguardar);
+                                                        ctrl_presentacion.getInstance().incrementarPartidaGanada(nombre);
+                                                    }
+                                                    else if(jugador2.equals("H2")) {
+                                                        nombre = ctrl_presentacion.getInstance().getNombreJugadorSesionH2();
+                                                        ctrl_presentacion.getInstance().guardarProblemaGanadoJugador(nombre, FEN, nTotal, jugador1,  dificultad,tiempoAguardar);
+                                                        ctrl_presentacion.getInstance().incrementarPartidaGanada(nombre);
+
+                                                    }
+                                                    displayFrameMessage("el jugador " + nombre + " ha ganado la partida!", 300, 100);
+                                                }
+                                                else if(jugador2.equals("M1")) displayFrameMessage("el jugador M1 ha ganado la partida!", 300, 100);
+                                                else if(jugador2.equals("M2")) displayFrameMessage("el jugador M2 ha ganado la partida!", 300, 100);
                                             }
                                             else {
                                                 if(jugador2.equals("M1")) displayFrameMessage("el jugador M1 ha ganado la partida!", 300, 100);

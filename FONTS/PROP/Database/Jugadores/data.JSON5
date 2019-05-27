@@ -16,23 +16,24 @@
   {
     "password": "test2",
     "partidasGanadas": 0,
-    "problemas": [],
+    "problemas": [
+      {
+        "Tiempo": 2,
+        "Contra": "H1",
+        "Dificultad": "H1",
+        "FEN": "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1",
+        "N": 2
+      },
+      {
+        "Tiempo": 2,
+        "Contra": "H1",
+        "Dificultad": "H1",
+        "FEN": "B4K2/p1NR1P2/Rp6/2N1kbQn/1np5/2p1p3/2P3pP/6B1",
+        "N": 2
+      }
+    ],
     "partidasTotales": 0,
     "username": "hola2"
-  },
-  {
-    "password": "hola",
-    "partidasGanadas": 0,
-    "problemas": [],
-    "partidasTotales": 0,
-    "username": "mayra"
-  },
-  {
-    "password": "",
-    "partidasGanadas": 0,
-    "problemas": [],
-    "partidasTotales": 0,
-    "username": ""
   },
   {
     "password": "testRegister",
