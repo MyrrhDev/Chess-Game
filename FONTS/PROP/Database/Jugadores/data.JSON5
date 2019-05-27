@@ -1,1 +1,44 @@
-[{"password":"test","partidasGanadas":0,"problemas":[],"partidasTotales":0,"username":"hola"},{"password":"test","partidasGanadas":0,"problemas":[],"partidasTotales":0,"username":"adeu"},{"password":"test2","partidasGanadas":0,"problemas":[],"partidasTotales":0,"username":"hola2"},{"password":"hola","partidasGanadas":0,"problemas":[],"partidasTotales":0,"username":"mayra"}]
+[
+  {
+    "password": "test",
+    "partidasGanadas": 0,
+    "problemas": [],
+    "partidasTotales": 0,
+    "username": "hola"
+  },
+  {
+    "password": "test",
+    "partidasGanadas": 0,
+    "problemas": [],
+    "partidasTotales": 0,
+    "username": "adeu"
+  },
+  {
+    "password": "test2",
+    "partidasGanadas": 0,
+    "problemas": [],
+    "partidasTotales": 0,
+    "username": "hola2"
+  },
+  {
+    "password": "hola",
+    "partidasGanadas": 0,
+    "problemas": [],
+    "partidasTotales": 0,
+    "username": "mayra"
+  },
+  {
+    "password": "",
+    "partidasGanadas": 0,
+    "problemas": [],
+    "partidasTotales": 0,
+    "username": ""
+  },
+  {
+    "password": "testRegister",
+    "partidasGanadas": 0,
+    "problemas": [],
+    "partidasTotales": 0,
+    "username": "testRegister"
+  }
+]

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuGUI {
+public class MenuPrincipalGUI {
     private JPanel menuPanel;
     private JButton rankingButton;
     static private JFrame jf;
@@ -16,7 +16,7 @@ public class MenuGUI {
     private JLabel img;
     private JLabel menuLabel;
 
-    public MenuGUI() {
+    public MenuPrincipalGUI() {
         jf = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
         jf.setPreferredSize(new Dimension(900, 750));
         jf.setContentPane(menuPanel);
@@ -42,7 +42,7 @@ public class MenuGUI {
         jugarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new JugarMenuGUI();
+                new MenuPartidaGUI();
                 jf.setVisible(false);
             }
         });
@@ -53,7 +53,7 @@ public class MenuGUI {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MenuGUI();
+                new MenuPrincipalGUI();
             }
         });
     }

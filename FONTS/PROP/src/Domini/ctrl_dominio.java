@@ -22,7 +22,7 @@ public class ctrl_dominio {
     Patron Singleton
      */
     public static ctrl_dominio getInstance() {
-        if(singleInstance == null) {
+        if (singleInstance == null) {
             singleInstance = new ctrl_dominio();
             controlPersistencia = ctrl_persistencia.getInstance();
         }
@@ -31,7 +31,7 @@ public class ctrl_dominio {
 
     public boolean verificarJugador(final String username, final String password) throws Exception {
         try {
-            if(controlPersistencia.esLoginOk(username, password))return true;
+            if (controlPersistencia.esLoginOk(username, password)) return true;
             else return false;
         } catch (IOException e) {
             throw e;
@@ -65,14 +65,19 @@ public class ctrl_dominio {
     public static String[][] getProblemasDificultad(final String diff) {
         ArrayList<ArrayList<String>> tmpres = controlPersistencia.getProblemasDificultad(diff);
         String[][] result = new String[tmpres.size()][2];
-        for(int i = 0; i < tmpres.size(); ++i) {
-            for(int j = 0; j < tmpres.get(i).size(); ++j) {
+        for (int i = 0; i < tmpres.size(); ++i) {
+            for (int j = 0; j < tmpres.get(i).size(); ++j) {
                 result[i][0] = tmpres.get(i).get(0); //FEN
                 result[i][1] = tmpres.get(i).get(1); //N
             }
         }
         return result;
     }
+
+    public void guardarProblemaGanadoJugador(final String nombre, final String FEN, final int N, final String contra, final String dificultad, final int tpartida) {
+        controlPersistencia.guardarProblemaGanado(nombre, FEN, N, contra, dificultad, tpartida);
+    }
+
 
     /*
     Pre: Cierto
@@ -180,7 +185,6 @@ public class ctrl_dominio {
             else vs = "H2";
         }
         //@TODO: Hacer get del nombre del jugador en la capa de presentación y cambiarlo por pepito
-        controlPersistencia.guardarProblemaGanado("pepito", problema.getFEN(), problema.getN(), vs, problema.getDificultad(), tpartida);
         tinicio = -1;
         tfin = -1;
         tpartida = -1;

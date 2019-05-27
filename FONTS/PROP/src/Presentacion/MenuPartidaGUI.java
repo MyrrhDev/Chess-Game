@@ -1,12 +1,14 @@
 package Presentacion;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.event.CellEditorListener;
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.EventObject;
 
-public class JugarMenuGUI {
+public class MenuPartidaGUI {
     private JPanel menuJugarPanel;
     private JComboBox dificultadMenu;
     private JLabel dif;
@@ -22,15 +24,17 @@ public class JugarMenuGUI {
     private static JFrame jframeMain;
     private String diff;
     private boolean problemasBuscados = false;
-    private JFrame jf;
+    private JFrame menuPartidaFrame;
 
-    public JugarMenuGUI() {
-        jf = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
-        jf.setSize(600, 600);
-        jf.setContentPane(menuJugarPanel);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.pack();
-        jf.setVisible(true);
+    public MenuPartidaGUI() {
+        menuPartidaFrame = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
+        //menuPartidaFrame.setSize(600, 600);
+        menuPartidaFrame.setSize(844, 650); menuPartidaFrame.setResizable(false);
+        menuPartidaFrame.setContentPane(menuJugarPanel);
+        menuPartidaFrame.setLocationRelativeTo(null);
+        menuPartidaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menuPartidaFrame.pack();
+        menuPartidaFrame.setVisible(true);
         dificultadMenu.addItem("Facil");
         dificultadMenu.addItem("Medio");
         dificultadMenu.addItem("Dificil");
@@ -149,8 +153,8 @@ public class JugarMenuGUI {
                     }
                     if(player1.equals("H2") || player2.equals("H2")) {
                         //pedimos login H2
-                        new LoginH2(FEN, n, playerId1, playerId2, jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2]);
-                        jf.setVisible(false);
+                        new LoginH2GUI(FEN, n, playerId1, playerId2, jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2], diff);
+                        menuPartidaFrame.setVisible(false);
                     }
                     else {
                         iniciarPartida(FEN, n, playerId1, playerId2, jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2]);
@@ -162,9 +166,8 @@ public class JugarMenuGUI {
                 //creamos una partida con los datos seleccionados //@TODO: Arreglar la crida al controlador de domini, s'ha de cridar desde el controlador de presentació
                 ctrl_presentacion.getInstance().crearPartida(FEN, n, playerId1, playerId2);
                 //System.out.println(dificultadMenu.getSelectedItem() + " FEN:  " + FEN + " N: " + n + " playerId1: "+ playerId1 + " playerId2: " + playerId2 + " " + jugadores.getSelectedItem());
-                JugarPartidaGUI partidaTablero = new JugarPartidaGUI(jugadorSeleccionado1, jugadorSeleccionado2, n);
-                jf.setVisible(false);
-                System.out.println("fuera del set visible");
+                JugarPartidaGUI partidaTablero = new JugarPartidaGUI(jugadorSeleccionado1, jugadorSeleccionado2, FEN, n, diff);
+                menuPartidaFrame.setVisible(false);
             }
 
             @Override
@@ -184,11 +187,38 @@ public class JugarMenuGUI {
             }
         });
 
+        table1.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
         atrasButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                jf.setVisible(false);
-                new MenuGUI();
+                menuPartidaFrame.setVisible(false);
+                new MenuPrincipalGUI();
             }
 
             @Override
@@ -224,6 +254,12 @@ public class JugarMenuGUI {
         String[][] data = {{"", ""}};
         table1 = new JTable(data, columnNames);*/
         table1 = new JTable(0,2);
+        JTableHeader header= table1.getTableHeader();
+        TableColumnModel colMod = header.getColumnModel();
+        TableColumn fenColumn = colMod.getColumn(0);
+        fenColumn.setHeaderValue("FEN");
+        TableColumn nColumn = colMod.getColumn(1);
+        nColumn.setHeaderValue("Movimientos");
         table1.getColumnModel().getColumn(0).sizeWidthToFit();
         table1.getColumnModel().getColumn(1).sizeWidthToFit();
         table1.setSize(200, 300);

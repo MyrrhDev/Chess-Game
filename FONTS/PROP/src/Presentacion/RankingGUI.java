@@ -1,9 +1,6 @@
 package Presentacion;
 
-import Domini.ctrl_dominio;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -24,7 +21,7 @@ public class RankingGUI {
         atrasButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new MenuGUI();
+                new MenuPrincipalGUI();
                 frame.setVisible(false);
             }
 

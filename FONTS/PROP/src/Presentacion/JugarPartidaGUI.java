@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import static javax.swing.SwingUtilities.isLeftMouseButton;
 import static javax.swing.SwingUtilities.isRightMouseButton;
@@ -35,10 +36,13 @@ public class JugarPartidaGUI {
     private String jugador2 = "";
     private int nJugador2;
     private int nJugador1;
+    private int nTotal;
     private BoardPanel boardPanel;
     private boolean turnoJugador1 = true, turnoJugador2 = false;
+    private String FEN;
+    private String dificultad;
 
-    public JugarPartidaGUI(String jugador1, String jugador2, int n) {
+    public JugarPartidaGUI(String jugador1, String jugador2, String FEN, int n, String dificultad) {
         System.out.println("creo el objeto Jugar Partida GUI");
         this.frame = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
         this.frame.setPreferredSize(new Dimension(900, 750));
@@ -48,10 +52,13 @@ public class JugarPartidaGUI {
         this.frame.setVisible(true);
         cronometro = new Cronometro();
         Thread threadCronometro = new Thread(cronometro);
+        this.FEN = FEN;
+        this.nTotal = n;
         this.nJugador1 = n;
         this.nJugador2 = n;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+        this.dificultad = dificultad;
         if(this.jugador1.equals("H1")) jugadorblanco.setText("Jugador: " + ctrl_presentacion.getInstance().getNombreJugadorSesionH1());
         else if(this.jugador1.equals("H2")) jugadorblanco.setText("Jugador: " + ctrl_presentacion.getInstance().getNombreJugadorSesionH2());
         else jugadorblanco.setText("Jugador: " + jugador1);
@@ -150,13 +157,18 @@ public class JugarPartidaGUI {
                 if(e.getMessage().equals("Jugador 2 en Jaque mate")) {
                     displayFrameMessage("Ha ganado " + jugador1, 300, 100); //j1 ha ganado
                     cronometro.pararCronometro();
+                    System.out.println("hola hola holaaa");
                 }
                 else {
                     displayFrameMessage("Ha ganado " + jugador2, 300, 100); //j2 ha ganado
                     cronometro.pararCronometro();
+                    System.out.println("hola");
+
                 }
 
             }
+        }
+        else {
         }
     }
 
@@ -175,6 +187,7 @@ public class JugarPartidaGUI {
      */
     private class BoardPanel extends JPanel {
         final List<TilePanel> boardTiles;
+        private long tiempoInicioProblema;
 
         BoardPanel() {
             super(new GridLayout(8,8));
@@ -186,7 +199,13 @@ public class JugarPartidaGUI {
             }
             setPreferredSize(new Dimension(400, 350));
             validate();
+            this.tiempoInicioProblema = new Date().getTime(); //tiempo inicial en milisegundos
         }
+
+        public long getTiempoInicioProblema() {
+            return this.tiempoInicioProblema;
+        }
+
 
         public void drawBoard(final char[] board) {
             validate();
@@ -232,28 +251,50 @@ public class JugarPartidaGUI {
                                 //System.out.println("segundo click " + tileId + " x " + tileId / 8 + " y " + tileId % 8 + " destinationTile: " + destinationTile);
                                 try {
                                     if (esMovimientoGUIOk(sourceTile)) {
-                                        ctrl_presentacion.getInstance().jugar(sourceTile / 8, sourceTile % 8, destinationTile / 8, destinationTile % 8);
-                                        //Cambiamos el indicador de quien es el turno
-                                        if (radioButtonTurnoJugador1.isSelected()) {
-                                            radioButtonTurnoJugador1.setSelected(false);
-                                            --nJugador1;
-                                            turnoJugador1 = false;
-                                            radioButtonTurnoJugador2.setSelected(true);
-                                            turnoJugador2 = true;
-                                        } else {
-                                            radioButtonTurnoJugador2.setSelected(false);
-                                            turnoJugador2 = false;
-                                            radioButtonTurnoJugador1.setSelected(true);
-                                            turnoJugador1 = true;
-                                            --nJugador2;
-                                        }
                                         if (nJugador1 == 0) { //fin de la partida
+                                            System.out.println("nJugador1 == 0");
                                             cronometro.pararCronometro();
+                                            long tiempoFinalProblema = new Date().getTime();
+                                            long tiempo = tiempoFinalProblema - boardPanel.getTiempoInicioProblema();
+                                            int tiempoAguardar = (int) tiempo;
                                             //verificamos quien gana: J1 si J2 está en mate o J2 si no está en mate
-                                            if (ctrl_presentacion.getInstance().isJ2EnJaqueMate())
-                                                displayFrameMessage("TODO: Hacer get nombre H1: Ha ganado!!", 300, 100);
-                                             else
-                                                displayFrameMessage("TODO: Hacer get nombre H2: Ha ganado!!", 300, 100);
+                                            if (ctrl_presentacion.getInstance().isJ2EnJaqueMate()) {
+                                                if(!jugador1.equals("M1") && !jugador1.equals("M2")) {
+                                                    String nombre = "";
+                                                    if(jugador1.equals("H1")) {
+                                                        nombre = ctrl_presentacion.getInstance().getNombreJugadorSesionH1();
+                                                        ctrl_presentacion.getInstance().guardarProblemaGanadoJugador(nombre, FEN, nTotal, jugador2,  dificultad,tiempoAguardar);
+                                                    }
+                                                    else if(jugador1.equals("H2")) {
+                                                        nombre = ctrl_presentacion.getInstance().getNombreJugadorSesionH2();
+                                                        ctrl_presentacion.getInstance().guardarProblemaGanadoJugador(nombre, FEN, nTotal, jugador1,  dificultad,tiempoAguardar);
+                                                    }
+                                                    displayFrameMessage("el jugador " + nombre + " ha ganado la partida!", 300, 100);
+                                                }
+                                                else if(jugador1.equals("M1")) displayFrameMessage("el jugador M1 ha ganado la partida!", 300, 100);
+                                                else if(jugador1.equals("M2")) displayFrameMessage("el jugador M2 ha ganado la partida!", 300, 100);
+                                            }
+                                            else {
+                                                if(jugador2.equals("M1")) displayFrameMessage("el jugador M1 ha ganado la partida!", 300, 100);
+                                                else if(jugador2.equals("M2")) displayFrameMessage("el jugador M2 ha ganado la partida!", 300, 100);
+                                            }
+                                        }
+                                        else {
+                                            ctrl_presentacion.getInstance().jugar(sourceTile / 8, sourceTile % 8, destinationTile / 8, destinationTile % 8);
+                                            //Cambiamos el indicador de quien es el turno
+                                            if (radioButtonTurnoJugador1.isSelected()) {
+                                                radioButtonTurnoJugador1.setSelected(false);
+                                                --nJugador1;
+                                                turnoJugador1 = false;
+                                                radioButtonTurnoJugador2.setSelected(true);
+                                                turnoJugador2 = true;
+                                            } else {
+                                                radioButtonTurnoJugador2.setSelected(false);
+                                                turnoJugador2 = false;
+                                                radioButtonTurnoJugador1.setSelected(true);
+                                                turnoJugador1 = true;
+                                                --nJugador2;
+                                            }
                                         }
                                     }
                                     boardPanel.drawBoard(ctrl_dominio.getInstance().getTablero());

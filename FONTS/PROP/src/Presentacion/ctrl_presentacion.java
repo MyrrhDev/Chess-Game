@@ -49,6 +49,12 @@ public class ctrl_presentacion {
         }
     }
 
+    public void guardarProblemaGanadoJugador(final String nombre, final String FEN, final int N, final String contra, final String dificultad, final int tpartida) {
+        ctrl_dominio.guardarProblemaGanadoJugador(nombre, FEN, N, contra, dificultad, tpartida);
+    }
+
+    public static boolean isJ1EnJaqueMate() {return ctrl_dominio.isJ1EnJaqueMate(); }
+
     public static boolean isJ2EnJaqueMate() {
         return ctrl_dominio.isJ2EnJaqueMate();
     }
@@ -89,7 +95,7 @@ public class ctrl_presentacion {
     public static void main(String args[]) {
         new ctrl_presentacion();
         //@TODO: LLAMAR VISTA LOGIN
-        new VistaLogin();
+        new LoginGUI();
 
     }
 }
