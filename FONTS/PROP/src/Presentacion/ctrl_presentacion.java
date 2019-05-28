@@ -49,6 +49,19 @@ public class ctrl_presentacion {
         }
     }
 
+    public void borrarProblema(final String FEN, final int N) {
+        ctrl_dominio.borrarProblema(FEN, N);
+    }
+
+
+    public static String[][] getTodosLosProblemas() {
+        return ctrl_dominio.getTodosProblemas();
+    }
+
+    public static void crearPartidaProblema(final String FEN, final int n, final int playerId1, final int playerId2) {
+        ctrl_dominio.crearPartida(FEN, n, playerId1, playerId2);
+    }
+
     public void incrementarPartidaJugada(final String nombreJugador) {
         try {
             ctrl_dominio.incrementarPartidaJugada(nombreJugador);

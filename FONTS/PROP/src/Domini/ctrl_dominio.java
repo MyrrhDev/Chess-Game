@@ -79,12 +79,20 @@ public class ctrl_dominio {
     }
 
     public void incrementarPartidaGanada(final String nombreJugador) {
-        controlPersistencia.incrementarPartidaJugada(nombreJugador);
+        controlPersistencia.incrementarPartidaGanada(nombreJugador);
     }
 
     public void incrementarPartidaJugada(final String nombreJugador) {
         try {
             controlPersistencia.incrementarPartidaJugada(nombreJugador);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void borrarProblema(final String FEN, final int N) {
+        try {
+            controlPersistencia.borrarProblema(FEN, N);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,6 +135,21 @@ public class ctrl_dominio {
                 else jugador2 = new M2(false, false);
                 break;
         }
+    }
+
+    public static String[][] getTodosProblemas() {
+        ArrayList<ArrayList<String>> tmpres = controlPersistencia.getProblemas();
+        String[][] result = new String[tmpres.size()][3];
+        for(int i = 0; i < tmpres.size(); ++i) {
+            for(int j = 0; j < tmpres.get(i).size(); ++j) {
+                result[i][0] = tmpres.get(i).get(0); //FEN
+                result[i][1] = tmpres.get(i).get(1); //N
+
+                result[i][2] = tmpres.get(i).get(3); //Validado?
+
+            }
+        }
+        return result;
     }
 
     /*

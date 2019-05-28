@@ -232,9 +232,6 @@ public class persistenciaJugador {
                     int tmpPartidas = (int)jo.get("partidasGanadas");
                     ++tmpPartidas;
                     jo.put("partidasGanadas", tmpPartidas);
-                    tmpPartidas = (int)jo.get("partidasTotales");
-                    ++tmpPartidas;
-                    jo.put("partidasTotales", tmpPartidas);
                 }
             }
             guardaJSONdb(jarr);

@@ -5,13 +5,18 @@ import Domini.ctrl_dominio;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 
 import static javax.swing.SwingUtilities.isLeftMouseButton;
@@ -20,34 +25,160 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
 public class ProblemaGUI {
 
     private JFrame gameFrame;
-    //private final JPanel boardPanel;
-    private final String imgPiecesPath = "./res";
-    private final ctrl_dominio controladorDom;
     private int sourceTile = -1;
     private int destinationTile = -1;
-    private JTextField textField1;
+    private JTextField fenString;
     private JButton validarYGuardarButton;
     private JButton validarButton;
-    private JPanel aquiTablero;
+    private BoardPanel aquiTablero;
+    private JPanel tableroPanel;
     private JPanel problemaPanel;
     private JPanel leftPanel;
     private JButton loadButton;
     private JButton menuButton;
     private JPanel menuPanel;
+    private JScrollPane problemsList;
+    private JTable tableProblemas;
+    private JButton borrarButton;
+    private JButton guardarButton;
 
     public ProblemaGUI() {
-        controladorDom = ctrl_dominio.getInstance();
+        //Pending:
         gameFrame = new JFrame("Logic - A Chess Game");
         gameFrame.setContentPane(problemaPanel);
         gameFrame.setLayout(new BorderLayout());
-        gameFrame.setSize(new Dimension(900, 700));
+        gameFrame.setSize(new Dimension(1130, 700));
+        gameFrame.setResizable(false);
+        gameFrame.setLocationRelativeTo(null);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        tableroPanel = new JPanel();
+        tableroPanel.setSize(635,625);
         aquiTablero = new BoardPanel();
+        tableroPanel.add(aquiTablero);
         gameFrame.add(menuPanel, BorderLayout.NORTH);
-        gameFrame.add(aquiTablero, BorderLayout.CENTER);
+        gameFrame.add(tableroPanel, BorderLayout.CENTER);
         gameFrame.add(leftPanel, BorderLayout.EAST);
         gameFrame.setVisible(true);
+
+        menuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameFrame.setVisible(false);
+                new MenuPrincipalGUI();
+            }
+        });
+        borrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int row = tableProblemas.getSelectedRow();
+                String FEN = tableProblemas.getModel().getValueAt(row, 0).toString();
+                Integer N = new Integer(tableProblemas.getModel().getValueAt(row, 1).toString());
+
+                ctrl_presentacion.getInstance().borrarProblema(FEN,N);
+
+                tableProblemas.setRowSelectionInterval(0, 0);
+                DefaultTableModel model = (DefaultTableModel)tableProblemas.getModel();
+                model.removeRow(row);
+            }
+        });
+        validarYGuardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //Get FEN de Tablero...
+                //Usuario inserta N
+                //ctrl_presentacion.getInstance().validarYGuardarProblema(FEN,N);
+
+            }
+        });
+        validarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Get FEN de Tablero...
+                //Usuario inserta N
+                //ctrl_presentacion.getInstance().validarProblema(FEN,N);
+            }
+        });
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Get FEN de Tablero...
+                //Usuario inserta N
+                //ctrl_presentacion.getInstance().guardarProblema(FEN,N);
+
+            }
+        });
+
+        tableProblemas.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event) {
+                int row = tableProblemas.getSelectedRow();
+
+                String FEN = tableProblemas.getModel().getValueAt(row, 0).toString();
+                Integer N = new Integer(tableProblemas.getModel().getValueAt(row, 1).toString());
+                ctrl_presentacion.getInstance().crearPartidaProblema(FEN, N, 2, 2);
+                aquiTablero.drawBoard(ctrl_presentacion.getInstance().getTablero());
+            }
+        });
+
+        loadButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String FEN = fenString.getText();
+                ctrl_presentacion.getInstance().crearPartidaProblema(FEN, 2, 2, 2);
+                aquiTablero.drawBoard(ctrl_presentacion.getInstance().getTablero());
+
+            }
+        });
     }
 
+    private void createUIComponents() {
+        problemsList = new JScrollPane();
+        tableProblemas = new JTable(0,3);
+        JTableHeader header= tableProblemas.getTableHeader();
+        TableColumnModel colMod = header.getColumnModel();
+        TableColumn fenColumn = colMod.getColumn(0);
+        fenColumn.setHeaderValue("FEN");
+        TableColumn nColumn = colMod.getColumn(1);
+        nColumn.setHeaderValue("Movimientos");
+        TableColumn validColumn = colMod.getColumn(2);
+        validColumn.setHeaderValue("Validado?");
+        header.repaint();
+        tableProblemas.getColumnModel().getColumn(0).sizeWidthToFit();
+        tableProblemas.getColumnModel().getColumn(1).sizeWidthToFit();
+        tableProblemas.getColumnModel().getColumn(2).sizeWidthToFit();
+        tableProblemas.setSize(200, 300);
+        tableProblemas.setRowSelectionAllowed(true);
+        problemsList.add(tableProblemas);
+        String[][] resultProblemas = buscarProblemas();
+        addProblemasToTable(resultProblemas);
+    }
+
+    private String[][] buscarProblemas() {
+        return ctrl_presentacion.getInstance().getTodosLosProblemas();
+    }
+
+    private void addProblemasToTable(String[][] resultProblemas) {
+        DefaultTableModel model = (DefaultTableModel) tableProblemas.getModel();
+        model.setRowCount(0);
+        tableProblemas.setModel(model); //emty table with new problems
+        for(int i = 0; i < resultProblemas.length; ++i) {
+            model.addRow(new Object[] {resultProblemas[i][0], resultProblemas[i][1], resultProblemas[i][2]});
+        }
+        tableProblemas.setModel(model);
+        tableProblemas.getColumnModel().getColumn(0).sizeWidthToFit();
+        tableProblemas.getColumnModel().getColumn(1).sizeWidthToFit();
+        tableProblemas.getColumnModel().getColumn(2).sizeWidthToFit();
+        if(tableProblemas != null) {
+            tableProblemas.setRowSelectionInterval(0, 0);
+
+            String FEN = tableProblemas.getModel().getValueAt(0, 0).toString();
+            Integer N = new Integer(tableProblemas.getModel().getValueAt(0, 1).toString());
+            ctrl_presentacion.getInstance().crearPartidaProblema(FEN, N, 2, 2);
+        }
+        tableProblemas.setRowSelectionAllowed(true);
+    }
 
 
 
@@ -62,7 +193,8 @@ public class ProblemaGUI {
                 this.boardTiles.add(tilePanel);
                 add(tilePanel);
             }
-            setPreferredSize(new Dimension(400, 350));
+            //setSize(630,620);
+            setPreferredSize(new Dimension(630, 620));
             validate();
         }
 
@@ -87,7 +219,7 @@ public class ProblemaGUI {
             this.tileId = tileId;
             setPreferredSize(new Dimension(10, 10));
             assignTileColor();
-            assignTilePiceIcon(controladorDom.getTablero());
+            assignTilePiceIcon(ctrl_presentacion.getInstance().getTablero());
 
             addMouseListener(new MouseListener() {
                 @Override
@@ -109,21 +241,7 @@ public class ProblemaGUI {
                             } catch (Exception e1) {
                                 e1.printStackTrace();
                             }
-                            SwingUtilities.invokeLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    char[] tablero = {'K', '0', '0', '0', 'n', '0', 'P', '0',
-                                            '0', 'Q', '0', '0', '0', '0', '0', '0',
-                                            '0', '0', '0', '0', 'P', '0', 'k', '0',
-                                            '0', '0', 'P', '0', '0', '0', '0', '0',
-                                            '0', '0', '0', '0', '0', 'Q', '0', '0',
-                                            '0', '0', '0', '0', '0', '0', '0', '0',
-                                            '0', 'Q', '0', '0', 'P', '0', '0', '0',
-                                            '0', '0', 'K', '0', '0', '0', 'p', 'P'};
-                                    //aqui iria controladorDom.getTablero() y le pasaríamos ese tablero a la función drawBoard()
-                                    boardPanel.drawBoard(tablero);
-                                }
-                            });
+                            boardPanel.drawBoard(ctrl_dominio.getInstance().getTablero());
                             sourceTile = -1;
                             destinationTile = -1;
                         }
@@ -158,7 +276,6 @@ public class ProblemaGUI {
             repaint();
         }
 
-        //@TODO: OJO NO LI PUC PASSAR UN OBJECTE DEL DOMINI
         private void assignTilePiceIcon(final char[] tablero) {
             this.removeAll();
             if(tablero[tileId] != '0') {
@@ -173,7 +290,7 @@ public class ProblemaGUI {
                     } else if(tablero[tileId] == 'Q') {
                         im = ImageIO.read(new File("./res/Queen.gif"));
                     } else if(tablero[tileId] == 'R') {
-                        im = ImageIO.read(new File("./res/Rook.gif"));
+                        im = ImageIO.read(new File("./res/Rock.gif"));
                     } else if(tablero[tileId] == 'N') {
                         im = ImageIO.read(new File("./res/Norse.gif"));
                     } else {
@@ -244,11 +361,4 @@ public class ProblemaGUI {
     {
         new ProblemaGUI();
     }
-
-
-
-
-
-
-
 }

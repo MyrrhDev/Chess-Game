@@ -213,6 +213,31 @@ public class persistenciaProblema {
         return -1;
     }
 
+    //Post: devuelve un array de todos los problemas de la base de datos:
+    //TODO: Se tenian que guardar/separar o indicar de alguna manera si no son validados, no?
+    public ArrayList<ArrayList<String>> getProblemas() {
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        JSONArray jarr = leerJSONdata();
+        for(int i = 0; i < jarr.length(); ++i) {
+            JSONObject jo = jarr.optJSONObject(i);
+            //if(jo.get("Dificultad").equals(dificultad) && (boolean) jo.get("Validado?")) {
+            ArrayList<String> data = new ArrayList<>();
+            data.add((String)jo.get("FEN"));
+            data.add(String.valueOf(jo.get("N")));
+            data.add((String)jo.get("Dificultad"));
+            if(String.valueOf(jo.get("Validado?")) == "true") {
+                data.add("Si");
+            } else {
+                data.add("No");
+            }
+            data.add(String.valueOf(jo.get("Veces jugado")));
+            data.add(String.valueOf(jo.get("Tiempo medio")));
+            result.add(data);
+            //}
+        }
+        return result;
+    }
+
 
     //listar problemas segun dificultad si validados
     //guardar veces jugado

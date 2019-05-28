@@ -106,6 +106,19 @@ public class ctrl_persistencia {
         }
     }
 
+    public static ArrayList<ArrayList<String>> getProblemas() {
+        return dbProblemas.getProblemas();
+    }
+
+    public void borrarProblema(final String FEN, final int N) {
+        try {
+            dbProblemas.borrarProblema(FEN, N);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     /*
     Pre: Cierto
     Post: Se incrementa en uno el número de partidas jugadas por parte del jugador
