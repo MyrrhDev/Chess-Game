@@ -7,30 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="535ddb54-757d-4b7c-b4fa-bf11e7c2cd9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ComplexExample$MyDropTargetListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ComplexExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDropTargetListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDropTargetListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$BoardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$BoardPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/TransferableColor.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/res/B.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/B.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/K.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/K.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/N.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/N.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/P.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/P.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/Q.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/Q.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -56,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
+            <state relative-caret-position="-2088">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#29023#29024#0" expanded="true" />
@@ -211,22 +192,6 @@
               <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
               <item name="PROP" type="462c0819:PsiDirectoryNode" />
               <item name="Database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PROP" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PROP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PROP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Presentacion" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -427,10 +392,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="23" width="1917" height="970" extended-state="6" />
+    <frame x="637" y="23" width="1283" height="970" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49544418" weight="0.15304486" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49544418" visible="true" weight="0.2304593" />
       <window_info id="Structure" order="1" sideWeight="0.5045558" side_tool="true" weight="0.15015975" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -439,7 +404,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.4476082" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.27790433" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" weight="0.27790433" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4991708" weight="0.33143508" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -514,12 +479,6 @@
           <properties />
           <option name="timeStamp" value="38" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Domini/M2.java</url>
-          <line>30</line>
-          <properties />
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -530,13 +489,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Domini/M1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -846,10 +798,17 @@
     <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/M2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
+        <state relative-caret-position="-2088">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#29023#29024#0" expanded="true" />

@@ -99,13 +99,7 @@ public class ProblemaGUI {
         supremePanel.add(whitePieces, BorderLayout.SOUTH);
 
 
-
-
-        
-
-
         gameFrame.add(menuPanel, BorderLayout.NORTH);
-        //gameFrame.add(tableroPanel, BorderLayout.CENTER);
         gameFrame.add(supremePanel, BorderLayout.WEST);
         gameFrame.add(leftPanel, BorderLayout.EAST);
         gameFrame.setVisible(true);
