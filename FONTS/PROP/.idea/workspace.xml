@@ -8,7 +8,11 @@
   <component name="ChangeListManager">
     <list default="true" id="535ddb54-757d-4b7c-b4fa-bf11e7c2cd9a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Domini/ctrl_dominio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Domini/ctrl_dominio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ComplexExample$MyDropTargetListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ComplexExample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDropTargetListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDropTargetListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$3.class" afterDir="false" />
@@ -20,15 +24,14 @@
       <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ctrl_presentacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ctrl_presentacion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/TransferableColor.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/res/B.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/B.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/K.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/K.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/N.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/N.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/P.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/P.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/Q.gif" beforeDir="false" afterPath="$PROJECT_DIR$/res/Q.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,32 +53,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4335">
-              <caret line="301" column="12" selection-start-line="301" selection-start-column="12" selection-end-line="301" selection-end-column="12" />
+            <state relative-caret-position="121">
+              <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#18424#18425#0" expanded="true" />
-                <element signature="e#18472#18473#0" expanded="true" />
+                <element signature="e#29023#29024#0" expanded="true" />
+                <element signature="e#29056#29057#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="643" column="25" selection-start-line="643" selection-start-column="25" selection-end-line="643" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#7447#7448#0" expanded="true" />
-                <element signature="e#7532#7533#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form">
+          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
     </leaf>
@@ -90,8 +84,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>buttonA</find>
-      <find>atras</find>
       <find>table</find>
       <find>table1</find>
       <find>buscarProblemas</find>
@@ -120,6 +112,8 @@
       <find>Icon</find>
       <find>move</find>
       <find>drag</find>
+      <find>BoardPanel</find>
+      <find>lightTileColor</find>
     </findStrings>
     <replaceStrings>
       <replace>'N'</replace>
@@ -183,20 +177,21 @@
         <option value="$PROJECT_DIR$/src/Domini/Tablero.java" />
         <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java" />
         <option value="$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java" />
-        <option value="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form" />
         <option value="$PROJECT_DIR$/Database/Problemas/data.JSON5" />
         <option value="$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java" />
         <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/test.java" />
         <option value="$PROJECT_DIR$/src/Presentacion/ComplexExample.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form" />
         <option value="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="637" />
     <option name="y" value="23" />
-    <option name="width" value="1496" />
+    <option name="width" value="1283" />
     <option name="height" value="970" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -205,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,6 +211,11 @@
               <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
               <item name="PROP" type="462c0819:PsiDirectoryNode" />
               <item name="Database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PROP" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
@@ -233,6 +232,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -246,8 +246,8 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="165" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="300" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558993956508" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="375" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559000489441" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -427,10 +427,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1496" height="970" extended-state="0" />
+    <frame x="3" y="23" width="1917" height="970" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49544418" visible="true" weight="0.196011" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49544418" weight="0.15304486" />
       <window_info id="Structure" order="1" sideWeight="0.5045558" side_tool="true" weight="0.15015975" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -530,16 +530,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Domini/M2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="124" column="5" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/M1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -736,17 +726,6 @@
     <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/awt/Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="1096" selection-start-line="1096" selection-end-line="1096" />
-          <folding>
-            <element signature="e#37566#37567#0" expanded="true" />
-            <element signature="e#37612#37613#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domini/Problema.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -770,9 +749,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form">
-      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -852,30 +828,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentacion/ComplexExample.java">
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/ComplexExample.java" />
+    <entry file="file://$PROJECT_DIR$/res/p.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/awt/Container.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+        <state relative-caret-position="203">
+          <caret line="478" selection-start-line="478" selection-end-line="478" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2650#2651#0" expanded="true" />
-            <element signature="e#2686#2687#0" expanded="true" />
-            <element signature="e#2963#2964#0" expanded="true" />
-            <element signature="e#2997#2998#0" expanded="true" />
-            <element signature="e#3049#3050#0" expanded="true" />
-            <element signature="e#3088#3089#0" expanded="true" />
+            <element signature="e#37566#37567#0" expanded="true" />
+            <element signature="e#37612#37613#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="643" column="25" selection-start-line="643" selection-start-column="25" selection-end-line="643" selection-end-column="25" />
+        <state relative-caret-position="121">
+          <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7447#7448#0" expanded="true" />
-            <element signature="e#7532#7533#0" expanded="true" />
+            <element signature="e#29023#29024#0" expanded="true" />
+            <element signature="e#29056#29057#0" expanded="true" />
           </folding>
         </state>
       </provider>

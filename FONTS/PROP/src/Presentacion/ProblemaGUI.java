@@ -1,7 +1,5 @@
 package Presentacion;
 
-import Domini.ctrl_dominio;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -23,10 +21,6 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-
-import static javax.swing.SwingUtilities.isLeftMouseButton;
-import static javax.swing.SwingUtilities.isRightMouseButton;
-
 public class ProblemaGUI {
 
     private JFrame gameFrame;
@@ -46,6 +40,11 @@ public class ProblemaGUI {
     private JTable tableProblemas;
     private JButton borrarButton;
     private JButton guardarButton;
+    private JPanel blackPieces;
+    private JPanel supremePanel;
+    private JPanel whitePieces;
+    private SetPieces aquiBlackPieces;
+    private SetPieces aquiWhitePieces;
 
 
     private final String imageKing = "./res/King.gif";
@@ -69,17 +68,45 @@ public class ProblemaGUI {
         gameFrame = new JFrame("Logic - A Chess Game");
         gameFrame.setContentPane(problemaPanel);
         gameFrame.setLayout(new BorderLayout());
-        gameFrame.setSize(new Dimension(1130, 700));
+        gameFrame.setSize(new Dimension(1130, 900));
         gameFrame.setResizable(false);
+        //gameFrame.pack();
         gameFrame.setLocationRelativeTo(null);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        supremePanel = new JPanel();
+        supremePanel.setSize(640,1028);
+        supremePanel.setLayout(new BorderLayout());
+
+
+        blackPieces = new JPanel();
+        blackPieces.setSize(635, 200);
+        aquiBlackPieces = new SetPieces(false);
+        blackPieces.add(aquiBlackPieces);
+
+        whitePieces = new JPanel();
+        whitePieces.setSize(635, 200);
+        aquiWhitePieces = new SetPieces(true);
+        whitePieces.add(aquiWhitePieces);
 
         tableroPanel = new JPanel();
         tableroPanel.setSize(635, 625);
         aquiTablero = new BoardPanel();
         tableroPanel.add(aquiTablero);
+
+        supremePanel.add(blackPieces, BorderLayout.NORTH);
+        supremePanel.add(tableroPanel, BorderLayout.WEST);
+        supremePanel.add(whitePieces, BorderLayout.SOUTH);
+
+
+
+
+        
+
+
         gameFrame.add(menuPanel, BorderLayout.NORTH);
-        gameFrame.add(tableroPanel, BorderLayout.CENTER);
+        //gameFrame.add(tableroPanel, BorderLayout.CENTER);
+        gameFrame.add(supremePanel, BorderLayout.WEST);
         gameFrame.add(leftPanel, BorderLayout.EAST);
         gameFrame.setVisible(true);
 
@@ -214,6 +241,171 @@ public class ProblemaGUI {
                 ctrl_presentacion.getInstance().crearPartidaProblema(FEN, N, 2, 2);
             }
             tableProblemas.setRowSelectionAllowed(true);
+        }
+
+
+        private class SetPieces extends JPanel {
+            final List<PiecesTiles> pieceTiles;
+
+            SetPieces(boolean white) {
+                super(new GridLayout(2, 8));
+                this.pieceTiles = new ArrayList<>();
+                for (int i = 0; i < 16; ++i) {
+                    final PiecesTiles tilePanel = new PiecesTiles(white, i);
+
+                    new MyDropTargetListener(tilePanel);
+                    MyDragGestureListener dlistener = new MyDragGestureListener();
+                    DragSource ds1 = new DragSource();
+                    ds1.createDefaultDragGestureRecognizer(tilePanel, DnDConstants.ACTION_COPY, dlistener);
+
+                    this.pieceTiles.add(tilePanel);
+                    add(tilePanel);
+                    //setSize(630,160);
+                    setPreferredSize(new Dimension(630, 100));
+                    validate();
+                }
+
+            }
+
+           /* public void drawBoard(final char[] board) {
+                validate();
+                for (final TilePanel tlpan : pieceTiles) {
+                    tlpan.drawTile(board);
+                }
+                validate();
+                repaint();
+            }*/
+
+        }
+
+        private class PiecesTiles extends JPanel {
+
+            private final int tileId;
+            private Color lightTileColor = Color.decode("#654321");
+            private Color darkTileColor = Color.decode("#593E1A");
+
+            private BufferedImage im;
+            private Point imgPoint = new Point(20, 20);
+
+            public PiecesTiles(final boolean white, final int tileId) {
+                this.tileId = tileId;
+                setPreferredSize(new Dimension(10, 10));
+                assignTileColor();
+                assignTilePieceIcon(white, tileId);
+            }
+
+
+            /*public void drawTile(final char[] board) {
+                assignTileColor();
+                //assignTilePieceIcon(board);
+                validate();
+                repaint();
+            }*/
+
+            private void assignTileColor() {
+                setBackground(lightTileColor);
+
+            }
+
+
+            private void assignTilePieceIcon(boolean white, int tileId) {
+                this.removeAll();
+                String searchableKey = new String();
+
+                if(!white) {
+                    if (tileId > 7) {
+                        try {
+                            im = ImageIO.read(new File(imageP));
+                            searchableKey = imageP;
+
+
+                            JLabel label1 = new JLabel(new ImageIcon(im, searchableKey));
+                            add(label1);
+                            //add(new JLabel(new ImageIcon(im, searchableKey)));
+                            MyDragGestureListener dlistener = new MyDragGestureListener();
+                            DragSource ds1 = new DragSource();
+                            ds1.createDefaultDragGestureRecognizer(label1, DnDConstants.ACTION_MOVE, dlistener);
+
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                    } else {
+                        try {
+                            if (tileId == 0 || tileId == 7) {
+                                im = ImageIO.read(new File(imageR));
+                                searchableKey = imageR;
+
+                            } else if (tileId == 1 || tileId == 6) {
+                                im = ImageIO.read(new File(imageN));
+                                searchableKey = imageN;
+                            } else if (tileId == 2 || tileId == 5) {
+                                im = ImageIO.read(new File(imageB));
+                                searchableKey = imageB;
+                            } else if (tileId == 3) {
+                                im = ImageIO.read(new File(imageQ));
+                                searchableKey = imageQ;
+                            } else if (tileId == 4) {
+                                im = ImageIO.read(new File(imageK));
+                                searchableKey = imageK;
+                            }
+
+                            JLabel label1 = new JLabel(new ImageIcon(im, searchableKey));
+                            add(label1);
+                            MyDragGestureListener dlistener = new MyDragGestureListener();
+                            DragSource ds1 = new DragSource();
+                            ds1.createDefaultDragGestureRecognizer(label1, DnDConstants.ACTION_MOVE, dlistener);
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                    }
+                } else {
+                    if (tileId < 8) {
+                        try {
+                            im = ImageIO.read(new File(imagePawn));
+                            searchableKey = imagePawn;
+
+
+                            JLabel label1 = new JLabel(new ImageIcon(im, searchableKey));
+                            add(label1);
+                            //add(new JLabel(new ImageIcon(im, searchableKey)));
+                            MyDragGestureListener dlistener = new MyDragGestureListener();
+                            DragSource ds1 = new DragSource();
+                            ds1.createDefaultDragGestureRecognizer(label1, DnDConstants.ACTION_MOVE, dlistener);
+
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                    } else {
+                        try {
+                            if (tileId == 15 || tileId == 8) {
+                                im = ImageIO.read(new File(imageRook));
+                                searchableKey = imageRook;
+                            } else if (tileId == 14 || tileId == 9) {
+                                im = ImageIO.read(new File(imageNorse));
+                                searchableKey = imageNorse;
+                            } else if (tileId == 13 || tileId == 10) {
+                                im = ImageIO.read(new File(imageBishop));
+                                searchableKey = imageBishop;
+                            } else if (tileId == 12) {
+                                im = ImageIO.read(new File(imageQueen));
+                                searchableKey = imageQueen;
+                            } else if (tileId == 11) {
+                                im = ImageIO.read(new File(imageKing));
+                                searchableKey = imageKing;
+                            }
+
+                            JLabel label1 = new JLabel(new ImageIcon(im, searchableKey));
+                            add(label1);
+                            MyDragGestureListener dlistener = new MyDragGestureListener();
+                            DragSource ds1 = new DragSource();
+                            ds1.createDefaultDragGestureRecognizer(label1, DnDConstants.ACTION_MOVE, dlistener);
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                    }
+
+                }
+            }
         }
 
 
