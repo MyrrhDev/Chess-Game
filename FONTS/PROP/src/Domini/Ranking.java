@@ -8,6 +8,10 @@ public class Ranking {
     int Pb = 20;
     double Df = 0.3333;
 
+    /*
+    Pre: Cierto
+    Post: Actualiza el ranking acorde a los datos almacenados
+     */
     public String[][] refrescarRanking() {
         rank = new HashMap<>();
         ArrayList<String> nombreJugadores = ctrl_dominio.getInstance().getTodosLosJugadores();

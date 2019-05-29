@@ -39,7 +39,6 @@ public class JugarPartidaGUI {
     private int nJugador1;
     private int nTotal;
     private BoardPanel boardPanel;
-    private boolean turnoJugador1 = true, turnoJugador2 = false;
     private String FEN;
     private String dificultad;
 
@@ -92,11 +91,21 @@ public class JugarPartidaGUI {
         System.out.println("acabo la creadora");
 
         button1.addMouseListener(new MouseListener() {
-            @Override
+            /*@Override
             public void mouseClicked(MouseEvent e) {
                 if(jugador1.equals("M1") || jugador1.equals("M2") || jugador2.equals("M1") || jugador2.equals("M2")) {
                     if((jugador1.equals("M1") && !turnoJugador1 && !jugador2.equals("M1") && !jugador2.equals("M2")) || (jugador1.equals("M2") && !turnoJugador1 && !jugador2.equals("M1") && !jugador2.equals("M2")) ||
                             (jugador2.equals("M1") && !turnoJugador2 && !jugador1.equals("M1") && !jugador1.equals("M2")) || (jugador2.equals("M2") && !turnoJugador2 && !jugador1.equals("M1") && !jugador1.equals("M2"))) {
+                        displayFrameMessage("No es el turno de la maquina", 300, 100);
+                    }
+                    else jugar();
+                }
+            }*/
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(jugador1.equals("M1") || jugador1.equals("M2") || jugador2.equals("M1") || jugador2.equals("M2")) {
+                    if((jugador1.equals("M1") &&  !radioButtonTurnoJugador1.isSelected() && !jugador2.equals("M1") && !jugador2.equals("M2")) || (jugador1.equals("M2") && !radioButtonTurnoJugador1.isSelected() && !jugador2.equals("M1") && !jugador2.equals("M2")) ||
+                            (jugador2.equals("M1") && !radioButtonTurnoJugador2.isSelected() && !jugador1.equals("M1") && !jugador1.equals("M2")) || (jugador2.equals("M2") && !radioButtonTurnoJugador2.isSelected() && !jugador1.equals("M1") && !jugador1.equals("M2"))) {
                         displayFrameMessage("No es el turno de la maquina", 300, 100);
                     }
                     else jugar();
@@ -220,44 +229,61 @@ public class JugarPartidaGUI {
         jframeMessage.setVisible(true);
     }
 
+    /*
+    Pre: Cierto
+    Post: Jugar se ha encargado de verificar y ejecutar un movimiento de la maquina
+     */
     public void jugar() {
         System.out.println("jugar");
-        if(((this.jugador1.equals("M1") || this.jugador1.equals("M2")) && turnoJugador1 && nJugador1 > 0)  ||
-                ((this.jugador2.equals("M1") || this.jugador2.equals("M2")) && turnoJugador2 && nJugador2 > 0)) { //si j1 es maquina i es turno j1 o si j2 es maquina i es turno de j2
+        //if(((this.jugador1.equals("M1") || this.jugador1.equals("M2")) && turnoJugador1 && nJugador1 > 0)  ||
+        //                ((this.jugador2.equals("M1") || this.jugador2.equals("M2")) && turnoJugador2 && nJugador2 > 0)) {
+        if(((this.jugador1.equals("M1") || this.jugador1.equals("M2")) && radioButtonTurnoJugador1.isSelected() && nJugador1 > 0)  ||
+                ((this.jugador2.equals("M1") || this.jugador2.equals("M2")) && radioButtonTurnoJugador2.isSelected() && nJugador2 > 0)) { //si j1 es maquina i es turno j1 o si j2 es maquina i es turno de j2
             System.out.println("dentro " + nJugador1 + " " + nJugador2);
             try {
                 char[] tZableroAntes = ctrl_presentacion.getInstance().getTablero();
-                if(turnoJugador1 && nJugador1 > 0) {
+                /*if(turnoJugador1 && nJugador1 > 0) {
+                    System.out.println("es turno j1");
+                    ctrl_presentacion.getInstance().jugar(nJugador1);
+                }*/
+                if(radioButtonTurnoJugador1.isSelected() && nJugador1 > 0) {
                     System.out.println("es turno j1");
                     ctrl_presentacion.getInstance().jugar(nJugador1);
                 }
-                else if(nJugador1 == 0) {
+                else if(nJugador1 == 0) { //y el jugador 2 no está en jaque mate
                     if(jugador2.equals("M1")) displayFrameMessage("El jugador M1 ha ganado la partida", 350, 200);
                     else if (jugador2.equals("M2")) displayFrameMessage("El jugador M2 ha ganado la partida", 350, 200);
                 }
-                if(turnoJugador2 && nJugador2 > 0) {
+                //si nj1 == 0 y el jugador 2 está en mate gana nj1 por mucho que nj1 == 0
+                /*if(turnoJugador2 && nJugador2 > 0) {
+                    System.out.println("es turno j2");
+                    ctrl_presentacion.getInstance().jugar(nJugador2);
+                }*/
+                if(radioButtonTurnoJugador2.isSelected() && nJugador2 > 0) {
                     System.out.println("es turno j2");
                     ctrl_presentacion.getInstance().jugar(nJugador2);
                 }
-                else if(nJugador2 == 0) {
+                else if(nJugador2 == 0) { //y j1 no está en jaque mate
                     if(jugador1.equals("M1")) displayFrameMessage("El jugador M1 ha ganado la partida", 350, 200);
                     else if (jugador1.equals("M2")) displayFrameMessage("El jugador M2 ha ganado la partida", 350, 200);
                 }
                 char[] tableroDespues = ctrl_presentacion.getInstance().getTablero();
                 /*if (Arrays.equals(tableroAntes, tableroDespues)) System.out.println("iguales");
                 else System.out.println("distintos");*/
-                if((this.jugador1.equals("M1") || this.jugador1.equals("M2")) && turnoJugador1) --nJugador1;
-                else if((this.jugador2.equals("M1") || this.jugador2.equals("M2")) && turnoJugador2) --nJugador2;
+                //if((this.jugador1.equals("M1") || this.jugador1.equals("M2")) && turnoJugador1) --nJugador1;
+                if((this.jugador1.equals("M1") || this.jugador1.equals("M2")) && radioButtonTurnoJugador1.isSelected()) --nJugador1;
+                //else if((this.jugador2.equals("M1") || this.jugador2.equals("M2")) && turnoJugador2) --nJugador2;
+                else if((this.jugador2.equals("M1") || this.jugador2.equals("M2")) && radioButtonTurnoJugador2.isSelected()) --nJugador2;
                 if (radioButtonTurnoJugador1.isSelected()) {
                     radioButtonTurnoJugador1.setSelected(false);
-                    turnoJugador1 = false;
+                    //turnoJugador1 = false;
                     radioButtonTurnoJugador2.setSelected(true);
-                    turnoJugador2 = true;
+                    //turnoJugador2 = true;
                 } else {
                     radioButtonTurnoJugador2.setSelected(false);
-                    turnoJugador2 = false;
+                    //turnoJugador2 = false;
                     radioButtonTurnoJugador1.setSelected(true);
-                    turnoJugador1 = true;
+                    //turnoJugador1 = true;
                 }
                 this.boardPanel.drawBoard(ctrl_presentacion.getInstance().getTablero());
             } catch (Exception e) {
@@ -381,7 +407,8 @@ public class JugarPartidaGUI {
                         destinationTile = -1;
                     } else if (isLeftMouseButton(e)) {
                         //@TODO: Verificar que realment sigui el torn de l'humà
-                        if((!jugador1.equals("M1") && !jugador1.equals("M2") && turnoJugador1) || (!jugador2.equals("M1") && !jugador2.equals("M2") && turnoJugador2)) {
+                        //if((!jugador1.equals("M1") && !jugador1.equals("M2") && turnoJugador1) || (!jugador2.equals("M1") && !jugador2.equals("M2") && turnoJugador2)) {
+                        if((!jugador1.equals("M1") && !jugador1.equals("M2") && radioButtonTurnoJugador1.isSelected()) || (!jugador2.equals("M1") && !jugador2.equals("M2") && radioButtonTurnoJugador2.isSelected())) {
                             if (sourceTile == -1) {
                                 if (esMovimientoGUIOk(tileId)) sourceTile = tileId;
                                 //System.out.println("primer click tileId: " + tileId + " x " + tileId / 8 + " y " + tileId % 8 + " sourceTile: " + sourceTile);
@@ -464,14 +491,14 @@ public class JugarPartidaGUI {
                                             if (radioButtonTurnoJugador1.isSelected()) {
                                                 radioButtonTurnoJugador1.setSelected(false);
                                                 --nJugador1;
-                                                turnoJugador1 = false;
+                                                //turnoJugador1 = false;
                                                 radioButtonTurnoJugador2.setSelected(true);
-                                                turnoJugador2 = true;
+                                                //turnoJugador2 = true;
                                             } else {
                                                 radioButtonTurnoJugador2.setSelected(false);
-                                                turnoJugador2 = false;
+                                                //turnoJugador2 = false;
                                                 radioButtonTurnoJugador1.setSelected(true);
-                                                turnoJugador1 = true;
+                                                //turnoJugador1 = true;
                                                 --nJugador2;
                                             }
                                         }

@@ -106,10 +106,20 @@ public class ctrl_persistencia {
         }
     }
 
+    /*
+    Pre: Cierto
+    Post: devuelve un array de todos los problemas de la base de datos
+     */
     public static ArrayList<ArrayList<String>> getProblemas() {
         return dbProblemas.getProblemas();
     }
 
+
+    /*
+    Pre: Cierto
+    Post: Se borra del sistema el problema identificado por FEN y por N
+    Excepciones: IO Exception
+    */
     public void borrarProblema(final String FEN, final int N) {
         try {
             dbProblemas.borrarProblema(FEN, N);

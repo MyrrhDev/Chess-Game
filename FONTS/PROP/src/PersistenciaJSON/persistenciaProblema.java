@@ -20,6 +20,10 @@ public class persistenciaProblema {
 
     }
 
+    /*
+    Pre: Existe la base de datos
+    Post: Guarda el JSONArray que recibe por parametro en la base de datos
+    */
     private void guardaJSONdb(final JSONArray ja) throws Exception {
         String json = ja.toString();
         BufferedWriter bw;
@@ -35,6 +39,10 @@ public class persistenciaProblema {
         }
     }
 
+    /*
+    Pre: La base de datos existe
+    Post: Devuelve un JSONArray que contiene la base de datos del sistema
+     */
     private JSONArray leerJSONdata() {
         String jsonObject = "";
         File f = new File(currentPath);
@@ -213,7 +221,10 @@ public class persistenciaProblema {
         return -1;
     }
 
-    //Post: devuelve un array de todos los problemas de la base de datos:
+    /*
+    Pre: Cierto
+    Post: devuelve un array de todos los problemas de la base de datos
+     */
     //TODO: Se tenian que guardar/separar o indicar de alguna manera si no son validados, no?
     public ArrayList<ArrayList<String>> getProblemas() {
         ArrayList<ArrayList<String>> result = new ArrayList<>();
@@ -237,10 +248,4 @@ public class persistenciaProblema {
         }
         return result;
     }
-
-
-    //listar problemas segun dificultad si validados
-    //guardar veces jugado
-    //guardar tiempo medio (tiempo medio + tiempo problema / veces jugado+1)
-    //devolver problema (en un arraylist quizás?)
 }

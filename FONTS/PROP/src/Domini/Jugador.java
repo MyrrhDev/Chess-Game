@@ -16,7 +16,6 @@ public abstract class Jugador {
      * Post: Crea un nuevo objeto Jugador con los parametros esMaquina, esNegro y estaAtacando
      * */
     public Jugador(boolean esNegro, boolean estaAtacando) {
-        //this.esMaquina = esMaquina;
         this.esNegro = esNegro;
         this.estaAtacando = estaAtacando;
     }
@@ -54,22 +53,6 @@ public abstract class Jugador {
     }
 
 
-//
-//
-//
-//    /* Pre: Tablero y movimiento existen y no esta vacios
-//     * Post: Devuelve en un objeto de MovimientoPrueba que indica si ha sido posible hacer el Movimiento
-//     * */
-//    public MovimientoPrueba hacerMovimiento(final Tablero tablero, final Movimiento movimiento) {
-//        Tablero tempTablero = movimiento.intentar(tablero);
-//        ArrayList <Movimiento> ataquesAlRey = Jugador.hayAtaquesPendientes(tempTablero.miOponenteEs(tempTablero.esSuTurno()).getReydelJugador().getPosX(),
-//                tempTablero.miOponenteEs(tempTablero.esSuTurno()).getReydelJugador().getPosY(), tempTablero.esSuTurno().getPosiblesMovimientos());
-//        if (!ataquesAlRey.isEmpty()) {
-//            return new MovimientoPrueba(tablero, tablero, movimiento, false);
-//        }
-//        return new MovimientoPrueba(tablero, tempTablero, movimiento, true); //todo bien
-//    }
-
     /* Pre: Cierto
      * Post: Devuelve el ArrayList de posibles Movimientos del parametro implicito posiblesMovimientos
      */
@@ -83,20 +66,6 @@ public abstract class Jugador {
     public void setPosiblesMovimientos(ArrayList<Movimiento> posiblesMovimientos) {
         this.posiblesMovimientos = posiblesMovimientos;
     }
-
-    /* Pre: Cierto
-     * Post: Devuelve el boolean del parametro implicito que indica si el Jugador es una Maquina
-     */
-//    public boolean isEsMaquina() {
-//        return esMaquina;
-//    }
-//
-//    /* Pre: Cierto
-//     * Post: Asigna al boolean del parametro implicito que le indica si el Jugador es una Maquina
-//     */
-//    public void setEsMaquina(boolean esMaquina) {
-//        this.esMaquina = esMaquina;
-//    }
 
     /* Pre: Cierto
      * Post: Devuelve el boolean del parametro implicito que indica si el Jugador tiene las piezas negras

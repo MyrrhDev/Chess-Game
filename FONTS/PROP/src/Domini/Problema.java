@@ -20,7 +20,10 @@ public class Problema {
     public Problema() {
     }
 
-
+    /*
+    Pre: Cierto
+    Post: Asigna la dificultad al problema
+     */
     private void calcularDificultad() {
         double diff = 0.0;
         if(problema != null) {

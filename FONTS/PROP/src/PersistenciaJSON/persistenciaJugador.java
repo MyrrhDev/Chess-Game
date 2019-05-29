@@ -37,6 +37,10 @@ public class persistenciaJugador {
         return true;
     }
 
+    /*
+    Pre: La base de datos existe
+    Post: Devuelve un JSONArray que contiene la base de datos del sistema
+     */
     private JSONArray leerJSONdata() {
         String jsonObject = "";
         File f = new File(currentPath);
@@ -53,6 +57,10 @@ public class persistenciaJugador {
         return jarr;
     }
 
+    /*
+    Pre: Existe la base de datos
+    Post: Guarda el JSONArray que recibe por parametro en la base de datos
+     */
     private void guardaJSONdb(final JSONArray ja) throws Exception {
         String json = ja.toString();
         BufferedWriter bw;
@@ -67,6 +75,11 @@ public class persistenciaJugador {
             throw e;
         }
     }
+
+    /*
+    Pre: Cierto
+    Post: Devuelve true si existe el jugador identificado como nombre de usuario. Si no existe, devuelve false
+     */
 
     private boolean existeJugador(final String nombreJugador) {
         boolean res = false;
@@ -259,11 +272,8 @@ public class persistenciaJugador {
     }
 
     /*
-    FEN
-    N
-    Contra
-    Dificultad
-    Tiempo
+    Pre: Cierto
+    Post: Devuelve todos los problemas ganados del jugador
      */
     public ArrayList<ArrayList<String>> getProblemasGanadosJugador(final String nombreJugador) {
         ArrayList<ArrayList<String>> result = new ArrayList<>();
@@ -287,6 +297,10 @@ public class persistenciaJugador {
         return result;
     }
 
+    /*
+    Pre: Cierto
+    Post: Devuelve una lista con todos los jugadores almacenados en el sistema
+     */
     public ArrayList<String> getTodosJugadores() {
         ArrayList<String> res = new ArrayList<>();
         JSONArray jarr = leerJSONdata();

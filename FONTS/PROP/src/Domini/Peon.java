@@ -187,5 +187,4 @@ public class Peon extends Pieza {
     public char getTipo() {
         return this.tipo;
     }
-
 }

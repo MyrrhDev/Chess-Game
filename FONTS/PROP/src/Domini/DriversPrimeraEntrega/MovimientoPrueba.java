@@ -1,4 +1,7 @@
-package Domini;
+package Domini.DriversPrimeraEntrega;
+
+import Domini.Movimiento;
+import Domini.Tablero;
 
 public final class MovimientoPrueba {
 
