@@ -54,6 +54,7 @@ public class RegisterGUI {
     }
 
     private void createUIComponents() {
-        backImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        //backImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        backImage = new JLabel(new ImageIcon(this.getClass().getResource("/res/BackTake2.png")));
     }
 }

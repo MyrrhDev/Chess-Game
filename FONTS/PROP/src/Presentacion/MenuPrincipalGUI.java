@@ -23,7 +23,8 @@ public class MenuPrincipalGUI {
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.pack();
         jf.setVisible(true);
-        img.setIcon(new ImageIcon("./res/tableroMenu.png"));
+        img.setIcon(new ImageIcon(this.getClass().getResource("/res/tableroMenu.png")));
+        //img.setIcon(new ImageIcon("./res/tableroMenu.png"));
         menuLabel.setFont(new Font(menuLabel.getName(), Font.PLAIN, 30));
         newProblemaButton.addActionListener(new ActionListener() {
             @Override

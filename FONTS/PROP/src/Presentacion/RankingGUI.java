@@ -14,7 +14,7 @@ public class RankingGUI {
     RankingGUI() {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Logic: Entorno de resolución de problemas de ajedrez");
+        frame.setTitle("Logic - A Chess Game");
         frame.setContentPane(panel1);
         frame.setSize(600, 300);
         frame.setVisible(true);

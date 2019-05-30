@@ -10,6 +10,17 @@ public class Tablero {
     private final Jugador jugador1;
     private final Jugador jugador2;
 
+    public static char[] getEmptyTablero() {
+        char[] tableroArray = {'0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0'};
+        return tableroArray;
+    }
 
     /* Pre: Cierto
      * Post: Se crea un nuevo objeto Tablero con un Tablero pasado por parametro.

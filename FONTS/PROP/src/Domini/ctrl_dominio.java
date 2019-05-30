@@ -29,6 +29,11 @@ public class ctrl_dominio {
         return singleInstance;
     }
 
+    public char[] getEmptyTablero() {
+        char[] tableroArray = tablero.getEmptyTablero();
+        return tableroArray;
+    }
+
     /*
     Pre: Cierto
     Post: La función devuelve true si existe un jugador, almacenado en la base de datos, que esté identificado por nombre como

@@ -22,6 +22,11 @@ public class ctrl_presentacion {
         else return ctrl_presentacion;
     }
 
+    public static char[] getEmptyTablero() {
+        return ctrl_dominio.getEmptyTablero();
+    }
+
+
     public void setNombreJugadorSesionH1(final String username) {
         this.nombreJugadorSesionH1 = username;
     }

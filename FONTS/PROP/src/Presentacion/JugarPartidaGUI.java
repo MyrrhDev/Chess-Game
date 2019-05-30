@@ -44,7 +44,7 @@ public class JugarPartidaGUI {
 
     public JugarPartidaGUI(String jugador1, String jugador2, String FEN, int n, String dificultad) {
         System.out.println("creo el objeto Jugar Partida GUI");
-        this.frame = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
+        this.frame = new JFrame("Logic - A Chess Game");
         this.frame.setPreferredSize(new Dimension(1050, 800));
         this.frame.setContentPane(panelmain);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -248,9 +248,13 @@ public class JugarPartidaGUI {
                 }*/
                 if(radioButtonTurnoJugador1.isSelected() && nJugador1 > 0) {
                     System.out.println("es turno j1");
+                    System.out.println("J1 en jaque? " + ctrl_presentacion.getInstance().isJ1EnJaqueMate());
+                    System.out.println("J2 en jaque? " + ctrl_presentacion.getInstance().isJ2EnJaqueMate());
                     ctrl_presentacion.getInstance().jugar(nJugador1);
                 }
                 else if(nJugador1 == 0) { //y el jugador 2 no está en jaque mate
+                    System.out.println("J1 en jaque? " + ctrl_presentacion.getInstance().isJ1EnJaqueMate());
+                    System.out.println("J2 en jaque? " + ctrl_presentacion.getInstance().isJ2EnJaqueMate());
                     if(jugador2.equals("M1")) displayFrameMessage("El jugador M1 ha ganado la partida", 350, 200);
                     else if (jugador2.equals("M2")) displayFrameMessage("El jugador M2 ha ganado la partida", 350, 200);
                 }
@@ -261,9 +265,13 @@ public class JugarPartidaGUI {
                 }*/
                 if(radioButtonTurnoJugador2.isSelected() && nJugador2 > 0) {
                     System.out.println("es turno j2");
+                    System.out.println("J1 en jaque? " + ctrl_presentacion.getInstance().isJ1EnJaqueMate());
+                    System.out.println("J2 en jaque? " + ctrl_presentacion.getInstance().isJ2EnJaqueMate());
                     ctrl_presentacion.getInstance().jugar(nJugador2);
                 }
                 else if(nJugador2 == 0) { //y j1 no está en jaque mate
+                    System.out.println("J1 en jaque? " + ctrl_presentacion.getInstance().isJ1EnJaqueMate());
+                    System.out.println("J2 en jaque? " + ctrl_presentacion.getInstance().isJ2EnJaqueMate());
                     if(jugador1.equals("M1")) displayFrameMessage("El jugador M1 ha ganado la partida", 350, 200);
                     else if (jugador1.equals("M2")) displayFrameMessage("El jugador M2 ha ganado la partida", 350, 200);
                 }
@@ -554,7 +562,7 @@ public class JugarPartidaGUI {
         private void assignTilePiceIcon(final char[] tablero) {
             this.removeAll();
             if(tablero[tileId] != '0') {
-                try {
+                /*try {
                     final BufferedImage im;
                     if(tablero[tileId] == 'K') {
                         im = ImageIO.read(new File("./res/King.gif"));
@@ -565,13 +573,39 @@ public class JugarPartidaGUI {
                     } else if(tablero[tileId] == 'Q') {
                         im = ImageIO.read(new File("./res/Queen.gif"));
                     } else if(tablero[tileId] == 'R') {
-                        im = ImageIO.read(new File("./res/Rock.gif"));
+                        im = ImageIO.read(new File("./res/Rook.gif"));
                     } else if(tablero[tileId] == 'N') {
                         im = ImageIO.read(new File("./res/Norse.gif"));
                     } else {
                         im = ImageIO.read(new File("./res/" + tablero[tileId] + ".gif"));
                     }
                     add(new JLabel(new ImageIcon(im)));
+                } catch (Exception e) {
+                }*/
+                try {
+                    if(tablero[tileId] == 'K') {
+                        //im = ImageIO.read(new File("./res/King.gif"));
+                        add(new JLabel(new ImageIcon(this.getClass().getResource("/res/King.gif"))));
+                    } else if(tablero[tileId] == 'B') {
+                        //im = ImageIO.read(new File("./res/Bishop.gif"));
+                        add(new JLabel(new ImageIcon(this.getClass().getResource("/res/Bishop.gif"))));
+                    } else if(tablero[tileId] == 'P') {
+                        //im = ImageIO.read(new File("./res/Pawn.gif"));
+                        add(new JLabel(new ImageIcon(this.getClass().getResource("/res/Pawn.gif"))));
+                    } else if(tablero[tileId] == 'Q') {
+                        //im = ImageIO.read(new File("./res/Queen.gif"));
+                        add(new JLabel(new ImageIcon(this.getClass().getResource("/res/Queen.gif"))));
+                    } else if(tablero[tileId] == 'R') {
+                        //im = ImageIO.read(new File("./res/Rook.gif"));
+                        add(new JLabel(new ImageIcon(this.getClass().getResource("/res/Rook.gif"))));
+                    } else if(tablero[tileId] == 'N') {
+                        //im = ImageIO.read(new File("./res/Norse.gif"));
+                        add(new JLabel(new ImageIcon(this.getClass().getResource("/res/Norse.gif"))));
+                    } else {
+                        //im = ImageIO.read(new File("./res/" + tablero[tileId] + ".gif"));
+                        add(new JLabel(new ImageIcon(this.getClass().getResource("/res/" + tablero[tileId] + ".gif"))));
+                    }
+                    //add(new JLabel(new ImageIcon(im)));
                 } catch (Exception e) {
                 }
             }

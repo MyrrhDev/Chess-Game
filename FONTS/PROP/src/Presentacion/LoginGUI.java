@@ -1,6 +1,7 @@
 package Presentacion;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -61,7 +62,9 @@ public class LoginGUI {
     }
 
     private void createUIComponents() {
-        BackImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        //BackImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        BackImage = new JLabel(new ImageIcon(this.getClass().getResource("/res/BackTake2.png")));
+        //BackImage = new JLabel(new ImageIcon(getClass().getClassLoader().getResourceAsStream("./res/BackTake2.png")));
     }
 
 

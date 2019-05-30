@@ -100,6 +100,7 @@ public class LoginH2GUI {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        backImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        //backImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        backImage = new JLabel(new ImageIcon(this.getClass().getResource("/res/BackTake2.png")));
     }
 }
