@@ -12,7 +12,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -21,11 +23,11 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
+import static java.util.Arrays.sort;
+
 public class ProblemaGUI {
 
     private JFrame gameFrame;
-    private int sourceTile = -1;
-    private int destinationTile = -1;
     private JTextField fenString;
     private JButton validarYGuardarButton;
     private JButton validarButton;
@@ -43,6 +45,7 @@ public class ProblemaGUI {
     private JPanel blackPieces;
     private JPanel supremePanel;
     private JPanel whitePieces;
+    private JButton limpiarTableroButton;
     private SetPieces aquiBlackPieces;
     private SetPieces aquiWhitePieces;
 
@@ -64,11 +67,10 @@ public class ProblemaGUI {
 
 
     public ProblemaGUI() {
-        //Pending:
         gameFrame = new JFrame("Logic - A Chess Game");
         gameFrame.setContentPane(problemaPanel);
         gameFrame.setLayout(new BorderLayout());
-        gameFrame.setSize(new Dimension(1130, 900));
+        gameFrame.setSize(new Dimension(1300, 900)); //1130
         gameFrame.setResizable(false);
         //gameFrame.pack();
         gameFrame.setLocationRelativeTo(null);
@@ -168,13 +170,12 @@ public class ProblemaGUI {
         tableProblemas.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
                 int row = tableProblemas.getSelectedRow();
-
                 String FEN = tableProblemas.getModel().getValueAt(row, 0).toString();
                 Integer N = new Integer(tableProblemas.getModel().getValueAt(row, 1).toString());
                 ctrl_presentacion.getInstance().crearPartidaProblema(FEN, N, 2, 2);
                 aquiTablero.drawBoard(ctrl_presentacion.getInstance().getTablero());
-
-
+                aquiBlackPieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getTablero(),false);
+                aquiWhitePieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getTablero(),true);
 
             }
         });
@@ -186,6 +187,14 @@ public class ProblemaGUI {
                 ctrl_presentacion.getInstance().crearPartidaProblema(FEN, 2, 2, 2);
                 aquiTablero.drawBoard(ctrl_presentacion.getInstance().getTablero());
 
+            }
+        });
+        limpiarTableroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                aquiTablero.drawBoard(ctrl_presentacion.getInstance().getEmptyTablero());
+                aquiBlackPieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getEmptyTablero(),false);
+                aquiWhitePieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getEmptyTablero(),true);
             }
         });
     }
@@ -228,11 +237,11 @@ public class ProblemaGUI {
             tableProblemas.getColumnModel().getColumn(1).sizeWidthToFit();
             tableProblemas.getColumnModel().getColumn(2).sizeWidthToFit();
             if (tableProblemas != null) {
-                tableProblemas.setRowSelectionInterval(0, 0);
+                //tableProblemas.setRowSelectionInterval(0, 0);
 
-                String FEN = tableProblemas.getModel().getValueAt(0, 0).toString();
-                Integer N = new Integer(tableProblemas.getModel().getValueAt(0, 1).toString());
-                ctrl_presentacion.getInstance().crearPartidaProblema(FEN, N, 2, 2);
+                //String FEN = tableProblemas.getModel().getValueAt(0, 0).toString();
+                //Integer N = new Integer(tableProblemas.getModel().getValueAt(0, 1).toString());
+                //ctrl_presentacion.getInstance().crearPartidaProblema(FEN, N, 2, 2);
             }
             tableProblemas.setRowSelectionAllowed(true);
         }
@@ -261,15 +270,53 @@ public class ProblemaGUI {
 
             }
 
-           /* public void drawBoard(final char[] board) {
+            public void drawPiecesSideBoards(final char[] tablero, boolean white) {
                 validate();
-                for (final TilePanel tlpan : pieceTiles) {
-                    tlpan.drawTile(board);
+                char [] piecesLeft = remakeTablero(tablero, white);
+
+                for (final PiecesTiles tlpan : pieceTiles) {
+                    tlpan.drawPieceTile(piecesLeft,white);
                 }
                 validate();
                 repaint();
-            }*/
+            }
 
+            private char[] remakeTablero(char[] tablero, boolean white) {
+                if (!white) {
+                    char[] piecesTablero = new char[]{'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'r', 'n', 'b', 'k', 'q', 'b', 'n', 'r'};
+                    sort(piecesTablero);
+                    for (int i = 0; i < tablero.length; ++i) {
+                        if (tablero[i] != '0') {
+                            boolean found = false;
+                            for (int j = 0; j < piecesTablero.length; ++j) {
+                                if(!found) {
+                                    if (piecesTablero[j] == tablero[i]) {
+                                        piecesTablero[j] = '0';
+                                        found = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return piecesTablero;
+                } else {
+                    char[] piecesWhite = new char[]{'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'R', 'N', 'B', 'K', 'Q', 'B', 'N', 'R'};
+                    for (int i = 0; i < tablero.length; ++i) {
+                        if (tablero[i] != '0') {
+                            boolean found = false;
+                            for (int j = 0; j < piecesWhite.length; ++j) {
+                                if(!found) {
+                                    if (piecesWhite[j] == tablero[i]) {
+                                        piecesWhite[j] = '0';
+                                        found = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return piecesWhite;
+                }
+            }
         }
 
         private class PiecesTiles extends JPanel {
@@ -285,15 +332,118 @@ public class ProblemaGUI {
                 this.tileId = tileId;
                 setPreferredSize(new Dimension(10, 10));
                 assignTileColor();
-                assignTilePieceIcon(white, tileId);
+                assignInitialTilePieceIcon(white, tileId);
             }
 
 
-            /*public void drawTile(final char[] board) {
+            public void drawPieceTile(final char[] piecesLeft, boolean white) {
                 assignTileColor();
-                //assignTilePieceIcon(board);
+                assignTilePieceIcon(piecesLeft);
                 validate();
                 repaint();
+            }
+
+            private void assignTilePieceIcon(final char[] tablero) {
+                //System.out.println(tablero);
+
+                this.removeAll();
+                if (tablero[tileId] != '0') {
+                    try {
+                        //                   final BufferedImage im;
+                        String searchableKey = new String();
+                        if (tablero[tileId] == 'K') {
+                            im = ImageIO.read(new File(imageKing));
+                            searchableKey = imageKing;
+                        } else if (tablero[tileId] == 'B') {
+                            im = ImageIO.read(new File(imageBishop));
+                            searchableKey = imageBishop;
+                        } else if (tablero[tileId] == 'P') {
+                            im = ImageIO.read(new File(imagePawn));
+                            searchableKey = imagePawn;
+                        } else if (tablero[tileId] == 'Q') {
+                            im = ImageIO.read(new File(imageQueen));
+                            searchableKey = imageQueen;
+                        } else if (tablero[tileId] == 'R') {
+                            im = ImageIO.read(new File(imageRook));
+                            searchableKey = imageRook;
+                        } else if (tablero[tileId] == 'N') {
+                            im = ImageIO.read(new File(imageNorse));
+                            searchableKey = imageNorse;
+                        } else if (tablero[tileId] == 'k') {
+                            im = ImageIO.read(new File(imageK));
+                            searchableKey = imageK;
+                        } else if (tablero[tileId] == 'b') {
+                            im = ImageIO.read(new File(imageB));
+                            searchableKey = imageB;
+                        } else if (tablero[tileId] == 'p') {
+                            im = ImageIO.read(new File(imageP));
+                            searchableKey = imageP;
+                        } else if (tablero[tileId] == 'q') {
+                            im = ImageIO.read(new File(imageQ));
+                            searchableKey = imageQ;
+                        } else if (tablero[tileId] == 'r') {
+                            im = ImageIO.read(new File(imageR));
+                            searchableKey = imageR;
+                        } else if (tablero[tileId] == 'n') {
+                            im = ImageIO.read(new File(imageN));
+                            searchableKey = imageN;
+                        }
+                        JLabel label1 = new JLabel(new ImageIcon(im, searchableKey));
+                        add(label1);
+                        //add(new JLabel(new ImageIcon(im, searchableKey)));
+                        MyDragGestureListener dlistener = new MyDragGestureListener();
+                        DragSource ds1 = new DragSource();
+                        ds1.createDefaultDragGestureRecognizer(label1, DnDConstants.ACTION_COPY, dlistener);
+
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                } else {
+                    im = null;
+
+                }
+            }
+
+            /*private void assignTilePieceIcon(char[] piecesLeft, boolean white) {
+                this.removeAll();
+                String searchableKey = new String();
+
+                if (piecesLeft[tileId] != '0') {
+                    try {
+                        if (!white) {
+                            if (piecesLeft[tileId] == 'p') {
+                                im = ImageIO.read(new File(imageP));
+                                searchableKey = imageP;
+
+                            } else if (piecesLeft[tileId] == 'k') {
+                                im = ImageIO.read(new File(imageK));
+                                searchableKey = imageK;
+                            } else if (piecesLeft[tileId] == 'b') {
+                                im = ImageIO.read(new File(imageB));
+                                searchableKey = imageB;
+                            } else if (piecesLeft[tileId] == 'p') {
+                                im = ImageIO.read(new File(imageP));
+                                searchableKey = imageP;
+                            } else if (piecesLeft[tileId] == 'q') {
+                                im = ImageIO.read(new File(imageQ));
+                                searchableKey = imageQ;
+                            } else if (piecesLeft[tileId] == 'r') {
+                                im = ImageIO.read(new File(imageR));
+                                searchableKey = imageR;
+                            } else if(piecesLeft[tileId] == 'n') {
+                                im = ImageIO.read(new File(imageN));
+                                searchableKey = imageN;
+                            }
+
+                    JLabel label1 = new JLabel(new ImageIcon(im, searchableKey));
+                    add(label1);
+                    //add(new JLabel(new ImageIcon(im, searchableKey)));
+                    MyDragGestureListener dlistener = new MyDragGestureListener();
+                    DragSource ds1 = new DragSource();
+                    ds1.createDefaultDragGestureRecognizer(label1, DnDConstants.ACTION_MOVE, dlistener);
+                } catch (Exception e) {
+                        System.out.println(e);
+                    }
             }*/
 
             private void assignTileColor() {
@@ -302,7 +452,7 @@ public class ProblemaGUI {
             }
 
 
-            private void assignTilePieceIcon(boolean white, int tileId) {
+            private void assignInitialTilePieceIcon(boolean white, int tileId) {
                 this.removeAll();
                 String searchableKey = new String();
 
@@ -412,12 +562,9 @@ public class ProblemaGUI {
                 for (int i = 0; i < 64; ++i) {
                     final TilePanel tilePanel = new TilePanel(this, i);
                     new MyDropTargetListener(tilePanel);
-
                     MyDragGestureListener dlistener = new MyDragGestureListener();
                     DragSource ds1 = new DragSource();
                     ds1.createDefaultDragGestureRecognizer(tilePanel, DnDConstants.ACTION_COPY, dlistener);
-
-
                     this.boardTiles.add(tilePanel);
                     add(tilePanel);
                 }
@@ -450,7 +597,8 @@ public class ProblemaGUI {
                 this.tileId = tileId;
                 setPreferredSize(new Dimension(10, 10));
                 assignTileColor();
-                assignTilePieceIcon(ctrl_presentacion.getInstance().getTablero());
+                //assignTilePieceIcon(ctrl_presentacion.getInstance().getTablero());
+                //getEmptyTablero();
 
                 TransferHandler dnd = new TransferHandler() {
                     @Override

@@ -341,6 +341,20 @@ public class Tablero {
         return tablero;
     }
 
+    public static char[] getEmptyTablero() {
+        char[] tableroArray = {'0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', '0', '0', '0', '0', '0', '0', '0'};
+        return tableroArray;
+    }
+
+
+
     /* Pre: Cierto
      * Post: Devuelve el array de piezas blancas del parametro implicito
      */

@@ -331,6 +331,11 @@ public class ctrl_dominio {
     }
 
 
+    public char[] getEmptyTablero() {
+        char[] tableroArray = tablero.getEmptyTablero();
+        return tableroArray;
+    }
+
     //public char[] getTablero() {
            /* ArrayList<Character> list = new ArrayList<Character>();
             char[][] board = tablero.getTablero();

@@ -54,6 +54,10 @@ public class ctrl_presentacion {
         return ctrl_dominio.getTablero();
     }
 
+    public static char[] getEmptyTablero() {
+        return ctrl_dominio.getEmptyTablero();
+    }
+
     public static void jugar(final int n) throws Exception {
         try {
             ctrl_dominio.jugar(n);
