@@ -43,7 +43,7 @@ public class Peon extends Pieza {
             int auxX = movX - posX;
             int auxY = movY - posY;
 
-            if (!this.esNegra && movX < posX && movY != posY) { //movimiento alguno valido (soy negra)
+            if (!this.esNegra && movX < posX /*&& movY != posY*/) { //movimiento alguno valido (soy blanco)
                 //Anyone to kill?  //Diagonal solo si se puede matar
                 if (auxX == -1 && auxY == -1) { //movimiento hacia esquina superior izquierda
                     if (estadoTablero[movX][movY] != '0') {
@@ -57,12 +57,11 @@ public class Peon extends Pieza {
                         else return true;
                     } else return false;
                 } else if (movY == posY && movX < posX) { //mov hacia adelante
-                    if (firstMove && auxY == -2) {
+                    if (firstMove && auxX == -2) {
                         if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
                             return true;
                         }
-                    } else if (auxY == -2 && !firstMove) return false;
-
+                    } else if (auxX == -2 && !firstMove) return false;
                     else if (auxX == -1) {
                         if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
                             return true;
@@ -83,11 +82,11 @@ public class Peon extends Pieza {
                         else return true;
                     } else return false;
                 } else if (movY == posY && movX > posX) { //mov hacia adelante
-                    if (firstMove && auxY == 2) {
+                    if (firstMove && auxX == 2) {
                         if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
                             return true;
                         }
-                    } else if (auxY == 2 && !firstMove) return false;
+                    } else if (auxX == 2 && !firstMove) return false;
 
                     else if (auxX == 1) {
                         if (estadoTablero[movX][movY] == '0') { //no hay pieza alguna
@@ -99,6 +98,7 @@ public class Peon extends Pieza {
         }
         return false;
     }
+
 
     /*
      * Pre: El parametro estadoTablero[][] existe y no esta vacio

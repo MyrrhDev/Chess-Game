@@ -90,12 +90,22 @@ public class ctrl_persistencia {
         }
     }
 
-    public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean val, final int vecesJugado, final int tiempoMedio) {
+    public boolean existeProblemaEnElSistema(final String FEN, final int N) {
+        return dbProblemas.existeProblemaEnElSistema(FEN, N);
+    }
+
+    public boolean guardarProblema(final String FEN, final int N, final String dificultad, final boolean esValidado, final int vecesJugado, final int tiempoMedio, final boolean iniJuegoBlancas) {
         try {
-            dbProblemas.guardarProblema(FEN, N, dificultad, val, vecesJugado, tiempoMedio);
+            if(dbProblemas.existeProblemaEnElSistema(FEN, N)) {
+                return false;
+            } else {
+                dbProblemas.guardarProblema(FEN, N, dificultad, esValidado, vecesJugado, tiempoMedio, iniJuegoBlancas);
+                return true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public static ArrayList<ArrayList<String>> getProblemas() {

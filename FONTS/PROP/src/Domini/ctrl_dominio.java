@@ -45,18 +45,30 @@ public class ctrl_dominio {
         return FEN;
     }
 
+    public boolean existeProblemaEnElSistema(final String FEN, final int N) {
+        return controlPersistencia.existeProblemaEnElSistema(FEN, N);
+    }
 
-    public static boolean validarYGuardarProblema(final String FEN, final int N) {
+    /*
+    Pre: Cierto
+    Post: Si existe el jugador con nombre igual al parámetro nombreJugador, se guarda el problema FEN, con N, en la base de datos,
+    guardando también contra quien se ha ganado, la dificultad y el tiempo empleado para solucionar el problema
+    Excepciones: No existe ningun jugador en la base de datos con el nombre igual a nombreJugador
+     */
+    public void guardarProblemaGanadoJugador(final String nombre, final String FEN, final int N, final String contra, final String dificultad, final int tpartida) {
+        controlPersistencia.guardarProblemaGanado(nombre, FEN, N, contra, dificultad, tpartida);
+    }
+
+    public static boolean validarYGuardarProblema(final String FEN, final int N, boolean blancas) {
         try {
-            Problema prob = new Problema();
-            prob.setFEN(FEN);
-            prob.setN(N);
-            boolean validado = prob.verificarProblema();
+            problema = new Problema();
+            problema.setFEN(FEN);
+            problema.setN(N);
+            problema.setIniJuegoBlancas(blancas);
+            boolean validado = problema.verificarProblema();
 
             if(validado) {
-                //Calcular dificultad
-                //Calcular val(??)
-                controlPersistencia.guardarProblema(FEN, N,"Facil", true, 0, 0);
+                controlPersistencia.guardarProblema(FEN, N, problema.getDificultad(), true, 0, 0, blancas);
                 return true;
             } else {
                 return false;
@@ -67,17 +79,29 @@ public class ctrl_dominio {
         return false;
     }
 
-    public static boolean validarProblema(final String FEN, final int N) {
+    public static boolean validarProblema(final String FEN, final int N, boolean blancas) {
         try {
-            Problema prob = new Problema();
-            prob.setFEN(FEN);
-            prob.setN(N);
-            return prob.verificarProblema();
+            problema = new Problema();
+            problema.setFEN(FEN);
+            problema.setN(N);
+            problema.setIniJuegoBlancas(blancas);
+            return problema.verificarProblema();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
+
+    public static boolean guardarProblema(final String FEN, final int N, boolean blancas) {
+        try {
+            return controlPersistencia.guardarProblema(FEN, N, problema.getDificultad(), false, 0, 0, blancas);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
     public static void borrarProblema(final String FEN, final int N) {
         try {

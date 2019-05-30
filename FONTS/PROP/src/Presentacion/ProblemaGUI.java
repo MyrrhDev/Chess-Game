@@ -46,6 +46,10 @@ public class ProblemaGUI {
     private JPanel supremePanel;
     private JPanel whitePieces;
     private JButton limpiarTableroButton;
+    private JPanel TableroOptions;
+    private JRadioButton blancasRadioButton;
+    private JRadioButton negrasRadioButton;
+    private JSpinner numMovimientos;
     private SetPieces aquiBlackPieces;
     private SetPieces aquiWhitePieces;
 
@@ -70,11 +74,13 @@ public class ProblemaGUI {
         gameFrame = new JFrame("Logic - A Chess Game");
         gameFrame.setContentPane(problemaPanel);
         gameFrame.setLayout(new BorderLayout());
-        gameFrame.setSize(new Dimension(1300, 900)); //1130
+        gameFrame.setSize(new Dimension(1190, 900)); //1130
         gameFrame.setResizable(false);
         //gameFrame.pack();
         gameFrame.setLocationRelativeTo(null);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        blancasRadioButton.setSelected(true);
 
         supremePanel = new JPanel();
         supremePanel.setSize(640,1028);
@@ -131,39 +137,62 @@ public class ProblemaGUI {
         validarYGuardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*for (int i = 0; i < aquiTablero.boardTiles.size(); i++) {
-                    System.out.println(aquiTablero.boardTiles.get(i));
-                    TilePanel tile = aquiTablero.boardTiles.get(i); //TilePanel
+                String FEN = getFENfromTablero();
+                int N = (int) numMovimientos.getValue();
+                System.out.println(N);
+                boolean blancas = true;
 
-                    if(tile.getComponent(tile.tileId).
-                    if(label.getIcon().toString() == "image.png")
-                    {
-                        //do something
+                if(negrasRadioButton.isSelected()) {
+                    blancas = false;
+                }
+                boolean success = ctrl_presentacion.getInstance().validarProblema(FEN,N,blancas);
+
+                if(success) {
+                    boolean guardado = ctrl_presentacion.getInstance().guardarProblema(FEN,N, blancas);
+                    if(guardado) {
+                        JOptionPane.showMessageDialog(null, "Se ha guardado el problema validado");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ese problema con ese numero de movimientos ya existe");
                     }
-                }*/
-
-                //Get FEN de Tablero...
-                //ctrl_presentacion.getInstance().crearFENdeTablero();
-                //Usuario inserta N
-                //ctrl_presentacion.getInstance().validarYGuardarProblema(FEN,N);
-
+                } else {
+                    JOptionPane.showMessageDialog(null, "El problema no ha podido ser validado");
+                }
             }
         });
         validarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Get FEN de Tablero...
-                //Usuario inserta N
-                //ctrl_presentacion.getInstance().validarProblema(FEN,N);
+                String FEN = getFENfromTablero();
+                int N = (int) numMovimientos.getValue();
+                System.out.println(N);
+                boolean blancas = true;
+                if(negrasRadioButton.isSelected()) {
+                    blancas = false;
+                }
+                boolean success = ctrl_presentacion.getInstance().validarProblema(FEN,N,blancas);
+                if(success) {
+                    JOptionPane.showMessageDialog(null, "Se ha validado el problema!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "El problema no ha podido ser validado");
+                }
             }
         });
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Get FEN de Tablero...
-                //Usuario inserta N
-                //ctrl_presentacion.getInstance().guardarProblema(FEN,N);
-
+                String FEN = getFENfromTablero();
+                int N = (int) numMovimientos.getValue();
+                System.out.println(N);
+                boolean blancas = true;
+                if(negrasRadioButton.isSelected()) {
+                    blancas = false;
+                }
+                boolean guardado = ctrl_presentacion.getInstance().guardarProblema(FEN,N, blancas);
+                if(guardado) {
+                    JOptionPane.showMessageDialog(null, "Se ha guardado el problema no validado");
+                } else {
+                    JOptionPane.showMessageDialog(null, "El problema ya existe con ese numero de movimientos");
+                }
             }
         });
 
@@ -173,6 +202,8 @@ public class ProblemaGUI {
                 String FEN = tableProblemas.getModel().getValueAt(row, 0).toString();
                 Integer N = new Integer(tableProblemas.getModel().getValueAt(row, 1).toString());
                 ctrl_presentacion.getInstance().crearPartidaProblema(FEN, N, 2, 2);
+                fenString.setText("");
+
                 aquiTablero.drawBoard(ctrl_presentacion.getInstance().getTablero());
                 aquiBlackPieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getTablero(),false);
                 aquiWhitePieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getTablero(),true);
@@ -197,9 +228,88 @@ public class ProblemaGUI {
                 aquiWhitePieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getEmptyTablero(),true);
             }
         });
+        blancasRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(blancasRadioButton.isSelected()) negrasRadioButton.setSelected(false);
+
+            }
+        });
+        negrasRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(negrasRadioButton.isSelected()) blancasRadioButton.setSelected(false);
+
+            }
+        });
     }
+        private String getFENfromTablero() {
+            StringBuilder createdFEN = new StringBuilder();
+            int tiles = 0;
+            int spaces = 0;
+
+            for (int i = 0; i < aquiTablero.boardTiles.size(); i++) {
+                TilePanel tile = aquiTablero.boardTiles.get(i);
+                if(tile.getComponents().length != 0) {
+                    if(spaces != 0) {
+                        createdFEN.append((char)(spaces+'0'));
+                        spaces = 0;
+                    }
+                    JLabel label = (JLabel) tile.getComponent(0);
+                    if (label.getIcon().toString() == imageKing) {
+                        createdFEN.append('K');
+                    } else if (label.getIcon().toString() == imageBishop) {
+                        createdFEN.append('B');
+                    } else if (label.getIcon().toString() == imagePawn) {
+                        createdFEN.append('P');
+                    } else if (label.getIcon().toString() == imageQueen) {
+                        createdFEN.append('Q');
+                    } else if (label.getIcon().toString() == imageRook) {
+                        createdFEN.append('R');
+                    } else if (label.getIcon().toString() == imageNorse) {
+                        createdFEN.append('N');
+                    } else if (label.getIcon().toString() == imageK) {
+                        createdFEN.append('k');
+                    } else if (label.getIcon().toString() == imageB) {
+                        createdFEN.append('b');
+                    } else if (label.getIcon().toString() == imageP) {
+                        createdFEN.append('p');
+                    } else if (label.getIcon().toString() == imageQ) {
+                        createdFEN.append('q');
+                    } else if (label.getIcon().toString() == imageR) {
+                        createdFEN.append('r');
+                    } else if (label.getIcon().toString() == imageN) {
+                        createdFEN.append('n');
+                    }
+                } else {
+                    ++spaces;
+                }
+                ++tiles;
+
+                if (tiles == 8) {
+                    if(spaces != 0) {
+                        createdFEN.append((char)(spaces+'0'));
+                        spaces = 0;
+                    }
+                    if(i != aquiTablero.boardTiles.size()-1) {
+                        createdFEN.append('/');
+                    }
+                    tiles = 0;
+                    spaces = 0;
+                }
+            }
+            String FEN = createdFEN.toString();
+            System.out.println(FEN);
+
+            return FEN;
+        }
+
+
 
         private void createUIComponents () {
+            SpinnerNumberModel model1 = new SpinnerNumberModel(2, 0, 15, 1);
+            numMovimientos = new JSpinner(model1);
+
             problemsList = new JScrollPane();
             tableProblemas = new JTable(0, 3);
             JTableHeader header = tableProblemas.getTableHeader();

@@ -17,15 +17,23 @@ public class ctrl_presentacion {
         ctrl_dominio.TableroToFEN();
     }
 
-//    public boolean guardarProblema(final String FEN, final int N) {
-//        return ctrl_dominio.guardarProblema(FEN, N);
-//    }
-    public boolean validarYGuardarProblema(final String FEN, final int N) {
-        return ctrl_dominio.validarYGuardarProblema(FEN, N);
+    public boolean guardarProblema(final String FEN, final int N, boolean blancas) {
+        return ctrl_dominio.guardarProblema(FEN, N, blancas);
     }
 
-    public boolean validarProblema(final String FEN, final int N) {
-        return ctrl_dominio.validarProblema(FEN, N);
+    public boolean validarYGuardarProblema(final String FEN, final int N, boolean blancas) {
+        boolean valguar;
+        try {
+            valguar = ctrl_dominio.validarYGuardarProblema(FEN, N, blancas);
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return valguar;
+    }
+
+    public boolean validarProblema(final String FEN, final int N, boolean blancas) {
+        return ctrl_dominio.validarProblema(FEN, N, blancas);
     }
 
     public void borrarProblema(final String FEN, final int N) {

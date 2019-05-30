@@ -3,6 +3,8 @@ package Domini;
 public class Problema {
     public String problema;
     int N;
+
+
     public boolean iniJuegoBlancas;
     Evaluacion evaluacion = new Evaluacion();
     private boolean verificado;
@@ -21,7 +23,7 @@ public class Problema {
     }
 
 
-    private void calcularDificultad() {
+    public void calcularDificultad() {
         double diff = 0.0;
         if(problema != null) {
             //numero de piezas
@@ -97,6 +99,10 @@ public class Problema {
         return this.iniJuegoBlancas;
     }
 
+    public void setIniJuegoBlancas(boolean iniJuegoBlancas) {
+        this.iniJuegoBlancas = iniJuegoBlancas;
+    }
+
     /*
         Pre: La clase ya tiene los atributos de problema y N asignados
         Post: Se valida el problema introducido. En concreto: se busca en el minimax que haya una hoja del árbol con
@@ -113,6 +119,7 @@ public class Problema {
                 else if(problema.charAt(i) == 'K') reyBlanco = true;
             }
             if(reyBlanco && reyNegro) {
+                System.out.println("reyes bien");
             /*
             Si w:
             Atacante: blancas, defensor: Negras
