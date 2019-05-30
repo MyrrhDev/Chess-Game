@@ -15,6 +15,8 @@ import java.util.Scanner;
 public class persistenciaProblema {
     String path = "./Database/Problemas";
     String currentPath = path + "/" +"data.JSON5";
+    /*String path = "./src/PersistenciaJSON/Problemas";
+    String currentPath = path + "/" +"data.JSON5";*/
 
     public persistenciaProblema() {
 
@@ -59,12 +61,25 @@ public class persistenciaProblema {
         return jarr;
     }
 
+    //TODO: Pre/Post
+    public boolean existeProblemaEnElSistema(final String FEN, final int N) {
+        JSONArray jarr = leerJSONdata();
+        JSONArray newjarr = new JSONArray();
+        for(int i = 0; i < jarr.length(); ++i) {
+            JSONObject jo = jarr.optJSONObject(i);
+            if (jo.get("FEN").equals(FEN) && (int) jo.get("N") == N) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /*
     Pre: Cierto
     Post: Se guarda el problema identificado con FEN y con N en la base de datos del sistema.
     Excepciones: IO Exception
      */
-    public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean val, final int vecesJugado, final int tiempoMedio) throws Exception {
+    public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean val, final int vecesJugado, final int tiempoMedio, final boolean iniJuegoBlancas) throws Exception {
         File dir = new File(path);
         JSONArray rootA;
         if(dir.exists()) {
@@ -76,6 +91,8 @@ public class persistenciaProblema {
             jo.put("Validado?", val);
             jo.put("Veces jugado", vecesJugado);
             jo.put("Tiempo medio", tiempoMedio);
+            //TODO: NEW!
+            jo.put("iniJuegoBlancas", iniJuegoBlancas);
             if (!dbProblemas.exists()) {
                 dbProblemas.createNewFile();
                 rootA = new JSONArray();

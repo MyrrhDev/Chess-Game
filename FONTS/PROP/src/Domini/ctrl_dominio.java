@@ -106,6 +106,11 @@ public class ctrl_dominio {
         controlPersistencia.guardarProblemaGanado(nombre, FEN, N, contra, dificultad, tpartida);
     }
 
+    //TODO: Pre/post
+    public boolean existeProblemaEnElSistema(final String FEN, final int N) {
+        return controlPersistencia.existeProblemaEnElSistema(FEN, N);
+    }
+
     /*
     Pre: Cierto
     Post: Se incrementa en uno el número de partidas ganadas por parte del jugador

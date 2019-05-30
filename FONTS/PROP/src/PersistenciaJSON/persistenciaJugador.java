@@ -42,6 +42,7 @@ public class persistenciaJugador {
     Post: Devuelve un JSONArray que contiene la base de datos del sistema
      */
     private JSONArray leerJSONdata() {
+        //BackImage = new JLabel(new ImageIcon(this.getClass().getResource("/res/BackTake2.png")));
         String jsonObject = "";
         File f = new File(currentPath);
         Scanner sc = null;

@@ -24,7 +24,7 @@ public class Problema {
     Pre: Cierto
     Post: Asigna la dificultad al problema
      */
-    private void calcularDificultad() {
+    public void calcularDificultad() {
         double diff = 0.0;
         if(problema != null) {
             //numero de piezas

@@ -5,13 +5,21 @@ import PersistenciaJSON.persistenciaJugador;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.nio.file.Paths;import java.nio.file.Path;
 public class ctrl_persistencia {
     private static ctrl_persistencia singleInstance = null;
     private static persistenciaJugador dbJugadores;
     private static persistenciaProblema dbProblemas;
 
     private ctrl_persistencia() {
+//        Path path = Paths.get("src/PersistenciaJSON/Database");
+//        new File(path.toUri()).mkdirs();
+//        Path path2 = Paths.get("src/PersistenciaJSON/Database/Jugadores/data.JSON5");
+//        new File(path.toUri()).mkdir();
+//        Path path3 = Paths.get("src/PersistenciaJSON/Database/Problemas/data.JSON5");
+//        new File(path2.toUri()).mkdir();
+
+
         new File("./Database").mkdirs();
         //creamos la base de datos para jugadores
         new File("./Database/Jugadores").mkdir();
@@ -27,6 +35,11 @@ public class ctrl_persistencia {
     public static ctrl_persistencia getInstance() {
         if (singleInstance == null) singleInstance = new ctrl_persistencia();
         return singleInstance;
+    }
+
+    //TODO: Pre/Post
+    public boolean existeProblemaEnElSistema(final String FEN, final int N) {
+        return dbProblemas.existeProblemaEnElSistema(FEN, N);
     }
 
     /*
@@ -147,9 +160,9 @@ public class ctrl_persistencia {
     Post: Se guarda el problema identificado con FEN y con N en la base de datos del sistema.
     Excepciones: IO Exception
      */
-    public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean esValidado, final int vecesJugado, final int tiempoMedio) {
+    public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean esValidado, final int vecesJugado, final int tiempoMedio, final boolean iniJuegoBlancas) {
         try {
-            dbProblemas.guardarProblema(FEN, N, dificultad, esValidado, vecesJugado, tiempoMedio);
+            dbProblemas.guardarProblema(FEN, N, dificultad, esValidado, vecesJugado, tiempoMedio, iniJuegoBlancas);
         } catch (Exception e) {
             e.printStackTrace();
         }
