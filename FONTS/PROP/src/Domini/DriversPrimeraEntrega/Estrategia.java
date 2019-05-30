@@ -1,4 +1,4 @@
-package Domini;
+package Domini.DriversPrimeraEntrega;
 
 public abstract class Estrategia {
     public boolean esSimple;

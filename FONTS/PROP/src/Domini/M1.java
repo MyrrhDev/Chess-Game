@@ -1,7 +1,9 @@
 package Domini;
 
 public class M1 extends Maquina {
-    private Evaluacion evaluacion = new Evaluacion();
+    //private Evaluacion evaluacion = new Evaluacion();
+    private Evaluacion evaluacionAtaque = new Ataque();
+    private Evaluacion evaluacionDefensa = new Defensa();
     private int profundidadDada;
 
     public M1(boolean esNegro, boolean estaAtacando) {
@@ -67,10 +69,10 @@ public class M1 extends Maquina {
      * */
     private int min(final Tablero tablero, final int depth) {
         if (depth == 0) {
-            return this.evaluacion.evaluar(tablero, depth);
+            return this.evaluacionDefensa.evaluar(tablero, depth);
         }
         if(gameOver(tablero)) {
-            return this.evaluacion.evaluar(tablero, depth);
+            return this.evaluacionDefensa.evaluar(tablero, depth);
         }
         int menorPuntos = Integer.MAX_VALUE;
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {
@@ -90,10 +92,10 @@ public class M1 extends Maquina {
      * */
     private int max(final Tablero tablero, final int depth) {
         if (depth == 0) {
-            return this.evaluacion.evaluar(tablero, depth);
+            return this.evaluacionAtaque.evaluar(tablero, depth);
         }
         if (gameOver(tablero)) {
-            return this.evaluacion.evaluar(tablero, depth);
+            return this.evaluacionAtaque.evaluar(tablero, depth);
         }
         int mayorPuntos = Integer.MIN_VALUE;
         for (final Movimiento movimiento : tablero.esSuTurno().getPosiblesMovimientos()) {

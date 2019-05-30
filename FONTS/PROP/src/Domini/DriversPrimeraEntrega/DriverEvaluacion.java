@@ -44,7 +44,7 @@ public class DriverEvaluacion {
             else op = -1;
             switch(op) {
                 case 1:
-                    eval = new Evaluacion();
+                    //eval = new Evaluacion();
                     System.out.println("Objeto Evaluacion creado!");
                     break;
                 case 2:
