@@ -20,6 +20,10 @@ public class Problema {
     public Problema() {
     }
 
+    public void setIniJuegoBlancas(boolean iniJuegoBlancas) {
+        this.iniJuegoBlancas = iniJuegoBlancas;
+    }
+
     /*
     Pre: Cierto
     Post: Asigna la dificultad al problema

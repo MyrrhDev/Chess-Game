@@ -34,6 +34,29 @@ public class ctrl_dominio {
         return tableroArray;
     }
 
+    public static boolean validarProblema(final String FEN, final int N, boolean blancas) {
+        try {
+            problema = new Problema();
+            problema.setFEN(FEN);
+            problema.setN(N);
+            problema.setIniJuegoBlancas(blancas);
+            return problema.verificarProblema();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean guardarProblema(final String FEN, final int N, boolean blancas) {
+        try {
+            return controlPersistencia.guardarProblema(FEN, N, problema.getDificultad(), false, 0, 0, blancas);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     /*
     Pre: Cierto
     Post: La función devuelve true si existe un jugador, almacenado en la base de datos, que esté identificado por nombre como

@@ -12,6 +12,15 @@ public class ctrl_presentacion {
 
     }
 
+    public boolean validarProblema(final String FEN, final int N, boolean blancas) {
+        return ctrl_dominio.validarProblema(FEN, N, blancas);
+    }
+
+    public boolean guardarProblema(final String FEN, final int N, boolean blancas) {
+        return ctrl_dominio.guardarProblema(FEN, N, blancas);
+    }
+
+
     //patron singleton
     public static ctrl_presentacion getInstance() {
         if(ctrl_presentacion == null) {

@@ -160,12 +160,18 @@ public class ctrl_persistencia {
     Post: Se guarda el problema identificado con FEN y con N en la base de datos del sistema.
     Excepciones: IO Exception
      */
-    public void guardarProblema(final String FEN, final int N, final String dificultad, final boolean esValidado, final int vecesJugado, final int tiempoMedio, final boolean iniJuegoBlancas) {
+    public boolean guardarProblema(final String FEN, final int N, final String dificultad, final boolean esValidado, final int vecesJugado, final int tiempoMedio, final boolean iniJuegoBlancas) {
         try {
-            dbProblemas.guardarProblema(FEN, N, dificultad, esValidado, vecesJugado, tiempoMedio, iniJuegoBlancas);
+            if(dbProblemas.existeProblemaEnElSistema(FEN, N)) {
+                return false;
+            } else {
+                dbProblemas.guardarProblema(FEN, N, dificultad, esValidado, vecesJugado, tiempoMedio, iniJuegoBlancas);
+                return true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     /*
