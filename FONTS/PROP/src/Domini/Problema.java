@@ -6,7 +6,7 @@ public class Problema {
 
 
     public boolean iniJuegoBlancas;
-    Evaluacion evaluacion = new Evaluacion();
+    Evaluacion evaluacion = new Ataque();
     private boolean verificado;
     private double dificultad;
     private int tiempo;

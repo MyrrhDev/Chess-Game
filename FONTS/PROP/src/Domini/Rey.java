@@ -37,7 +37,7 @@ public class Rey extends Pieza {
                 else if(Character.isLowerCase(estadoTablero[movX][movY]) !=
                         Character.isLowerCase(estadoTablero[movX][movY])) return true;
             } else return false;
-        }else return false;
+        } else return false;
         return false;
     }
 

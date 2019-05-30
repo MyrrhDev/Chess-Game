@@ -5,7 +5,10 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class M2 extends Maquina {
-    private Evaluacion evaluacion = new Evaluacion();
+    //private Evaluacion evaluacion = new Evaluacion();
+    private Evaluacion evaluacionAtaque = new Ataque();
+    private Evaluacion evaluacionDefensa = new Defensa();
+
     private int profundidadDada;
     private int quiescenceCount;
 
@@ -21,13 +24,7 @@ public class M2 extends Maquina {
     @Override
     public Tablero jugar(final Tablero tablero, final int N) throws Exception {
         Tablero tab = new Tablero(tablero);
-        int level;
-        if(N > 4) {
-            level = 5;
-        } else {
-            level = N;
-        }
-        this.profundidadDada = level*2;
+        this.profundidadDada = N*2;
         Movimiento m = estrategiaCompleja(tablero);
         if(m.esNada()) {
             Exception e = new Exception("No se puede mover, posible Jaque Mate");
@@ -39,15 +36,10 @@ public class M2 extends Maquina {
     }
 
     public ArrayList<Movimiento> sort(ArrayList<Movimiento> movimientos) {
-        //ArrayList <Movimiento> movimientosSorted = new ArrayList<>();
-
         Comparator<Movimiento> enJaquees = Comparator.comparing(movimiento -> movimiento.getaTablero().movimientoPoneEnMate());
-
         Comparator<Movimiento> esUnAtaque = Comparator.comparing(movimiento -> movimiento.isEsUnAtaque());
         Comparator<Movimiento> valorPieza = Comparator.comparingInt(movimiento -> movimiento.getPieza().getPts());
-
         movimientos.stream().sorted(enJaquees.thenComparing(esUnAtaque).thenComparing(valorPieza)).collect(Collectors.toList());
-
         return movimientos;
     }
 
@@ -69,8 +61,7 @@ public class M2 extends Maquina {
                 if (tablero.esSuTurno().isEstaAtacando() && puntosAhora > mayorPuntos) {
                     mayorPuntos = puntosAhora;
                     mejorMov = movimiento;
-                }
-                else if (!tablero.esSuTurno().isEstaAtacando() && puntosAhora < menorPuntos) {
+                } else if (!tablero.esSuTurno().isEstaAtacando() && puntosAhora < menorPuntos) {
                     menorPuntos = puntosAhora;
                     mejorMov = movimiento;
                 }
@@ -81,7 +72,7 @@ public class M2 extends Maquina {
 
     public int max(final Tablero tablero, final int profundidad, final int highest, final int lowest) {
         if (profundidad == 0 || gameOver(tablero)) {
-            return this.evaluacion.evaluar(tablero, profundidad);
+            return this.evaluacionAtaque.evaluar(tablero, profundidad);
         }
         int mayorPuntos = highest;
         for (final Movimiento movimiento : sort(tablero.esSuTurno().getPosiblesMovimientos())) {
@@ -98,7 +89,7 @@ public class M2 extends Maquina {
 
     public int min(final Tablero tablero, final int profundidad, final int highest, final int lowest) {
         if (profundidad == 0 || gameOver(tablero)) {
-            return this.evaluacion.evaluar(tablero, profundidad);
+            return this.evaluacionDefensa.evaluar(tablero, profundidad);
         }
         int menorPuntos = lowest;
         for (final Movimiento movimiento : sort((tablero.esSuTurno().getPosiblesMovimientos()))) {
