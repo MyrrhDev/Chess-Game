@@ -21,15 +21,23 @@ public class ctrl_presentacion {
         return ctrl_dominio.guardarProblema(FEN, N, blancas);
     }
 
-    public boolean validarYGuardarProblema(final String FEN, final int N, boolean blancas) {
-        boolean valguar;
-        try {
-            valguar = ctrl_dominio.validarYGuardarProblema(FEN, N, blancas);
+    /*
+     Pre: Cierto
+     Post: Se incrementa en uno el número de partidas ganadas por parte del jugador
+     Excepciones: No existe el jugador identificado como nombreJugador en el sistema
+     */
+    public void incrementarPartidaGanada(final String nombreJugador) {
+        ctrl_dominio.incrementarPartidaGanada(nombreJugador);
+    }
 
-        } catch (Exception e) {
-            throw e;
-        }
-        return valguar;
+    /*
+    Pre: Cierto
+    Post: Si existe el jugador con nombre igual al parámetro nombreJugador, se guarda el problema FEN, con N, en la base de datos,
+    guardando también contra quien se ha ganado, la dificultad y el tiempo empleado para solucionar el problema
+    Excepciones: No existe ningun jugador en la base de datos con el nombre igual a nombreJugador
+     */
+    public void guardarProblemaGanadoJugador(final String nombre, final String FEN, final int N, final String contra, final String dificultad, final int tpartida) {
+        ctrl_dominio.guardarProblemaGanadoJugador(nombre, FEN, N, contra, dificultad, tpartida);
     }
 
     public boolean validarProblema(final String FEN, final int N, boolean blancas) {
@@ -53,6 +61,10 @@ public class ctrl_presentacion {
 
         return this.nombreJugadorSesionH1;
     }
+
+    public static boolean isJ1EnJaqueMate() {return ctrl_dominio.isJ1EnJaqueMate(); }
+
+
 
     public String getNombreJugadorSesionH2() {
         return this.nombreJugadorSesionH2;
@@ -92,6 +104,19 @@ public class ctrl_presentacion {
 
     public static void crearPartidaProblema(final String FEN, final int n, final int playerId1, final int playerId2) {
         ctrl_dominio.crearPartida(FEN, n, playerId1, playerId2);
+    }
+
+    /*
+    Pre: Cierto
+    Post: Se incrementa en uno el número de partidas jugadas por parte del jugador
+    Excepciones: No existe el jugador identificado como nombreJugador en el sistema
+     */
+    public void incrementarPartidaJugada(final String nombreJugador) {
+        try {
+            ctrl_dominio.incrementarPartidaJugada(nombreJugador);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static String[][] getProblemasDificultad(final String diff) {

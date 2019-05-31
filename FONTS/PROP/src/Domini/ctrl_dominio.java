@@ -159,6 +159,29 @@ public class ctrl_dominio {
         }
     }
 
+
+    /*
+    Pre: Cierto
+    Post: Se incrementa en uno el número de partidas ganadas por parte del jugador
+    Excepciones: No existe el jugador identificado como nombreJugador en el sistema
+    */
+    public void incrementarPartidaGanada(final String nombreJugador) {
+        controlPersistencia.incrementarPartidaGanada(nombreJugador);
+    }
+
+    /*
+    Pre: Cierto
+    Post: Se incrementa en uno el número de partidas jugadas por parte del jugador
+    Excepciones: No existe el jugador identificado como nombreJugador en el sistema
+     */
+    public void incrementarPartidaJugada(final String nombreJugador) {
+        try {
+            controlPersistencia.incrementarPartidaJugada(nombreJugador);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /*
     Guardamos en la capa de persistencia los datos de la partida en referencia al tiempo requerido para solucionar el problema
      */

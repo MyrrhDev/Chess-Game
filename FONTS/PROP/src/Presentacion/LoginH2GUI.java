@@ -17,9 +17,10 @@ public class LoginH2GUI {
     private JButton atrasButton;
     private JLabel backImage;
     private JButton registerButton;
+    private String dificultad;
 
 
-    public LoginH2GUI(final String FEN, final int n, final int playerId1, final int playerId2, final String jugadorSeleccionado1, final String jugadorSeleccionado2) {
+    public LoginH2GUI(final String FEN, final int n, final int playerId1, final int playerId2, final String jugadorSeleccionado1, final String jugadorSeleccionado2, final String dificultad) {
         jFrameLoginH2 = new JFrame("Logic - A Chess Game");
         jFrameLoginH2.setSize(460,740);
         jFrameLoginH2.setContentPane(loginH2Panel);
@@ -30,24 +31,32 @@ public class LoginH2GUI {
         //jFrameLoginH2.pack();
         jFrameLoginH2.setVisible(true);
 
+        this.dificultad = dificultad;
+
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    if(!textField1.getText().equals(ctrl_presentacion.getInstance().getNombreJugadorSesionH1())) {
-                        boolean verificar = ctrl_presentacion.getInstance().verificarJugador(textField1.getText(), String.valueOf(passwordField1.getPassword()));
-                        if (verificar) {
-                            ctrl_presentacion.getInstance().setNombreJugadorSesionH2(textField1.getText());
-                            iniciarPartida(FEN, n, playerId1, playerId2, jugadorSeleccionado1, jugadorSeleccionado2);
-                            loginH2Panel.setVisible(false);
+                if(!String.valueOf(textField1.getText()).equals("") && !String.valueOf(passwordField1.getPassword()).equals("")) {
+                    try {
+                        if (!textField1.getText().equals(ctrl_presentacion.getInstance().getNombreJugadorSesionH1())) {
+                            boolean verificar = ctrl_presentacion.getInstance().verificarJugador(textField1.getText(), String.valueOf(passwordField1.getPassword()));
+                            if (verificar) {
+                                ctrl_presentacion.getInstance().setNombreJugadorSesionH2(textField1.getText());
+                                iniciarPartida(FEN, n, playerId1, playerId2, jugadorSeleccionado1, jugadorSeleccionado2);
+                                loginH2Panel.setVisible(false);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                            JOptionPane.showMessageDialog(null, "No puedes jugar una partida contra ti mismo");
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No puedes jugar una partida contra ti mismo");
+                    } catch (Exception exp) {
+                        JOptionPane.showMessageDialog(null, exp.getMessage());
                     }
-                } catch (Exception exp) {
-                    JOptionPane.showMessageDialog(null, exp.getMessage());
+                }
+                else {
+                    if(String.valueOf(textField1.getText()).equals("")) JOptionPane.showMessageDialog(null, "Introduce el nombre de usuario del jugador H2");
+                    else JOptionPane.showMessageDialog(null, "Introduce la contraseña del jugador H2");
                 }
             }
         });
@@ -84,14 +93,14 @@ public class LoginH2GUI {
     public void iniciarPartida(final String FEN, final int n, final int playerId1, final int playerId2, final String jugadorSeleccionado1, final String jugadorSeleccionado2) {
         //creamos una partida con los datos seleccionados //@TODO: Arreglar la crida al controlador de domini, s'ha de cridar desde el controlador de presentació
         ctrl_presentacion.getInstance().crearPartida(FEN, n, playerId1, playerId2);
-        //System.out.println(dificultadMenu.getSelectedItem() + " FEN:  " + FEN + " N: " + n + " playerId1: "+ playerId1 + " playerId2: " + playerId2 + " " + jugadores.getSelectedItem());
-        JugarPartidaGUI partidaTablero = new JugarPartidaGUI(jugadorSeleccionado1, jugadorSeleccionado2, n);
+        JugarPartidaGUI partidaTablero = new JugarPartidaGUI(jugadorSeleccionado1, jugadorSeleccionado2, FEN, n, dificultad);
         jFrameLoginH2.setVisible(false);
         System.out.println("fuera del set visible");
     }
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        backImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        //backImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        backImage = new JLabel(new ImageIcon(this.getClass().getResource("/res/BackTake2.png")));
     }
 }

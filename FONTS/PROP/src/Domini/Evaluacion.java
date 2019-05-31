@@ -15,33 +15,4 @@ public abstract class Evaluacion {
      */
     public abstract int evaluar(Tablero tablero, int depth);
 
-
-    /* Pre: Cierto
-     * Post: Devuelve un valor int de la suma de las evaluaciones del Jugador del parametro
-     *//*
-    private static int puntuacion(Jugador jugador, int depth) {
-        return evaluarPuntosPiezas(jugador) + elOtroJugadorEnJaque(jugador);
-    }
-
-    *//* Pre: Cierto
-     * Post: Devuelve un valor int de la suma de las piezas del Jugador del parametro
-     *//*
-    private static int evaluarPuntosPiezas(Jugador jugador) {
-        int puntosPiezas = 0;
-        for (Pieza pieza : jugador.getMisPiezas()) {
-            puntosPiezas += pieza.getPts();
-        }
-        return puntosPiezas;
-    }*/
-
-   /* *//* Pre: Cierto
-     * Post: Devuelve un valor distinto de 0 si el oponente del Jugador del parametro esta en Mate
-     *//*
-    private static int elOtroJugadorEnJaque(Jugador jugador) {
-        int i = 0;
-        if(jugador.getTablero().miOponenteEs(jugador).isEnMate()) {
-            i = 100000;
-        }
-        return i;
-    }*/
 }

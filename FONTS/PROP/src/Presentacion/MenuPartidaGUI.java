@@ -1,13 +1,12 @@
 package Presentacion;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
+import javax.swing.event.CellEditorListener;
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.EventObject;
 
 public class MenuPartidaGUI {
     private JPanel menuJugarPanel;
@@ -28,11 +27,9 @@ public class MenuPartidaGUI {
     private JFrame menuPartidaFrame;
 
     public MenuPartidaGUI() {
-        menuPartidaFrame = new JFrame("Logic: Entorno de resolución de problemas de ajedrez");
-        //menuPartidaFrame.setSize(600, 600);
+        menuPartidaFrame = new JFrame("Logic - A Chess Game");
         menuPartidaFrame.setSize(844, 650);
         menuPartidaFrame.setResizable(false);
-
         menuPartidaFrame.setContentPane(menuJugarPanel);
         menuPartidaFrame.setLocationRelativeTo(null);
         menuPartidaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -154,32 +151,22 @@ public class MenuPartidaGUI {
                             playerId2 = 3;
                             break;
                     }
-                    System.out.println(player1);
-                    System.out.println(playerId1);
-
-                    System.out.println(player2);
-                    System.out.println(playerId2);
-
-
                     if(player1.equals("H2") || player2.equals("H2")) {
                         //pedimos login H2
-                        new LoginH2GUI(FEN, n, playerId1, playerId2, jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2]);
+                        new LoginH2GUI(FEN, n, playerId1, playerId2, jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2], diff);
                         menuPartidaFrame.setVisible(false);
                     }
                     else {
-                        menuPartidaFrame.setVisible(false);
                         iniciarPartida(FEN, n, playerId1, playerId2, jugadoresSeleccionadosSplit[0], jugadoresSeleccionadosSplit[2]);
                     }
                 }
             }
 
             public void iniciarPartida(final String FEN, final int n, final int playerId1, final int playerId2, final String jugadorSeleccionado1, final String jugadorSeleccionado2) {
-                //creamos una partida con los datos seleccionados //@TODO: Arreglar la crida al controlador de domini, s'ha de cridar desde el controlador de presentació
                 ctrl_presentacion.getInstance().crearPartida(FEN, n, playerId1, playerId2);
                 //System.out.println(dificultadMenu.getSelectedItem() + " FEN:  " + FEN + " N: " + n + " playerId1: "+ playerId1 + " playerId2: " + playerId2 + " " + jugadores.getSelectedItem());
-                JugarPartidaGUI partidaTablero = new JugarPartidaGUI(jugadorSeleccionado1, jugadorSeleccionado2, n);
+                JugarPartidaGUI partidaTablero = new JugarPartidaGUI(jugadorSeleccionado1, jugadorSeleccionado2, FEN, n, diff);
                 menuPartidaFrame.setVisible(false);
-                System.out.println("fuera del set visible");
             }
 
             @Override
@@ -199,11 +186,10 @@ public class MenuPartidaGUI {
             }
         });
 
-        atrasButton.addMouseListener(new MouseListener() {
+        table1.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                menuPartidaFrame.setVisible(false);
-                new MenuPrincipalGUI();
+
             }
 
             @Override
@@ -214,6 +200,34 @@ public class MenuPartidaGUI {
             @Override
             public void mouseReleased(MouseEvent e) {
 
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        atrasButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                menuPartidaFrame.setVisible(false);
+                new MenuPrincipalGUI();
             }
 
             @Override

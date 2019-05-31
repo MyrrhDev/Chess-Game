@@ -16,47 +16,38 @@ public class MenuPrincipalGUI {
     private JLabel img;
     private JLabel menuLabel;
 
+
     public MenuPrincipalGUI() {
         mainMenuFrame = new JFrame("Logic - A Chess Game");
-        //mainMenuFrame.setPreferredSize(new Dimension(844, 650));
         mainMenuFrame.setContentPane(menuPanel);
         mainMenuFrame.setSize(844, 650);
         mainMenuFrame.setResizable(false);
         mainMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainMenuFrame.setLocationRelativeTo(null);
         mainMenuFrame.setVisible(true);
-        img.setIcon(new ImageIcon("./res/tableroMenu.png"));
+        img.setIcon(new ImageIcon(this.getClass().getResource("/res/tableroMenu.png")));
         menuLabel.setFont(new Font(menuLabel.getName(), Font.PLAIN, 30));
         newProblemaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ProblemaGUI();
                 mainMenuFrame.setVisible(false);
+                new ProblemaGUI();
             }
         });
         rankingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new RankingGUI();
                 mainMenuFrame.setVisible(false);
+                new RankingGUI();
             }
         });
         jugarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenuPartidaGUI();
                 mainMenuFrame.setVisible(false);
+                new MenuPartidaGUI();
             }
         });
 
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MenuPrincipalGUI();
-            }
-        });
     }
 }

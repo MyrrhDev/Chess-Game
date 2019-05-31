@@ -1,6 +1,7 @@
 package Presentacion;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,17 +30,24 @@ public class LoginGUI {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    boolean verificar = ctrl_presentacion.getInstance().verificarJugador(textField1.getText(), String.valueOf(passwordField1.getPassword()));
-                    if(verificar) {
-                        new MenuPrincipalGUI();
-                        ctrl_presentacion.getInstance().setNombreJugadorSesionH1(textField1.getText());
-                        jFrameLogin.setVisible(false);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                if (!String.valueOf(textField1.getText()).equals("") && !String.valueOf(passwordField1.getPassword()).equals("")) {
+                    try {
+                        boolean verificar = ctrl_presentacion.getInstance().verificarJugador(textField1.getText(), String.valueOf(passwordField1.getPassword()));
+                        if (verificar) {
+                            new MenuPrincipalGUI();
+                            ctrl_presentacion.getInstance().setNombreJugadorSesionH1(textField1.getText());
+                            jFrameLogin.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                        }
+                    } catch (Exception exp) {
+                        JOptionPane.showMessageDialog(null, exp.getMessage());
                     }
-                } catch (Exception exp) {
-                    JOptionPane.showMessageDialog(null, exp.getMessage());
+                }
+                else {
+                    if (String.valueOf(textField1.getText()).equals(""))
+                        JOptionPane.showMessageDialog(null, "Introduce un nombre de usuario");
+                    else JOptionPane.showMessageDialog(null, "Introduce una contraseña");
                 }
             }
         });
@@ -54,7 +62,9 @@ public class LoginGUI {
     }
 
     private void createUIComponents() {
-        BackImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        //BackImage = new JLabel(new ImageIcon("./res/BackTake2.png"));
+        BackImage = new JLabel(new ImageIcon(this.getClass().getResource("/res/BackTake2.png")));
+        //BackImage = new JLabel(new ImageIcon(getClass().getClassLoader().getResourceAsStream("./res/BackTake2.png")));
     }
 
 
