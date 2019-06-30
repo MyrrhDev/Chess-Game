@@ -7,8 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
-=======
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
@@ -46,6 +44,5 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="json-20180813" level="project" />
->>>>>>> Mayra-Logic
   </component>
 </module>
