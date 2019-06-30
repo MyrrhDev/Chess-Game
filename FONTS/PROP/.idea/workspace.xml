@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="535ddb54-757d-4b7c-b4fa-bf11e7c2cd9a" name="Default Changelist" comment="" />
+=======
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="DriverProblema" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="535ddb54-757d-4b7c-b4fa-bf11e7c2cd9a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Jugadores/data.JSON5" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Jugadores/data.JSON5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Problemas/data.JSON5" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Problemas/data.JSON5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/JugarPartidaGUI$Cronometro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/JugarPartidaGUI$Cronometro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/JugarPartidaGUI$TilePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/JugarPartidaGUI$TilePanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/JugarPartidaGUI$TilePanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/JugarPartidaGUI$TilePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/JugarPartidaGUI$TilePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDragGestureListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDropTargetListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/MyDropTargetListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$BoardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$BoardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$PiecesTiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$PiecesTiles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$SetPieces.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$SetPieces.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI$TilePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROP/Presentacion/ProblemaGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/MyDragGestureListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/MyDragGestureListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/MyDropTargetListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/MyDropTargetListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java" afterDir="false" />
+    </list>
+>>>>>>> Mayra-Logic
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -9,6 +43,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -16,6 +51,37 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
               <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+=======
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/PROP$Driver_ctrl_domini.ic" NAME="Driver_ctrl_domini Coverage Results" MODIFIED="1555776532118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/PROP$test.ic" NAME="test Coverage Results" MODIFIED="1557613177751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/PROP$ctrl_dominio.ic" NAME="ctrl_dominio Coverage Results" MODIFIED="1553020970010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="281" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="PROP" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuPartidaGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuPrincipalGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="47" column="34" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
+>>>>>>> Mayra-Logic
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -24,6 +90,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/Partida.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
@@ -37,6 +104,86 @@
                 <element signature="e#308#309#0" expanded="true" />
                 <element signature="e#355#356#0" expanded="true" />
                 <element signature="e#393#394#0" expanded="true" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="140" column="56" lean-forward="true" selection-start-line="140" selection-start-column="56" selection-end-line="140" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domini/Problema.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1229">
+              <caret line="160" column="13" lean-forward="true" selection-start-line="160" selection-start-column="13" selection-end-line="160" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domini/M1.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1425">
+              <caret line="97" column="40" selection-start-line="97" selection-start-column="40" selection-end-line="97" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domini/Tablero.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1815">
+              <caret line="121" selection-start-line="121" selection-end-line="121" />
+              <folding>
+                <element signature="e#15668#15669#0" expanded="true" />
+                <element signature="e#15698#15699#0" expanded="true" />
+                <element signature="e#16395#16396#0" expanded="true" />
+                <element signature="e#16431#16432#0" expanded="true" />
+                <element signature="e#16579#16580#0" expanded="true" />
+                <element signature="e#16614#16615#0" expanded="true" />
+                <element signature="e#16735#16736#0" expanded="true" />
+                <element signature="e#16766#16767#0" expanded="true" />
+                <element signature="e#16887#16888#0" expanded="true" />
+                <element signature="e#16918#16919#0" expanded="true" />
+                <element signature="e#17092#17093#0" expanded="true" />
+                <element signature="e#17127#17128#0" expanded="true" />
+                <element signature="e#17284#17285#0" expanded="true" />
+                <element signature="e#17332#17333#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="309">
+              <caret line="87" column="39" lean-forward="true" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="43" column="40" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="43" />
+              <folding>
+                <element signature="e#433#434#0" expanded="true" />
+                <element signature="e#476#477#0" expanded="true" />
+                <element signature="e#2503#2504#0" expanded="true" />
+                <element signature="e#2551#2552#0" expanded="true" />
+                <element signature="e#4719#4720#0" expanded="true" />
+                <element signature="e#4773#4774#0" expanded="true" />
+>>>>>>> Mayra-Logic
               </folding>
             </state>
           </provider>
@@ -47,10 +194,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="JUnit4 Test Class" />
+>>>>>>> Mayra-Logic
         <option value="Class" />
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -80,11 +232,136 @@
     <option name="width" value="1398" />
     <option name="height" value="992" />
   </component>
+=======
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>aquiTable</find>
+      <find>tablero</find>
+      <find>drawBoard</find>
+      <find>assignTilePieceIcon</find>
+      <find>drawPiecesSideBoards</find>
+      <find>remakeTablero</find>
+      <find>guard</find>
+      <find>FEN</find>
+      <find>leftPanel</find>
+      <find>getMisPiezas</find>
+      <find>iniJuegoBlancas</find>
+      <find>guardar</find>
+      <find>i</find>
+      <find>esNegro</find>
+      <find>negrasRadioButton</find>
+      <find>blancasRadioButton</find>
+      <find>refres</find>
+      <find>jugadorblanco</find>
+      <find>jugador1</find>
+      <find>frame</find>
+      <find>radioButtonTurnoJugador1</find>
+      <find>radioButtonTurnoJugador2</find>
+      <find>radio</find>
+      <find>width</find>
+      <find>displayFrameMessage</find>
+      <find>displ</find>
+      <find>displayFrame</find>
+      <find>esMovimientoGUIOk</find>
+      <find>drop</find>
+      <find>assignInitialTilePieceIcon</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>'N'</replace>
+      <replace>'n'</replace>
+      <replace>'p'</replace>
+      <replace>'P'</replace>
+      <replace>'q'</replace>
+      <replace>'Q'</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/Presentacion</dir>
+      <dir>$PROJECT_DIR$/src/Domini</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Domini/Caballo.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Torre.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Reina.java" />
+        <option value="$PROJECT_DIR$/src/Domini/TableroTest.java" />
+        <option value="$PROJECT_DIR$/src/Domini/executorJUnitTests.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/VistaRegister.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/TableroGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/JugarMenuGUI.form" />
+        <option value="$PROJECT_DIR$/Database/Jugadores/data.JSON5" />
+        <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/RankingGUI.form" />
+        <option value="$PROJECT_DIR$/src/Presentacion/RegisterGUI.form" />
+        <option value="$PROJECT_DIR$/src/Presentacion/VistaLogin.form" />
+        <option value="$PROJECT_DIR$/src/Presentacion/VistaLogin.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/RegisterGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/JugarMenuGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/MenuGUI.form" />
+        <option value="$PROJECT_DIR$/src/Presentacion/MenuGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/RankingGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/LoginH2.form" />
+        <option value="$PROJECT_DIR$/src/Presentacion/LoginH2.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/MenuPartidaGUI.form" />
+        <option value="$PROJECT_DIR$/Database/Problemas/data.JSON5" />
+        <option value="$PROJECT_DIR$/src/Presentacion/test.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/ComplexExample.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Tablero.java" />
+        <option value="$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Peon.java" />
+        <option value="$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Ataque.java" />
+        <option value="$PROJECT_DIR$/src/Domini/M2.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Defensa.java" />
+        <option value="$PROJECT_DIR$/src/Domini/M1.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Problema.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Evaluacion.java" />
+        <option value="$PROJECT_DIR$/src/Domini/ctrl_dominio.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/LoginH2GUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/LoginGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/MenuPrincipalGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/MenuPartidaGUI.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Ranking.java" />
+        <option value="$PROJECT_DIR$/src/Domini/Rey.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/NewJugarPartida.form" />
+        <option value="$PROJECT_DIR$/src/Presentacion/NewJugarPartida.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form" />
+        <option value="$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form" />
+        <option value="$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/MyDropTargetListener.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/MyDragGestureListener.java" />
+        <option value="$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="671" />
+    <option name="y" value="23" />
+    <option name="width" value="1249" />
+    <option name="height" value="970" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+>>>>>>> Mayra-Logic
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> Mayra-Logic
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -95,22 +372,91 @@
             <path>
               <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
               <item name="PROP" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="src" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="Database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PROP" type="462c0819:PsiDirectoryNode" />
+              <item name="Database" type="462c0819:PsiDirectoryNode" />
+              <item name="Jugadores" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PROP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PROP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PROP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Domini" type="462c0819:PsiDirectoryNode" />
+>>>>>>> Mayra-Logic
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> Mayra-Logic
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+<<<<<<< HEAD
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552413990690" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+=======
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="prop" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="104" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="384" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561908516540" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Domini" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Domini" />
+      <recent name="Domini.Drivers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="PersistenciaJSON" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/res" />
+    </key>
+>>>>>>> Mayra-Logic
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -124,7 +470,39 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager">
+=======
+  <component name="RunManager" selected="Application.ctrl_presentacion">
+    <configuration name="Driver_ctrl_domini" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Domini.DriverCtrl_dominio" />
+      <module name="PROP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MenuGUI" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.MenuPrincipalGUI" />
+      <module name="PROP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NewJugarPartida" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.NewJugarPartida" />
+      <module name="PROP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProblemaGUI" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.ProblemaGUI" />
+      <module name="PROP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+>>>>>>> Mayra-Logic
     <configuration name="ctrl_dominio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Domini.ctrl_dominio" />
       <module name="PROP" />
@@ -132,6 +510,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
+=======
+    <configuration name="ctrl_presentacion" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.ctrl_presentacion" />
+      <module name="PROP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tableroGUI" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.TableroGUI" />
+      <module name="PROP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Domini.test" />
+      <module name="PROP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Driver_ctrl_domini" />
+      <item itemvalue="Application.MenuGUI" />
+      <item itemvalue="Application.ProblemaGUI" />
+      <item itemvalue="Application.ctrl_presentacion" />
+      <item itemvalue="Application.NewJugarPartida" />
+      <item itemvalue="Application.tableroGUI" />
+      <item itemvalue="Application.test" />
+      <item itemvalue="Application.ctrl_dominio" />
+    </list>
+>>>>>>> Mayra-Logic
     <recent_temporary>
       <list>
         <item itemvalue="Application.ctrl_dominio" />
@@ -151,15 +563,34 @@
     </task>
     <servers />
   </component>
+<<<<<<< HEAD
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11719182" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+=======
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="671" y="23" width="1249" height="970" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49544418" visible="true" weight="0.18061309" />
+      <window_info id="Structure" order="1" sideWeight="0.5045558" side_tool="true" weight="0.15015975" />
+>>>>>>> Mayra-Logic
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
+<<<<<<< HEAD
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -184,10 +615,38 @@
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25538972" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+=======
+      <window_info id="Favorites" order="6" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.4476082" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" weight="0.3473804" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4991708" weight="0.33143508" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.498618" weight="0.24489796" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4994664" weight="0.3295099" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50082916" side_tool="true" weight="0.24504693" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49925926" weight="0.23462415" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24973376" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.32960597" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32946378" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49544418" weight="0.19861555" />
+      <window_info id="Structure" order="1" sideWeight="0.5045558" side_tool="true" weight="0.15015975" />
+>>>>>>> Mayra-Logic
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
+<<<<<<< HEAD
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -200,6 +659,20 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" />
+=======
+      <window_info id="Favorites" order="6" sideWeight="0.5023328" side_tool="true" weight="0.21985058" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.4476082" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.2072893" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4991708" weight="0.33143508" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.498618" weight="0.24489796" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4994664" weight="0.3295099" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50082916" side_tool="true" weight="0.24504693" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49925926" weight="0.23462415" />
+>>>>>>> Mayra-Logic
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -208,6 +681,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
+<<<<<<< HEAD
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
@@ -242,10 +716,112 @@
             <element signature="e#452#453#0" expanded="true" />
             <element signature="e#495#496#0" expanded="true" />
             <element signature="e#533#534#0" expanded="true" />
+=======
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32946378" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$USER_HOME$" />
+    </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/Domini/DriverReina.java</url>
+          <line>162</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/Domini/DriverReina.java</url>
+          <line>156</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((Peon)this).firstMove" custom="Domini.Peon" />
+        <watch expression="((Peon)this).firstMove" language="JAVA" custom="Domini.Peon" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/res/p.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/Bishop.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/k.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/r.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/RankingGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Movimiento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/util/Optional.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/DriverCtrl_dominio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="108" column="38" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Database/Problemas/data.JSON5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1144" lean-forward="true" selection-start-column="1144" selection-end-column="1144" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaJugador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-727">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/ctrl_persistencia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3656#3657#0" expanded="true" />
+            <element signature="e#3705#3706#0" expanded="true" />
+            <element signature="e#4140#4141#0" expanded="true" />
+            <element signature="e#4194#4195#0" expanded="true" />
+            <element signature="e#4266#4267#0" expanded="true" />
+            <element signature="e#4323#4324#0" expanded="true" />
+>>>>>>> Mayra-Logic
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Maquina.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -265,10 +841,43 @@
             <element signature="e#261#262#0" expanded="true" />
             <element signature="e#312#313#0" expanded="true" />
             <element signature="e#354#355#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/PersistenciaJSON/persistenciaProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-340">
+          <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Maquina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/b.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Jugador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="38" column="30" lean-forward="true" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/M2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="57" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> Mayra-Logic
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Persona.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1296">
@@ -297,10 +906,43 @@
           <folding>
             <element signature="e#68#69#0" expanded="true" />
             <element signature="e#96#97#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Domini/Ataque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Evaluacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/javax/swing/ImageIcon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2565">
+          <caret line="216" selection-start-line="216" selection-end-line="216" />
+          <folding>
+            <element signature="e#6758#6759#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/LoginH2GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="61" column="11" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> Mayra-Logic
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Rey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -308,10 +950,19 @@
           <folding>
             <element signature="e#66#67#0" expanded="true" />
             <element signature="e#94#95#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/LoginGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="787">
+          <caret line="106" column="1" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> Mayra-Logic
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Alfil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -319,10 +970,22 @@
           <folding>
             <element signature="e#68#69#0" expanded="true" />
             <element signature="e#96#97#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuPartidaGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Ranking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#1686#1703#0" expanded="true" />
+>>>>>>> Mayra-Logic
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Caballo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -330,10 +993,33 @@
           <folding>
             <element signature="e#70#71#0" expanded="true" />
             <element signature="e#98#99#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Domini/Alfil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="35" column="60" lean-forward="true" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Peon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="45" column="67" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/awt/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="972" selection-start-line="972" selection-end-line="972" />
+          <folding>
+            <element signature="e#37612#37613#0" expanded="true" />
+>>>>>>> Mayra-Logic
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Peon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -341,10 +1027,34 @@
           <folding>
             <element signature="e#67#68#0" expanded="true" />
             <element signature="e#95#96#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/TableroGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="227" column="15" lean-forward="true" selection-start-line="227" selection-end-line="231" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/NewJugarPartida.form" />
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/RegisterGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/RankingGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="51" column="66" selection-start-line="51" selection-start-column="58" selection-end-line="51" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> Mayra-Logic
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/EstrategiaSimple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -368,10 +1078,124 @@
             <element signature="e#143#144#0" expanded="true" />
             <element signature="e#186#187#0" expanded="true" />
             <element signature="e#212#213#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/NewJugarPartida.java" />
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Rey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="34" column="75" lean-forward="true" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Defensa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Reina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="177" column="62" selection-start-line="177" selection-start-column="62" selection-end-line="177" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/awt/dnd/DragSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="541" column="33" selection-start-line="541" selection-start-column="33" selection-end-line="541" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/JugarPartidaGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="435" column="12" selection-start-line="435" selection-start-column="12" selection-end-line="435" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/MyDropTargetListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/Logincopy.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/LoginBackground.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/MyDragGestureListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1101#1102#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuPartidaGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/MenuPrincipalGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="47" column="34" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Tablero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1815">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+          <folding>
+            <element signature="e#15668#15669#0" expanded="true" />
+            <element signature="e#15698#15699#0" expanded="true" />
+            <element signature="e#16395#16396#0" expanded="true" />
+            <element signature="e#16431#16432#0" expanded="true" />
+            <element signature="e#16579#16580#0" expanded="true" />
+            <element signature="e#16614#16615#0" expanded="true" />
+            <element signature="e#16735#16736#0" expanded="true" />
+            <element signature="e#16766#16767#0" expanded="true" />
+            <element signature="e#16887#16888#0" expanded="true" />
+            <element signature="e#16918#16919#0" expanded="true" />
+            <element signature="e#17092#17093#0" expanded="true" />
+            <element signature="e#17127#17128#0" expanded="true" />
+            <element signature="e#17284#17285#0" expanded="true" />
+            <element signature="e#17332#17333#0" expanded="true" />
+>>>>>>> Mayra-Logic
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Torre.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -379,20 +1203,48 @@
           <folding>
             <element signature="e#64#65#0" expanded="true" />
             <element signature="e#91#92#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/Database/Jugadores/data.JSON5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/ctrl_presentacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="43" column="40" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="43" />
+          <folding>
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#2503#2504#0" expanded="true" />
+            <element signature="e#2551#2552#0" expanded="true" />
+            <element signature="e#4719#4720#0" expanded="true" />
+            <element signature="e#4773#4774#0" expanded="true" />
+>>>>>>> Mayra-Logic
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/ctrl_dominio.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Domini/ctrl_dominio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="87" column="39" lean-forward="true" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="45" />
+>>>>>>> Mayra-Logic
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Partida.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -406,6 +1258,28 @@
             <element signature="e#308#309#0" expanded="true" />
             <element signature="e#355#356#0" expanded="true" />
             <element signature="e#393#394#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Domini/M1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="97" column="40" selection-start-line="97" selection-start-column="40" selection-end-line="97" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domini/Problema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1229">
+          <caret line="160" column="13" lean-forward="true" selection-start-line="160" selection-start-column="13" selection-end-line="160" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentacion/ProblemaGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="140" column="56" lean-forward="true" selection-start-line="140" selection-start-column="56" selection-end-line="140" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> Mayra-Logic
           </folding>
         </state>
       </provider>
@@ -416,10 +1290,18 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+<<<<<<< HEAD
+=======
+          <last-edited>DriverMovimientoPrueba</last-edited>
+>>>>>>> Mayra-Logic
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+<<<<<<< HEAD
+=======
+                <option value="0.5" />
+>>>>>>> Mayra-Logic
               </list>
             </option>
           </splitter-proportions>
@@ -475,6 +1357,10 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+<<<<<<< HEAD
+=======
+          <last-edited>json-20180813</last-edited>
+>>>>>>> Mayra-Logic
           <splitter-proportions>
             <option name="proportions">
               <list>
