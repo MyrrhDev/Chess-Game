@@ -217,11 +217,23 @@ public class ProblemaGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String FEN = fenString.getText();
-                ctrl_presentacion.getInstance().crearPartidaProblema(FEN, 2, 2, 2);
-                aquiTablero.drawBoard(ctrl_presentacion.getInstance().getTablero());
+                int N = (int) numMovimientos.getValue();
+                System.out.println(N);
+                boolean blancas = true;
 
-                //aquiBlackPieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getTablero(), false);
-                //aquiWhitePieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getTablero(), true);
+                if (negrasRadioButton.isSelected()) {
+                    blancas = false;
+                }
+                boolean success = ctrl_presentacion.getInstance().validarProblema(FEN, N, blancas);
+                if (success){
+                    ctrl_presentacion.getInstance().crearPartidaProblema(FEN, 2, 2, 2);
+                    aquiTablero.drawBoard(ctrl_presentacion.getInstance().getTablero());
+
+                    aquiBlackPieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getTablero(), false);
+                    aquiWhitePieces.drawPiecesSideBoards(ctrl_presentacion.getInstance().getTablero(), true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No es un Problema FEN valido, intentalo de nuevo");
+                }
 
             }
         });
@@ -483,6 +495,7 @@ public class ProblemaGUI {
                     } else if (tablero[tileId] == 'Q') {
                         //im = ImageIO.read(new File(imageQueen));
                         searchableKey = imageQueen;
+                        imageIc = new ImageIcon(this.getClass().getResource("/res/Queen.gif"), searchableKey);
                     } else if (tablero[tileId] == 'R') {
                         //im = ImageIO.read(new File(imageRook));
                         searchableKey = imageRook;

@@ -16,16 +16,8 @@ public class MyDragGestureListener implements DragGestureListener {
     @Override
     public void dragGestureRecognized(DragGestureEvent event) {
         Cursor cursor = null;
-
         JLabel label = (JLabel) event.getComponent();
         final ImageIcon ico = (ImageIcon) label.getIcon();
-        // get image from imageicon
-        //Image image = icon.getImage();
-
-        // cast it to bufferedimage
-        //BufferedImage ico = (BufferedImage) image;
-
-
 
         if (event.getDragAction() == DnDConstants.ACTION_COPY) {
             cursor = DragSource.DefaultCopyDrop;
@@ -50,7 +42,6 @@ public class MyDragGestureListener implements DragGestureListener {
                 return ico;
             }
         };
-        //event.startDrag(null, transferable);
         event.startDrag(cursor, transferable);
 
         Container parent = label.getParent();
