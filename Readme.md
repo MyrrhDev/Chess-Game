@@ -2,7 +2,7 @@ DOCS:
 The documents already described in the content of the delivery. This directory does not
 contains any code.
 
-SOURCE:
+FONTS:
 Java classes implemented so far (including drivers). Subdirectories follow the package structure.
 
 EXE:
