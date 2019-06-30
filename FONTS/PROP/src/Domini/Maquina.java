@@ -1,10 +1,5 @@
 package Domini;
 
-<<<<<<< HEAD
-public class Maquina extends Jugador {
-    Estrategia tieneEstrategia;
-=======
-
 public abstract class Maquina extends Jugador {
 
     /* Pre: Cierto
@@ -30,5 +25,4 @@ public abstract class Maquina extends Jugador {
     public Tablero jugar(Tablero t, Movimiento movimiento) throws Exception {
         return t;
     }
->>>>>>> Mayra-Logic
 }

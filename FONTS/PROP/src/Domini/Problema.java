@@ -1,17 +1,5 @@
 package Domini;
 
-<<<<<<< HEAD
-import java.util.Date;
-
-public class Problema {
-    public String nombre;
-    public Persona creador;
-    boolean esVerificado;
-    boolean esJugado;
-    int N;
-    Date fechaUltMod; //fecha ultima modificacion
-    String prob; //problema
-=======
 public class Problema {
     public String problema;
     int N;
@@ -233,5 +221,4 @@ public class Problema {
     boolean getVerificado() {
         return this.verificado;
     }
->>>>>>> Mayra-Logic
 }

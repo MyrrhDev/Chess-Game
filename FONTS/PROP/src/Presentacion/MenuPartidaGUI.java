@@ -54,8 +54,8 @@ public class MenuPartidaGUI {
                     problemasBuscados = true;
                     diff = String.valueOf(dificultadMenu.getSelectedItem());
                     String[][] resultProblemas = buscarProblemas(String.valueOf(dificultadMenu.getSelectedItem()));
-                    //resultProblemas[0] Fen
-                    //resultProblemas[1] N
+                    //System.out.println(resultProblemas[0]); // Fen
+                    //System.out.println(resultProblemas[1]); // N
                     addProblemasToTable(resultProblemas);
                 }
                 else if(problemasBuscados && diff.equals((String)dificultadMenu.getSelectedItem())) {

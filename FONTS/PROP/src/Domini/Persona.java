@@ -1,13 +1,5 @@
 package Domini;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-
-public class Persona extends Jugador {
-    String nombre;
-    String contrasena;
-    int pts;
-=======
 public class Persona extends Jugador {
 
     /* Pre: Cierto
@@ -34,5 +26,4 @@ public class Persona extends Jugador {
     public Tablero jugar(Tablero tablero, int N) throws Exception {
         return tablero;
     }
->>>>>>> Mayra-Logic
 }

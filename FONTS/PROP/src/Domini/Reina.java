@@ -1,16 +1,7 @@
 package Domini;
-
-<<<<<<< HEAD
-public class Reina extends Pieza {
-    boolean esMovimientoOk() {
-        return false;
-    }
-}
-=======
 import java.util.ArrayList;
 
 public class Reina extends Pieza {
-
 
     public Reina() {
         this.firstMove = false;
@@ -397,4 +388,3 @@ public class Reina extends Pieza {
         return this.tipo;
     }
 }
->>>>>>> Mayra-Logic

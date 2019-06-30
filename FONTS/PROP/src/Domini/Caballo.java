@@ -1,13 +1,4 @@
 package Domini;
-
-<<<<<<< HEAD
-public class Caballo extends Pieza {
-    boolean esMovimientoOk() {
-        return false;
-    }
-}
-=======
-
 import java.util.ArrayList;
 
 public class Caballo extends Pieza {
@@ -116,4 +107,3 @@ public class Caballo extends Pieza {
     }
 
 }
->>>>>>> Mayra-Logic

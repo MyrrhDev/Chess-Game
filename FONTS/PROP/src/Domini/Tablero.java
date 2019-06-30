@@ -1,9 +1,4 @@
 package Domini;
-<<<<<<< HEAD
-
-public class Tablero {
-}
-=======
 import java.util.ArrayList;
 
 public class Tablero {
@@ -410,4 +405,3 @@ public class Tablero {
         else this.turnoBlancas = true;
     }
 }
->>>>>>> Mayra-Logic

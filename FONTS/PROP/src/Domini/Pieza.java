@@ -1,10 +1,4 @@
 package Domini;
-
-<<<<<<< HEAD
-public abstract class Pieza {
-    abstract boolean esMovimientoOk();
-}
-=======
 import java.util.ArrayList;
 
 public abstract class Pieza {
@@ -63,7 +57,4 @@ public abstract class Pieza {
     abstract boolean esMovimientoOk(final Movimiento m, final char estadoTablero[][]);
 
     abstract ArrayList<Movimiento> movimientosPosibles(Tablero tablero);
-
-    //abstract ArrayList<Movimiento> movimientosPosibles(char estadoTablero[][]);
 }
->>>>>>> Mayra-Logic

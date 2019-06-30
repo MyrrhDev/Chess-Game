@@ -1,12 +1,4 @@
 package Domini;
-
-<<<<<<< HEAD
-public class Peon extends Pieza {
-    boolean esMovimientoOk() {
-        return false;
-    }
-}
-=======
 import java.util.ArrayList;
 
 public class Peon extends Pieza {
@@ -197,4 +189,3 @@ public class Peon extends Pieza {
     }
 
 }
->>>>>>> Mayra-Logic

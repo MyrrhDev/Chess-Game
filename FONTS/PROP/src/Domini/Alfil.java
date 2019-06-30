@@ -1,12 +1,4 @@
 package Domini;
-
-<<<<<<< HEAD
-public class Alfil extends Pieza {
-    boolean esMovimientoOk() {
-        return false;
-    }
-}
-=======
 import java.util.ArrayList;
 
 public class Alfil extends Pieza {
@@ -219,4 +211,3 @@ public class Alfil extends Pieza {
         return this.tipo;
     }
 }
->>>>>>> Mayra-Logic
